@@ -1,0 +1,361 @@
+# \CustomersAPI
+
+All URIs are relative to *https://sandbox-api.revkeen.com/v2*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**CustomersCreate**](CustomersAPI.md#CustomersCreate) | **Post** /customers | Create a new customer
+[**CustomersList**](CustomersAPI.md#CustomersList) | **Get** /customers | List customers
+[**CustomersPaymentMethodsList**](CustomersAPI.md#CustomersPaymentMethodsList) | **Get** /customers/{id}/payment-methods | Get customer payment methods
+[**CustomersRetrieve**](CustomersAPI.md#CustomersRetrieve) | **Get** /customers/{id} | Get customer by ID
+[**CustomersUpdate**](CustomersAPI.md#CustomersUpdate) | **Patch** /customers/{id} | Update customer details
+
+
+
+## CustomersCreate
+
+> CustomerCreateResponse CustomersCreate(ctx).CustomersCreateRequest(customersCreateRequest).Execute()
+
+Create a new customer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/revkeen-go"
+)
+
+func main() {
+	customersCreateRequest := *openapiclient.NewCustomersCreateRequest("Email_example") // CustomersCreateRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomersCreate(context.Background()).CustomersCreateRequest(customersCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomersCreate`: CustomerCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomersCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customersCreateRequest** | [**CustomersCreateRequest**](CustomersCreateRequest.md) |  | 
+
+### Return type
+
+[**CustomerCreateResponse**](CustomerCreateResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CustomersList
+
+> CustomerListResponse CustomersList(ctx).Limit(limit).Offset(offset).Search(search).Execute()
+
+List customers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/revkeen-go"
+)
+
+func main() {
+	limit := int32(56) // int32 | Maximum number of results (1-100) (optional) (default to 20)
+	offset := int32(56) // int32 | Number of results to skip (optional) (default to 0)
+	search := "search_example" // string | Search term to filter customers (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomersList(context.Background()).Limit(limit).Offset(offset).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomersList`: CustomerListResponse
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
+ **offset** | **int32** | Number of results to skip | [default to 0]
+ **search** | **string** | Search term to filter customers | 
+
+### Return type
+
+[**CustomerListResponse**](CustomerListResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CustomersPaymentMethodsList
+
+> CustomerPaymentMethodsListResponse CustomersPaymentMethodsList(ctx, id).Execute()
+
+Get customer payment methods
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/revkeen-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomersPaymentMethodsList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersPaymentMethodsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomersPaymentMethodsList`: CustomerPaymentMethodsListResponse
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersPaymentMethodsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Customer UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomersPaymentMethodsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CustomerPaymentMethodsListResponse**](CustomerPaymentMethodsListResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CustomersRetrieve
+
+> CustomerRetrieveResponse CustomersRetrieve(ctx, id).Execute()
+
+Get customer by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/revkeen-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomersRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomersRetrieve`: CustomerRetrieveResponse
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Customer UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomersRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CustomerRetrieveResponse**](CustomerRetrieveResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CustomersUpdate
+
+> CustomerUpdateResponse CustomersUpdate(ctx, id).CustomersUpdateRequest(customersUpdateRequest).Execute()
+
+Update customer details
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/revkeen-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
+	customersUpdateRequest := *openapiclient.NewCustomersUpdateRequest() // CustomersUpdateRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomersUpdate(context.Background(), id).CustomersUpdateRequest(customersUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomersUpdate`: CustomerUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Customer UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomersUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **customersUpdateRequest** | [**CustomersUpdateRequest**](CustomersUpdateRequest.md) |  | 
+
+### Return type
+
+[**CustomerUpdateResponse**](CustomerUpdateResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

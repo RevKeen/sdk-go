@@ -1,19 +1,21 @@
 # RevKeen Go SDK
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/revkeen/revkeen-go.svg)](https://pkg.go.dev/github.com/revkeen/revkeen-go)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+The official Go client for the [RevKeen API](https://docs.revkeen.com). Idiomatic `context.Context` plumbing, typed request and response structs, auto-pagination iterators, webhook verification, and production-grade retries.
 
-Official Go client for the [RevKeen API](https://docs.revkeen.com/api-reference/openapi) — auto-generated from the OpenAPI specification via [OpenAPI Generator](https://openapi-generator.tech).
+[![Go Reference](https://pkg.go.dev/badge/github.com/RevKeen/sdk-go.svg)](https://pkg.go.dev/github.com/RevKeen/sdk-go)
+[![CI](https://img.shields.io/github/actions/workflow/status/RevKeen/sdk-go/ci.yml?branch=main&style=flat-square&label=ci)](https://github.com/RevKeen/sdk-go/actions)
+[![License: MIT](https://img.shields.io/badge/license-MIT-000?style=flat-square)](./LICENSE)
+[![Docs](https://img.shields.io/badge/docs-docs.revkeen.com-000?style=flat-square)](https://docs.revkeen.com/docs/sdks/go)
 
-## Installation
+## Install
 
 ```bash
-go get github.com/revkeen/revkeen-go
+go get github.com/RevKeen/sdk-go
 ```
 
-Requires Go 1.22 or later.
+Requires Go 1.21+.
 
-## Quick Start
+## Quick start
 
 ```go
 package main
@@ -21,105 +23,56 @@ package main
 import (
     "context"
     "fmt"
-    "log"
     "os"
 
-    revkeen "github.com/revkeen/revkeen-go"
-    "github.com/revkeen/revkeen-go/option"
+    revkeen "github.com/RevKeen/sdk-go"
 )
 
 func main() {
-    client := revkeen.NewClient(
-        option.WithAPIKey(os.Getenv("REVKEEN_API_KEY")),
-    )
+    client := revkeen.NewClient(revkeen.Config{
+        APIKey: os.Getenv("REVKEEN_API_KEY"),
+    })
 
-    customers, err := client.Customers.List(context.Background(), &revkeen.CustomersListRequest{
-        Limit: revkeen.Int(10),
+    customer, err := client.Customers.Create(context.Background(), &revkeen.CustomerCreateParams{
+        Email: revkeen.String("ops@acme.example"),
+        Name:  revkeen.String("Acme Inc."),
     })
     if err != nil {
-        log.Fatal(err)
+        panic(err)
     }
 
-    for _, c := range customers.Data {
-        fmt.Println(c.Name, c.Email)
-    }
+    fmt.Println(customer.ID)
 }
 ```
 
-## Authentication
+## Features
 
-### API Key (recommended for server-to-server)
+- **Typed request and response structs** — no `map[string]interface{}` anywhere
+- **Context-aware** — every method takes `context.Context` for cancellation and deadlines
+- **Automatic pagination iterators** — `iter.Next()` / `iter.Current()` / `iter.Err()`
+- **Automatic retries** — exponential backoff on `5xx`, `429`, network errors
+- **Idempotency keys** — attached automatically on safe-to-retry mutations
+- **Webhook verification** — `revkeen.Webhooks.Verify(body, signature, secret)`
+- **OAuth 2.1 + API-key auth** — both first-class
 
-```go
-client := revkeen.NewClient(
-    option.WithAPIKey(os.Getenv("REVKEEN_API_KEY")),
-)
-```
+## Documentation
 
-### OAuth 2.1 (recommended for MCP and third-party integrations)
+- [SDK docs](https://docs.revkeen.com/docs/sdks/go) — examples, recipes, and full API surface
+- [API reference](https://docs.revkeen.com/docs/api-reference) — every endpoint, from the OpenAPI spec
+- [pkg.go.dev](https://pkg.go.dev/github.com/RevKeen/sdk-go) — auto-generated godoc reference
+- [Webhooks guide](https://docs.revkeen.com/docs/webhooks) — signature verification + event catalogue
+- [Versioning](https://docs.revkeen.com/docs/fundamentals/versioning) — API ↔ SDK compatibility matrix
 
-```go
-client := revkeen.NewClient(
-    option.WithOAuth(revkeen.OAuthConfig{
-        ClientID:     os.Getenv("REVKEEN_CLIENT_ID"),
-        ClientSecret: os.Getenv("REVKEEN_CLIENT_SECRET"),
-        Scopes:       []string{"customers:read", "invoices:read"},
-    }),
-)
-```
+## Generation
 
-See the [OAuth guide](https://docs.revkeen.com/docs/developers/oauth) for details.
+This SDK is generated from the [canonical OpenAPI spec](https://docs.revkeen.com/docs/api-reference). The generator runs on every spec change. A human-authored layer adds idiomatic helpers for pagination, retries, webhooks, and errors.
 
-## Resources
+## Contributing
 
-Every API resource is available as a typed field on the client:
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, test instructions, and the release process.
 
-| Resource | Method examples |
-|----------|----------------|
-| `client.Customers` | `List()`, `Create()`, `Get()`, `Update()`, `Delete()` |
-| `client.Invoices` | `List()`, `Create()`, `Get()`, `Update()`, `Finalize()`, `Send()`, `Void()` |
-| `client.Subscriptions` | `List()`, `Create()`, `Get()`, `Update()`, `Cancel()`, `Pause()`, `Resume()` |
-| `client.Products` | `List()`, `Create()`, `Get()`, `Update()`, `Delete()` |
-| `client.Payments` | `List()`, `Create()`, `Get()` |
-| `client.CheckoutSessions` | `Create()`, `Get()` |
-| `client.Discounts` | `List()`, `Create()`, `Get()`, `Update()`, `Delete()` |
-| `client.CreditNotes` | `List()`, `Create()`, `Get()` |
-| `client.PaymentLinks` | `List()`, `Create()`, `Get()`, `Update()` |
-| `client.PaymentMethods` | `List()`, `Get()`, `Detach()` |
-| `client.WebhookEndpoints` | `List()`, `Create()`, `Delete()` |
-| `client.Events` | `List()`, `Get()` |
-| `client.Entitlements` | `List()`, `Check()` |
+Please file issues and feature requests on the [issue tracker](https://github.com/RevKeen/sdk-go/issues). For security disclosures, see [SECURITY.md](./SECURITY.md).
 
-## Error Handling
+## License
 
-```go
-_, err := client.Customers.Get(context.Background(), "cus_nonexistent")
-if err != nil {
-    var apiErr *revkeen.APIError
-    if errors.As(err, &apiErr) {
-        fmt.Printf("API error %d: %s\n", apiErr.StatusCode, apiErr.Message)
-    }
-}
-```
-
-## Configuration
-
-```go
-client := revkeen.NewClient(
-    option.WithAPIKey(os.Getenv("REVKEEN_API_KEY")),
-    // Staging environment
-    option.WithBaseURL("https://staging-api.revkeen.com"),
-)
-```
-
-## Compatibility
-
-- **Runtime:** Go 1.22+
-- **Dependencies:** Standard library only
-
-## Links
-
-- [API Reference](https://docs.revkeen.com/api-reference/openapi)
-- [SDK Documentation](https://docs.revkeen.com/docs/developers/sdks/go)
-- [TypeScript SDK](https://github.com/revkeen/sdk-typescript)
-- [PHP SDK](https://github.com/revkeen/sdk-php)
+[MIT](./LICENSE) — © RevKeen.

@@ -1,5 +1,10 @@
 # RevKeen Go SDK
 
+> [!IMPORTANT]
+> This repository is a generated release mirror. Propose source changes in
+> [RevKeen/revkeen](https://github.com/RevKeen/revkeen); `main` here is updated only by an explicit reviewed SDK release.
+
+
 [![Go Reference](https://pkg.go.dev/badge/github.com/revkeen/revkeen-go.svg)](https://pkg.go.dev/github.com/revkeen/revkeen-go)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 

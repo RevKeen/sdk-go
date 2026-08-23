@@ -1,0 +1,142 @@
+name: Publish reviewed Go SDK
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - ".github/workflows/publish.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sdk-publish-go
+  cancel-in-progress: false
+
+jobs:
+  detect-release:
+    name: Detect and validate release candidate
+    runs-on: ubuntu-24.04
+    outputs:
+      release: ${{ steps.release.outputs.release }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Enforce publish-workflow credential isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORKFLOW=.github/workflows/publish.yml
+          if grep -Eq '\$\{\{[[:space:]]*secrets\.' "$WORKFLOW"; then
+            echo "::error::SDK publishing must not reference registry or repository secrets."
+            exit 1
+          fi
+          if grep -Eq '^[[:space:]]+(NPM_TOKEN|NODE_AUTH_TOKEN|PACKAGIST_TOKEN|PYPI_TOKEN):' "$WORKFLOW"; then
+            echo "::error::SDK publishing must not declare registry credential variables."
+            exit 1
+          fi
+          if grep -Eq '^[[:space:]]+workflow_dispatch:' "$WORKFLOW"; then
+            echo "::error::Out-of-band workflow_dispatch publishing is forbidden."
+            exit 1
+          fi
+
+      - name: Parse release marker
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_EVENT_NAME" != "push" ]; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          SUBJECT=$(git log -1 --format=%s)
+          if [[ ! "$SUBJECT" =~ ^sdk\[release\]:\ ([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?)$ ]]; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          VERSION="${BASH_REMATCH[1]}"
+          SOURCE_SHA=$(git log -1 --format=%B | sed -n 's/^Source: //p' | tail -1)
+          if [[ ! "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::A release candidate must carry a Source: <40-character SHA> trailer."
+            exit 1
+          fi
+          if ! grep -qx 'module github.com/revkeen/sdk-go' go.mod; then
+            echo "::error::go.mod does not declare github.com/revkeen/sdk-go."
+            exit 1
+          fi
+
+          echo "release=true" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+  validate:
+    name: Validate Go package
+    needs: detect-release
+    if: needs.detect-release.outputs.release == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v6
+        with:
+          go-version: "1.23.12"
+      - name: Format, vet, test, and build
+        run: |
+          test -z "$(gofmt -l .)"
+          go vet ./...
+          go test ./...
+          go build ./...
+
+  publish:
+    name: Approve and publish Go SDK tag
+    needs:
+      - detect-release
+      - validate
+    if: needs.detect-release.outputs.release == 'true'
+    runs-on: ubuntu-24.04
+    environment: sdk-release-go
+    permissions:
+      contents: write
+    steps:
+      - name: Enforce reviewed release sentinel
+        env:
+          REVIEW_GATE: ${{ vars.SDK_RELEASE_REVIEW_GATE }}
+        run: |
+          if [ "$REVIEW_GATE" != "enabled" ]; then
+            echo "::error::sdk-release-go is missing the reviewed release sentinel."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Create immutable release tag
+        env:
+          VERSION: ${{ needs.detect-release.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="v${VERSION}"
+          git config user.name "RevKeen Bot"
+          git config user.email "bot@revkeen.com"
+          if git ls-remote --exit-code --tags origin "refs/tags/${TAG}" >/dev/null 2>&1; then
+            git fetch origin "refs/tags/${TAG}:refs/tags/${TAG}"
+            test "$(git rev-list -n 1 "${TAG}")" = "$GITHUB_SHA"
+          else
+            git tag -a "${TAG}" -m "Release ${TAG}"
+            git push origin "refs/tags/${TAG}"
+          fi
+
+      - name: Release summary
+        env:
+          VERSION: ${{ needs.detect-release.outputs.version }}
+        run: |
+          echo "## Reviewed Go SDK release" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Version: v${VERSION}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Module: github.com/revkeen/sdk-go" >> "$GITHUB_STEP_SUMMARY"

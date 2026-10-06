@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Brand** | **NullableString** | The card brand | 
-**Last4** | **NullableString** | The last 4 digits of the card number | 
-**ExpMonth** | **NullableInt32** | Expiration month (1-12) | 
-**ExpYear** | **NullableInt32** | Expiration year | 
-**Funding** | **NullableString** | The card funding type | 
+**Brand** | **NullableString** | The card brand |
+**Last4** | **NullableString** | The last 4 digits of the card number |
+**ExpMonth** | **NullableInt32** | Expiration month (1-12) |
+**ExpYear** | **NullableInt32** | Expiration year |
+**Funding** | **NullableString** | The card funding type |
 
 ## Methods
 
@@ -181,5 +181,3 @@ SetFunding sets Funding field to given value.
 UnsetFunding ensures that no value is present for Funding, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

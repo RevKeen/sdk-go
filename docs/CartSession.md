@@ -4,34 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**MerchantId** | **string** |  | 
-**CustomerId** | **NullableString** |  | 
-**Currency** | **string** |  | 
-**Mode** | **string** |  | 
-**Status** | [**CartSessionStatus**](CartSessionStatus.md) |  | 
-**LineItems** | [**[]CartLineItem**](CartLineItem.md) |  | 
-**AddOnsOffered** | **[]string** |  | 
-**AddOnsSelected** | **[]string** |  | 
-**DiscountCode** | **NullableString** |  | 
-**Email** | **NullableString** | Captured customer email for recovery, if provided. | 
-**PromotionalConsent** | **NullableBool** |  | 
-**SmsConsent** | **NullableBool** |  | 
-**SubtotalMinor** | **int32** |  | 
-**TotalMinor** | **int32** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**ConvertedToCheckoutSessionId** | **NullableString** |  | 
-**PublicToken** | **string** | Anon-access token. Use to build /c/[cart_session_id]?token&#x3D;... URLs for customer-facing cart checkout. Open carts can be reviewed and edited; unexpired abandoned carts can be reviewed and converted as-is. Expired and converted carts are inaccessible. | 
-**CreatedAt** | **time.Time** |  | 
-**UpdatedAt** | **time.Time** |  | 
-**ExpiresAt** | **time.Time** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**MerchantId** | **string** |  |
+**CustomerId** | **NullableString** |  |
+**Currency** | **string** |  |
+**Mode** | **string** |  |
+**Status** | [**CartSessionStatus**](CartSessionStatus.md) |  |
+**LineItems** | [**[]CartLineItem**](CartLineItem.md) |  |
+**AddOnsOffered** | **[]string** |  |
+**AddOnsSelected** | **[]string** |  |
+**DiscountCode** | **NullableString** |  |
+**Email** | **NullableString** | Captured customer email for recovery, if provided. |
+**PromotionalConsent** | **NullableBool** |  |
+**SmsConsent** | **NullableBool** |  |
+**SubtotalMinor** | **int64** |  |
+**TotalMinor** | **int64** |  |
+**Metadata** | **map[string]interface{}** |  |
+**ConvertedToCheckoutSessionId** | **NullableString** |  |
+**PublicToken** | **string** | Anon-access token. Use to build /c/[cart_session_id]?token&#x3D;... URLs for customer-facing cart checkout. Open carts can be reviewed and edited; unexpired abandoned carts can be reviewed and converted as-is. Expired and converted carts are inaccessible. |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
+**ExpiresAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCartSession
 
-`func NewCartSession(id string, object string, merchantId string, customerId NullableString, currency string, mode string, status CartSessionStatus, lineItems []CartLineItem, addOnsOffered []string, addOnsSelected []string, discountCode NullableString, email NullableString, promotionalConsent NullableBool, smsConsent NullableBool, subtotalMinor int32, totalMinor int32, metadata map[string]interface{}, convertedToCheckoutSessionId NullableString, publicToken string, createdAt time.Time, updatedAt time.Time, expiresAt time.Time, ) *CartSession`
+`func NewCartSession(id string, object string, merchantId string, customerId NullableString, currency string, mode string, status CartSessionStatus, lineItems []CartLineItem, addOnsOffered []string, addOnsSelected []string, discountCode NullableString, email NullableString, promotionalConsent NullableBool, smsConsent NullableBool, subtotalMinor int64, totalMinor int64, metadata map[string]*interface{}, convertedToCheckoutSessionId NullableString, publicToken string, createdAt time.Time, updatedAt time.Time, expiresAt time.Time, ) *CartSession`
 
 NewCartSession instantiates a new CartSession object
 This constructor will assign default values to properties that have it defined,
@@ -378,60 +378,60 @@ SetSmsConsent sets SmsConsent field to given value.
 UnsetSmsConsent ensures that no value is present for SmsConsent, not even an explicit nil
 ### GetSubtotalMinor
 
-`func (o *CartSession) GetSubtotalMinor() int32`
+`func (o *CartSession) GetSubtotalMinor() int64`
 
 GetSubtotalMinor returns the SubtotalMinor field if non-nil, zero value otherwise.
 
 ### GetSubtotalMinorOk
 
-`func (o *CartSession) GetSubtotalMinorOk() (*int32, bool)`
+`func (o *CartSession) GetSubtotalMinorOk() (*int64, bool)`
 
 GetSubtotalMinorOk returns a tuple with the SubtotalMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubtotalMinor
 
-`func (o *CartSession) SetSubtotalMinor(v int32)`
+`func (o *CartSession) SetSubtotalMinor(v int64)`
 
 SetSubtotalMinor sets SubtotalMinor field to given value.
 
 
 ### GetTotalMinor
 
-`func (o *CartSession) GetTotalMinor() int32`
+`func (o *CartSession) GetTotalMinor() int64`
 
 GetTotalMinor returns the TotalMinor field if non-nil, zero value otherwise.
 
 ### GetTotalMinorOk
 
-`func (o *CartSession) GetTotalMinorOk() (*int32, bool)`
+`func (o *CartSession) GetTotalMinorOk() (*int64, bool)`
 
 GetTotalMinorOk returns a tuple with the TotalMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalMinor
 
-`func (o *CartSession) SetTotalMinor(v int32)`
+`func (o *CartSession) SetTotalMinor(v int64)`
 
 SetTotalMinor sets TotalMinor field to given value.
 
 
 ### GetMetadata
 
-`func (o *CartSession) GetMetadata() map[string]interface{}`
+`func (o *CartSession) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CartSession) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CartSession) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CartSession) SetMetadata(v map[string]interface{})`
+`func (o *CartSession) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -548,5 +548,3 @@ SetExpiresAt sets ExpiresAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

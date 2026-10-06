@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Url** | **string** |  | 
-**PublicToken** | **string** |  | 
-**AmountMinor** | Pointer to **float32** |  | [optional] 
-**Currency** | **string** |  | 
-**CustomerId** | Pointer to **string** |  | [optional] 
-**ExpiresAt** | **string** |  | 
-**AllowedMethods** | Pointer to **[]string** |  | [optional] 
-**SelectedMethod** | Pointer to **NullableString** |  | [optional] 
+**Id** | **string** |  |
+**Url** | **string** |  |
+**PublicToken** | **string** |  |
+**AmountMinor** | Pointer to **int64** |  | [optional]
+**Currency** | **string** |  |
+**CustomerId** | Pointer to **string** |  | [optional]
+**ExpiresAt** | **time.Time** |  |
+**AllowedMethods** | Pointer to **[]string** |  | [optional]
+**SelectedMethod** | Pointer to **NullableString** |  | [optional]
 
 ## Methods
 
 ### NewCheckoutSessionCreateResponseData
 
-`func NewCheckoutSessionCreateResponseData(id string, url string, publicToken string, currency string, expiresAt string, ) *CheckoutSessionCreateResponseData`
+`func NewCheckoutSessionCreateResponseData(id string, url string, publicToken string, currency string, expiresAt time.Time, ) *CheckoutSessionCreateResponseData`
 
 NewCheckoutSessionCreateResponseData instantiates a new CheckoutSessionCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetPublicToken sets PublicToken field to given value.
 
 ### GetAmountMinor
 
-`func (o *CheckoutSessionCreateResponseData) GetAmountMinor() float32`
+`func (o *CheckoutSessionCreateResponseData) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CheckoutSessionCreateResponseData) GetAmountMinorOk() (*float32, bool)`
+`func (o *CheckoutSessionCreateResponseData) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CheckoutSessionCreateResponseData) SetAmountMinor(v float32)`
+`func (o *CheckoutSessionCreateResponseData) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -165,20 +165,20 @@ HasCustomerId returns a boolean if a field has been set.
 
 ### GetExpiresAt
 
-`func (o *CheckoutSessionCreateResponseData) GetExpiresAt() string`
+`func (o *CheckoutSessionCreateResponseData) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *CheckoutSessionCreateResponseData) GetExpiresAtOk() (*string, bool)`
+`func (o *CheckoutSessionCreateResponseData) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *CheckoutSessionCreateResponseData) SetExpiresAt(v string)`
+`func (o *CheckoutSessionCreateResponseData) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -245,5 +245,3 @@ HasSelectedMethod returns a boolean if a field has been set.
 UnsetSelectedMethod ensures that no value is present for SelectedMethod, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

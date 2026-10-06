@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MeterMatched** | **bool** |  | 
-**CustomerMatched** | **bool** |  | 
-**BillableQuantity** | **float32** |  | 
-**FiltersPassed** | **bool** |  | 
+**MeterMatched** | **bool** |  |
+**CustomerMatched** | **bool** |  |
+**BillableQuantity** | **float32** |  |
+**FiltersPassed** | **bool** |  |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetFiltersPassed sets FiltersPassed field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

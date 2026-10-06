@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | Pointer to **string** | Product UUID to link to this item | [optional] 
-**PriceId** | Pointer to **string** | Price UUID to link to this item | [optional] 
-**Description** | Pointer to **string** | Item description | [optional] 
+**ProductId** | Pointer to **string** | Product UUID to link to this item | [optional]
+**PriceId** | Pointer to **string** | Price UUID to link to this item | [optional]
+**Description** | Pointer to **string** | Item description | [optional]
 **Quantity** | Pointer to **int32** | Item quantity | [optional] [default to 1]
-**Currency** | **string** | ISO 4217 currency code | 
-**UnitAmountMinor** | **int32** | Unit price in cents | 
+**Currency** | **string** | ISO 4217 currency code |
+**UnitAmountMinor** | **int64** | Unit price in cents |
 **FulfillmentType** | Pointer to **string** | Determines if orders are created on renewal | [optional] [default to "none"]
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
 
 ## Methods
 
 ### NewCreateSubscriptionItemInput
 
-`func NewCreateSubscriptionItemInput(currency string, unitAmountMinor int32, ) *CreateSubscriptionItemInput`
+`func NewCreateSubscriptionItemInput(currency string, unitAmountMinor int64, ) *CreateSubscriptionItemInput`
 
 NewCreateSubscriptionItemInput instantiates a new CreateSubscriptionItemInput object
 This constructor will assign default values to properties that have it defined,
@@ -154,20 +154,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetUnitAmountMinor
 
-`func (o *CreateSubscriptionItemInput) GetUnitAmountMinor() int32`
+`func (o *CreateSubscriptionItemInput) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *CreateSubscriptionItemInput) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *CreateSubscriptionItemInput) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *CreateSubscriptionItemInput) SetUnitAmountMinor(v int32)`
+`func (o *CreateSubscriptionItemInput) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -199,20 +199,20 @@ HasFulfillmentType returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *CreateSubscriptionItemInput) GetMetadata() map[string]interface{}`
+`func (o *CreateSubscriptionItemInput) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreateSubscriptionItemInput) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreateSubscriptionItemInput) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreateSubscriptionItemInput) SetMetadata(v map[string]interface{})`
+`func (o *CreateSubscriptionItemInput) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -224,5 +224,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

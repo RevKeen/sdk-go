@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Behavior** | Pointer to **string** | How to handle invoices during the pause period | [optional] [default to "keep_as_draft"]
-**ResumesAt** | Pointer to **time.Time** | ISO 8601 date when the subscription should automatically resume. If not provided, subscription stays paused until manually resumed. | [optional] 
+**ResumesAt** | Pointer to **time.Time** | ISO 8601 date when the subscription should automatically resume. If not provided, subscription stays paused until manually resumed. | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasResumesAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,6 +1,6 @@
 # \PricesAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Price ID | 
+**id** | **string** | Price ID |
 
 ### Other Parameters
 
@@ -99,7 +99,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -128,7 +128,7 @@ Other parameters are passed through a pointer to a apiPricesCreateRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createPriceRequest** | [**CreatePriceRequest**](CreatePriceRequest.md) | Price creation details | 
+ **createPriceRequest** | [**CreatePriceRequest**](CreatePriceRequest.md) | Price creation details |
 
 ### Return type
 
@@ -165,7 +165,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -189,7 +189,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Price ID | 
+**id** | **string** | Price ID |
 
 ### Other Parameters
 
@@ -235,7 +235,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -272,15 +272,15 @@ Other parameters are passed through a pointer to a apiPricesListRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productId** | **string** | Filter by product ID | 
- **type_** | **string** | Filter by price type | 
- **pricingModel** | **string** | Filter by pricing model | 
- **active** | **string** | Filter by active status | 
- **currency** | **string** | Filter by currency | 
- **lookupKey** | **string** | Filter by lookup key | 
+ **productId** | **string** | Filter by product ID |
+ **type_** | **string** | Filter by price type |
+ **pricingModel** | **string** | Filter by pricing model |
+ **active** | **string** | Filter by active status |
+ **currency** | **string** | Filter by currency |
+ **lookupKey** | **string** | Filter by lookup key |
  **limit** | **int32** | Number of results (1-100) | [default to 20]
- **startingAfter** | **string** | Cursor for pagination (ID to start after) | 
- **endingBefore** | **string** | Cursor for pagination (ID to end before) | 
+ **startingAfter** | **string** | Cursor for pagination (ID to start after) |
+ **endingBefore** | **string** | Cursor for pagination (ID to end before) |
 
 ### Return type
 
@@ -317,7 +317,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -342,7 +342,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Price ID | 
+**id** | **string** | Price ID |
 
 ### Other Parameters
 
@@ -352,7 +352,7 @@ Other parameters are passed through a pointer to a apiPricesUpdateRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updatePriceRequest** | [**UpdatePriceRequest**](UpdatePriceRequest.md) | Price update details | 
+ **updatePriceRequest** | [**UpdatePriceRequest**](UpdatePriceRequest.md) | Price update details |
 
 ### Return type
 
@@ -370,4 +370,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

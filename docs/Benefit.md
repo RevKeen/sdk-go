@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
-**Description** | **NullableString** |  | 
-**BenefitType** | **string** |  | 
-**BenefitKey** | **string** |  | 
-**Category** | **NullableString** |  | 
-**IconUrl** | **NullableString** |  | 
-**DisplayOrder** | **NullableString** |  | 
-**IsActive** | **NullableBool** |  | 
-**DefaultValue** | Pointer to **interface{}** |  | [optional] 
-**Config** | Pointer to **interface{}** |  | [optional] 
+**Id** | **string** |  |
+**Name** | **string** |  |
+**Description** | **NullableString** |  |
+**BenefitType** | **string** |  |
+**BenefitKey** | **string** |  |
+**Category** | **NullableString** |  |
+**IconUrl** | **NullableString** |  |
+**DisplayOrder** | **NullableString** |  |
+**IsActive** | **NullableBool** |  |
+**DefaultValue** | Pointer to **interface{}** |  | [optional]
+**Config** | Pointer to **interface{}** |  | [optional]
 
 ## Methods
 
@@ -337,5 +337,3 @@ HasConfig returns a boolean if a field has been set.
 UnsetConfig ensures that no value is present for Config, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

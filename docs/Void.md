@@ -4,28 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**PublicId** | **string** |  | 
-**PaymentId** | **string** | The original payment ID this void is for (alias for parent_transaction_id) | 
-**ParentTransactionId** | **string** | Parent transaction ID in unified transaction model. | 
-**OrderId** | **NullableString** |  | 
-**Gateway** | **string** | Name of the payment processor that handled this void | 
-**GatewayVoidId** | **NullableString** |  | 
-**AmountMinor** | **float32** | Void amount in cents (always full amount of original transaction) | 
-**Currency** | **string** |  | 
-**Reason** | **NullableString** |  | 
-**ReasonCode** | **NullableString** |  | 
-**Status** | **string** |  | 
-**FailureReason** | **NullableString** |  | 
-**FailureCode** | **NullableString** |  | 
-**VoidedAt** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
+**Id** | **string** |  |
+**PublicId** | **string** |  |
+**PaymentId** | **string** | The original payment ID this void is for (alias for parent_transaction_id) |
+**ParentTransactionId** | **string** | Parent transaction ID in unified transaction model. |
+**OrderId** | **NullableString** |  |
+**Gateway** | **string** | Name of the payment processor that handled this void |
+**GatewayVoidId** | **NullableString** |  |
+**AmountMinor** | **int64** | Void amount in cents (always full amount of original transaction) |
+**Currency** | **string** |  |
+**Reason** | **NullableString** |  |
+**ReasonCode** | **NullableString** |  |
+**Status** | **string** |  |
+**FailureReason** | **NullableString** |  |
+**FailureCode** | **NullableString** |  |
+**VoidedAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewVoid
 
-`func NewVoid(id string, publicId string, paymentId string, parentTransactionId string, orderId NullableString, gateway string, gatewayVoidId NullableString, amountMinor float32, currency string, reason NullableString, reasonCode NullableString, status string, failureReason NullableString, failureCode NullableString, voidedAt NullableString, createdAt string, ) *Void`
+`func NewVoid(id string, publicId string, paymentId string, parentTransactionId string, orderId NullableString, gateway string, gatewayVoidId NullableString, amountMinor int64, currency string, reason NullableString, reasonCode NullableString, status string, failureReason NullableString, failureCode NullableString, voidedAt NullableTime, createdAt time.Time, ) *Void`
 
 NewVoid instantiates a new Void object
 This constructor will assign default values to properties that have it defined,
@@ -202,20 +202,20 @@ SetGatewayVoidId sets GatewayVoidId field to given value.
 UnsetGatewayVoidId ensures that no value is present for GatewayVoidId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *Void) GetAmountMinor() float32`
+`func (o *Void) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *Void) GetAmountMinorOk() (*float32, bool)`
+`func (o *Void) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *Void) SetAmountMinor(v float32)`
+`func (o *Void) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -382,20 +382,20 @@ SetFailureCode sets FailureCode field to given value.
 UnsetFailureCode ensures that no value is present for FailureCode, not even an explicit nil
 ### GetVoidedAt
 
-`func (o *Void) GetVoidedAt() string`
+`func (o *Void) GetVoidedAt() time.Time`
 
 GetVoidedAt returns the VoidedAt field if non-nil, zero value otherwise.
 
 ### GetVoidedAtOk
 
-`func (o *Void) GetVoidedAtOk() (*string, bool)`
+`func (o *Void) GetVoidedAtOk() (*time.Time, bool)`
 
 GetVoidedAtOk returns a tuple with the VoidedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVoidedAt
 
-`func (o *Void) SetVoidedAt(v string)`
+`func (o *Void) SetVoidedAt(v time.Time)`
 
 SetVoidedAt sets VoidedAt field to given value.
 
@@ -412,25 +412,23 @@ SetVoidedAt sets VoidedAt field to given value.
 UnsetVoidedAt ensures that no value is present for VoidedAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Void) GetCreatedAt() string`
+`func (o *Void) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Void) GetCreatedAtOk() (*string, bool)`
+`func (o *Void) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Void) SetCreatedAt(v string)`
+`func (o *Void) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

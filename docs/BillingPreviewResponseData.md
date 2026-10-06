@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner**](SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner.md) |  | 
-**Summary** | **string** |  | 
-**TotalAmountMinor** | **int32** |  | 
-**FirstChargeDate** | **time.Time** |  | 
-**TrialEndDate** | **NullableTime** |  | 
-**ScheduleEndDate** | **NullableTime** |  | 
-**Timezone** | **string** |  | 
+**Items** | [**[]SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner**](SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner.md) |  |
+**Summary** | **string** |  |
+**TotalAmountMinor** | **int64** |  |
+**FirstChargeDate** | **time.Time** |  |
+**TrialEndDate** | **NullableTime** |  |
+**ScheduleEndDate** | **NullableTime** |  |
+**Timezone** | **string** |  |
 
 ## Methods
 
 ### NewBillingPreviewResponseData
 
-`func NewBillingPreviewResponseData(items []SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner, summary string, totalAmountMinor int32, firstChargeDate time.Time, trialEndDate NullableTime, scheduleEndDate NullableTime, timezone string, ) *BillingPreviewResponseData`
+`func NewBillingPreviewResponseData(items []SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner, summary string, totalAmountMinor int64, firstChargeDate time.Time, trialEndDate NullableTime, scheduleEndDate NullableTime, timezone string, ) *BillingPreviewResponseData`
 
 NewBillingPreviewResponseData instantiates a new BillingPreviewResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -73,20 +73,20 @@ SetSummary sets Summary field to given value.
 
 ### GetTotalAmountMinor
 
-`func (o *BillingPreviewResponseData) GetTotalAmountMinor() int32`
+`func (o *BillingPreviewResponseData) GetTotalAmountMinor() int64`
 
 GetTotalAmountMinor returns the TotalAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTotalAmountMinorOk
 
-`func (o *BillingPreviewResponseData) GetTotalAmountMinorOk() (*int32, bool)`
+`func (o *BillingPreviewResponseData) GetTotalAmountMinorOk() (*int64, bool)`
 
 GetTotalAmountMinorOk returns a tuple with the TotalAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalAmountMinor
 
-`func (o *BillingPreviewResponseData) SetTotalAmountMinor(v int32)`
+`func (o *BillingPreviewResponseData) SetTotalAmountMinor(v int64)`
 
 SetTotalAmountMinor sets TotalAmountMinor field to given value.
 
@@ -193,5 +193,3 @@ SetTimezone sets Timezone field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

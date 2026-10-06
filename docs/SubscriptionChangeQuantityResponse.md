@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Subscription** | [**Subscription**](Subscription.md) |  | 
-**Proration** | Pointer to **map[string]interface{}** | Proration details | [optional] 
-**PreviousQuantity** | Pointer to **float32** |  | [optional] 
-**InvoiceCreated** | **bool** |  | 
+**Subscription** | [**Subscription**](Subscription.md) |  |
+**Proration** | Pointer to **map[string]interface{}** | Proration details | [optional]
+**PreviousQuantity** | Pointer to **float32** |  | [optional]
+**InvoiceCreated** | **bool** |  |
 
 ## Methods
 
@@ -120,5 +120,3 @@ SetInvoiceCreated sets InvoiceCreated field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

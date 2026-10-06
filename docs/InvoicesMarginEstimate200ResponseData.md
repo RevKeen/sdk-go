@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InvoiceId** | **string** |  | 
-**AmountMinor** | **int32** |  | 
-**Currency** | **string** |  | 
-**Estimates** | [**[]InvoicesMarginEstimate200ResponseDataEstimatesInner**](InvoicesMarginEstimate200ResponseDataEstimatesInner.md) |  | 
+**InvoiceId** | **string** |  |
+**AmountMinor** | **int64** |  |
+**Currency** | **string** |  |
+**Estimates** | [**[]InvoicesMarginEstimate200ResponseDataEstimatesInner**](InvoicesMarginEstimate200ResponseDataEstimatesInner.md) |  |
 
 ## Methods
 
 ### NewInvoicesMarginEstimate200ResponseData
 
-`func NewInvoicesMarginEstimate200ResponseData(invoiceId string, amountMinor int32, currency string, estimates []InvoicesMarginEstimate200ResponseDataEstimatesInner, ) *InvoicesMarginEstimate200ResponseData`
+`func NewInvoicesMarginEstimate200ResponseData(invoiceId string, amountMinor int64, currency string, estimates []InvoicesMarginEstimate200ResponseDataEstimatesInner, ) *InvoicesMarginEstimate200ResponseData`
 
 NewInvoicesMarginEstimate200ResponseData instantiates a new InvoicesMarginEstimate200ResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetInvoiceId sets InvoiceId field to given value.
 
 ### GetAmountMinor
 
-`func (o *InvoicesMarginEstimate200ResponseData) GetAmountMinor() int32`
+`func (o *InvoicesMarginEstimate200ResponseData) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *InvoicesMarginEstimate200ResponseData) GetAmountMinorOk() (*int32, bool)`
+`func (o *InvoicesMarginEstimate200ResponseData) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *InvoicesMarginEstimate200ResponseData) SetAmountMinor(v int32)`
+`func (o *InvoicesMarginEstimate200ResponseData) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -110,5 +110,3 @@ SetEstimates sets Estimates field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

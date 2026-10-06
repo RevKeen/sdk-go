@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountMinor** | **int32** | Collection amount in minor units (pence) | 
-**Currency** | **string** | ISO 4217 currency. Bacs collections are GBP-only. | 
-**SourceType** | **string** | What the collection settles. The settlement webhook resolves invoices by this reference. | 
-**SourceId** | **string** | Invoice or payment-link ID the collection is for | 
-**RequestedCollectionDate** | Pointer to **string** | Earliest acceptable collection date (ISO date). The backend resolves the Bacs working-day chain; must be on/after the bureau&#39;s earliest allowed date. | [optional] 
+**AmountMinor** | **int64** | Collection amount in minor units (pence) |
+**Currency** | **string** | ISO 4217 currency. Bacs collections are GBP-only. |
+**SourceType** | **string** | What the collection settles. The settlement webhook resolves invoices by this reference. |
+**SourceId** | **string** | Invoice or payment-link ID the collection is for |
+**RequestedCollectionDate** | Pointer to **string** | Earliest acceptable collection date (ISO date). The backend resolves the Bacs working-day chain; must be on/after the bureau&#39;s earliest allowed date. | [optional]
 
 ## Methods
 
 ### NewScheduleCollectionRequest
 
-`func NewScheduleCollectionRequest(amountMinor int32, currency string, sourceType string, sourceId string, ) *ScheduleCollectionRequest`
+`func NewScheduleCollectionRequest(amountMinor int64, currency string, sourceType string, sourceId string, ) *ScheduleCollectionRequest`
 
 NewScheduleCollectionRequest instantiates a new ScheduleCollectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmountMinor
 
-`func (o *ScheduleCollectionRequest) GetAmountMinor() int32`
+`func (o *ScheduleCollectionRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *ScheduleCollectionRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *ScheduleCollectionRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *ScheduleCollectionRequest) SetAmountMinor(v int32)`
+`func (o *ScheduleCollectionRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -136,5 +136,3 @@ HasRequestedCollectionDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

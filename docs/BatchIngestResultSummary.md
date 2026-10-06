@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ingested** | **float32** |  | 
-**Duplicate** | **float32** |  | 
-**Skipped** | **float32** |  | 
-**Failed** | **float32** |  | 
+**Ingested** | **float32** |  |
+**Duplicate** | **float32** |  |
+**Skipped** | **float32** |  |
+**Failed** | **float32** |  |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetFailed sets Failed field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

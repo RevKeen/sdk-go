@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**Data** | [**[]PaymentIntent**](PaymentIntent.md) |  | 
-**HasMore** | **bool** |  | 
-**Url** | **string** | The URL for accessing this list | 
+**Object** | **string** |  |
+**Data** | [**[]PaymentIntent**](PaymentIntent.md) |  |
+**HasMore** | **bool** |  |
+**Url** | **string** | The URL for accessing this list |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetUrl sets Url field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

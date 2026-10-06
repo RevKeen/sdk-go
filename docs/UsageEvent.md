@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Event name matching a meter&#39;s event_name | 
-**CustomerId** | Pointer to **string** | RevKeen customer ID. Prefer external_customer_id unless your system already stores RevKeen customer UUIDs. | [optional] 
-**ExternalCustomerId** | Pointer to **string** | Your external customer identifier. Recommended attribution field; unknown values fail rather than creating orphan usage. | [optional] 
-**SubscriptionId** | Pointer to **string** | Subscription ID to attribute usage to. Usage is assumed to share the subscription currency; RevKeen does not perform FX conversion in metering. | [optional] 
-**MeterId** | Pointer to **string** | Direct meter ID (alternative to event name matching) | [optional] 
+**Name** | **string** | Event name matching a meter&#39;s event_name |
+**CustomerId** | Pointer to **string** | RevKeen customer ID. Prefer external_customer_id unless your system already stores RevKeen customer UUIDs. | [optional]
+**ExternalCustomerId** | Pointer to **string** | Your external customer identifier. Recommended attribution field; unknown values fail rather than creating orphan usage. | [optional]
+**SubscriptionId** | Pointer to **string** | Subscription ID to attribute usage to. Usage is assumed to share the subscription currency; RevKeen does not perform FX conversion in metering. | [optional]
+**MeterId** | Pointer to **string** | Direct meter ID (alternative to event name matching) | [optional]
 **Quantity** | Pointer to **float32** | Event quantity (default: 1). For percentage-priced meters, send the signed transaction amount in the subscription currency&#39;s minor units. | [optional] [default to 1]
-**Timestamp** | Pointer to **string** | ISO 8601 timestamp (default: now) | [optional] 
-**IdempotencyKey** | Pointer to **string** | Merchant-scoped deduplication key. Reusing the same key returns duplicate status and does not create another billable event. | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Arbitrary properties for filtering and aggregation | [optional] 
+**Timestamp** | Pointer to **time.Time** | ISO 8601 timestamp (default: now) | [optional]
+**IdempotencyKey** | **string** | REQUIRED merchant-scoped deduplication key. Reusing the same key returns duplicate status and does not create another billable event. Compose it from stable business identifiers (entity ids, types), never from timestamps. |
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary properties for filtering and aggregation | [optional]
 
 ## Methods
 
 ### NewUsageEvent
 
-`func NewUsageEvent(name string, ) *UsageEvent`
+`func NewUsageEvent(name string, idempotencyKey string, ) *UsageEvent`
 
 NewUsageEvent instantiates a new UsageEvent object
 This constructor will assign default values to properties that have it defined,
@@ -180,20 +180,20 @@ HasQuantity returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *UsageEvent) GetTimestamp() string`
+`func (o *UsageEvent) GetTimestamp() time.Time`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *UsageEvent) GetTimestampOk() (*string, bool)`
+`func (o *UsageEvent) GetTimestampOk() (*time.Time, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *UsageEvent) SetTimestamp(v string)`
+`func (o *UsageEvent) SetTimestamp(v time.Time)`
 
 SetTimestamp sets Timestamp field to given value.
 
@@ -222,28 +222,23 @@ and a boolean to check if the value has been set.
 
 SetIdempotencyKey sets IdempotencyKey field to given value.
 
-### HasIdempotencyKey
-
-`func (o *UsageEvent) HasIdempotencyKey() bool`
-
-HasIdempotencyKey returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *UsageEvent) GetMetadata() map[string]interface{}`
+`func (o *UsageEvent) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *UsageEvent) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *UsageEvent) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *UsageEvent) SetMetadata(v map[string]interface{})`
+`func (o *UsageEvent) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -255,5 +250,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]PhaseItem**](PhaseItem.md) | Products/prices included in this phase | 
-**StartDate** | **string** | When this phase starts (ISO 8601 date) | 
-**EndDate** | Pointer to **NullableString** | When this phase ends (null for indefinite) | [optional] 
-**ProrationBehavior** | Pointer to **string** | How to handle prorations when entering this phase | [optional] 
-**BillingCycleAnchor** | Pointer to **NullableString** | Override billing cycle anchor for this phase | [optional] 
-**DefaultPaymentMethod** | Pointer to **NullableString** | Payment method to use for this phase | [optional] 
-**CollectionMethod** | Pointer to **string** | How to collect payment for this phase | [optional] 
-**Coupon** | Pointer to **NullableString** | Coupon code to apply during this phase | [optional] 
-**TrialEnd** | Pointer to **NullableString** | End of trial period (if applicable) | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Phase-specific metadata | [optional] 
+**Items** | [**[]PhaseItem**](PhaseItem.md) | Products/prices included in this phase |
+**StartDate** | **string** | When this phase starts (ISO 8601 date) |
+**EndDate** | Pointer to **NullableString** | When this phase ends (null for indefinite) | [optional]
+**ProrationBehavior** | Pointer to **string** | How to handle prorations when entering this phase | [optional]
+**BillingCycleAnchor** | Pointer to **NullableString** | Override billing cycle anchor for this phase | [optional]
+**DefaultPaymentMethod** | Pointer to **NullableString** | Payment method to use for this phase | [optional]
+**CollectionMethod** | Pointer to **string** | How to collect payment for this phase | [optional]
+**Coupon** | Pointer to **NullableString** | Coupon code to apply during this phase | [optional]
+**TrialEnd** | Pointer to **NullableString** | End of trial period (if applicable) | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Phase-specific metadata | [optional]
 
 ## Methods
 
@@ -326,5 +326,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

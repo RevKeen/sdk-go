@@ -1,9 +1,10 @@
 # \CustomersAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CustomerStateGet**](CustomersAPI.md#CustomerStateGet) | **Get** /customers/{id}/state | Get customer billing state
 [**CustomersCreate**](CustomersAPI.md#CustomersCreate) | **Post** /customers | Create a new customer
 [**CustomersGet**](CustomersAPI.md#CustomersGet) | **Get** /customers/{id} | Get customer by ID
 [**CustomersList**](CustomersAPI.md#CustomersList) | **Get** /customers | List customers
@@ -12,6 +13,76 @@ Method | HTTP request | Description
 [**CustomersPreferredRailsGet**](CustomersAPI.md#CustomersPreferredRailsGet) | **Get** /customers/{id}/preferred-rails | Get preferred payment rails
 [**CustomersUpdate**](CustomersAPI.md#CustomersUpdate) | **Patch** /customers/{id} | Update customer details
 
+
+
+## CustomerStateGet
+
+> CustomerStateGet200Response CustomerStateGet(ctx, id).Execute()
+
+Get customer billing state
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/sdk-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomerStateGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomerStateGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomerStateGet`: CustomerStateGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomerStateGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Customer UUID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomerStateGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CustomerStateGet200Response**](CustomerStateGet200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CustomersCreate
@@ -31,7 +102,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -60,7 +131,7 @@ Other parameters are passed through a pointer to a apiCustomersCreateRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customersCreateRequest** | [**CustomersCreateRequest**](CustomersCreateRequest.md) |  | 
+ **customersCreateRequest** | [**CustomersCreateRequest**](CustomersCreateRequest.md) |  |
 
 ### Return type
 
@@ -97,7 +168,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -121,7 +192,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -167,7 +238,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -200,7 +271,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
  **offset** | **int32** | Number of results to skip | [default to 0]
- **search** | **string** | Search term to filter customers | 
+ **search** | **string** | Search term to filter customers |
 
 ### Return type
 
@@ -237,7 +308,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -261,7 +332,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -307,7 +378,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -332,7 +403,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -342,7 +413,7 @@ Other parameters are passed through a pointer to a apiCustomersPaymentRailsGetRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions. | 
+ **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions. |
 
 ### Return type
 
@@ -379,14 +450,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
 	invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Optional invoice context used to apply invoice-level rail restrictions and amount. (optional)
-	amount := int32(56) // int32 | Optional amount in minor units. Use amount_minor for the explicit alias. (optional)
-	amountMinor := int32(56) // int32 | Optional amount in minor units. Overrides invoice total for margin-aware ranking. (optional)
+	amount := int64(789) // int64 | Optional amount in minor units. Use amount_minor for the explicit alias. (optional)
+	amountMinor := int64(789) // int64 | Optional amount in minor units. Overrides invoice total for margin-aware ranking. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -406,7 +477,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -416,9 +487,9 @@ Other parameters are passed through a pointer to a apiCustomersPreferredRailsGet
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions and amount. | 
- **amount** | **int32** | Optional amount in minor units. Use amount_minor for the explicit alias. | 
- **amountMinor** | **int32** | Optional amount in minor units. Overrides invoice total for margin-aware ranking. | 
+ **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions and amount. |
+ **amount** | **int64** | Optional amount in minor units. Use amount_minor for the explicit alias. |
+ **amountMinor** | **int64** | Optional amount in minor units. Overrides invoice total for margin-aware ranking. |
 
 ### Return type
 
@@ -455,7 +526,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -480,7 +551,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -490,7 +561,7 @@ Other parameters are passed through a pointer to a apiCustomersUpdateRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customersUpdateRequest** | [**CustomersUpdateRequest**](CustomersUpdateRequest.md) |  | 
+ **customersUpdateRequest** | [**CustomersUpdateRequest**](CustomersUpdateRequest.md) |  |
 
 ### Return type
 
@@ -508,4 +579,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

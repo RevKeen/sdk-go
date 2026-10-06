@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountMinor** | Pointer to **int32** | Optional amount in minor units. Defaults to the invoice total. | [optional] 
-**Rails** | Pointer to **[]string** | Rails to estimate. Defaults to invoice allowed_methods or all rails. | [optional] 
-**CardScheme** | Pointer to **string** | Single card scheme to estimate for card rail, e.g. visa or mastercard. | [optional] 
-**CardSchemes** | Pointer to **[]string** | Card schemes to estimate for card rail. | [optional] 
+**AmountMinor** | Pointer to **int64** | Optional amount in minor units. Defaults to the invoice total. | [optional]
+**Rails** | Pointer to **[]string** | Rails to estimate. Defaults to invoice allowed_methods or all rails. | [optional]
+**CardScheme** | Pointer to **string** | Single card scheme to estimate for card rail, e.g. visa or mastercard. | [optional]
+**CardSchemes** | Pointer to **[]string** | Card schemes to estimate for card rail. | [optional]
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmountMinor
 
-`func (o *InvoicesMarginEstimateRequest) GetAmountMinor() int32`
+`func (o *InvoicesMarginEstimateRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *InvoicesMarginEstimateRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *InvoicesMarginEstimateRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *InvoicesMarginEstimateRequest) SetAmountMinor(v int32)`
+`func (o *InvoicesMarginEstimateRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -130,5 +130,3 @@ HasCardSchemes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

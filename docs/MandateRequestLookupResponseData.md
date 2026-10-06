@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Mandate request ID | 
-**MerchantId** | **string** | Merchant ID | 
-**MerchantSlug** | **string** | Merchant slug | 
-**CustomerId** | **string** | Customer ID | 
-**InvoiceId** | **NullableString** | Invoice ID, if the request is tied to an invoice | 
-**ExpiresAt** | **NullableString** | Expiry timestamp (ISO 8601) | 
-**Status** | **string** | Mandate request status | 
-**Merchant** | [**MandateRequestLookupResponseDataMerchant**](MandateRequestLookupResponseDataMerchant.md) |  | 
-**Customer** | [**MandateRequestLookupResponseDataCustomer**](MandateRequestLookupResponseDataCustomer.md) |  | 
-**Invoice** | [**MandateRequestLookupResponseDataInvoice**](MandateRequestLookupResponseDataInvoice.md) |  | 
+**Id** | **string** | Mandate request ID |
+**MerchantId** | **string** | Merchant ID |
+**MerchantSlug** | **string** | Merchant slug |
+**CustomerId** | **string** | Customer ID |
+**InvoiceId** | **NullableString** | Invoice ID, if the request is tied to an invoice |
+**ExpiresAt** | **NullableTime** | Expiry timestamp (ISO 8601) |
+**Status** | **string** | Mandate request status |
+**Merchant** | [**MandateRequestLookupResponseDataMerchant**](MandateRequestLookupResponseDataMerchant.md) |  |
+**Customer** | [**MandateRequestLookupResponseDataCustomer**](MandateRequestLookupResponseDataCustomer.md) |  |
+**Invoice** | [**NullableMandateRequestLookupResponseDataInvoice**](MandateRequestLookupResponseDataInvoice.md) |  |
 
 ## Methods
 
 ### NewMandateRequestLookupResponseData
 
-`func NewMandateRequestLookupResponseData(id string, merchantId string, merchantSlug string, customerId string, invoiceId NullableString, expiresAt NullableString, status string, merchant MandateRequestLookupResponseDataMerchant, customer MandateRequestLookupResponseDataCustomer, invoice MandateRequestLookupResponseDataInvoice, ) *MandateRequestLookupResponseData`
+`func NewMandateRequestLookupResponseData(id string, merchantId string, merchantSlug string, customerId string, invoiceId NullableString, expiresAt NullableTime, status string, merchant MandateRequestLookupResponseDataMerchant, customer MandateRequestLookupResponseDataCustomer, invoice NullableMandateRequestLookupResponseDataInvoice, ) *MandateRequestLookupResponseData`
 
 NewMandateRequestLookupResponseData instantiates a new MandateRequestLookupResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -146,20 +146,20 @@ SetInvoiceId sets InvoiceId field to given value.
 UnsetInvoiceId ensures that no value is present for InvoiceId, not even an explicit nil
 ### GetExpiresAt
 
-`func (o *MandateRequestLookupResponseData) GetExpiresAt() string`
+`func (o *MandateRequestLookupResponseData) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *MandateRequestLookupResponseData) GetExpiresAtOk() (*string, bool)`
+`func (o *MandateRequestLookupResponseData) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *MandateRequestLookupResponseData) SetExpiresAt(v string)`
+`func (o *MandateRequestLookupResponseData) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -254,7 +254,15 @@ and a boolean to check if the value has been set.
 SetInvoice sets Invoice field to given value.
 
 
+### SetInvoiceNil
+
+`func (o *MandateRequestLookupResponseData) SetInvoiceNil(b bool)`
+
+ SetInvoiceNil sets the value for Invoice to be an explicit nil
+
+### UnsetInvoice
+`func (o *MandateRequestLookupResponseData) UnsetInvoice()`
+
+UnsetInvoice ensures that no value is present for Invoice, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

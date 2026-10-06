@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SortCode** | **NullableString** | Masked sort code — never the full value | 
-**AccountNumberLast4** | **NullableString** | Last 4 digits of the account number | 
-**BankName** | **NullableString** | Resolved bank name | 
-**MandateId** | **string** | The Direct Debit mandate backing this payment method | 
-**MandateRef** | **NullableString** | RevKeen mandate reference (RK-XXXXXX) | 
-**MandateStatus** | **string** | Mandate status | 
+**SortCode** | **NullableString** | Masked sort code — never the full value |
+**AccountNumberLast4** | **NullableString** | Last 4 digits of the account number |
+**BankName** | **NullableString** | Resolved bank name |
+**MandateId** | **string** | The Direct Debit mandate backing this payment method |
+**MandateRef** | **NullableString** | RevKeen mandate reference (RK-XXXXXX) |
+**MandateStatus** | **string** | Mandate status |
 
 ## Methods
 
@@ -192,5 +192,3 @@ SetMandateStatus sets MandateStatus field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**Data** | [**[]UsageEventRecord**](UsageEventRecord.md) | Array of usage event objects | 
-**HasMore** | **bool** |  | 
+**Object** | **string** |  |
+**Data** | [**[]UsageEventRecord**](UsageEventRecord.md) | Array of usage event objects |
+**HasMore** | **bool** |  |
 
 ## Methods
 
@@ -89,5 +89,3 @@ SetHasMore sets HasMore field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

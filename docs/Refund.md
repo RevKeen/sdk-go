@@ -4,28 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**PublicId** | **string** |  | 
-**PaymentId** | **string** | The original payment ID this refund is for (alias for parent_transaction_id) | 
-**ParentTransactionId** | **string** | Parent transaction ID in unified transaction model. Same as payment_id for refunds. | 
-**OrderId** | **NullableString** |  | 
-**Gateway** | **string** | Name of the payment processor that handled this refund | 
-**GatewayRefundId** | **NullableString** |  | 
-**AmountMinor** | **float32** | Refund amount in cents | 
-**Currency** | **string** |  | 
-**Reason** | **NullableString** |  | 
-**ReasonDetails** | **NullableString** |  | 
-**Status** | **string** |  | 
-**FailureReason** | **NullableString** |  | 
-**FailureCode** | **NullableString** |  | 
-**ProcessedAt** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
+**Id** | **string** |  |
+**PublicId** | **string** |  |
+**PaymentId** | **string** | The original payment ID this refund is for (alias for parent_transaction_id) |
+**ParentTransactionId** | **string** | Parent transaction ID in unified transaction model. Same as payment_id for refunds. |
+**OrderId** | **NullableString** |  |
+**Gateway** | **string** | Name of the payment processor that handled this refund |
+**GatewayRefundId** | **NullableString** |  |
+**AmountMinor** | **int64** | Refund amount in cents |
+**Currency** | **string** |  |
+**Reason** | **NullableString** |  |
+**ReasonDetails** | **NullableString** |  |
+**Status** | **string** |  |
+**FailureReason** | **NullableString** |  |
+**FailureCode** | **NullableString** |  |
+**ProcessedAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewRefund
 
-`func NewRefund(id string, publicId string, paymentId string, parentTransactionId string, orderId NullableString, gateway string, gatewayRefundId NullableString, amountMinor float32, currency string, reason NullableString, reasonDetails NullableString, status string, failureReason NullableString, failureCode NullableString, processedAt NullableString, createdAt string, ) *Refund`
+`func NewRefund(id string, publicId string, paymentId string, parentTransactionId string, orderId NullableString, gateway string, gatewayRefundId NullableString, amountMinor int64, currency string, reason NullableString, reasonDetails NullableString, status string, failureReason NullableString, failureCode NullableString, processedAt NullableTime, createdAt time.Time, ) *Refund`
 
 NewRefund instantiates a new Refund object
 This constructor will assign default values to properties that have it defined,
@@ -202,20 +202,20 @@ SetGatewayRefundId sets GatewayRefundId field to given value.
 UnsetGatewayRefundId ensures that no value is present for GatewayRefundId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *Refund) GetAmountMinor() float32`
+`func (o *Refund) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *Refund) GetAmountMinorOk() (*float32, bool)`
+`func (o *Refund) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *Refund) SetAmountMinor(v float32)`
+`func (o *Refund) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -382,20 +382,20 @@ SetFailureCode sets FailureCode field to given value.
 UnsetFailureCode ensures that no value is present for FailureCode, not even an explicit nil
 ### GetProcessedAt
 
-`func (o *Refund) GetProcessedAt() string`
+`func (o *Refund) GetProcessedAt() time.Time`
 
 GetProcessedAt returns the ProcessedAt field if non-nil, zero value otherwise.
 
 ### GetProcessedAtOk
 
-`func (o *Refund) GetProcessedAtOk() (*string, bool)`
+`func (o *Refund) GetProcessedAtOk() (*time.Time, bool)`
 
 GetProcessedAtOk returns a tuple with the ProcessedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProcessedAt
 
-`func (o *Refund) SetProcessedAt(v string)`
+`func (o *Refund) SetProcessedAt(v time.Time)`
 
 SetProcessedAt sets ProcessedAt field to given value.
 
@@ -412,25 +412,23 @@ SetProcessedAt sets ProcessedAt field to given value.
 UnsetProcessedAt ensures that no value is present for ProcessedAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Refund) GetCreatedAt() string`
+`func (o *Refund) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Refund) GetCreatedAtOk() (*string, bool)`
+`func (o *Refund) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Refund) SetCreatedAt(v string)`
+`func (o *Refund) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique export job ID | 
-**Object** | **string** | Object type | 
-**Status** | **string** | Export job status. pending: queued. processing: generating file. completed: ready for download. failed: export failed. | 
-**ResourceType** | **string** | The type of resource to export. | 
-**Format** | **string** | Output file format. csv: Comma-separated values. xlsx: Excel workbook. | 
-**DownloadUrl** | Pointer to **NullableString** | Presigned download URL (available when status is &#39;completed&#39;). Expires after 1 hour. | [optional] 
-**TotalRows** | Pointer to **NullableInt32** | Total rows exported (available when completed) | [optional] 
-**FileSizeBytes** | Pointer to **NullableInt32** | File size in bytes (available when completed) | [optional] 
-**ErrorMessage** | Pointer to **NullableString** | Error message (if status is &#39;failed&#39;) | [optional] 
-**CreatedAt** | **time.Time** | When the export was requested (ISO 8601) | 
-**CompletedAt** | Pointer to **NullableTime** | When the export completed (ISO 8601) | [optional] 
+**Id** | **string** | Unique export job ID |
+**Object** | **string** | Object type |
+**Status** | **string** | Export job status. pending: queued. processing: generating file. completed: ready for download. failed: export failed. |
+**ResourceType** | **string** | The type of resource to export. |
+**Format** | **string** | Output file format. csv: Comma-separated values. xlsx: Excel workbook. |
+**DownloadUrl** | Pointer to **NullableString** | Presigned download URL (available when status is &#39;completed&#39;). Expires after 1 hour. | [optional]
+**TotalRows** | Pointer to **NullableInt32** | Total rows exported (available when completed) | [optional]
+**FileSizeBytes** | Pointer to **NullableInt32** | File size in bytes (available when completed) | [optional]
+**ErrorMessage** | Pointer to **NullableString** | Error message (if status is &#39;failed&#39;) | [optional]
+**CreatedAt** | **time.Time** | When the export was requested (ISO 8601) |
+**CompletedAt** | Pointer to **NullableTime** | When the export completed (ISO 8601) | [optional]
 
 ## Methods
 
@@ -332,5 +332,3 @@ HasCompletedAt returns a boolean if a field has been set.
 UnsetCompletedAt ensures that no value is present for CompletedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

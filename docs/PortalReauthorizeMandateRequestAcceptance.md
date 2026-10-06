@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountHolder** | **bool** |  | 
-**SoleSignatory** | **bool** |  | 
+**AccountHolder** | **bool** |  |
+**SoleSignatory** | **bool** |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetSoleSignatory sets SoleSignatory field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,32 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**MerchantId** | **string** |  | 
-**PublicId** | **string** |  | 
-**Name** | Pointer to **string** |  | [optional] 
-**Slug** | Pointer to **NullableString** |  | [optional] 
-**Mode** | **string** |  | 
-**Status** | **string** |  | 
-**AmountMinor** | Pointer to **NullableInt32** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**InvoiceId** | Pointer to **NullableString** |  | [optional] 
-**SubscriptionId** | Pointer to **NullableString** |  | [optional] 
-**ProductIds** | Pointer to **[]string** |  | [optional] 
-**LineItems** | Pointer to [**[]PaymentLinksList200ResponseDataInnerLineItemsInner**](PaymentLinksList200ResponseDataInnerLineItemsInner.md) |  | [optional] 
-**SuccessUrl** | Pointer to **NullableString** | Custom URL to redirect after successful payment. Supports placeholders: {CHECKOUT_ID}, {TRANSACTION_ID}, {PAYMENT_ID}, {CUSTOMER_ID}, {AMOUNT}, {CURRENCY}, {PORTAL_URL}. If not set, redirects to RevKeen&#39;s default success page. | [optional] 
-**CancelUrl** | Pointer to **NullableString** | Custom URL to redirect if customer cancels the checkout. If not set, no cancel redirect is configured. | [optional] 
-**RedirectUrl** | Pointer to **NullableString** |  | [optional] 
+**Id** | **string** |  |
+**MerchantId** | **string** |  |
+**PublicId** | **string** |  |
+**Name** | Pointer to **string** |  | [optional]
+**Slug** | Pointer to **NullableString** |  | [optional]
+**Mode** | **string** |  |
+**Status** | **string** |  |
+**AmountMinor** | Pointer to **NullableInt64** |  | [optional]
+**Currency** | Pointer to **string** | Three-letter ISO currency code, taken from the link&#39;s products. | [optional]
+**InvoiceId** | Pointer to **NullableString** |  | [optional]
+**SubscriptionId** | Pointer to **NullableString** |  | [optional]
+**ProductIds** | Pointer to **[]string** |  | [optional]
+**LineItems** | Pointer to [**[]PaymentLinksList200ResponseDataInnerLineItemsInner**](PaymentLinksList200ResponseDataInnerLineItemsInner.md) |  | [optional]
+**SuccessUrl** | Pointer to **NullableString** | Custom URL to redirect after successful payment. Supports placeholders: {CHECKOUT_ID}, {TRANSACTION_ID}, {PAYMENT_ID}, {CUSTOMER_ID}, {AMOUNT}, {CURRENCY}, {PORTAL_URL}, {CHECKOUT_STATUS_TOKEN}. If not set, redirects to RevKeen&#39;s default success page. | [optional]
+**CancelUrl** | Pointer to **NullableString** | Custom URL to redirect if customer cancels the checkout. If not set, no cancel redirect is configured. | [optional]
+**RedirectUrl** | Pointer to **NullableString** |  | [optional]
 **CollectShipping** | Pointer to **bool** |  | [optional] [default to false]
 **AllowPromotionCodes** | Pointer to **bool** |  | [optional] [default to true]
 **TaxBehavior** | Pointer to **string** |  | [optional] [default to "unspecified"]
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
+**ExpiresAt** | Pointer to **NullableTime** |  | [optional]
 **SelectionMode** | Pointer to **string** | Customer-facing checkout shape. bundle&#x3D;all products together; single_select&#x3D;radio picker; multi_select&#x3D;cart with quantity per line. | [optional] [default to "bundle"]
-**DefaultProductId** | Pointer to **NullableString** | For single_select only — option pre-selected when checkout loads. Must reference a product attached to this payment link. | [optional] 
-**HighlightedProductId** | Pointer to **NullableString** | For single_select only — option shown with a &#39;Popular&#39; badge. | [optional] 
-**CreatedAt** | **time.Time** |  | 
-**UpdatedAt** | **time.Time** |  | 
+**DefaultProductId** | Pointer to **NullableString** | For single_select only — option pre-selected when checkout loads. Must reference a product attached to this payment link. | [optional]
+**HighlightedProductId** | Pointer to **NullableString** | For single_select only — option shown with a &#39;Popular&#39; badge. | [optional]
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
@@ -212,20 +212,20 @@ SetStatus sets Status field to given value.
 
 ### GetAmountMinor
 
-`func (o *PaymentLinksList200ResponseDataInner) GetAmountMinor() int32`
+`func (o *PaymentLinksList200ResponseDataInner) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *PaymentLinksList200ResponseDataInner) GetAmountMinorOk() (*int32, bool)`
+`func (o *PaymentLinksList200ResponseDataInner) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *PaymentLinksList200ResponseDataInner) SetAmountMinor(v int32)`
+`func (o *PaymentLinksList200ResponseDataInner) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -572,20 +572,20 @@ HasTaxBehavior returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *PaymentLinksList200ResponseDataInner) GetMetadata() map[string]interface{}`
+`func (o *PaymentLinksList200ResponseDataInner) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PaymentLinksList200ResponseDataInner) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PaymentLinksList200ResponseDataInner) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PaymentLinksList200ResponseDataInner) SetMetadata(v map[string]interface{})`
+`func (o *PaymentLinksList200ResponseDataInner) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -767,5 +767,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

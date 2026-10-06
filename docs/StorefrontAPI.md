@@ -1,6 +1,6 @@
 # \StorefrontAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiStorefrontOriginsCreateReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefrontOriginCreateRequest** | [**StorefrontOriginCreateRequest**](StorefrontOriginCreateRequest.md) |  | 
+ **storefrontOriginCreateRequest** | [**StorefrontOriginCreateRequest**](StorefrontOriginCreateRequest.md) |  |
 
 ### Return type
 
@@ -96,7 +96,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**originId** | **string** | Storefront origin id. | 
+**originId** | **string** | Storefront origin id. |
 
 ### Other Parameters
 
@@ -166,7 +166,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -227,11 +227,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	productId := "productId_example" // string | Product UUID, merchant product reference, or slug.
+	productId := "productId_example" // string | Product UUID, URL handle (slug), or merchant product reference.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -251,7 +251,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**productId** | **string** | Product UUID, merchant product reference, or slug. | 
+**productId** | **string** | Product UUID, URL handle (slug), or merchant product reference. |
 
 ### Other Parameters
 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ## StorefrontProductsList
 
-> StorefrontProductListResponse StorefrontProductsList(ctx).Limit(limit).Execute()
+> StorefrontProductListResponse StorefrontProductsList(ctx).Limit(limit).Offset(offset).Collection(collection).Tag(tag).Search(search).Sort(sort).Execute()
 
 List storefront products
 
@@ -297,15 +297,20 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	limit := int32(56) // int32 | Maximum products to return (default 50, max 100). (optional)
+	offset := int32(56) // int32 | Products to skip, for pagination. (optional)
+	collection := "collection_example" // string | Only products in this product collection (id or URL handle). (optional)
+	tag := "tag_example" // string | Only products carrying this tag. (optional)
+	search := "search_example" // string | Case-insensitive match on product name or description. (optional)
+	sort := "sort_example" // string | featured (collection order, else newest), newest, name, price_asc or price_desc. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorefrontAPI.StorefrontProductsList(context.Background()).Limit(limit).Execute()
+	resp, r, err := apiClient.StorefrontAPI.StorefrontProductsList(context.Background()).Limit(limit).Offset(offset).Collection(collection).Tag(tag).Search(search).Sort(sort).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorefrontAPI.StorefrontProductsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -326,7 +331,12 @@ Other parameters are passed through a pointer to a apiStorefrontProductsListRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Maximum products to return (default 50, max 100). | 
+ **limit** | **int32** | Maximum products to return (default 50, max 100). |
+ **offset** | **int32** | Products to skip, for pagination. |
+ **collection** | **string** | Only products in this product collection (id or URL handle). |
+ **tag** | **string** | Only products carrying this tag. |
+ **search** | **string** | Case-insensitive match on product name or description. |
+ **sort** | **string** | featured (collection order, else newest), newest, name, price_asc or price_desc. |
 
 ### Return type
 
@@ -363,7 +373,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -405,4 +415,3 @@ Other parameters are passed through a pointer to a apiStorefrontStatusGetRequest
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

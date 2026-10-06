@@ -4,32 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the transaction | 
-**Object** | **string** | Object type | 
-**Type** | **string** | Transaction type. sale: original payment. refund: money returned. void: cancel before settlement. capture: capture a previous auth. dispute: chargeback. adjustment: manual correction. | 
-**Status** | **string** | Transaction status. pending: processing. succeeded: completed. failed: declined or errored. voided: canceled. | 
-**InvoiceId** | **string** | Associated invoice ID | 
-**CustomerId** | Pointer to **NullableString** | Customer ID | [optional] 
-**ParentTransactionId** | Pointer to **NullableString** | Parent transaction ID (required for refunds, voids, disputes, adjustments) | [optional] 
-**Currency** | **string** | Three-letter ISO currency code | 
-**Amount** | **int32** | Transaction amount in minor units (cents) | 
+**Id** | **string** | Unique identifier for the transaction |
+**Object** | **string** | Object type |
+**Type** | **string** | Transaction type. sale: original payment. refund: money returned. void: cancel before settlement. capture: capture a previous auth. dispute: chargeback. adjustment: manual correction. |
+**Status** | **string** | Transaction status. pending: processing. succeeded: completed. failed: declined or errored. voided: canceled. |
+**InvoiceId** | **string** | Associated invoice ID |
+**CustomerId** | Pointer to **NullableString** | Customer ID | [optional]
+**ParentTransactionId** | Pointer to **NullableString** | Parent transaction ID (required for refunds, voids, disputes, adjustments) | [optional]
+**Currency** | **string** | Three-letter ISO currency code |
+**Amount** | **int64** | Transaction amount in minor units (cents) |
 **AmountRefunded** | Pointer to **int32** | Amount refunded in minor units | [optional] [default to 0]
-**Gateway** | Pointer to **NullableString** | Payment gateway (e.g., &#39;nmi&#39;) | [optional] 
-**GatewayTransactionId** | Pointer to **NullableString** | Gateway&#39;s transaction reference | [optional] 
-**GatewayResponseCode** | Pointer to **NullableString** | Gateway response code | [optional] 
-**GatewayResponseText** | Pointer to **NullableString** | Gateway response message | [optional] 
-**PaymentMethodType** | Pointer to **NullableString** | Payment method type (card, ach, wallet) | [optional] 
-**CardBrand** | Pointer to **NullableString** | Card brand (visa, mastercard, etc.) | [optional] 
-**CardLastFour** | Pointer to **NullableString** | Last 4 digits of card | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) | 
-**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) | 
+**Gateway** | Pointer to **NullableString** | Payment gateway (e.g., &#39;nmi&#39;) | [optional]
+**GatewayTransactionId** | Pointer to **NullableString** | Gateway&#39;s transaction reference | [optional]
+**GatewayResponseCode** | Pointer to **NullableString** | Gateway response code | [optional]
+**GatewayResponseText** | Pointer to **NullableString** | Gateway response message | [optional]
+**PaymentMethodType** | Pointer to **NullableString** | Payment method type (card, ach, wallet) | [optional]
+**CardBrand** | Pointer to **NullableString** | Card brand (visa, mastercard, etc.) | [optional]
+**CardLastFour** | Pointer to **NullableString** | Last 4 digits of card | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) |
+**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) |
 
 ## Methods
 
 ### NewTransaction
 
-`func NewTransaction(id string, object string, type_ string, status string, invoiceId string, currency string, amount int32, createdAt time.Time, updatedAt time.Time, ) *Transaction`
+`func NewTransaction(id string, object string, type_ string, status string, invoiceId string, currency string, amount int64, createdAt time.Time, updatedAt time.Time, ) *Transaction`
 
 NewTransaction instantiates a new Transaction object
 This constructor will assign default values to properties that have it defined,
@@ -236,20 +236,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetAmount
 
-`func (o *Transaction) GetAmount() int32`
+`func (o *Transaction) GetAmount() int64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *Transaction) GetAmountOk() (*int32, bool)`
+`func (o *Transaction) GetAmountOk() (*int64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *Transaction) SetAmount(v int32)`
+`func (o *Transaction) SetAmount(v int64)`
 
 SetAmount sets Amount field to given value.
 
@@ -591,5 +591,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

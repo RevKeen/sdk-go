@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**PublicId** | **string** |  | 
-**CustomerId** | **string** |  | 
-**Status** | **string** |  | 
-**TotalMinor** | **int32** |  | 
-**Currency** | **string** |  | 
-**FulfilledAt** | **NullableString** |  | 
-**CanceledAt** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+**Id** | **string** |  |
+**PublicId** | **string** |  |
+**CustomerId** | **string** |  |
+**Status** | **string** |  |
+**TotalMinor** | **int64** |  |
+**Currency** | **string** |  |
+**FulfilledAt** | **NullableTime** |  |
+**CanceledAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCustomerOrder
 
-`func NewCustomerOrder(id string, publicId string, customerId string, status string, totalMinor int32, currency string, fulfilledAt NullableString, canceledAt NullableString, createdAt string, updatedAt string, ) *CustomerOrder`
+`func NewCustomerOrder(id string, publicId string, customerId string, status string, totalMinor int64, currency string, fulfilledAt NullableTime, canceledAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *CustomerOrder`
 
 NewCustomerOrder instantiates a new CustomerOrder object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetStatus sets Status field to given value.
 
 ### GetTotalMinor
 
-`func (o *CustomerOrder) GetTotalMinor() int32`
+`func (o *CustomerOrder) GetTotalMinor() int64`
 
 GetTotalMinor returns the TotalMinor field if non-nil, zero value otherwise.
 
 ### GetTotalMinorOk
 
-`func (o *CustomerOrder) GetTotalMinorOk() (*int32, bool)`
+`func (o *CustomerOrder) GetTotalMinorOk() (*int64, bool)`
 
 GetTotalMinorOk returns a tuple with the TotalMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalMinor
 
-`func (o *CustomerOrder) SetTotalMinor(v int32)`
+`func (o *CustomerOrder) SetTotalMinor(v int64)`
 
 SetTotalMinor sets TotalMinor field to given value.
 
@@ -156,20 +156,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetFulfilledAt
 
-`func (o *CustomerOrder) GetFulfilledAt() string`
+`func (o *CustomerOrder) GetFulfilledAt() time.Time`
 
 GetFulfilledAt returns the FulfilledAt field if non-nil, zero value otherwise.
 
 ### GetFulfilledAtOk
 
-`func (o *CustomerOrder) GetFulfilledAtOk() (*string, bool)`
+`func (o *CustomerOrder) GetFulfilledAtOk() (*time.Time, bool)`
 
 GetFulfilledAtOk returns a tuple with the FulfilledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFulfilledAt
 
-`func (o *CustomerOrder) SetFulfilledAt(v string)`
+`func (o *CustomerOrder) SetFulfilledAt(v time.Time)`
 
 SetFulfilledAt sets FulfilledAt field to given value.
 
@@ -186,20 +186,20 @@ SetFulfilledAt sets FulfilledAt field to given value.
 UnsetFulfilledAt ensures that no value is present for FulfilledAt, not even an explicit nil
 ### GetCanceledAt
 
-`func (o *CustomerOrder) GetCanceledAt() string`
+`func (o *CustomerOrder) GetCanceledAt() time.Time`
 
 GetCanceledAt returns the CanceledAt field if non-nil, zero value otherwise.
 
 ### GetCanceledAtOk
 
-`func (o *CustomerOrder) GetCanceledAtOk() (*string, bool)`
+`func (o *CustomerOrder) GetCanceledAtOk() (*time.Time, bool)`
 
 GetCanceledAtOk returns a tuple with the CanceledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCanceledAt
 
-`func (o *CustomerOrder) SetCanceledAt(v string)`
+`func (o *CustomerOrder) SetCanceledAt(v time.Time)`
 
 SetCanceledAt sets CanceledAt field to given value.
 
@@ -216,45 +216,43 @@ SetCanceledAt sets CanceledAt field to given value.
 UnsetCanceledAt ensures that no value is present for CanceledAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *CustomerOrder) GetCreatedAt() string`
+`func (o *CustomerOrder) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CustomerOrder) GetCreatedAtOk() (*string, bool)`
+`func (o *CustomerOrder) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CustomerOrder) SetCreatedAt(v string)`
+`func (o *CustomerOrder) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *CustomerOrder) GetUpdatedAt() string`
+`func (o *CustomerOrder) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CustomerOrder) GetUpdatedAtOk() (*string, bool)`
+`func (o *CustomerOrder) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CustomerOrder) SetUpdatedAt(v string)`
+`func (o *CustomerOrder) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

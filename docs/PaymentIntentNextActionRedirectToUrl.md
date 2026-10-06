@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | **string** | URL to redirect customer for 3DS authentication | 
-**ReturnUrl** | **string** | URL to return to after 3DS | 
+**Url** | **string** | URL to redirect customer for 3DS authentication |
+**ReturnUrl** | **string** | URL to return to after 3DS |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetReturnUrl sets ReturnUrl field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

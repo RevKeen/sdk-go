@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Sequence** | **int32** |  | 
-**Date** | **time.Time** |  | 
-**FormattedDate** | **string** |  | 
-**DayName** | **string** |  | 
-**AmountMinor** | **int32** |  | 
-**FormattedAmount** | **string** |  | 
-**IsTrialEnd** | Pointer to **bool** |  | [optional] 
-**IsFirstCharge** | Pointer to **bool** |  | [optional] 
-**IsFinalPayment** | Pointer to **bool** |  | [optional] 
+**Sequence** | **int32** |  |
+**Date** | **time.Time** |  |
+**FormattedDate** | **string** |  |
+**DayName** | **string** |  |
+**AmountMinor** | **int64** |  |
+**FormattedAmount** | **string** |  |
+**IsTrialEnd** | Pointer to **bool** |  | [optional]
+**IsFirstCharge** | Pointer to **bool** |  | [optional]
+**IsFinalPayment** | Pointer to **bool** |  | [optional]
 
 ## Methods
 
 ### NewSubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner
 
-`func NewSubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner(sequence int32, date time.Time, formattedDate string, dayName string, amountMinor int32, formattedAmount string, ) *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner`
+`func NewSubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner(sequence int32, date time.Time, formattedDate string, dayName string, amountMinor int64, formattedAmount string, ) *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner`
 
 NewSubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner instantiates a new SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner object
 This constructor will assign default values to properties that have it defined,
@@ -115,20 +115,20 @@ SetDayName sets DayName field to given value.
 
 ### GetAmountMinor
 
-`func (o *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner) GetAmountMinor() int32`
+`func (o *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner) GetAmountMinorOk() (*int32, bool)`
+`func (o *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner) SetAmountMinor(v int32)`
+`func (o *SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -230,5 +230,3 @@ HasIsFinalPayment returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

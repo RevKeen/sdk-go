@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique event identifier | 
-**Object** | **string** | Object type | 
-**Type** | **string** | Event type (e.g., invoice.paid, payment.succeeded) | 
-**Data** | [**EventData**](EventData.md) |  | 
-**Request** | [**EventRequest**](EventRequest.md) |  | 
-**PendingWebhooks** | **int32** | Number of webhooks still pending delivery for this event | 
-**ApiVersion** | **NullableString** | API version used to render this event | 
-**Livemode** | **bool** | Whether this event was produced in live mode | 
-**Created** | **int32** | Unix timestamp when the event was created | 
+**Id** | **string** | Unique event identifier |
+**Object** | **string** | Object type |
+**Type** | **string** | Event type (e.g., invoice.paid, payment.succeeded) |
+**Data** | [**EventData**](EventData.md) |  |
+**Request** | [**NullableEventRequest**](EventRequest.md) |  |
+**PendingWebhooks** | **int32** | Number of webhooks still pending delivery for this event |
+**ApiVersion** | **NullableString** | API version used to render this event |
+**Livemode** | **bool** | Whether this event was produced in live mode |
+**Created** | **int32** | Unix timestamp when the event was created |
 
 ## Methods
 
 ### NewEvent
 
-`func NewEvent(id string, object string, type_ string, data EventData, request EventRequest, pendingWebhooks int32, apiVersion NullableString, livemode bool, created int32, ) *Event`
+`func NewEvent(id string, object string, type_ string, data EventData, request NullableEventRequest, pendingWebhooks int32, apiVersion NullableString, livemode bool, created int32, ) *Event`
 
 NewEvent instantiates a new Event object
 This constructor will assign default values to properties that have it defined,
@@ -133,6 +133,16 @@ and a boolean to check if the value has been set.
 SetRequest sets Request field to given value.
 
 
+### SetRequestNil
+
+`func (o *Event) SetRequestNil(b bool)`
+
+ SetRequestNil sets the value for Request to be an explicit nil
+
+### UnsetRequest
+`func (o *Event) UnsetRequest()`
+
+UnsetRequest ensures that no value is present for Request, not even an explicit nil
 ### GetPendingWebhooks
 
 `func (o *Event) GetPendingWebhooks() int32`
@@ -225,5 +235,3 @@ SetCreated sets Created field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

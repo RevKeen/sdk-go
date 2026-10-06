@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountMinor** | Pointer to **int32** | Amount to refund in minor units. Omit for a full refund. | [optional] 
-**Reason** | Pointer to **string** | Reason for the refund | [optional] 
+**AmountMinor** | Pointer to **int64** | Amount to refund in minor units. Omit for a full refund. | [optional]
+**Reason** | Pointer to **string** | Reason for the refund | [optional]
+**RestockLineItems** | Pointer to [**[]CreateRefundInputRestockLineItemsInner**](CreateRefundInputRestockLineItemsInner.md) | Units to put back on sale once the refund is approved, by invoice line. Omit to restock nothing. | [optional]
 
 ## Methods
 
@@ -28,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmountMinor
 
-`func (o *RefundTerminalPaymentRequest) GetAmountMinor() int32`
+`func (o *RefundTerminalPaymentRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *RefundTerminalPaymentRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *RefundTerminalPaymentRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *RefundTerminalPaymentRequest) SetAmountMinor(v int32)`
+`func (o *RefundTerminalPaymentRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -76,7 +77,30 @@ SetReason sets Reason field to given value.
 
 HasReason returns a boolean if a field has been set.
 
+### GetRestockLineItems
+
+`func (o *RefundTerminalPaymentRequest) GetRestockLineItems() []CreateRefundInputRestockLineItemsInner`
+
+GetRestockLineItems returns the RestockLineItems field if non-nil, zero value otherwise.
+
+### GetRestockLineItemsOk
+
+`func (o *RefundTerminalPaymentRequest) GetRestockLineItemsOk() (*[]CreateRefundInputRestockLineItemsInner, bool)`
+
+GetRestockLineItemsOk returns a tuple with the RestockLineItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestockLineItems
+
+`func (o *RefundTerminalPaymentRequest) SetRestockLineItems(v []CreateRefundInputRestockLineItemsInner)`
+
+SetRestockLineItems sets RestockLineItems field to given value.
+
+### HasRestockLineItems
+
+`func (o *RefundTerminalPaymentRequest) HasRestockLineItems() bool`
+
+HasRestockLineItems returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

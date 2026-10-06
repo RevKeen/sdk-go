@@ -4,28 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Public payment intent ID (pi_xxx) | 
-**Object** | **string** | Object type | 
-**Amount** | **int32** | Amount in cents | 
-**AmountCapturable** | **int32** | Amount that can be captured (for manual capture) | 
-**AmountReceived** | **int32** | Amount actually received | 
-**Currency** | **string** | Three-letter ISO currency code | 
-**Customer** | **string** | Customer ID | 
-**Description** | Pointer to **NullableString** | Description for merchant reference | [optional] 
-**LastPaymentError** | Pointer to [**PaymentIntentLastPaymentError**](PaymentIntentLastPaymentError.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**NextAction** | Pointer to [**PaymentIntentNextAction**](PaymentIntentNextAction.md) |  | [optional] 
-**PaymentMethod** | Pointer to **NullableString** | Payment method ID | [optional] 
-**ReceiptEmail** | Pointer to **NullableString** | Email for receipt | [optional] 
-**StatementDescriptor** | Pointer to **NullableString** | Statement descriptor | [optional] 
-**StatementDescriptorSuffix** | Pointer to **NullableString** | Statement descriptor suffix | [optional] 
-**Status** | **string** | Payment intent status. requires_payment_method: Needs payment method. requires_confirmation: Ready to confirm. requires_action: Requires customer action (3DS). processing: Being processed. succeeded: Payment complete. canceled: Canceled. | 
-**CaptureMethod** | **string** | Capture method. automatic: Capture immediately on confirmation. manual: Authorize then capture separately. | 
-**ClientSecret** | **string** | Client secret for frontend confirmation | 
-**CanceledAt** | Pointer to **NullableTime** | When the intent was canceled | [optional] 
-**CancellationReason** | Pointer to **NullableString** | Why the intent was canceled | [optional] 
-**Created** | **int32** | Unix timestamp of creation | 
-**Livemode** | **bool** | Whether in live mode | 
+**Id** | **string** | Public payment intent ID (pi_xxx) |
+**Object** | **string** | Object type |
+**Amount** | **int32** | Amount in cents |
+**AmountCapturable** | **int32** | Amount that can be captured (for manual capture) |
+**AmountReceived** | **int32** | Amount actually received |
+**Currency** | **string** | Three-letter ISO currency code |
+**Customer** | **string** | Customer ID |
+**Description** | Pointer to **NullableString** | Description for merchant reference | [optional]
+**LastPaymentError** | Pointer to [**NullablePaymentIntentLastPaymentError**](PaymentIntentLastPaymentError.md) |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**NextAction** | Pointer to [**NullablePaymentIntentNextAction**](PaymentIntentNextAction.md) |  | [optional]
+**PaymentMethod** | Pointer to **NullableString** | Payment method ID | [optional]
+**ReceiptEmail** | Pointer to **NullableString** | Email for receipt | [optional]
+**StatementDescriptor** | Pointer to **NullableString** | Statement descriptor | [optional]
+**StatementDescriptorSuffix** | Pointer to **NullableString** | Statement descriptor suffix | [optional]
+**Status** | **string** | Payment intent status. requires_payment_method: Needs payment method. requires_confirmation: Ready to confirm. requires_action: Requires customer action (3DS). processing: Being processed. succeeded: Payment complete. canceled: Canceled. |
+**CaptureMethod** | **string** | Capture method. automatic: Capture immediately on confirmation. manual: Authorize then capture separately. |
+**ClientSecret** | **string** | Client secret for frontend confirmation |
+**CanceledAt** | Pointer to **NullableTime** | When the intent was canceled | [optional]
+**CancellationReason** | Pointer to **NullableString** | Why the intent was canceled | [optional]
+**Created** | **int32** | Unix timestamp of creation |
+**Livemode** | **bool** | Whether in live mode |
 
 ## Methods
 
@@ -246,6 +246,16 @@ SetLastPaymentError sets LastPaymentError field to given value.
 
 HasLastPaymentError returns a boolean if a field has been set.
 
+### SetLastPaymentErrorNil
+
+`func (o *PaymentIntent) SetLastPaymentErrorNil(b bool)`
+
+ SetLastPaymentErrorNil sets the value for LastPaymentError to be an explicit nil
+
+### UnsetLastPaymentError
+`func (o *PaymentIntent) UnsetLastPaymentError()`
+
+UnsetLastPaymentError ensures that no value is present for LastPaymentError, not even an explicit nil
 ### GetMetadata
 
 `func (o *PaymentIntent) GetMetadata() map[string]interface{}`
@@ -296,6 +306,16 @@ SetNextAction sets NextAction field to given value.
 
 HasNextAction returns a boolean if a field has been set.
 
+### SetNextActionNil
+
+`func (o *PaymentIntent) SetNextActionNil(b bool)`
+
+ SetNextActionNil sets the value for NextAction to be an explicit nil
+
+### UnsetNextAction
+`func (o *PaymentIntent) UnsetNextAction()`
+
+UnsetNextAction ensures that no value is present for NextAction, not even an explicit nil
 ### GetPaymentMethod
 
 `func (o *PaymentIntent) GetPaymentMethod() string`
@@ -608,5 +628,3 @@ SetLivemode sets Livemode field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

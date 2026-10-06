@@ -1,6 +1,6 @@
 # \MandatesAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## MandatesCancel
 
-> MandateActionResponse MandatesCancel(ctx, id).MandateActionRequest(mandateActionRequest).Execute()
+> MandateActionResponse MandatesCancel(ctx, id).IdempotencyKey(idempotencyKey).MandateActionRequest(mandateActionRequest).Execute()
 
 Cancel a Direct Debit mandate
 
@@ -31,16 +31,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Mandate ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	mandateActionRequest := *openapiclient.NewMandateActionRequest() // MandateActionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MandatesAPI.MandatesCancel(context.Background(), id).MandateActionRequest(mandateActionRequest).Execute()
+	resp, r, err := apiClient.MandatesAPI.MandatesCancel(context.Background(), id).IdempotencyKey(idempotencyKey).MandateActionRequest(mandateActionRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MandatesAPI.MandatesCancel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,6 +67,7 @@ Other parameters are passed through a pointer to a apiMandatesCancelRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
  **mandateActionRequest** | [**MandateActionRequest**](MandateActionRequest.md) |  |
 
 ### Return type
@@ -103,7 +105,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -171,7 +173,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -241,7 +243,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -294,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## MandatesReinstate
 
-> MandateActionResponse MandatesReinstate(ctx, id).MandateActionRequest(mandateActionRequest).Execute()
+> MandateActionResponse MandatesReinstate(ctx, id).IdempotencyKey(idempotencyKey).MandateActionRequest(mandateActionRequest).Execute()
 
 Reinstate a suspended Direct Debit mandate
 
@@ -309,16 +311,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Mandate ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	mandateActionRequest := *openapiclient.NewMandateActionRequest() // MandateActionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MandatesAPI.MandatesReinstate(context.Background(), id).MandateActionRequest(mandateActionRequest).Execute()
+	resp, r, err := apiClient.MandatesAPI.MandatesReinstate(context.Background(), id).IdempotencyKey(idempotencyKey).MandateActionRequest(mandateActionRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MandatesAPI.MandatesReinstate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -344,6 +347,7 @@ Other parameters are passed through a pointer to a apiMandatesReinstateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
  **mandateActionRequest** | [**MandateActionRequest**](MandateActionRequest.md) |  |
 
 ### Return type
@@ -366,7 +370,7 @@ Name | Type | Description  | Notes
 
 ## MandatesScheduleCollection
 
-> ScheduleCollectionResponse MandatesScheduleCollection(ctx, id).ScheduleCollectionRequest(scheduleCollectionRequest).Execute()
+> ScheduleCollectionResponse MandatesScheduleCollection(ctx, id).IdempotencyKey(idempotencyKey).ScheduleCollectionRequest(scheduleCollectionRequest).Execute()
 
 Schedule a one-off Direct Debit collection
 
@@ -381,16 +385,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Mandate ID
-	scheduleCollectionRequest := *openapiclient.NewScheduleCollectionRequest(int32(2500), "GBP", "SourceType_example", "SourceId_example") // ScheduleCollectionRequest |  (optional)
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
+	scheduleCollectionRequest := *openapiclient.NewScheduleCollectionRequest(int64(2500), "GBP", "SourceType_example", "SourceId_example") // ScheduleCollectionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MandatesAPI.MandatesScheduleCollection(context.Background(), id).ScheduleCollectionRequest(scheduleCollectionRequest).Execute()
+	resp, r, err := apiClient.MandatesAPI.MandatesScheduleCollection(context.Background(), id).IdempotencyKey(idempotencyKey).ScheduleCollectionRequest(scheduleCollectionRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MandatesAPI.MandatesScheduleCollection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,6 +421,7 @@ Other parameters are passed through a pointer to a apiMandatesScheduleCollection
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
  **scheduleCollectionRequest** | [**ScheduleCollectionRequest**](ScheduleCollectionRequest.md) |  |
 
 ### Return type
@@ -438,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## MandatesSuspend
 
-> MandateActionResponse MandatesSuspend(ctx, id).MandateActionRequest(mandateActionRequest).Execute()
+> MandateActionResponse MandatesSuspend(ctx, id).IdempotencyKey(idempotencyKey).MandateActionRequest(mandateActionRequest).Execute()
 
 Suspend a Direct Debit mandate
 
@@ -453,16 +459,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Mandate ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	mandateActionRequest := *openapiclient.NewMandateActionRequest() // MandateActionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MandatesAPI.MandatesSuspend(context.Background(), id).MandateActionRequest(mandateActionRequest).Execute()
+	resp, r, err := apiClient.MandatesAPI.MandatesSuspend(context.Background(), id).IdempotencyKey(idempotencyKey).MandateActionRequest(mandateActionRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MandatesAPI.MandatesSuspend``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -488,6 +495,7 @@ Other parameters are passed through a pointer to a apiMandatesSuspendRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
  **mandateActionRequest** | [**MandateActionRequest**](MandateActionRequest.md) |  |
 
 ### Return type
@@ -506,4 +514,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

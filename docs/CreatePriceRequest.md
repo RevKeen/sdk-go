@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | **string** | ID of the product this price belongs to | 
-**Currency** | Pointer to **string** | Three-letter ISO currency code | [optional] [default to "usd"]
-**UnitAmount** | Pointer to **int32** | Price in minor units (cents). Required for fixed pricing. | [optional] 
+**ProductId** | **string** | ID of the product this price belongs to |
+**Currency** | Pointer to **string** | Three-letter ISO currency code | [optional]
+**UnitAmount** | Pointer to **int32** | Price in minor units (cents). Required for fixed pricing. | [optional]
 **Type** | Pointer to **string** | Price type | [optional] [default to "one_time"]
 **PricingModel** | Pointer to **string** | Pricing model | [optional] [default to "fixed"]
-**Interval** | Pointer to **string** | Billing interval (required for recurring) | [optional] 
-**IntervalCount** | Pointer to **int32** | Number of intervals between billings (1-12) | [optional] 
-**TrialPeriodDays** | Pointer to **int32** | Trial period in days (0-730) | [optional] 
-**StartRule** | Pointer to **string** | First-charge behavior for recurring checkout. &#x60;immediate&#x60;: full first period now. &#x60;next_anchor&#x60;: first charge on the billing anchor. &#x60;prorate&#x60;: prorated stub now, then full charge on the billing anchor. | [optional] 
-**MinimumAmount** | Pointer to **int32** | PWYW: minimum amount in cents | [optional] 
-**MaximumAmount** | Pointer to **int32** | PWYW: maximum amount in cents | [optional] 
-**SuggestedAmount** | Pointer to **int32** | PWYW: suggested amount in cents | [optional] 
-**PresetAmounts** | Pointer to **[]int32** | PWYW: quick-select amounts (max 10) | [optional] 
-**Name** | Pointer to **string** | Customer-facing price name (e.g., &#39;Morning&#39;, &#39;Full day&#39;) | [optional] 
-**Nickname** | Pointer to **string** | Display name (e.g., &#39;Monthly&#39;, &#39;Annual&#39;) | [optional] 
-**Description** | Pointer to **string** | Description of this price option | [optional] 
-**LookupKey** | Pointer to **string** | Stable key for API lookups | [optional] 
-**BillingScheme** | Pointer to **string** | Billing scheme. Defaults to &#x60;per_unit&#x60;. Set to &#x60;tiered&#x60; with &#x60;tiers_mode&#x60; + &#x60;tiers&#x60; for graduated or volume pricing. | [optional] 
-**TiersMode** | Pointer to **string** | Tiered pricing mode. Required when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;, must be omitted otherwise. | [optional] 
-**Tiers** | Pointer to [**[]PriceTier**](PriceTier.md) | Price tiers (ordered by &#x60;up_to&#x60;, min 2, max 50). Required when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;. Final tier MUST have &#x60;up_to: null&#x60;. | [optional] 
-**TransformQuantity** | Pointer to [**TransformQuantity**](TransformQuantity.md) |  | [optional] 
-**PercentageRateBps** | Pointer to **int32** | Rate in basis points. 70 &#x3D; 0.7%. Required when &#x60;billing_scheme&#x60; is &#x60;percentage&#x60;. Range 0–10000 (0%–100%). | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
+**Interval** | Pointer to **string** | Billing interval (required for recurring) | [optional]
+**IntervalCount** | Pointer to **int32** | Number of intervals between billings (1-12) | [optional]
+**TrialPeriodDays** | Pointer to **int32** | Trial period in days (0-730) | [optional]
+**StartRule** | Pointer to **string** | First-charge behavior for recurring checkout. &#x60;immediate&#x60;: full first period now. &#x60;next_anchor&#x60;: first charge on the billing anchor. &#x60;prorate&#x60;: prorated stub now, then full charge on the billing anchor. | [optional]
+**MinimumAmount** | Pointer to **int32** | PWYW: minimum amount in cents | [optional]
+**MaximumAmount** | Pointer to **int32** | PWYW: maximum amount in cents | [optional]
+**SuggestedAmount** | Pointer to **int32** | PWYW: suggested amount in cents | [optional]
+**PresetAmounts** | Pointer to **[]int32** | PWYW: quick-select amounts (max 10) | [optional]
+**Name** | Pointer to **string** | Customer-facing price name (e.g., &#39;Morning&#39;, &#39;Full day&#39;) | [optional]
+**Nickname** | Pointer to **string** | Display name (e.g., &#39;Monthly&#39;, &#39;Annual&#39;) | [optional]
+**Description** | Pointer to **string** | Description of this price option | [optional]
+**LookupKey** | Pointer to **string** | Stable key for API lookups | [optional]
+**BillingScheme** | Pointer to **string** | Billing scheme. Defaults to &#x60;per_unit&#x60;. Set to &#x60;tiered&#x60; with &#x60;tiers_mode&#x60; + &#x60;tiers&#x60; for graduated or volume pricing. | [optional]
+**TiersMode** | Pointer to **string** | Tiered pricing mode. Required when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;, must be omitted otherwise. | [optional]
+**Tiers** | Pointer to [**[]PriceTier**](PriceTier.md) | Price tiers (ordered by &#x60;up_to&#x60;, min 2, max 50). Required when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;. Final tier MUST have &#x60;up_to: null&#x60;. | [optional]
+**TransformQuantity** | Pointer to [**TransformQuantity**](TransformQuantity.md) |  | [optional]
+**PercentageRateBps** | Pointer to **int32** | Rate in basis points. 70 &#x3D; 0.7%. Required when &#x60;billing_scheme&#x60; is &#x60;percentage&#x60;. Range 0–10000 (0%–100%). | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
 
 ## Methods
 
@@ -619,5 +619,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

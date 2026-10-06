@@ -1,6 +1,6 @@
 # \AnalyticsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiAnalyticsRevenueMrrSummary
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asOfDate** | **time.Time** | Calculate MRR as of this date (ISO 8601) | 
+ **asOfDate** | **time.Time** | Calculate MRR as of this date (ISO 8601) |
 
 ### Return type
 
@@ -94,7 +94,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -125,8 +125,8 @@ Other parameters are passed through a pointer to a apiAnalyticsRevenueTimeSeries
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **time.Time** | Start date (ISO 8601) | 
- **endDate** | **time.Time** | End date (ISO 8601) | 
+ **startDate** | **time.Time** | Start date (ISO 8601) |
+ **endDate** | **time.Time** | End date (ISO 8601) |
  **granularity** | **string** | Time granularity for data points | [default to &quot;month&quot;]
 
 ### Return type
@@ -145,4 +145,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

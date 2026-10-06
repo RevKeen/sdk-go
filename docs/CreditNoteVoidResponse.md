@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**CreditNote**](CreditNote.md) | A credit note formally reduces the amount owed on an invoice. It is the accounting counterpart of a refund — the credit note is the document, the refund is the money movement. | 
+**Data** | [**CreditNote**](CreditNote.md) | A credit note formally reduces the amount owed on an invoice. It is the accounting counterpart of a refund — the credit note is the document, the refund is the money movement. |
 
 ## Methods
 
@@ -47,5 +47,3 @@ SetData sets Data field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsInDunning** | **bool** |  | 
-**Phase** | **NullableFloat32** |  | 
-**PhaseLabel** | **NullableString** |  | 
-**PhaseSeverity** | **NullableString** |  | 
-**RetryCount** | **float32** |  | 
-**TotalPossibleRetries** | **float32** |  | 
-**NextRetryAt** | **NullableTime** |  | 
-**DaysInDunning** | **float32** |  | 
-**AccessRestricted** | **bool** |  | 
+**IsInDunning** | **bool** |  |
+**Phase** | **NullableFloat32** |  |
+**PhaseLabel** | **NullableString** |  |
+**PhaseSeverity** | **NullableString** |  |
+**RetryCount** | **float32** |  |
+**TotalPossibleRetries** | **float32** |  |
+**NextRetryAt** | **NullableTime** |  |
+**DaysInDunning** | **float32** |  |
+**AccessRestricted** | **bool** |  |
 
 ## Methods
 
@@ -255,5 +255,3 @@ SetAccessRestricted sets AccessRestricted field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

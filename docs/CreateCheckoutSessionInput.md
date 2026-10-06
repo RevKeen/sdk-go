@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InvoiceId** | Pointer to **string** |  | [optional] 
-**ProductId** | Pointer to **string** |  | [optional] 
-**AmountMinor** | Pointer to **int32** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**SuccessUrl** | Pointer to **string** |  | [optional] 
-**CancelUrl** | Pointer to **string** |  | [optional] 
-**AllowedMethods** | Pointer to **[]string** | Payment methods to offer. Intersected with merchant capabilities. Defaults to merchant config. | [optional] 
-**CompanionDeviceId** | Pointer to **string** | Target a registered companion device. Session is pushed via SSE to the device. | [optional] 
+**InvoiceId** | Pointer to **string** |  | [optional]
+**ProductId** | Pointer to **string** |  | [optional]
+**AmountMinor** | Pointer to **int64** |  | [optional]
+**Currency** | Pointer to **string** | Three-letter ISO currency code. Defaults to the merchant&#39;s default currency. | [optional]
+**SuccessUrl** | Pointer to **string** |  | [optional]
+**CancelUrl** | Pointer to **string** |  | [optional]
+**AllowedMethods** | Pointer to **[]string** | Payment methods to offer. Intersected with merchant capabilities. Defaults to merchant config. | [optional]
+**CompanionDeviceId** | Pointer to **string** | Target a registered companion device. Session is pushed via SSE to the device. | [optional]
 
 ## Methods
 
@@ -84,20 +84,20 @@ HasProductId returns a boolean if a field has been set.
 
 ### GetAmountMinor
 
-`func (o *CreateCheckoutSessionInput) GetAmountMinor() int32`
+`func (o *CreateCheckoutSessionInput) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreateCheckoutSessionInput) GetAmountMinorOk() (*int32, bool)`
+`func (o *CreateCheckoutSessionInput) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreateCheckoutSessionInput) SetAmountMinor(v int32)`
+`func (o *CreateCheckoutSessionInput) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -234,5 +234,3 @@ HasCompanionDeviceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

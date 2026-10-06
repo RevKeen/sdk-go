@@ -1,6 +1,6 @@
 # \DirectDebitAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**token** | **string** | Signed mandate-request token from the emailed link | 
+**token** | **string** | Signed mandate-request token from the emailed link |
 
 ### Other Parameters
 
@@ -82,7 +82,7 @@ No authorization required
 
 ## DdPreview
 
-> PreviewCollectionResponse DdPreview(ctx).PreviewCollectionRequest(previewCollectionRequest).Execute()
+> PreviewCollectionResponse DdPreview(ctx).IdempotencyKey(idempotencyKey).PreviewCollectionRequest(previewCollectionRequest).Execute()
 
 Preview the Direct Debit collection date chain
 
@@ -97,15 +97,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	previewCollectionRequest := *openapiclient.NewPreviewCollectionRequest() // PreviewCollectionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DirectDebitAPI.DdPreview(context.Background()).PreviewCollectionRequest(previewCollectionRequest).Execute()
+	resp, r, err := apiClient.DirectDebitAPI.DdPreview(context.Background()).IdempotencyKey(idempotencyKey).PreviewCollectionRequest(previewCollectionRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DirectDebitAPI.DdPreview``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,7 +127,8 @@ Other parameters are passed through a pointer to a apiDdPreviewRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **previewCollectionRequest** | [**PreviewCollectionRequest**](PreviewCollectionRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **previewCollectionRequest** | [**PreviewCollectionRequest**](PreviewCollectionRequest.md) |  |
 
 ### Return type
 
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## DdValidate
 
-> ValidateBankAccountResponse DdValidate(ctx).ValidateBankAccountRequest(validateBankAccountRequest).Execute()
+> ValidateBankAccountResponse DdValidate(ctx).IdempotencyKey(idempotencyKey).ValidateBankAccountRequest(validateBankAccountRequest).Execute()
 
 Validate a UK bank account for Direct Debit
 
@@ -163,15 +165,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	validateBankAccountRequest := *openapiclient.NewValidateBankAccountRequest("20-00-00", "55779911") // ValidateBankAccountRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DirectDebitAPI.DdValidate(context.Background()).ValidateBankAccountRequest(validateBankAccountRequest).Execute()
+	resp, r, err := apiClient.DirectDebitAPI.DdValidate(context.Background()).IdempotencyKey(idempotencyKey).ValidateBankAccountRequest(validateBankAccountRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DirectDebitAPI.DdValidate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -192,7 +195,8 @@ Other parameters are passed through a pointer to a apiDdValidateRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **validateBankAccountRequest** | [**ValidateBankAccountRequest**](ValidateBankAccountRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **validateBankAccountRequest** | [**ValidateBankAccountRequest**](ValidateBankAccountRequest.md) |  |
 
 ### Return type
 
@@ -210,4 +214,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

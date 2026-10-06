@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**Status** | **string** |  | 
-**AccountHolderName** | **NullableString** |  | 
-**AccountNumberLast4** | **NullableString** |  | 
-**BankName** | **NullableString** |  | 
-**MandateReference** | **NullableString** |  | 
-**NextCollectionDate** | **NullableString** |  | 
-**CreatedAt** | **NullableTime** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**Status** | **string** |  |
+**AccountHolderName** | **NullableString** |  |
+**AccountNumberLast4** | **NullableString** |  |
+**BankName** | **NullableString** |  |
+**MandateReference** | **NullableString** |  |
+**NextCollectionDate** | **NullableString** |  |
+**CreatedAt** | **NullableTime** |  |
 
 ## Methods
 
@@ -275,5 +275,3 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

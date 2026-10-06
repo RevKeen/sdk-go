@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Customer** | Pointer to **string** | Customer ID (required if no subscription) | [optional] 
-**Subscription** | Pointer to **string** | Existing subscription to attach schedule to | [optional] 
-**StartDate** | Pointer to [**CreateSubscriptionScheduleRequestStartDate**](CreateSubscriptionScheduleRequestStartDate.md) |  | [optional] 
-**Phases** | [**[]SchedulePhase**](SchedulePhase.md) | Phases defining the schedule (at least one required) | 
+**Customer** | Pointer to **string** | Customer ID (required if no subscription) | [optional]
+**Subscription** | Pointer to **string** | Existing subscription to attach schedule to | [optional]
+**StartDate** | Pointer to [**CreateSubscriptionScheduleRequestStartDate**](CreateSubscriptionScheduleRequestStartDate.md) |  | [optional]
+**Phases** | [**[]SchedulePhase**](SchedulePhase.md) | Phases defining the schedule (at least one required) |
 **EndBehavior** | Pointer to **string** | What happens when all phases complete | [optional] [default to "cancel"]
-**Metadata** | Pointer to **map[string]interface{}** | Custom metadata | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Custom metadata | [optional]
 
 ## Methods
 
@@ -177,5 +177,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

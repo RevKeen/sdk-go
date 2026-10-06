@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**SubscriptionId** | **string** |  | 
-**ProductId** | **NullableString** |  | 
-**PriceId** | **NullableString** |  | 
-**Description** | **NullableString** |  | 
-**Quantity** | **int32** | Item quantity | 
-**Currency** | **string** |  | 
-**UnitAmountMinor** | **int32** | Unit price in cents | 
-**FulfillmentType** | **string** | none: service (no order), physical: creates shipping order, digital: creates download order | 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+**Id** | **string** |  |
+**SubscriptionId** | **string** |  |
+**ProductId** | **NullableString** |  |
+**PriceId** | **NullableString** |  |
+**Description** | **NullableString** |  |
+**Quantity** | **int32** | Item quantity |
+**Currency** | **string** |  |
+**UnitAmountMinor** | **int64** | Unit price in cents |
+**FulfillmentType** | **string** | none: service (no order), physical: creates shipping order, digital: creates download order |
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewSubscriptionItem
 
-`func NewSubscriptionItem(id string, subscriptionId string, productId NullableString, priceId NullableString, description NullableString, quantity int32, currency string, unitAmountMinor int32, fulfillmentType string, createdAt string, updatedAt string, ) *SubscriptionItem`
+`func NewSubscriptionItem(id string, subscriptionId string, productId NullableString, priceId NullableString, description NullableString, quantity int32, currency string, unitAmountMinor int64, fulfillmentType string, createdAt time.Time, updatedAt time.Time, ) *SubscriptionItem`
 
 NewSubscriptionItem instantiates a new SubscriptionItem object
 This constructor will assign default values to properties that have it defined,
@@ -208,20 +208,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetUnitAmountMinor
 
-`func (o *SubscriptionItem) GetUnitAmountMinor() int32`
+`func (o *SubscriptionItem) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *SubscriptionItem) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *SubscriptionItem) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *SubscriptionItem) SetUnitAmountMinor(v int32)`
+`func (o *SubscriptionItem) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -248,20 +248,20 @@ SetFulfillmentType sets FulfillmentType field to given value.
 
 ### GetMetadata
 
-`func (o *SubscriptionItem) GetMetadata() map[string]interface{}`
+`func (o *SubscriptionItem) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *SubscriptionItem) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionItem) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *SubscriptionItem) SetMetadata(v map[string]interface{})`
+`func (o *SubscriptionItem) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -273,45 +273,43 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *SubscriptionItem) GetCreatedAt() string`
+`func (o *SubscriptionItem) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *SubscriptionItem) GetCreatedAtOk() (*string, bool)`
+`func (o *SubscriptionItem) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *SubscriptionItem) SetCreatedAt(v string)`
+`func (o *SubscriptionItem) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *SubscriptionItem) GetUpdatedAt() string`
+`func (o *SubscriptionItem) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *SubscriptionItem) GetUpdatedAtOk() (*string, bool)`
+`func (o *SubscriptionItem) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *SubscriptionItem) SetUpdatedAt(v string)`
+`func (o *SubscriptionItem) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

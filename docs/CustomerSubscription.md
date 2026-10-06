@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**CustomerId** | **string** |  | 
-**PriceId** | **NullableString** |  | 
-**Status** | **string** |  | 
-**CurrentPeriodStart** | **NullableString** |  | 
-**CurrentPeriodEnd** | **NullableString** |  | 
-**CancelAtPeriodEnd** | **bool** |  | 
-**CanceledAt** | **NullableString** |  | 
-**TrialEnd** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+**Id** | **string** |  |
+**CustomerId** | **string** |  |
+**PriceId** | **NullableString** |  |
+**Status** | **string** |  |
+**CurrentPeriodStart** | **NullableString** |  |
+**CurrentPeriodEnd** | **NullableString** |  |
+**CancelAtPeriodEnd** | **bool** |  |
+**CanceledAt** | **NullableTime** |  |
+**TrialEnd** | **NullableString** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCustomerSubscription
 
-`func NewCustomerSubscription(id string, customerId string, priceId NullableString, status string, currentPeriodStart NullableString, currentPeriodEnd NullableString, cancelAtPeriodEnd bool, canceledAt NullableString, trialEnd NullableString, createdAt string, updatedAt string, ) *CustomerSubscription`
+`func NewCustomerSubscription(id string, customerId string, priceId NullableString, status string, currentPeriodStart NullableString, currentPeriodEnd NullableString, cancelAtPeriodEnd bool, canceledAt NullableTime, trialEnd NullableString, createdAt time.Time, updatedAt time.Time, ) *CustomerSubscription`
 
 NewCustomerSubscription instantiates a new CustomerSubscription object
 This constructor will assign default values to properties that have it defined,
@@ -207,20 +207,20 @@ SetCancelAtPeriodEnd sets CancelAtPeriodEnd field to given value.
 
 ### GetCanceledAt
 
-`func (o *CustomerSubscription) GetCanceledAt() string`
+`func (o *CustomerSubscription) GetCanceledAt() time.Time`
 
 GetCanceledAt returns the CanceledAt field if non-nil, zero value otherwise.
 
 ### GetCanceledAtOk
 
-`func (o *CustomerSubscription) GetCanceledAtOk() (*string, bool)`
+`func (o *CustomerSubscription) GetCanceledAtOk() (*time.Time, bool)`
 
 GetCanceledAtOk returns a tuple with the CanceledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCanceledAt
 
-`func (o *CustomerSubscription) SetCanceledAt(v string)`
+`func (o *CustomerSubscription) SetCanceledAt(v time.Time)`
 
 SetCanceledAt sets CanceledAt field to given value.
 
@@ -267,45 +267,43 @@ SetTrialEnd sets TrialEnd field to given value.
 UnsetTrialEnd ensures that no value is present for TrialEnd, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *CustomerSubscription) GetCreatedAt() string`
+`func (o *CustomerSubscription) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CustomerSubscription) GetCreatedAtOk() (*string, bool)`
+`func (o *CustomerSubscription) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CustomerSubscription) SetCreatedAt(v string)`
+`func (o *CustomerSubscription) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *CustomerSubscription) GetUpdatedAt() string`
+`func (o *CustomerSubscription) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CustomerSubscription) GetUpdatedAtOk() (*string, bool)`
+`func (o *CustomerSubscription) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CustomerSubscription) SetUpdatedAt(v string)`
+`func (o *CustomerSubscription) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**InvoiceId** | **string** |  | 
-**UserId** | **NullableString** |  | 
-**Content** | **string** |  | 
-**IsInternal** | **bool** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **NullableString** |  | 
+**Id** | **string** |  |
+**InvoiceId** | **string** |  |
+**UserId** | **NullableString** |  |
+**Content** | **string** |  |
+**IsInternal** | **bool** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewInvoiceCommentDetail
 
-`func NewInvoiceCommentDetail(id string, invoiceId string, userId NullableString, content string, isInternal bool, createdAt string, updatedAt NullableString, ) *InvoiceCommentDetail`
+`func NewInvoiceCommentDetail(id string, invoiceId string, userId NullableString, content string, isInternal bool, createdAt time.Time, updatedAt NullableTime, ) *InvoiceCommentDetail`
 
 NewInvoiceCommentDetail instantiates a new InvoiceCommentDetail object
 This constructor will assign default values to properties that have it defined,
@@ -143,40 +143,40 @@ SetIsInternal sets IsInternal field to given value.
 
 ### GetCreatedAt
 
-`func (o *InvoiceCommentDetail) GetCreatedAt() string`
+`func (o *InvoiceCommentDetail) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *InvoiceCommentDetail) GetCreatedAtOk() (*string, bool)`
+`func (o *InvoiceCommentDetail) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *InvoiceCommentDetail) SetCreatedAt(v string)`
+`func (o *InvoiceCommentDetail) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *InvoiceCommentDetail) GetUpdatedAt() string`
+`func (o *InvoiceCommentDetail) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *InvoiceCommentDetail) GetUpdatedAtOk() (*string, bool)`
+`func (o *InvoiceCommentDetail) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *InvoiceCommentDetail) SetUpdatedAt(v string)`
+`func (o *InvoiceCommentDetail) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
@@ -193,5 +193,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

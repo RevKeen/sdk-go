@@ -1,9 +1,10 @@
 # \InvoicesAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**InvoiceUsageExplain**](InvoicesAPI.md#InvoiceUsageExplain) | **Get** /invoices/{id}/usage-explain | Explain invoice usage charges
 [**InvoicesCreate**](InvoicesAPI.md#InvoicesCreate) | **Post** /invoices | Create invoice
 [**InvoicesFinalize**](InvoicesAPI.md#InvoicesFinalize) | **Post** /invoices/{id}/finalize | Finalize an invoice
 [**InvoicesGet**](InvoicesAPI.md#InvoicesGet) | **Get** /invoices/{id} | Get invoice
@@ -15,9 +16,79 @@ Method | HTTP request | Description
 
 
 
+## InvoiceUsageExplain
+
+> InvoiceUsageExplain200Response InvoiceUsageExplain(ctx, id).Execute()
+
+Explain invoice usage charges
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/sdk-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InvoicesAPI.InvoiceUsageExplain(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoiceUsageExplain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InvoiceUsageExplain`: InvoiceUsageExplain200Response
+	fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.InvoiceUsageExplain`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Invoice UUID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInvoiceUsageExplainRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**InvoiceUsageExplain200Response**](InvoiceUsageExplain200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## InvoicesCreate
 
-> InvoiceResponse InvoicesCreate(ctx).InvoicesCreateRequest(invoicesCreateRequest).Execute()
+> InvoiceResponse InvoicesCreate(ctx).InvoicesCreateRequest(invoicesCreateRequest).IdempotencyKey(idempotencyKey).Execute()
 
 Create invoice
 
@@ -32,15 +103,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	invoicesCreateRequest := *openapiclient.NewInvoicesCreateRequest("CustomerUuid_example", int32(123)) // InvoicesCreateRequest | Invoice creation details
+	invoicesCreateRequest := *openapiclient.NewInvoicesCreateRequest("CustomerUuid_example", int64(123), "Currency_example") // InvoicesCreateRequest | Invoice creation details
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoicesAPI.InvoicesCreate(context.Background()).InvoicesCreateRequest(invoicesCreateRequest).Execute()
+	resp, r, err := apiClient.InvoicesAPI.InvoicesCreate(context.Background()).InvoicesCreateRequest(invoicesCreateRequest).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoicesCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,7 +133,8 @@ Other parameters are passed through a pointer to a apiInvoicesCreateRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **invoicesCreateRequest** | [**InvoicesCreateRequest**](InvoicesCreateRequest.md) | Invoice creation details | 
+ **invoicesCreateRequest** | [**InvoicesCreateRequest**](InvoicesCreateRequest.md) | Invoice creation details |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -83,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## InvoicesFinalize
 
-> InvoiceResponse InvoicesFinalize(ctx, id).InvoicesFinalizeRequest(invoicesFinalizeRequest).Execute()
+> InvoiceResponse InvoicesFinalize(ctx, id).IdempotencyKey(idempotencyKey).InvoicesFinalizeRequest(invoicesFinalizeRequest).Execute()
 
 Finalize an invoice
 
@@ -98,16 +171,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	invoicesFinalizeRequest := *openapiclient.NewInvoicesFinalizeRequest() // InvoicesFinalizeRequest | Finalization options (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoicesAPI.InvoicesFinalize(context.Background(), id).InvoicesFinalizeRequest(invoicesFinalizeRequest).Execute()
+	resp, r, err := apiClient.InvoicesAPI.InvoicesFinalize(context.Background(), id).IdempotencyKey(idempotencyKey).InvoicesFinalizeRequest(invoicesFinalizeRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoicesFinalize``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,7 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -133,7 +207,8 @@ Other parameters are passed through a pointer to a apiInvoicesFinalizeRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoicesFinalizeRequest** | [**InvoicesFinalizeRequest**](InvoicesFinalizeRequest.md) | Finalization options | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **invoicesFinalizeRequest** | [**InvoicesFinalizeRequest**](InvoicesFinalizeRequest.md) | Finalization options |
 
 ### Return type
 
@@ -170,11 +245,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -194,7 +269,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -240,7 +315,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -272,8 +347,8 @@ Other parameters are passed through a pointer to a apiInvoicesListRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string** | Filter by invoice status | 
- **customerId** | **string** | Filter by customer ID | 
+ **status** | **string** | Filter by invoice status |
+ **customerId** | **string** | Filter by customer ID |
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
  **offset** | **int32** | Number of results to skip | [default to 0]
 
@@ -297,7 +372,7 @@ Name | Type | Description  | Notes
 
 ## InvoicesMarginEstimate
 
-> InvoicesMarginEstimate200Response InvoicesMarginEstimate(ctx, id).InvoicesMarginEstimateRequest(invoicesMarginEstimateRequest).Execute()
+> InvoicesMarginEstimate200Response InvoicesMarginEstimate(ctx, id).InvoicesMarginEstimateRequest(invoicesMarginEstimateRequest).IdempotencyKey(idempotencyKey).Execute()
 
 Estimate invoice net by payment rail
 
@@ -312,16 +387,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID.
 	invoicesMarginEstimateRequest := *openapiclient.NewInvoicesMarginEstimateRequest() // InvoicesMarginEstimateRequest | Margin estimate inputs
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoicesAPI.InvoicesMarginEstimate(context.Background(), id).InvoicesMarginEstimateRequest(invoicesMarginEstimateRequest).Execute()
+	resp, r, err := apiClient.InvoicesAPI.InvoicesMarginEstimate(context.Background(), id).InvoicesMarginEstimateRequest(invoicesMarginEstimateRequest).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoicesMarginEstimate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,7 +413,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Invoice ID. | 
+**id** | **string** | Invoice ID. |
 
 ### Other Parameters
 
@@ -347,7 +423,8 @@ Other parameters are passed through a pointer to a apiInvoicesMarginEstimateRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoicesMarginEstimateRequest** | [**InvoicesMarginEstimateRequest**](InvoicesMarginEstimateRequest.md) | Margin estimate inputs | 
+ **invoicesMarginEstimateRequest** | [**InvoicesMarginEstimateRequest**](InvoicesMarginEstimateRequest.md) | Margin estimate inputs |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -369,7 +446,7 @@ Name | Type | Description  | Notes
 
 ## InvoicesSend
 
-> InvoiceResponse InvoicesSend(ctx, id).InvoicesSendRequest(invoicesSendRequest).Execute()
+> InvoiceResponse InvoicesSend(ctx, id).IdempotencyKey(idempotencyKey).InvoicesSendRequest(invoicesSendRequest).Execute()
 
 Send an invoice
 
@@ -384,16 +461,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	invoicesSendRequest := *openapiclient.NewInvoicesSendRequest() // InvoicesSendRequest | Send options (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoicesAPI.InvoicesSend(context.Background(), id).InvoicesSendRequest(invoicesSendRequest).Execute()
+	resp, r, err := apiClient.InvoicesAPI.InvoicesSend(context.Background(), id).IdempotencyKey(idempotencyKey).InvoicesSendRequest(invoicesSendRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoicesSend``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,7 +487,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -419,7 +497,8 @@ Other parameters are passed through a pointer to a apiInvoicesSendRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoicesSendRequest** | [**InvoicesSendRequest**](InvoicesSendRequest.md) | Send options | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **invoicesSendRequest** | [**InvoicesSendRequest**](InvoicesSendRequest.md) | Send options |
 
 ### Return type
 
@@ -441,7 +520,7 @@ Name | Type | Description  | Notes
 
 ## InvoicesUpdate
 
-> InvoiceResponse InvoicesUpdate(ctx, id).InvoicesUpdateRequest(invoicesUpdateRequest).Execute()
+> InvoiceResponse InvoicesUpdate(ctx, id).InvoicesUpdateRequest(invoicesUpdateRequest).IdempotencyKey(idempotencyKey).Execute()
 
 Update invoice
 
@@ -456,16 +535,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
 	invoicesUpdateRequest := *openapiclient.NewInvoicesUpdateRequest() // InvoicesUpdateRequest | Invoice update details
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoicesAPI.InvoicesUpdate(context.Background(), id).InvoicesUpdateRequest(invoicesUpdateRequest).Execute()
+	resp, r, err := apiClient.InvoicesAPI.InvoicesUpdate(context.Background(), id).InvoicesUpdateRequest(invoicesUpdateRequest).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoicesUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -481,7 +561,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -491,7 +571,8 @@ Other parameters are passed through a pointer to a apiInvoicesUpdateRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoicesUpdateRequest** | [**InvoicesUpdateRequest**](InvoicesUpdateRequest.md) | Invoice update details | 
+ **invoicesUpdateRequest** | [**InvoicesUpdateRequest**](InvoicesUpdateRequest.md) | Invoice update details |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -513,7 +594,7 @@ Name | Type | Description  | Notes
 
 ## InvoicesVoid
 
-> InvoiceResponse InvoicesVoid(ctx, id).InvoicesVoidRequest(invoicesVoidRequest).Execute()
+> InvoiceResponse InvoicesVoid(ctx, id).IdempotencyKey(idempotencyKey).InvoicesVoidRequest(invoicesVoidRequest).Execute()
 
 Void an invoice
 
@@ -528,16 +609,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	invoicesVoidRequest := *openapiclient.NewInvoicesVoidRequest() // InvoicesVoidRequest | Void details (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoicesAPI.InvoicesVoid(context.Background(), id).InvoicesVoidRequest(invoicesVoidRequest).Execute()
+	resp, r, err := apiClient.InvoicesAPI.InvoicesVoid(context.Background(), id).IdempotencyKey(idempotencyKey).InvoicesVoidRequest(invoicesVoidRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.InvoicesVoid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,7 +635,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -563,7 +645,8 @@ Other parameters are passed through a pointer to a apiInvoicesVoidRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoicesVoidRequest** | [**InvoicesVoidRequest**](InvoicesVoidRequest.md) | Void details | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **invoicesVoidRequest** | [**InvoicesVoidRequest**](InvoicesVoidRequest.md) | Void details |
 
 ### Return type
 
@@ -581,4 +664,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AcceptedAt** | **time.Time** |  | 
-**PayerAddress** | **map[string]interface{}** |  | 
-**GuaranteeVersion** | **string** |  | 
-**Declarations** | **map[string]bool** |  | 
+**AcceptedAt** | **time.Time** |  |
+**PayerAddress** | **map[string]interface{}** |  |
+**GuaranteeVersion** | **string** |  |
+**Declarations** | **map[string]bool** |  |
 
 ## Methods
 
 ### NewCreateMandateRequestAcceptance
 
-`func NewCreateMandateRequestAcceptance(acceptedAt time.Time, payerAddress map[string]interface{}, guaranteeVersion string, declarations map[string]bool, ) *CreateMandateRequestAcceptance`
+`func NewCreateMandateRequestAcceptance(acceptedAt time.Time, payerAddress map[string]*interface{}, guaranteeVersion string, declarations map[string]bool, ) *CreateMandateRequestAcceptance`
 
 NewCreateMandateRequestAcceptance instantiates a new CreateMandateRequestAcceptance object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetAcceptedAt sets AcceptedAt field to given value.
 
 ### GetPayerAddress
 
-`func (o *CreateMandateRequestAcceptance) GetPayerAddress() map[string]interface{}`
+`func (o *CreateMandateRequestAcceptance) GetPayerAddress() map[string]*interface{}`
 
 GetPayerAddress returns the PayerAddress field if non-nil, zero value otherwise.
 
 ### GetPayerAddressOk
 
-`func (o *CreateMandateRequestAcceptance) GetPayerAddressOk() (*map[string]interface{}, bool)`
+`func (o *CreateMandateRequestAcceptance) GetPayerAddressOk() (*map[string]*interface{}, bool)`
 
 GetPayerAddressOk returns a tuple with the PayerAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayerAddress
 
-`func (o *CreateMandateRequestAcceptance) SetPayerAddress(v map[string]interface{})`
+`func (o *CreateMandateRequestAcceptance) SetPayerAddress(v map[string]*interface{})`
 
 SetPayerAddress sets PayerAddress field to given value.
 
@@ -110,5 +110,3 @@ SetDeclarations sets Declarations field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

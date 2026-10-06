@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CancelAtPeriodEnd** | Pointer to **bool** | If &#x60;true&#x60; (default), cancel at the end of the current period. If &#x60;false&#x60;, cancel immediately. | [optional] [default to true]
-**Reason** | Pointer to **string** | Merchant-visible note recording why the customer canceled. | [optional] 
+**Reason** | Pointer to **string** | Merchant-visible note recording why the customer canceled. | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasReason returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

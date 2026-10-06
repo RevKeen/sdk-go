@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ResourceType** | **string** | The type of resource to import. | 
-**FileUrl** | Pointer to **string** | URL to the CSV file to import (if not using multipart upload) | [optional] 
-**ColumnMapping** | Pointer to **map[string]interface{}** | Map CSV column names to resource fields (e.g., { &#39;Email Address&#39;: &#39;email&#39;, &#39;Full Name&#39;: &#39;name&#39; }) | [optional] 
+**ResourceType** | **string** | The type of resource to import. |
+**FileUrl** | Pointer to **string** | URL to the CSV file to import (if not using multipart upload) | [optional]
+**ColumnMapping** | Pointer to **map[string]interface{}** | Map CSV column names to resource fields (e.g., { &#39;Email Address&#39;: &#39;email&#39;, &#39;Full Name&#39;: &#39;name&#39; }) | [optional]
 **OnDuplicate** | Pointer to **string** | Behavior when a duplicate record is found. skip: ignore the row. update: merge new data. error: fail the row. | [optional] [default to "skip"]
 
 ## Methods
@@ -75,20 +75,20 @@ HasFileUrl returns a boolean if a field has been set.
 
 ### GetColumnMapping
 
-`func (o *CreateImportRequest) GetColumnMapping() map[string]interface{}`
+`func (o *CreateImportRequest) GetColumnMapping() map[string]*interface{}`
 
 GetColumnMapping returns the ColumnMapping field if non-nil, zero value otherwise.
 
 ### GetColumnMappingOk
 
-`func (o *CreateImportRequest) GetColumnMappingOk() (*map[string]interface{}, bool)`
+`func (o *CreateImportRequest) GetColumnMappingOk() (*map[string]*interface{}, bool)`
 
 GetColumnMappingOk returns a tuple with the ColumnMapping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetColumnMapping
 
-`func (o *CreateImportRequest) SetColumnMapping(v map[string]interface{})`
+`func (o *CreateImportRequest) SetColumnMapping(v map[string]*interface{})`
 
 SetColumnMapping sets ColumnMapping field to given value.
 
@@ -125,5 +125,3 @@ HasOnDuplicate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

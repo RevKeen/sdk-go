@@ -4,34 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MeterId** | **string** | Meter ID | 
-**MeterName** | **string** | Meter display name | 
-**PriceName** | **NullableString** | Attached price display name | 
-**UnitName** | **NullableString** | Unit display name | 
-**BillingScheme** | **NullableString** | Pricing scheme used for estimated charges: per_unit, tiered, or percentage | 
-**TiersMode** | **NullableString** | Tier mode when billing_scheme is tiered | 
-**UnitAmountMinor** | **NullableFloat32** | Per-unit amount in minor currency units when applicable. Null when the rate is sub-penny — see &#x60;unit_amount_decimal&#x60;. | 
-**UnitAmountDecimal** | Pointer to **NullableString** | Exact per-unit rate in minor units as a decimal string (sub-penny safe, e.g. \&quot;0.02\&quot;). Mirrors Stripe&#39;s &#x60;unit_amount_decimal&#x60;. | [optional] 
-**PackageSize** | **NullableFloat32** | Package size when package-style metered pricing is configured | 
-**PercentageRateBps** | **NullableFloat32** | Percentage rate in basis points when billing_scheme is percentage. 70 &#x3D; 0.7%. | 
-**CurrentValue** | **float32** | Aggregated usage in current period | 
-**IncludedQuantity** | **float32** | Units included in plan (0 if pure metered) | 
-**UsedQuantity** | **float32** | Usage consumed (same as current_value) | 
-**RemainingIncluded** | **float32** | Remaining included units (max 0) | 
-**OverageQuantity** | **float32** | Units over allowance (max 0) | 
-**EstimatedAmountMinor** | **float32** | Estimated charge for overage in minor units | 
-**TotalCostMinor** | **NullableFloat32** | Sum of event cost annotations (null if no cost data) | 
-**MarginMinor** | **NullableFloat32** | Estimated margin: revenue - cost (null if no cost data) | 
-**Currency** | **string** | Currency code | 
-**PeriodStart** | **string** | Current billing period start (ISO 8601) | 
-**PeriodEnd** | **string** | Current billing period end (ISO 8601) | 
-**LastEventAt** | **NullableString** | Most recent usage event timestamp in the current billing period | 
+**MeterId** | **string** | Meter ID |
+**MeterName** | **string** | Meter display name |
+**PriceName** | **NullableString** | Attached price display name |
+**UnitName** | **NullableString** | Unit display name |
+**BillingScheme** | **NullableString** | Pricing scheme used for estimated charges: per_unit, tiered, or percentage |
+**TiersMode** | **NullableString** | Tier mode when billing_scheme is tiered |
+**UnitAmountMinor** | **NullableInt64** | Per-unit amount in minor currency units when applicable. Null when the rate is sub-penny — see &#x60;unit_amount_decimal&#x60;. |
+**UnitAmountDecimal** | Pointer to **NullableString** | Exact per-unit rate in minor units as a decimal string (sub-penny safe, e.g. \&quot;0.02\&quot;). Mirrors Stripe&#39;s &#x60;unit_amount_decimal&#x60;. | [optional]
+**PackageSize** | **NullableFloat32** | Package size when package-style metered pricing is configured |
+**PercentageRateBps** | **NullableFloat32** | Percentage rate in basis points when billing_scheme is percentage. 70 &#x3D; 0.7%. |
+**CurrentValue** | **float32** | Aggregated usage in current period |
+**IncludedQuantity** | **float32** | Units included in plan (0 if pure metered) |
+**UsedQuantity** | **float32** | Usage consumed (same as current_value) |
+**RemainingIncluded** | **float32** | Remaining included units (max 0) |
+**OverageQuantity** | **float32** | Units over allowance (max 0) |
+**EstimatedAmountMinor** | **int64** | Estimated charge for overage in minor units |
+**TotalCostMinor** | **NullableInt64** | Sum of event cost annotations (null if no cost data) |
+**MarginMinor** | **NullableInt64** | Estimated margin: revenue - cost (null if no cost data) |
+**Currency** | **string** | Currency code |
+**PeriodStart** | **string** | Current billing period start (ISO 8601) |
+**PeriodEnd** | **string** | Current billing period end (ISO 8601) |
+**LastEventAt** | **NullableTime** | Most recent usage event timestamp in the current billing period |
 
 ## Methods
 
 ### NewUsageBalanceMeter
 
-`func NewUsageBalanceMeter(meterId string, meterName string, priceName NullableString, unitName NullableString, billingScheme NullableString, tiersMode NullableString, unitAmountMinor NullableFloat32, packageSize NullableFloat32, percentageRateBps NullableFloat32, currentValue float32, includedQuantity float32, usedQuantity float32, remainingIncluded float32, overageQuantity float32, estimatedAmountMinor float32, totalCostMinor NullableFloat32, marginMinor NullableFloat32, currency string, periodStart string, periodEnd string, lastEventAt NullableString, ) *UsageBalanceMeter`
+`func NewUsageBalanceMeter(meterId string, meterName string, priceName NullableString, unitName NullableString, billingScheme NullableString, tiersMode NullableString, unitAmountMinor NullableInt64, packageSize NullableFloat32, percentageRateBps NullableFloat32, currentValue float32, includedQuantity float32, usedQuantity float32, remainingIncluded float32, overageQuantity float32, estimatedAmountMinor int64, totalCostMinor NullableInt64, marginMinor NullableInt64, currency string, periodStart string, periodEnd string, lastEventAt NullableTime, ) *UsageBalanceMeter`
 
 NewUsageBalanceMeter instantiates a new UsageBalanceMeter object
 This constructor will assign default values to properties that have it defined,
@@ -208,20 +208,20 @@ SetTiersMode sets TiersMode field to given value.
 UnsetTiersMode ensures that no value is present for TiersMode, not even an explicit nil
 ### GetUnitAmountMinor
 
-`func (o *UsageBalanceMeter) GetUnitAmountMinor() float32`
+`func (o *UsageBalanceMeter) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *UsageBalanceMeter) GetUnitAmountMinorOk() (*float32, bool)`
+`func (o *UsageBalanceMeter) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *UsageBalanceMeter) SetUnitAmountMinor(v float32)`
+`func (o *UsageBalanceMeter) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -433,40 +433,40 @@ SetOverageQuantity sets OverageQuantity field to given value.
 
 ### GetEstimatedAmountMinor
 
-`func (o *UsageBalanceMeter) GetEstimatedAmountMinor() float32`
+`func (o *UsageBalanceMeter) GetEstimatedAmountMinor() int64`
 
 GetEstimatedAmountMinor returns the EstimatedAmountMinor field if non-nil, zero value otherwise.
 
 ### GetEstimatedAmountMinorOk
 
-`func (o *UsageBalanceMeter) GetEstimatedAmountMinorOk() (*float32, bool)`
+`func (o *UsageBalanceMeter) GetEstimatedAmountMinorOk() (*int64, bool)`
 
 GetEstimatedAmountMinorOk returns a tuple with the EstimatedAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEstimatedAmountMinor
 
-`func (o *UsageBalanceMeter) SetEstimatedAmountMinor(v float32)`
+`func (o *UsageBalanceMeter) SetEstimatedAmountMinor(v int64)`
 
 SetEstimatedAmountMinor sets EstimatedAmountMinor field to given value.
 
 
 ### GetTotalCostMinor
 
-`func (o *UsageBalanceMeter) GetTotalCostMinor() float32`
+`func (o *UsageBalanceMeter) GetTotalCostMinor() int64`
 
 GetTotalCostMinor returns the TotalCostMinor field if non-nil, zero value otherwise.
 
 ### GetTotalCostMinorOk
 
-`func (o *UsageBalanceMeter) GetTotalCostMinorOk() (*float32, bool)`
+`func (o *UsageBalanceMeter) GetTotalCostMinorOk() (*int64, bool)`
 
 GetTotalCostMinorOk returns a tuple with the TotalCostMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalCostMinor
 
-`func (o *UsageBalanceMeter) SetTotalCostMinor(v float32)`
+`func (o *UsageBalanceMeter) SetTotalCostMinor(v int64)`
 
 SetTotalCostMinor sets TotalCostMinor field to given value.
 
@@ -483,20 +483,20 @@ SetTotalCostMinor sets TotalCostMinor field to given value.
 UnsetTotalCostMinor ensures that no value is present for TotalCostMinor, not even an explicit nil
 ### GetMarginMinor
 
-`func (o *UsageBalanceMeter) GetMarginMinor() float32`
+`func (o *UsageBalanceMeter) GetMarginMinor() int64`
 
 GetMarginMinor returns the MarginMinor field if non-nil, zero value otherwise.
 
 ### GetMarginMinorOk
 
-`func (o *UsageBalanceMeter) GetMarginMinorOk() (*float32, bool)`
+`func (o *UsageBalanceMeter) GetMarginMinorOk() (*int64, bool)`
 
 GetMarginMinorOk returns a tuple with the MarginMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMarginMinor
 
-`func (o *UsageBalanceMeter) SetMarginMinor(v float32)`
+`func (o *UsageBalanceMeter) SetMarginMinor(v int64)`
 
 SetMarginMinor sets MarginMinor field to given value.
 
@@ -573,20 +573,20 @@ SetPeriodEnd sets PeriodEnd field to given value.
 
 ### GetLastEventAt
 
-`func (o *UsageBalanceMeter) GetLastEventAt() string`
+`func (o *UsageBalanceMeter) GetLastEventAt() time.Time`
 
 GetLastEventAt returns the LastEventAt field if non-nil, zero value otherwise.
 
 ### GetLastEventAtOk
 
-`func (o *UsageBalanceMeter) GetLastEventAtOk() (*string, bool)`
+`func (o *UsageBalanceMeter) GetLastEventAtOk() (*time.Time, bool)`
 
 GetLastEventAtOk returns a tuple with the LastEventAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastEventAt
 
-`func (o *UsageBalanceMeter) SetLastEventAt(v string)`
+`func (o *UsageBalanceMeter) SetLastEventAt(v time.Time)`
 
 SetLastEventAt sets LastEventAt field to given value.
 
@@ -603,5 +603,3 @@ SetLastEventAt sets LastEventAt field to given value.
 UnsetLastEventAt ensures that no value is present for LastEventAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

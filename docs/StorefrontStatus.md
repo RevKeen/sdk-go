@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**Ready** | **bool** |  | 
-**Checks** | [**[]StorefrontStatusCheck**](StorefrontStatusCheck.md) |  | 
-**Cart** | [**StorefrontStatusCart**](StorefrontStatusCart.md) |  | 
-**Keys** | [**StorefrontStatusKeys**](StorefrontStatusKeys.md) |  | 
-**Origins** | [**StorefrontStatusOrigins**](StorefrontStatusOrigins.md) |  | 
-**ProductRead** | [**StorefrontStatusProductRead**](StorefrontStatusProductRead.md) |  | 
-**Webhooks** | [**StorefrontStatusWebhooks**](StorefrontStatusWebhooks.md) |  | 
-**Availability** | [**StorefrontStatusAvailability**](StorefrontStatusAvailability.md) |  | 
+**Object** | **string** |  |
+**Ready** | **bool** |  |
+**Checks** | [**[]StorefrontStatusCheck**](StorefrontStatusCheck.md) |  |
+**Cart** | [**StorefrontStatusCart**](StorefrontStatusCart.md) |  |
+**Keys** | [**StorefrontStatusKeys**](StorefrontStatusKeys.md) |  |
+**Origins** | [**StorefrontStatusOrigins**](StorefrontStatusOrigins.md) |  |
+**ProductRead** | [**StorefrontStatusProductRead**](StorefrontStatusProductRead.md) |  |
+**Webhooks** | [**StorefrontStatusWebhooks**](StorefrontStatusWebhooks.md) |  |
+**Availability** | [**StorefrontStatusAvailability**](StorefrontStatusAvailability.md) |  |
 
 ## Methods
 
@@ -215,5 +215,3 @@ SetAvailability sets Availability field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

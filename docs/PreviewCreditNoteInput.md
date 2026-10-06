@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InvoiceId** | **string** | Invoice to preview a credit note against. | 
-**AmountMinor** | **int32** | Proposed credit amount in cents. The preview validates that this does not exceed the invoice&#39;s outstanding creditable amount. | 
-**TaxAmountMinor** | Pointer to **int32** | Proposed tax portion of the credit in cents. | [optional] 
-**CreditMethod** | Pointer to **string** | Planned credit method. Defaults to refund_to_payment_method. | [optional] 
-**ReasonCode** | Pointer to **string** |  | [optional] 
+**InvoiceId** | **string** | Invoice to preview a credit note against. |
+**AmountMinor** | **int64** | Proposed credit amount in cents. The preview validates that this does not exceed the invoice&#39;s outstanding creditable amount. |
+**TaxAmountMinor** | Pointer to **int64** | Proposed tax portion of the credit in cents. | [optional]
+**CreditMethod** | Pointer to **string** | Planned credit method. Defaults to refund_to_payment_method. | [optional]
+**ReasonCode** | Pointer to **string** |  | [optional]
 
 ## Methods
 
 ### NewPreviewCreditNoteInput
 
-`func NewPreviewCreditNoteInput(invoiceId string, amountMinor int32, ) *PreviewCreditNoteInput`
+`func NewPreviewCreditNoteInput(invoiceId string, amountMinor int64, ) *PreviewCreditNoteInput`
 
 NewPreviewCreditNoteInput instantiates a new PreviewCreditNoteInput object
 This constructor will assign default values to properties that have it defined,
@@ -51,40 +51,40 @@ SetInvoiceId sets InvoiceId field to given value.
 
 ### GetAmountMinor
 
-`func (o *PreviewCreditNoteInput) GetAmountMinor() int32`
+`func (o *PreviewCreditNoteInput) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *PreviewCreditNoteInput) GetAmountMinorOk() (*int32, bool)`
+`func (o *PreviewCreditNoteInput) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *PreviewCreditNoteInput) SetAmountMinor(v int32)`
+`func (o *PreviewCreditNoteInput) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
 
 ### GetTaxAmountMinor
 
-`func (o *PreviewCreditNoteInput) GetTaxAmountMinor() int32`
+`func (o *PreviewCreditNoteInput) GetTaxAmountMinor() int64`
 
 GetTaxAmountMinor returns the TaxAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTaxAmountMinorOk
 
-`func (o *PreviewCreditNoteInput) GetTaxAmountMinorOk() (*int32, bool)`
+`func (o *PreviewCreditNoteInput) GetTaxAmountMinorOk() (*int64, bool)`
 
 GetTaxAmountMinorOk returns a tuple with the TaxAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTaxAmountMinor
 
-`func (o *PreviewCreditNoteInput) SetTaxAmountMinor(v int32)`
+`func (o *PreviewCreditNoteInput) SetTaxAmountMinor(v int64)`
 
 SetTaxAmountMinor sets TaxAmountMinor field to given value.
 
@@ -146,5 +146,3 @@ HasReasonCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

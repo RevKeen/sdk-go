@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the dispute | 
-**PublicId** | **string** | Public-facing dispute identifier | 
-**PaymentId** | **NullableString** | The original payment ID this dispute is for | 
-**ParentTransactionId** | **NullableString** | Parent transaction ID in unified transaction model | 
-**Gateway** | **string** | Payment gateway that processed the original transaction | 
-**PaymentRail** | **NullableString** | Rail/payment method for the disputed transaction | 
-**DisputeKind** | **NullableString** | Rail-specific dispute subtype, when available | 
-**AmountMinor** | **float32** | Disputed amount in cents | 
-**Currency** | **string** | Three-letter ISO 4217 currency code | 
-**Reason** | **NullableString** | Human-readable reason for the dispute | 
-**CustomerName** | **NullableString** | Name of the customer who filed the dispute | 
-**CardBrand** | **NullableString** | Card brand used for the original payment | 
-**CardLast4** | **NullableString** | Last four digits of the card used for the original payment | 
-**EvidenceDueBy** | **NullableString** | Deadline for submitting evidence to contest the dispute | 
-**DaysUntilDue** | **NullableFloat32** | Number of days remaining until the evidence deadline | 
-**IsOverdue** | **bool** | Whether the evidence submission deadline has passed | 
-**DisputedAt** | **string** | Timestamp when the dispute was filed | 
+**Id** | **string** | Unique identifier for the dispute |
+**PublicId** | **string** | Public-facing dispute identifier |
+**PaymentId** | **NullableString** | The original payment ID this dispute is for |
+**ParentTransactionId** | **NullableString** | Parent transaction ID in unified transaction model |
+**Gateway** | **string** | Payment gateway that processed the original transaction |
+**PaymentRail** | **NullableString** | Rail/payment method for the disputed transaction |
+**DisputeKind** | **NullableString** | Rail-specific dispute subtype, when available |
+**AmountMinor** | **int64** | Disputed amount in cents |
+**Currency** | **string** | Three-letter ISO 4217 currency code |
+**Reason** | **NullableString** | Human-readable reason for the dispute |
+**CustomerName** | **NullableString** | Name of the customer who filed the dispute |
+**CardBrand** | **NullableString** | Card brand used for the original payment |
+**CardLast4** | **NullableString** | Last four digits of the card used for the original payment |
+**EvidenceDueBy** | **NullableString** | Deadline for submitting evidence to contest the dispute |
+**DaysUntilDue** | **NullableFloat32** | Number of days remaining until the evidence deadline |
+**IsOverdue** | **bool** | Whether the evidence submission deadline has passed |
+**DisputedAt** | **time.Time** | Timestamp when the dispute was filed |
 
 ## Methods
 
 ### NewOpenDispute
 
-`func NewOpenDispute(id string, publicId string, paymentId NullableString, parentTransactionId NullableString, gateway string, paymentRail NullableString, disputeKind NullableString, amountMinor float32, currency string, reason NullableString, customerName NullableString, cardBrand NullableString, cardLast4 NullableString, evidenceDueBy NullableString, daysUntilDue NullableFloat32, isOverdue bool, disputedAt string, ) *OpenDispute`
+`func NewOpenDispute(id string, publicId string, paymentId NullableString, parentTransactionId NullableString, gateway string, paymentRail NullableString, disputeKind NullableString, amountMinor int64, currency string, reason NullableString, customerName NullableString, cardBrand NullableString, cardLast4 NullableString, evidenceDueBy NullableString, daysUntilDue NullableFloat32, isOverdue bool, disputedAt time.Time, ) *OpenDispute`
 
 NewOpenDispute instantiates a new OpenDispute object
 This constructor will assign default values to properties that have it defined,
@@ -223,20 +223,20 @@ SetDisputeKind sets DisputeKind field to given value.
 UnsetDisputeKind ensures that no value is present for DisputeKind, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *OpenDispute) GetAmountMinor() float32`
+`func (o *OpenDispute) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *OpenDispute) GetAmountMinorOk() (*float32, bool)`
+`func (o *OpenDispute) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *OpenDispute) SetAmountMinor(v float32)`
+`func (o *OpenDispute) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -463,25 +463,23 @@ SetIsOverdue sets IsOverdue field to given value.
 
 ### GetDisputedAt
 
-`func (o *OpenDispute) GetDisputedAt() string`
+`func (o *OpenDispute) GetDisputedAt() time.Time`
 
 GetDisputedAt returns the DisputedAt field if non-nil, zero value otherwise.
 
 ### GetDisputedAtOk
 
-`func (o *OpenDispute) GetDisputedAtOk() (*string, bool)`
+`func (o *OpenDispute) GetDisputedAtOk() (*time.Time, bool)`
 
 GetDisputedAtOk returns a tuple with the DisputedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisputedAt
 
-`func (o *OpenDispute) SetDisputedAt(v string)`
+`func (o *OpenDispute) SetDisputedAt(v time.Time)`
 
 SetDisputedAt sets DisputedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

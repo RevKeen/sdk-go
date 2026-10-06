@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique customer identifier | 
-**MerchantId** | **string** | ID of the merchant this customer belongs to | 
-**MerchantRefId** | Pointer to **string** | Merchant-assigned reference ID for external system mapping | [optional] 
-**Email** | **string** | Customer&#39;s email address | 
-**Name** | Pointer to **string** | Customer&#39;s full name | [optional] 
-**Phone** | Pointer to **string** | Customer&#39;s phone number | [optional] 
-**CompanyName** | Pointer to **string** | Customer&#39;s company name | [optional] 
-**AddressLine1** | Pointer to **string** | Billing address line 1 | [optional] 
-**AddressLine2** | Pointer to **string** | Billing address line 2 | [optional] 
-**City** | Pointer to **string** | Billing address city | [optional] 
-**State** | Pointer to **string** | Billing address state or county | [optional] 
-**PostalCode** | Pointer to **string** | Billing address postal code | [optional] 
-**Country** | Pointer to **string** | Billing address country code | [optional] 
-**AuthUserId** | Pointer to **string** | Linked Better Auth user ID for portal access | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata attached to this customer | [optional] 
-**CustomFields** | Pointer to **map[string]interface{}** | Merchant-defined custom fields displayed as columns in the dashboard | [optional] 
-**CreatedAt** | **time.Time** | When the customer was created (ISO 8601) | 
-**UpdatedAt** | **time.Time** | When the customer was last updated (ISO 8601) | 
+**Id** | **string** | Unique customer identifier |
+**MerchantId** | **string** | ID of the merchant this customer belongs to |
+**MerchantRefId** | Pointer to **string** | Merchant-assigned reference ID for external system mapping | [optional]
+**Email** | **string** | Customer&#39;s email address |
+**Name** | Pointer to **string** | Customer&#39;s full name | [optional]
+**Phone** | Pointer to **string** | Customer&#39;s phone number | [optional]
+**CompanyName** | Pointer to **string** | Customer&#39;s company name | [optional]
+**AddressLine1** | Pointer to **string** | Billing address line 1 | [optional]
+**AddressLine2** | Pointer to **string** | Billing address line 2 | [optional]
+**City** | Pointer to **string** | Billing address city | [optional]
+**State** | Pointer to **string** | Billing address state or county | [optional]
+**PostalCode** | Pointer to **string** | Billing address postal code | [optional]
+**Country** | Pointer to **string** | Billing address country code | [optional]
+**AuthUserId** | Pointer to **string** | Linked Better Auth user ID for portal access | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata attached to this customer | [optional]
+**CustomFields** | Pointer to **map[string]interface{}** | Merchant-defined custom fields displayed as columns in the dashboard | [optional]
+**CreatedAt** | **time.Time** | When the customer was created (ISO 8601) |
+**UpdatedAt** | **time.Time** | When the customer was last updated (ISO 8601) |
 
 ## Methods
 
@@ -469,5 +469,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,35 +4,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**SessionToken** | Pointer to **string** | Plaintext capture-session token. Only present in the response that issues it (create / token re-issue); never returned on subsequent reads. | [optional] 
-**MerchantId** | **string** |  | 
-**CustomerId** | **NullableString** |  | 
-**CheckoutSessionId** | **NullableString** |  | 
-**MandateRequestId** | **NullableString** |  | 
-**Source** | **string** |  | 
-**Status** | **string** |  | 
-**AccountHolderName** | **NullableString** |  | 
-**SortCodeLast2** | **NullableString** | Last 2 digits of the sort code — never the full value | 
-**AccountNumberLast4** | **NullableString** | Last 4 digits of the account number | 
-**BankName** | **NullableString** |  | 
-**NoticeDate** | **NullableString** | Advance-notice date (YYYY-MM-DD) | 
-**SubmissionDate** | **NullableString** | Bacs submission date (YYYY-MM-DD) | 
-**CollectionDate** | **NullableString** | Collection date (YYYY-MM-DD) | 
-**SettlementDate** | **NullableString** | Settlement date (YYYY-MM-DD) | 
-**NoticeDays** | **NullableInt32** |  | 
-**MandateId** | **NullableString** | Mandate created from this capture session, once completed | 
-**ExpiresAt** | **NullableString** |  | 
-**CompletedAt** | **NullableString** |  | 
-**AbandonedAt** | **NullableString** |  | 
-**CreatedAt** | **NullableString** |  | 
-**UpdatedAt** | **NullableString** |  | 
+**Id** | **string** |  |
+**SessionToken** | Pointer to **string** | Plaintext capture-session token. Only present in the response that issues it (create / token re-issue); never returned on subsequent reads. | [optional]
+**MerchantId** | **string** |  |
+**CustomerId** | **NullableString** |  |
+**CheckoutSessionId** | **NullableString** |  |
+**MandateRequestId** | **NullableString** |  |
+**Source** | **string** |  |
+**Status** | **string** |  |
+**AccountHolderName** | **NullableString** |  |
+**SortCodeLast2** | **NullableString** | Last 2 digits of the sort code — never the full value |
+**AccountNumberLast4** | **NullableString** | Last 4 digits of the account number |
+**BankName** | **NullableString** |  |
+**NoticeDate** | **NullableString** | Advance-notice date (YYYY-MM-DD) |
+**SubmissionDate** | **NullableString** | Bacs submission date (YYYY-MM-DD) |
+**CollectionDate** | **NullableString** | Collection date (YYYY-MM-DD) |
+**SettlementDate** | **NullableString** | Settlement date (YYYY-MM-DD) |
+**NoticeDays** | **NullableInt32** |  |
+**MandateId** | **NullableString** | Mandate created from this capture session, once completed |
+**ExpiresAt** | **NullableTime** |  |
+**CompletedAt** | **NullableTime** |  |
+**AbandonedAt** | **NullableTime** |  |
+**CreatedAt** | **NullableTime** |  |
+**UpdatedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewDdCaptureSession
 
-`func NewDdCaptureSession(id string, merchantId string, customerId NullableString, checkoutSessionId NullableString, mandateRequestId NullableString, source string, status string, accountHolderName NullableString, sortCodeLast2 NullableString, accountNumberLast4 NullableString, bankName NullableString, noticeDate NullableString, submissionDate NullableString, collectionDate NullableString, settlementDate NullableString, noticeDays NullableInt32, mandateId NullableString, expiresAt NullableString, completedAt NullableString, abandonedAt NullableString, createdAt NullableString, updatedAt NullableString, ) *DdCaptureSession`
+`func NewDdCaptureSession(id string, merchantId string, customerId NullableString, checkoutSessionId NullableString, mandateRequestId NullableString, source string, status string, accountHolderName NullableString, sortCodeLast2 NullableString, accountNumberLast4 NullableString, bankName NullableString, noticeDate NullableString, submissionDate NullableString, collectionDate NullableString, settlementDate NullableString, noticeDays NullableInt32, mandateId NullableString, expiresAt NullableTime, completedAt NullableTime, abandonedAt NullableTime, createdAt NullableTime, updatedAt NullableTime, ) *DdCaptureSession`
 
 NewDdCaptureSession instantiates a new DdCaptureSession object
 This constructor will assign default values to properties that have it defined,
@@ -544,20 +544,20 @@ SetMandateId sets MandateId field to given value.
 UnsetMandateId ensures that no value is present for MandateId, not even an explicit nil
 ### GetExpiresAt
 
-`func (o *DdCaptureSession) GetExpiresAt() string`
+`func (o *DdCaptureSession) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *DdCaptureSession) GetExpiresAtOk() (*string, bool)`
+`func (o *DdCaptureSession) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *DdCaptureSession) SetExpiresAt(v string)`
+`func (o *DdCaptureSession) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -574,20 +574,20 @@ SetExpiresAt sets ExpiresAt field to given value.
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetCompletedAt
 
-`func (o *DdCaptureSession) GetCompletedAt() string`
+`func (o *DdCaptureSession) GetCompletedAt() time.Time`
 
 GetCompletedAt returns the CompletedAt field if non-nil, zero value otherwise.
 
 ### GetCompletedAtOk
 
-`func (o *DdCaptureSession) GetCompletedAtOk() (*string, bool)`
+`func (o *DdCaptureSession) GetCompletedAtOk() (*time.Time, bool)`
 
 GetCompletedAtOk returns a tuple with the CompletedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletedAt
 
-`func (o *DdCaptureSession) SetCompletedAt(v string)`
+`func (o *DdCaptureSession) SetCompletedAt(v time.Time)`
 
 SetCompletedAt sets CompletedAt field to given value.
 
@@ -604,20 +604,20 @@ SetCompletedAt sets CompletedAt field to given value.
 UnsetCompletedAt ensures that no value is present for CompletedAt, not even an explicit nil
 ### GetAbandonedAt
 
-`func (o *DdCaptureSession) GetAbandonedAt() string`
+`func (o *DdCaptureSession) GetAbandonedAt() time.Time`
 
 GetAbandonedAt returns the AbandonedAt field if non-nil, zero value otherwise.
 
 ### GetAbandonedAtOk
 
-`func (o *DdCaptureSession) GetAbandonedAtOk() (*string, bool)`
+`func (o *DdCaptureSession) GetAbandonedAtOk() (*time.Time, bool)`
 
 GetAbandonedAtOk returns a tuple with the AbandonedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAbandonedAt
 
-`func (o *DdCaptureSession) SetAbandonedAt(v string)`
+`func (o *DdCaptureSession) SetAbandonedAt(v time.Time)`
 
 SetAbandonedAt sets AbandonedAt field to given value.
 
@@ -634,20 +634,20 @@ SetAbandonedAt sets AbandonedAt field to given value.
 UnsetAbandonedAt ensures that no value is present for AbandonedAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *DdCaptureSession) GetCreatedAt() string`
+`func (o *DdCaptureSession) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *DdCaptureSession) GetCreatedAtOk() (*string, bool)`
+`func (o *DdCaptureSession) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *DdCaptureSession) SetCreatedAt(v string)`
+`func (o *DdCaptureSession) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -664,20 +664,20 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *DdCaptureSession) GetUpdatedAt() string`
+`func (o *DdCaptureSession) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *DdCaptureSession) GetUpdatedAtOk() (*string, bool)`
+`func (o *DdCaptureSession) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *DdCaptureSession) SetUpdatedAt(v string)`
+`func (o *DdCaptureSession) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
@@ -694,5 +694,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

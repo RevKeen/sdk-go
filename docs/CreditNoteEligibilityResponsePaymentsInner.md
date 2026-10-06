@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TransactionId** | **string** |  | 
-**Gateway** | **string** |  | 
-**PaymentMethod** | **NullableString** |  | 
-**AmountMinor** | **float32** |  | 
-**AmountRefundedMinor** | **float32** |  | 
-**AmountAvailableMinor** | **float32** |  | 
-**CardBrand** | **NullableString** |  | 
-**CardLast4** | **NullableString** |  | 
-**TerminalSerial** | **NullableString** |  | 
-**AvailableOperations** | **[]string** |  | 
-**Constraints** | [**CreditNoteEligibilityResponsePaymentsInnerConstraints**](CreditNoteEligibilityResponsePaymentsInnerConstraints.md) |  | 
+**TransactionId** | **string** |  |
+**Gateway** | **string** |  |
+**PaymentMethod** | **NullableString** |  |
+**AmountMinor** | **int64** |  |
+**AmountRefundedMinor** | **int64** |  |
+**AmountAvailableMinor** | **int64** |  |
+**CardBrand** | **NullableString** |  |
+**CardLast4** | **NullableString** |  |
+**TerminalSerial** | **NullableString** |  |
+**AvailableOperations** | **[]string** |  |
+**Constraints** | [**CreditNoteEligibilityResponsePaymentsInnerConstraints**](CreditNoteEligibilityResponsePaymentsInnerConstraints.md) |  |
 
 ## Methods
 
 ### NewCreditNoteEligibilityResponsePaymentsInner
 
-`func NewCreditNoteEligibilityResponsePaymentsInner(transactionId string, gateway string, paymentMethod NullableString, amountMinor float32, amountRefundedMinor float32, amountAvailableMinor float32, cardBrand NullableString, cardLast4 NullableString, terminalSerial NullableString, availableOperations []string, constraints CreditNoteEligibilityResponsePaymentsInnerConstraints, ) *CreditNoteEligibilityResponsePaymentsInner`
+`func NewCreditNoteEligibilityResponsePaymentsInner(transactionId string, gateway string, paymentMethod NullableString, amountMinor int64, amountRefundedMinor int64, amountAvailableMinor int64, cardBrand NullableString, cardLast4 NullableString, terminalSerial NullableString, availableOperations []string, constraints CreditNoteEligibilityResponsePaymentsInnerConstraints, ) *CreditNoteEligibilityResponsePaymentsInner`
 
 NewCreditNoteEligibilityResponsePaymentsInner instantiates a new CreditNoteEligibilityResponsePaymentsInner object
 This constructor will assign default values to properties that have it defined,
@@ -107,60 +107,60 @@ SetPaymentMethod sets PaymentMethod field to given value.
 UnsetPaymentMethod ensures that no value is present for PaymentMethod, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountMinor() float32`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountMinorOk() (*float32, bool)`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) SetAmountMinor(v float32)`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
 
 ### GetAmountRefundedMinor
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountRefundedMinor() float32`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountRefundedMinor() int64`
 
 GetAmountRefundedMinor returns the AmountRefundedMinor field if non-nil, zero value otherwise.
 
 ### GetAmountRefundedMinorOk
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountRefundedMinorOk() (*float32, bool)`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountRefundedMinorOk() (*int64, bool)`
 
 GetAmountRefundedMinorOk returns a tuple with the AmountRefundedMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountRefundedMinor
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) SetAmountRefundedMinor(v float32)`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) SetAmountRefundedMinor(v int64)`
 
 SetAmountRefundedMinor sets AmountRefundedMinor field to given value.
 
 
 ### GetAmountAvailableMinor
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountAvailableMinor() float32`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountAvailableMinor() int64`
 
 GetAmountAvailableMinor returns the AmountAvailableMinor field if non-nil, zero value otherwise.
 
 ### GetAmountAvailableMinorOk
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountAvailableMinorOk() (*float32, bool)`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) GetAmountAvailableMinorOk() (*int64, bool)`
 
 GetAmountAvailableMinorOk returns a tuple with the AmountAvailableMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountAvailableMinor
 
-`func (o *CreditNoteEligibilityResponsePaymentsInner) SetAmountAvailableMinor(v float32)`
+`func (o *CreditNoteEligibilityResponsePaymentsInner) SetAmountAvailableMinor(v int64)`
 
 SetAmountAvailableMinor sets AmountAvailableMinor field to given value.
 
@@ -297,5 +297,3 @@ SetConstraints sets Constraints field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

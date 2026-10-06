@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PriceId** | **string** | Price ID for this item | 
+**PriceId** | **string** | Price ID for this item |
 **Quantity** | Pointer to **int32** | Quantity of this item | [optional] [default to 1]
 
 ## Methods
@@ -73,5 +73,3 @@ HasQuantity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

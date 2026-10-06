@@ -4,21 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | **string** |  | 
-**Present** | **bool** |  | 
-**Active** | **bool** |  | 
-**Id** | **NullableString** |  | 
-**UnkeyKeyId** | **NullableString** |  | 
-**Scopes** | **[]string** |  | 
-**CreatedAt** | **NullableString** |  | 
-**LastUsedAt** | **NullableString** |  | 
-**RevokedAt** | **NullableString** |  | 
+**Kind** | **string** |  |
+**Present** | **bool** |  |
+**Active** | **bool** |  |
+**Id** | **NullableString** |  |
+**Scopes** | **[]string** |  |
+**CreatedAt** | **NullableTime** |  |
+**LastUsedAt** | **NullableTime** |  |
+**RevokedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewCartApiKeysStatus200ResponseDataPublishable
 
-`func NewCartApiKeysStatus200ResponseDataPublishable(kind string, present bool, active bool, id NullableString, unkeyKeyId NullableString, scopes []string, createdAt NullableString, lastUsedAt NullableString, revokedAt NullableString, ) *CartApiKeysStatus200ResponseDataPublishable`
+`func NewCartApiKeysStatus200ResponseDataPublishable(kind string, present bool, active bool, id NullableString, scopes []string, createdAt NullableTime, lastUsedAt NullableTime, revokedAt NullableTime, ) *CartApiKeysStatus200ResponseDataPublishable`
 
 NewCartApiKeysStatus200ResponseDataPublishable instantiates a new CartApiKeysStatus200ResponseDataPublishable object
 This constructor will assign default values to properties that have it defined,
@@ -123,36 +122,6 @@ SetId sets Id field to given value.
 `func (o *CartApiKeysStatus200ResponseDataPublishable) UnsetId()`
 
 UnsetId ensures that no value is present for Id, not even an explicit nil
-### GetUnkeyKeyId
-
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetUnkeyKeyId() string`
-
-GetUnkeyKeyId returns the UnkeyKeyId field if non-nil, zero value otherwise.
-
-### GetUnkeyKeyIdOk
-
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetUnkeyKeyIdOk() (*string, bool)`
-
-GetUnkeyKeyIdOk returns a tuple with the UnkeyKeyId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUnkeyKeyId
-
-`func (o *CartApiKeysStatus200ResponseDataPublishable) SetUnkeyKeyId(v string)`
-
-SetUnkeyKeyId sets UnkeyKeyId field to given value.
-
-
-### SetUnkeyKeyIdNil
-
-`func (o *CartApiKeysStatus200ResponseDataPublishable) SetUnkeyKeyIdNil(b bool)`
-
- SetUnkeyKeyIdNil sets the value for UnkeyKeyId to be an explicit nil
-
-### UnsetUnkeyKeyId
-`func (o *CartApiKeysStatus200ResponseDataPublishable) UnsetUnkeyKeyId()`
-
-UnsetUnkeyKeyId ensures that no value is present for UnkeyKeyId, not even an explicit nil
 ### GetScopes
 
 `func (o *CartApiKeysStatus200ResponseDataPublishable) GetScopes() []string`
@@ -175,20 +144,20 @@ SetScopes sets Scopes field to given value.
 
 ### GetCreatedAt
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetCreatedAt() string`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetCreatedAtOk() (*string, bool)`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) SetCreatedAt(v string)`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -205,20 +174,20 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetLastUsedAt
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetLastUsedAt() string`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) GetLastUsedAt() time.Time`
 
 GetLastUsedAt returns the LastUsedAt field if non-nil, zero value otherwise.
 
 ### GetLastUsedAtOk
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetLastUsedAtOk() (*string, bool)`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) GetLastUsedAtOk() (*time.Time, bool)`
 
 GetLastUsedAtOk returns a tuple with the LastUsedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUsedAt
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) SetLastUsedAt(v string)`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) SetLastUsedAt(v time.Time)`
 
 SetLastUsedAt sets LastUsedAt field to given value.
 
@@ -235,20 +204,20 @@ SetLastUsedAt sets LastUsedAt field to given value.
 UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
 ### GetRevokedAt
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetRevokedAt() string`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) GetRevokedAt() time.Time`
 
 GetRevokedAt returns the RevokedAt field if non-nil, zero value otherwise.
 
 ### GetRevokedAtOk
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) GetRevokedAtOk() (*string, bool)`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) GetRevokedAtOk() (*time.Time, bool)`
 
 GetRevokedAtOk returns a tuple with the RevokedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevokedAt
 
-`func (o *CartApiKeysStatus200ResponseDataPublishable) SetRevokedAt(v string)`
+`func (o *CartApiKeysStatus200ResponseDataPublishable) SetRevokedAt(v time.Time)`
 
 SetRevokedAt sets RevokedAt field to given value.
 
@@ -265,5 +234,3 @@ SetRevokedAt sets RevokedAt field to given value.
 UnsetRevokedAt ensures that no value is present for RevokedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

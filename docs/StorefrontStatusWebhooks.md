@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ActiveEndpoints** | **int32** |  | 
-**UnreachableEndpoints** | **int32** |  | 
+**ActiveEndpoints** | **int32** |  |
+**UnreachableEndpoints** | **int32** |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetUnreachableEndpoints sets UnreachableEndpoints field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

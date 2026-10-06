@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InvoiceNow** | Pointer to **bool** | Generate a final invoice immediately | [optional] 
-**Prorate** | Pointer to **bool** | Prorate final invoice | [optional] 
+**InvoiceNow** | Pointer to **bool** | Generate a final invoice immediately | [optional]
+**Prorate** | Pointer to **bool** | Prorate final invoice | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasProrate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

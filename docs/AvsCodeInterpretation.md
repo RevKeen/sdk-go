@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **string** | Raw AVS response code from gateway | 
-**MatchType** | **string** | Type of address match | 
-**AddressMatch** | **NullableBool** | Whether the street address matched | 
-**ZipMatch** | **NullableBool** | Whether the ZIP/postal code matched | 
-**Description** | **string** | Human-readable description of the AVS result | 
-**RiskLevel** | **string** | Risk level based on AVS result. low: full match, medium: partial match, high: no match | 
+**Code** | **string** | Raw AVS response code from gateway |
+**MatchType** | **string** | Type of address match |
+**AddressMatch** | **NullableBool** | Whether the street address matched |
+**ZipMatch** | **NullableBool** | Whether the ZIP/postal code matched |
+**Description** | **string** | Human-readable description of the AVS result |
+**RiskLevel** | **string** | Risk level based on AVS result. low: full match, medium: partial match, high: no match |
 
 ## Methods
 
@@ -172,5 +172,3 @@ SetRiskLevel sets RiskLevel field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

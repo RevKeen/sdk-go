@@ -4,30 +4,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Code** | **string** |  | 
-**Name** | **NullableString** |  | 
-**Description** | **NullableString** |  | 
-**DiscountType** | **string** |  | 
-**DiscountValue** | **float32** | Amount off (cents) or percentage | 
-**AppliesTo** | **NullableString** |  | 
-**ProductIds** | **[]string** |  | 
-**MaxRedemptions** | **NullableFloat32** |  | 
-**CurrentRedemptions** | **NullableFloat32** |  | 
-**ValidFrom** | **NullableString** |  | 
-**ValidUntil** | **NullableString** |  | 
-**RecurringType** | **NullableString** |  | 
-**RecurringCycles** | **NullableFloat32** |  | 
-**FirstTimeCustomer** | **NullableBool** |  | 
-**IsActive** | **NullableBool** |  | 
-**CreatedAt** | **NullableString** |  | 
-**UpdatedAt** | **NullableString** |  | 
+**Id** | **string** |  |
+**Code** | **string** |  |
+**Name** | **NullableString** |  |
+**Description** | **NullableString** |  |
+**DiscountType** | **string** |  |
+**DiscountValue** | **float32** | Amount off (cents) or percentage |
+**AppliesTo** | **NullableString** |  |
+**ProductIds** | **[]string** |  |
+**MaxRedemptions** | **NullableFloat32** |  |
+**CurrentRedemptions** | **NullableFloat32** |  |
+**ValidFrom** | **NullableString** |  |
+**ValidUntil** | **NullableString** |  |
+**RecurringType** | **NullableString** |  |
+**RecurringCycles** | **NullableFloat32** |  |
+**FirstTimeCustomer** | **NullableBool** |  |
+**IsActive** | **NullableBool** |  |
+**CreatedAt** | **NullableTime** |  |
+**UpdatedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewDiscount
 
-`func NewDiscount(id string, code string, name NullableString, description NullableString, discountType string, discountValue float32, appliesTo NullableString, productIds []string, maxRedemptions NullableFloat32, currentRedemptions NullableFloat32, validFrom NullableString, validUntil NullableString, recurringType NullableString, recurringCycles NullableFloat32, firstTimeCustomer NullableBool, isActive NullableBool, createdAt NullableString, updatedAt NullableString, ) *Discount`
+`func NewDiscount(id string, code string, name NullableString, description NullableString, discountType string, discountValue float32, appliesTo NullableString, productIds []string, maxRedemptions NullableFloat32, currentRedemptions NullableFloat32, validFrom NullableString, validUntil NullableString, recurringType NullableString, recurringCycles NullableFloat32, firstTimeCustomer NullableBool, isActive NullableBool, createdAt NullableTime, updatedAt NullableTime, ) *Discount`
 
 NewDiscount instantiates a new Discount object
 This constructor will assign default values to properties that have it defined,
@@ -484,20 +484,20 @@ SetIsActive sets IsActive field to given value.
 UnsetIsActive ensures that no value is present for IsActive, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Discount) GetCreatedAt() string`
+`func (o *Discount) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Discount) GetCreatedAtOk() (*string, bool)`
+`func (o *Discount) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Discount) SetCreatedAt(v string)`
+`func (o *Discount) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -514,20 +514,20 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *Discount) GetUpdatedAt() string`
+`func (o *Discount) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Discount) GetUpdatedAtOk() (*string, bool)`
+`func (o *Discount) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Discount) SetUpdatedAt(v string)`
+`func (o *Discount) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
@@ -544,5 +544,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

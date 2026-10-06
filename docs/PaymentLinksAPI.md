@@ -1,6 +1,6 @@
 # \PaymentLinksAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## PaymentLinksActivate
 
-> PaymentLinksUpdate200Response PaymentLinksActivate(ctx, id).Execute()
+> PaymentLinksUpdate200Response PaymentLinksActivate(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Activate a payment link (deprecated)
 
@@ -32,15 +32,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Payment link UUID or public_id
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksActivate(context.Background(), id).Execute()
+	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksActivate(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentLinksAPI.PaymentLinksActivate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +57,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment link UUID or public_id | 
+**id** | **string** | Payment link UUID or public_id |
 
 ### Other Parameters
 
@@ -66,6 +67,7 @@ Other parameters are passed through a pointer to a apiPaymentLinksActivateReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -87,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## PaymentLinksArchive
 
-> PaymentLinksUpdate200Response PaymentLinksArchive(ctx, id).Execute()
+> PaymentLinksUpdate200Response PaymentLinksArchive(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Archive a payment link (deprecated)
 
@@ -102,15 +104,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Payment link UUID or public_id
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksArchive(context.Background(), id).Execute()
+	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksArchive(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentLinksAPI.PaymentLinksArchive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,7 +129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment link UUID or public_id | 
+**id** | **string** | Payment link UUID or public_id |
 
 ### Other Parameters
 
@@ -136,6 +139,7 @@ Other parameters are passed through a pointer to a apiPaymentLinksArchiveRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -157,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## PaymentLinksCreate
 
-> PaymentLinksList200ResponseDataInner PaymentLinksCreate(ctx).PaymentLinksCreateRequest(paymentLinksCreateRequest).Execute()
+> PaymentLinksList200ResponseDataInner PaymentLinksCreate(ctx).IdempotencyKey(idempotencyKey).PaymentLinksCreateRequest(paymentLinksCreateRequest).Execute()
 
 Create a new payment link
 
@@ -172,15 +176,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	paymentLinksCreateRequest := *openapiclient.NewPaymentLinksCreateRequest() // PaymentLinksCreateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksCreate(context.Background()).PaymentLinksCreateRequest(paymentLinksCreateRequest).Execute()
+	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksCreate(context.Background()).IdempotencyKey(idempotencyKey).PaymentLinksCreateRequest(paymentLinksCreateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentLinksAPI.PaymentLinksCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,7 +206,8 @@ Other parameters are passed through a pointer to a apiPaymentLinksCreateRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **paymentLinksCreateRequest** | [**PaymentLinksCreateRequest**](PaymentLinksCreateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **paymentLinksCreateRequest** | [**PaymentLinksCreateRequest**](PaymentLinksCreateRequest.md) |  |
 
 ### Return type
 
@@ -223,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## PaymentLinksDeactivate
 
-> PaymentLinksUpdate200Response PaymentLinksDeactivate(ctx, id).Execute()
+> PaymentLinksUpdate200Response PaymentLinksDeactivate(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Deactivate a payment link (deprecated)
 
@@ -238,15 +244,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Payment link UUID or public_id
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksDeactivate(context.Background(), id).Execute()
+	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksDeactivate(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentLinksAPI.PaymentLinksDeactivate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -262,7 +269,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment link UUID or public_id | 
+**id** | **string** | Payment link UUID or public_id |
 
 ### Other Parameters
 
@@ -272,6 +279,7 @@ Other parameters are passed through a pointer to a apiPaymentLinksDeactivateRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -293,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## PaymentLinksExpire
 
-> PaymentLinksList200ResponseDataInner PaymentLinksExpire(ctx, id).PaymentLinksExpireRequest(paymentLinksExpireRequest).Execute()
+> PaymentLinksList200ResponseDataInner PaymentLinksExpire(ctx, id).IdempotencyKey(idempotencyKey).PaymentLinksExpireRequest(paymentLinksExpireRequest).Execute()
 
 Expire a payment link (deprecated)
 
@@ -308,16 +316,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Payment link UUID or public_id
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	paymentLinksExpireRequest := *openapiclient.NewPaymentLinksExpireRequest() // PaymentLinksExpireRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksExpire(context.Background(), id).PaymentLinksExpireRequest(paymentLinksExpireRequest).Execute()
+	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksExpire(context.Background(), id).IdempotencyKey(idempotencyKey).PaymentLinksExpireRequest(paymentLinksExpireRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentLinksAPI.PaymentLinksExpire``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,7 +342,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment link UUID or public_id | 
+**id** | **string** | Payment link UUID or public_id |
 
 ### Other Parameters
 
@@ -343,7 +352,8 @@ Other parameters are passed through a pointer to a apiPaymentLinksExpireRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **paymentLinksExpireRequest** | [**PaymentLinksExpireRequest**](PaymentLinksExpireRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **paymentLinksExpireRequest** | [**PaymentLinksExpireRequest**](PaymentLinksExpireRequest.md) |  |
 
 ### Return type
 
@@ -380,7 +390,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -404,7 +414,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment link UUID or public_id | 
+**id** | **string** | Payment link UUID or public_id |
 
 ### Other Parameters
 
@@ -450,7 +460,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -485,9 +495,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** |  | [default to 50]
  **offset** | **int32** |  | [default to 0]
- **status** | **string** |  | 
- **mode** | **string** |  | 
- **search** | **string** |  | 
+ **status** | **string** |  |
+ **mode** | **string** |  |
+ **search** | **string** |  |
 
 ### Return type
 
@@ -509,7 +519,7 @@ Name | Type | Description  | Notes
 
 ## PaymentLinksUpdate
 
-> PaymentLinksUpdate200Response PaymentLinksUpdate(ctx, id).PaymentLinksUpdateRequest(paymentLinksUpdateRequest).Execute()
+> PaymentLinksUpdate200Response PaymentLinksUpdate(ctx, id).IdempotencyKey(idempotencyKey).PaymentLinksUpdateRequest(paymentLinksUpdateRequest).Execute()
 
 Update payment link status
 
@@ -524,16 +534,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "id_example" // string | Payment link UUID or public_id
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	paymentLinksUpdateRequest := *openapiclient.NewPaymentLinksUpdateRequest("Status_example") // PaymentLinksUpdateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksUpdate(context.Background(), id).PaymentLinksUpdateRequest(paymentLinksUpdateRequest).Execute()
+	resp, r, err := apiClient.PaymentLinksAPI.PaymentLinksUpdate(context.Background(), id).IdempotencyKey(idempotencyKey).PaymentLinksUpdateRequest(paymentLinksUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentLinksAPI.PaymentLinksUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -549,7 +560,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment link UUID or public_id | 
+**id** | **string** | Payment link UUID or public_id |
 
 ### Other Parameters
 
@@ -559,7 +570,8 @@ Other parameters are passed through a pointer to a apiPaymentLinksUpdateRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **paymentLinksUpdateRequest** | [**PaymentLinksUpdateRequest**](PaymentLinksUpdateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **paymentLinksUpdateRequest** | [**PaymentLinksUpdateRequest**](PaymentLinksUpdateRequest.md) |  |
 
 ### Return type
 
@@ -577,4 +589,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

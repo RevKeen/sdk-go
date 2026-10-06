@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **NullableString** | Collection schedule ID | 
-**MandateId** | **string** | Mandate the collection is scheduled against | 
-**LzScheduleId** | **string** | Bureau schedule reference | 
-**AmountMinor** | **int32** | Collection amount in minor units (pence) | 
-**Currency** | **string** | ISO 4217 currency | 
-**SourceType** | **string** | invoice | payment_link | 
-**SourceId** | **string** | Invoice or payment-link ID the collection settles | 
-**Status** | **string** | Schedule status | 
-**CollectionDate** | **NullableString** | Collection date (YYYY-MM-DD) | 
-**NoticeDate** | **NullableString** | Advance-notice date (YYYY-MM-DD) | 
-**SubmissionDate** | **NullableString** | Bacs submission date (YYYY-MM-DD) | 
-**AlreadyScheduled** | **bool** | True when an existing schedule for this source was returned instead of creating a duplicate | 
+**Id** | **NullableString** | Collection schedule ID |
+**MandateId** | **string** | Mandate the collection is scheduled against |
+**LzScheduleId** | **string** | Bureau schedule reference |
+**AmountMinor** | **int64** | Collection amount in minor units (pence) |
+**Currency** | **string** | ISO 4217 currency |
+**SourceType** | **string** | invoice | payment_link |
+**SourceId** | **string** | Invoice or payment-link ID the collection settles |
+**Status** | **string** | Schedule status |
+**CollectionDate** | **NullableString** | Collection date (YYYY-MM-DD) |
+**NoticeDate** | **NullableString** | Advance-notice date (YYYY-MM-DD) |
+**SubmissionDate** | **NullableString** | Bacs submission date (YYYY-MM-DD) |
+**AlreadyScheduled** | **bool** | True when an existing schedule for this source was returned instead of creating a duplicate |
 
 ## Methods
 
 ### NewCollectionSchedule
 
-`func NewCollectionSchedule(id NullableString, mandateId string, lzScheduleId string, amountMinor int32, currency string, sourceType string, sourceId string, status string, collectionDate NullableString, noticeDate NullableString, submissionDate NullableString, alreadyScheduled bool, ) *CollectionSchedule`
+`func NewCollectionSchedule(id NullableString, mandateId string, lzScheduleId string, amountMinor int64, currency string, sourceType string, sourceId string, status string, collectionDate NullableString, noticeDate NullableString, submissionDate NullableString, alreadyScheduled bool, ) *CollectionSchedule`
 
 NewCollectionSchedule instantiates a new CollectionSchedule object
 This constructor will assign default values to properties that have it defined,
@@ -108,20 +108,20 @@ SetLzScheduleId sets LzScheduleId field to given value.
 
 ### GetAmountMinor
 
-`func (o *CollectionSchedule) GetAmountMinor() int32`
+`func (o *CollectionSchedule) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CollectionSchedule) GetAmountMinorOk() (*int32, bool)`
+`func (o *CollectionSchedule) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CollectionSchedule) SetAmountMinor(v int32)`
+`func (o *CollectionSchedule) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -318,5 +318,3 @@ SetAlreadyScheduled sets AlreadyScheduled field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

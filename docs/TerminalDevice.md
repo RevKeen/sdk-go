@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for this terminal device. Use this as the device_id when initiating payments. | 
-**DeviceName** | **NullableString** | Friendly name assigned to this device (e.g., &#39;Front Desk Terminal&#39;) | 
-**TerminalSerial** | **NullableString** | Serial number of the paired PAX terminal hardware | 
-**TerminalIp** | **NullableString** | The LAN IP address of the terminal as seen by the connector on the merchant&#39;s local network. This is not a publicly reachable address — all commands flow through the RevKeen cloud. | 
-**Platform** | **NullableString** | Operating system of the machine running the Terminal Connector application | 
-**Status** | **string** | Device connectivity status. online: connector connected and heartbeat within 5 minutes. offline: heartbeat stale or connector disconnected. pairing: connector registered but terminal not yet paired. | 
-**TerminalPaired** | **bool** | Whether a PAX terminal has been paired to this connector device. Must be true to accept payments. | 
-**TerminalReachable** | **NullableBool** | Whether the connector can currently reach the PAX terminal on the local network | 
-**AppVersion** | **NullableString** | Version of the Terminal Connector application | 
-**LastHeartbeatAt** | **NullableString** | ISO 8601 timestamp of the last heartbeat received from this device. Devices with no heartbeat in 5 minutes are considered offline. | 
+**Id** | **string** | Unique identifier for this terminal device. Use this as the device_id when initiating payments. |
+**DeviceName** | **NullableString** | Friendly name assigned to this device (e.g., &#39;Front Desk Terminal&#39;) |
+**TerminalSerial** | **NullableString** | Serial number of the paired PAX terminal hardware |
+**TerminalIp** | **NullableString** | The LAN IP address of the terminal as seen by the connector on the merchant&#39;s local network. This is not a publicly reachable address — all commands flow through the RevKeen cloud. |
+**Platform** | **NullableString** | Operating system of the machine running the Terminal Connector application |
+**Status** | **string** | Device connectivity status. online: connector connected and heartbeat within 5 minutes. offline: heartbeat stale or connector disconnected. pairing: connector registered but terminal not yet paired. |
+**TerminalPaired** | **bool** | Whether a PAX terminal has been paired to this connector device. Must be true to accept payments. |
+**TerminalReachable** | **NullableBool** | Whether the connector can currently reach the PAX terminal on the local network |
+**AppVersion** | **NullableString** | Version of the Terminal Connector application |
+**LastHeartbeatAt** | **NullableTime** | ISO 8601 timestamp of the last heartbeat received from this device. Devices with no heartbeat in 5 minutes are considered offline. |
 
 ## Methods
 
 ### NewTerminalDevice
 
-`func NewTerminalDevice(id string, deviceName NullableString, terminalSerial NullableString, terminalIp NullableString, platform NullableString, status string, terminalPaired bool, terminalReachable NullableBool, appVersion NullableString, lastHeartbeatAt NullableString, ) *TerminalDevice`
+`func NewTerminalDevice(id string, deviceName NullableString, terminalSerial NullableString, terminalIp NullableString, platform NullableString, status string, terminalPaired bool, terminalReachable NullableBool, appVersion NullableString, lastHeartbeatAt NullableTime, ) *TerminalDevice`
 
 NewTerminalDevice instantiates a new TerminalDevice object
 This constructor will assign default values to properties that have it defined,
@@ -276,20 +276,20 @@ SetAppVersion sets AppVersion field to given value.
 UnsetAppVersion ensures that no value is present for AppVersion, not even an explicit nil
 ### GetLastHeartbeatAt
 
-`func (o *TerminalDevice) GetLastHeartbeatAt() string`
+`func (o *TerminalDevice) GetLastHeartbeatAt() time.Time`
 
 GetLastHeartbeatAt returns the LastHeartbeatAt field if non-nil, zero value otherwise.
 
 ### GetLastHeartbeatAtOk
 
-`func (o *TerminalDevice) GetLastHeartbeatAtOk() (*string, bool)`
+`func (o *TerminalDevice) GetLastHeartbeatAtOk() (*time.Time, bool)`
 
 GetLastHeartbeatAtOk returns a tuple with the LastHeartbeatAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastHeartbeatAt
 
-`func (o *TerminalDevice) SetLastHeartbeatAt(v string)`
+`func (o *TerminalDevice) SetLastHeartbeatAt(v time.Time)`
 
 SetLastHeartbeatAt sets LastHeartbeatAt field to given value.
 
@@ -306,5 +306,3 @@ SetLastHeartbeatAt sets LastHeartbeatAt field to given value.
 UnsetLastHeartbeatAt ensures that no value is present for LastHeartbeatAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

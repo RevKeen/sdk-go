@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** |  | [optional] 
-**AmountMinor** | Pointer to **int32** |  | [optional] 
-**Quantity** | Pointer to **int32** |  | [optional] 
-**NextBillingDate** | Pointer to **string** |  | [optional] 
-**BillingAnchorDay** | Pointer to **int32** |  | [optional] 
-**PauseAtPeriodEnd** | Pointer to **bool** |  | [optional] 
-**CancelAtPeriodEnd** | Pointer to **bool** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**Status** | Pointer to **string** |  | [optional]
+**AmountMinor** | Pointer to **int64** |  | [optional]
+**Quantity** | Pointer to **int32** |  | [optional]
+**NextBillingDate** | Pointer to **string** |  | [optional]
+**BillingAnchorDay** | Pointer to **int32** |  | [optional]
+**PauseAtPeriodEnd** | Pointer to **bool** |  | [optional]
+**CancelAtPeriodEnd** | Pointer to **bool** |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
 
 ## Methods
 
@@ -59,20 +59,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetAmountMinor
 
-`func (o *SubscriptionsUpdateRequest) GetAmountMinor() int32`
+`func (o *SubscriptionsUpdateRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *SubscriptionsUpdateRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *SubscriptionsUpdateRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *SubscriptionsUpdateRequest) SetAmountMinor(v int32)`
+`func (o *SubscriptionsUpdateRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -209,20 +209,20 @@ HasCancelAtPeriodEnd returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *SubscriptionsUpdateRequest) GetMetadata() map[string]interface{}`
+`func (o *SubscriptionsUpdateRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *SubscriptionsUpdateRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionsUpdateRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *SubscriptionsUpdateRequest) SetMetadata(v map[string]interface{})`
+`func (o *SubscriptionsUpdateRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -234,5 +234,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

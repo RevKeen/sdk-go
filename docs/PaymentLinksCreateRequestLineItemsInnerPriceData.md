@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**UnitAmount** | **int32** |  | 
-**ProductData** | Pointer to [**PaymentLinksCreateRequestLineItemsInnerPriceDataProductData**](PaymentLinksCreateRequestLineItemsInnerPriceDataProductData.md) |  | [optional] 
-**Product** | Pointer to **string** |  | [optional] 
-**Recurring** | Pointer to [**PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring**](PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring.md) |  | [optional] 
-**TaxBehavior** | Pointer to **NullableString** |  | [optional] 
+**Currency** | Pointer to **string** | Three-letter ISO currency code. Defaults to the merchant&#39;s default currency. | [optional]
+**UnitAmount** | **int32** |  |
+**ProductData** | Pointer to [**PaymentLinksCreateRequestLineItemsInnerPriceDataProductData**](PaymentLinksCreateRequestLineItemsInnerPriceDataProductData.md) |  | [optional]
+**Product** | Pointer to **string** |  | [optional]
+**Recurring** | Pointer to [**NullablePaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring**](PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring.md) |  | [optional]
+**TaxBehavior** | Pointer to **NullableString** |  | [optional]
 
 ## Methods
 
@@ -150,6 +150,16 @@ SetRecurring sets Recurring field to given value.
 
 HasRecurring returns a boolean if a field has been set.
 
+### SetRecurringNil
+
+`func (o *PaymentLinksCreateRequestLineItemsInnerPriceData) SetRecurringNil(b bool)`
+
+ SetRecurringNil sets the value for Recurring to be an explicit nil
+
+### UnsetRecurring
+`func (o *PaymentLinksCreateRequestLineItemsInnerPriceData) UnsetRecurring()`
+
+UnsetRecurring ensures that no value is present for Recurring, not even an explicit nil
 ### GetTaxBehavior
 
 `func (o *PaymentLinksCreateRequestLineItemsInnerPriceData) GetTaxBehavior() string`
@@ -187,5 +197,3 @@ HasTaxBehavior returns a boolean if a field has been set.
 UnsetTaxBehavior ensures that no value is present for TaxBehavior, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**MeterId** | **string** |  | 
-**StartTime** | **string** |  | 
-**EndTime** | **string** |  | 
-**Value** | **float32** | Aggregated usage value | 
-**EventCount** | **float32** | Number of events in range | 
+**Object** | **string** |  |
+**MeterId** | **string** |  |
+**StartTime** | **time.Time** |  |
+**EndTime** | **time.Time** |  |
+**Value** | **float32** | Aggregated usage value |
+**EventCount** | **float32** | Number of events in range |
 
 ## Methods
 
 ### NewUsageAggregateResponse
 
-`func NewUsageAggregateResponse(object string, meterId string, startTime string, endTime string, value float32, eventCount float32, ) *UsageAggregateResponse`
+`func NewUsageAggregateResponse(object string, meterId string, startTime time.Time, endTime time.Time, value float32, eventCount float32, ) *UsageAggregateResponse`
 
 NewUsageAggregateResponse instantiates a new UsageAggregateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -72,40 +72,40 @@ SetMeterId sets MeterId field to given value.
 
 ### GetStartTime
 
-`func (o *UsageAggregateResponse) GetStartTime() string`
+`func (o *UsageAggregateResponse) GetStartTime() time.Time`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *UsageAggregateResponse) GetStartTimeOk() (*string, bool)`
+`func (o *UsageAggregateResponse) GetStartTimeOk() (*time.Time, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *UsageAggregateResponse) SetStartTime(v string)`
+`func (o *UsageAggregateResponse) SetStartTime(v time.Time)`
 
 SetStartTime sets StartTime field to given value.
 
 
 ### GetEndTime
 
-`func (o *UsageAggregateResponse) GetEndTime() string`
+`func (o *UsageAggregateResponse) GetEndTime() time.Time`
 
 GetEndTime returns the EndTime field if non-nil, zero value otherwise.
 
 ### GetEndTimeOk
 
-`func (o *UsageAggregateResponse) GetEndTimeOk() (*string, bool)`
+`func (o *UsageAggregateResponse) GetEndTimeOk() (*time.Time, bool)`
 
 GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndTime
 
-`func (o *UsageAggregateResponse) SetEndTime(v string)`
+`func (o *UsageAggregateResponse) SetEndTime(v time.Time)`
 
 SetEndTime sets EndTime field to given value.
 
@@ -152,5 +152,3 @@ SetEventCount sets EventCount field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

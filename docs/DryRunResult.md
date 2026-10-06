@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**Summary** | [**DryRunResultSummary**](DryRunResultSummary.md) |  | 
-**Data** | [**[]DryRunResultDataInner**](DryRunResultDataInner.md) |  | 
+**Object** | **string** |  |
+**Summary** | [**DryRunResultSummary**](DryRunResultSummary.md) |  |
+**Data** | [**[]DryRunResultDataInner**](DryRunResultDataInner.md) |  |
 
 ## Methods
 
@@ -89,5 +89,3 @@ SetData sets Data field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

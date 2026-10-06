@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**InvoiceNumber** | **NullableString** |  | 
-**Total** | **NullableString** |  | 
-**AmountDue** | **NullableString** |  | 
-**Currency** | **NullableString** |  | 
+**Id** | **string** |  |
+**InvoiceNumber** | **NullableString** |  |
+**Total** | **NullableString** |  |
+**AmountDue** | **NullableString** |  |
+**Currency** | **NullableString** |  |
 
 ## Methods
 
@@ -171,5 +171,3 @@ SetCurrency sets Currency field to given value.
 UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,31 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the setup intent | 
-**Object** | **string** | Object type, always &#39;setup_intent&#39; | 
-**PublicId** | **string** | Public ID visible in API responses (seti_xxx format) | 
-**Status** | **string** | The status of the setup intent | 
-**CustomerId** | **NullableString** | ID of the customer this setup intent is for | 
-**PaymentMethodId** | **NullableString** | ID of the payment method being set up | 
-**PaymentMethodTypes** | **[]string** | Allowed payment method types for this setup | 
-**Usage** | **string** | Indicates how the payment method will be used | 
-**NextAction** | [**SetupIntentNextAction**](SetupIntentNextAction.md) |  | 
-**ClientSecret** | **string** | Client secret for frontend confirmation | 
-**Gateway** | **string** | Name of the payment processor that handled this setup intent | 
-**LastError** | [**SetupIntentError**](SetupIntentError.md) |  | 
-**CancellationReason** | **NullableString** | Reason for cancellation if canceled | 
-**Description** | **NullableString** | Merchant description for reference | 
-**Metadata** | **map[string]interface{}** | Custom metadata attached to the setup intent | 
-**ConfirmedAt** | **NullableTime** | When the setup intent was confirmed | 
-**CanceledAt** | **NullableTime** | When the setup intent was canceled | 
-**CreatedAt** | **time.Time** | When the setup intent was created | 
-**UpdatedAt** | **time.Time** | When the setup intent was last updated | 
+**Id** | **string** | Unique identifier for the setup intent |
+**Object** | **string** | Object type, always &#39;setup_intent&#39; |
+**PublicId** | **string** | Public ID visible in API responses (seti_xxx format) |
+**Status** | **string** | The status of the setup intent |
+**CustomerId** | **NullableString** | ID of the customer this setup intent is for |
+**PaymentMethodId** | **NullableString** | ID of the payment method being set up |
+**PaymentMethodTypes** | **[]string** | Allowed payment method types for this setup |
+**Usage** | **string** | Indicates how the payment method will be used |
+**NextAction** | [**NullableSetupIntentNextAction**](SetupIntentNextAction.md) |  |
+**ClientSecret** | **string** | Client secret for frontend confirmation |
+**Gateway** | **string** | Name of the payment processor that handled this setup intent |
+**LastError** | [**NullableSetupIntentError**](SetupIntentError.md) |  |
+**CancellationReason** | **NullableString** | Reason for cancellation if canceled |
+**Description** | **NullableString** | Merchant description for reference |
+**Metadata** | **map[string]interface{}** | Custom metadata attached to the setup intent |
+**ConfirmedAt** | **NullableTime** | When the setup intent was confirmed |
+**CanceledAt** | **NullableTime** | When the setup intent was canceled |
+**CreatedAt** | **time.Time** | When the setup intent was created |
+**UpdatedAt** | **time.Time** | When the setup intent was last updated |
 
 ## Methods
 
 ### NewSetupIntent
 
-`func NewSetupIntent(id string, object string, publicId string, status string, customerId NullableString, paymentMethodId NullableString, paymentMethodTypes []string, usage string, nextAction SetupIntentNextAction, clientSecret string, gateway string, lastError SetupIntentError, cancellationReason NullableString, description NullableString, metadata map[string]interface{}, confirmedAt NullableTime, canceledAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *SetupIntent`
+`func NewSetupIntent(id string, object string, publicId string, status string, customerId NullableString, paymentMethodId NullableString, paymentMethodTypes []string, usage string, nextAction NullableSetupIntentNextAction, clientSecret string, gateway string, lastError NullableSetupIntentError, cancellationReason NullableString, description NullableString, metadata map[string]*interface{}, confirmedAt NullableTime, canceledAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *SetupIntent`
 
 NewSetupIntent instantiates a new SetupIntent object
 This constructor will assign default values to properties that have it defined,
@@ -243,6 +243,16 @@ and a boolean to check if the value has been set.
 SetNextAction sets NextAction field to given value.
 
 
+### SetNextActionNil
+
+`func (o *SetupIntent) SetNextActionNil(b bool)`
+
+ SetNextActionNil sets the value for NextAction to be an explicit nil
+
+### UnsetNextAction
+`func (o *SetupIntent) UnsetNextAction()`
+
+UnsetNextAction ensures that no value is present for NextAction, not even an explicit nil
 ### GetClientSecret
 
 `func (o *SetupIntent) GetClientSecret() string`
@@ -303,6 +313,16 @@ and a boolean to check if the value has been set.
 SetLastError sets LastError field to given value.
 
 
+### SetLastErrorNil
+
+`func (o *SetupIntent) SetLastErrorNil(b bool)`
+
+ SetLastErrorNil sets the value for LastError to be an explicit nil
+
+### UnsetLastError
+`func (o *SetupIntent) UnsetLastError()`
+
+UnsetLastError ensures that no value is present for LastError, not even an explicit nil
 ### GetCancellationReason
 
 `func (o *SetupIntent) GetCancellationReason() string`
@@ -365,20 +385,20 @@ SetDescription sets Description field to given value.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetMetadata
 
-`func (o *SetupIntent) GetMetadata() map[string]interface{}`
+`func (o *SetupIntent) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *SetupIntent) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *SetupIntent) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *SetupIntent) SetMetadata(v map[string]interface{})`
+`func (o *SetupIntent) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -485,5 +505,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique invoice identifier | 
-**CustomerUuid** | **string** | ID of the customer this invoice belongs to | 
-**InvoiceNumber** | Pointer to **string** | Merchant-assigned invoice number for reference | [optional] 
-**TotalMinor** | **int32** | Total amount in minor units (cents) | 
-**Currency** | **string** | Three-letter ISO 4217 currency code | 
-**AllowedMethods** | Pointer to **[]string** | Allowed payment methods for checkout sessions against this invoice | [optional] 
-**Status** | **string** | Invoice lifecycle status: draft, open, finalized, paid, void, or uncollectible | 
-**DueDate** | Pointer to **NullableString** | Payment due date in ISO 8601 format | [optional] 
-**CustomFields** | Pointer to **map[string]interface{}** | Key-value pairs for custom fields | [optional] 
-**ExternalSource** | Pointer to **NullableString** | External integration source (e.g., practicehub, wodify) | [optional] 
-**ExternalType** | Pointer to **NullableString** | Type within external system (e.g., appointment, membership) | [optional] 
-**ExternalId** | Pointer to **NullableString** | ID from external system | [optional] 
-**SubscriptionTerms** | Pointer to [**InvoiceSubscriptionTerms**](InvoiceSubscriptionTerms.md) |  | [optional] 
-**CreatedAt** | **string** | When the invoice was created (ISO 8601) | 
-**UpdatedAt** | **string** | When the invoice was last updated (ISO 8601) | 
+**Id** | **string** | Unique invoice identifier |
+**CustomerUuid** | **string** | ID of the customer this invoice belongs to |
+**InvoiceNumber** | Pointer to **string** | Merchant-assigned invoice number for reference | [optional]
+**TotalMinor** | **int64** | Total amount in minor units (cents) |
+**Currency** | **string** | Three-letter ISO 4217 currency code |
+**AllowedMethods** | Pointer to **[]string** | Allowed payment methods for checkout sessions against this invoice | [optional]
+**Status** | **string** | Invoice lifecycle status: draft, open, finalized, paid, void, or uncollectible |
+**DueDate** | Pointer to **NullableString** | Payment due date in ISO 8601 format | [optional]
+**CustomFields** | Pointer to **map[string]interface{}** | Key-value pairs for custom fields | [optional]
+**ExternalSource** | Pointer to **NullableString** | External integration source (e.g., practicehub, wodify) | [optional]
+**ExternalType** | Pointer to **NullableString** | Type within external system (e.g., appointment, membership) | [optional]
+**ExternalId** | Pointer to **NullableString** | ID from external system | [optional]
+**SubscriptionTerms** | Pointer to [**NullableInvoiceSubscriptionTerms**](InvoiceSubscriptionTerms.md) |  | [optional]
+**CreatedAt** | **time.Time** | When the invoice was created (ISO 8601) |
+**UpdatedAt** | **time.Time** | When the invoice was last updated (ISO 8601) |
 
 ## Methods
 
 ### NewInvoice
 
-`func NewInvoice(id string, customerUuid string, totalMinor int32, currency string, status string, createdAt string, updatedAt string, ) *Invoice`
+`func NewInvoice(id string, customerUuid string, totalMinor int64, currency string, status string, createdAt time.Time, updatedAt time.Time, ) *Invoice`
 
 NewInvoice instantiates a new Invoice object
 This constructor will assign default values to properties that have it defined,
@@ -106,20 +106,20 @@ HasInvoiceNumber returns a boolean if a field has been set.
 
 ### GetTotalMinor
 
-`func (o *Invoice) GetTotalMinor() int32`
+`func (o *Invoice) GetTotalMinor() int64`
 
 GetTotalMinor returns the TotalMinor field if non-nil, zero value otherwise.
 
 ### GetTotalMinorOk
 
-`func (o *Invoice) GetTotalMinorOk() (*int32, bool)`
+`func (o *Invoice) GetTotalMinorOk() (*int64, bool)`
 
 GetTotalMinorOk returns a tuple with the TotalMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalMinor
 
-`func (o *Invoice) SetTotalMinor(v int32)`
+`func (o *Invoice) SetTotalMinor(v int64)`
 
 SetTotalMinor sets TotalMinor field to given value.
 
@@ -389,47 +389,55 @@ SetSubscriptionTerms sets SubscriptionTerms field to given value.
 
 HasSubscriptionTerms returns a boolean if a field has been set.
 
+### SetSubscriptionTermsNil
+
+`func (o *Invoice) SetSubscriptionTermsNil(b bool)`
+
+ SetSubscriptionTermsNil sets the value for SubscriptionTerms to be an explicit nil
+
+### UnsetSubscriptionTerms
+`func (o *Invoice) UnsetSubscriptionTerms()`
+
+UnsetSubscriptionTerms ensures that no value is present for SubscriptionTerms, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Invoice) GetCreatedAt() string`
+`func (o *Invoice) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Invoice) GetCreatedAtOk() (*string, bool)`
+`func (o *Invoice) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Invoice) SetCreatedAt(v string)`
+`func (o *Invoice) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *Invoice) GetUpdatedAt() string`
+`func (o *Invoice) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Invoice) GetUpdatedAtOk() (*string, bool)`
+`func (o *Invoice) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Invoice) SetUpdatedAt(v string)`
+`func (o *Invoice) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

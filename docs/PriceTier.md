@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UpTo** | **NullableInt32** | Upper bound of this tier (1-based inclusive). &#x60;null&#x60; &#x3D; open-ended catch-all. Only the FINAL tier may set &#x60;up_to: null&#x60;. | 
-**UnitAmountMinor** | **NullableInt32** | Per-unit charge in minor currency units (cents). May be null if the tier charges only a flat fee, or (REV-6249) when the rate is sub-penny and carried by &#x60;unit_amount_decimal&#x60;. | 
-**UnitAmountDecimal** | Pointer to **NullableString** | Exact per-unit rate for this tier in minor currency units, as a decimal string (sub-penny safe, e.g. \&quot;0.0000024\&quot;). Takes precedence over &#x60;unit_amount_minor&#x60;, which is null whenever the rate is not a whole number of minor units. Must be &gt; 0 with at most 12 decimal places. Tier BOUNDARIES remain integer. | [optional] 
-**FlatAmountMinor** | **NullableInt32** | Flat fee charged once when quantity enters this tier. May be null if the tier charges only a per-unit amount. Always a whole number of minor units — only the per-unit RATE supports sub-penny precision. | 
+**UpTo** | **NullableInt32** | Upper bound of this tier (1-based inclusive). &#x60;null&#x60; &#x3D; open-ended catch-all. Only the FINAL tier may set &#x60;up_to: null&#x60;. |
+**UnitAmountMinor** | **NullableInt64** | Per-unit charge in minor currency units (cents). May be null if the tier charges only a flat fee, or when the rate is sub-penny and carried by &#x60;unit_amount_decimal&#x60;. |
+**UnitAmountDecimal** | Pointer to **NullableString** | Exact per-unit rate for this tier in minor currency units, as a decimal string (sub-penny safe, e.g. \&quot;0.0000024\&quot;). Takes precedence over &#x60;unit_amount_minor&#x60;, which is null whenever the rate is not a whole number of minor units. Must be &gt; 0 with at most 12 decimal places. Tier BOUNDARIES remain integer. | [optional]
+**FlatAmountMinor** | **NullableInt64** | Flat fee charged once when quantity enters this tier. May be null if the tier charges only a per-unit amount. Always a whole number of minor units — only the per-unit RATE supports sub-penny precision. |
 
 ## Methods
 
 ### NewPriceTier
 
-`func NewPriceTier(upTo NullableInt32, unitAmountMinor NullableInt32, flatAmountMinor NullableInt32, ) *PriceTier`
+`func NewPriceTier(upTo NullableInt32, unitAmountMinor NullableInt64, flatAmountMinor NullableInt64, ) *PriceTier`
 
 NewPriceTier instantiates a new PriceTier object
 This constructor will assign default values to properties that have it defined,
@@ -60,20 +60,20 @@ SetUpTo sets UpTo field to given value.
 UnsetUpTo ensures that no value is present for UpTo, not even an explicit nil
 ### GetUnitAmountMinor
 
-`func (o *PriceTier) GetUnitAmountMinor() int32`
+`func (o *PriceTier) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *PriceTier) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *PriceTier) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *PriceTier) SetUnitAmountMinor(v int32)`
+`func (o *PriceTier) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -125,20 +125,20 @@ HasUnitAmountDecimal returns a boolean if a field has been set.
 UnsetUnitAmountDecimal ensures that no value is present for UnitAmountDecimal, not even an explicit nil
 ### GetFlatAmountMinor
 
-`func (o *PriceTier) GetFlatAmountMinor() int32`
+`func (o *PriceTier) GetFlatAmountMinor() int64`
 
 GetFlatAmountMinor returns the FlatAmountMinor field if non-nil, zero value otherwise.
 
 ### GetFlatAmountMinorOk
 
-`func (o *PriceTier) GetFlatAmountMinorOk() (*int32, bool)`
+`func (o *PriceTier) GetFlatAmountMinorOk() (*int64, bool)`
 
 GetFlatAmountMinorOk returns a tuple with the FlatAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlatAmountMinor
 
-`func (o *PriceTier) SetFlatAmountMinor(v int32)`
+`func (o *PriceTier) SetFlatAmountMinor(v int64)`
 
 SetFlatAmountMinor sets FlatAmountMinor field to given value.
 
@@ -155,5 +155,3 @@ SetFlatAmountMinor sets FlatAmountMinor field to given value.
 UnsetFlatAmountMinor ensures that no value is present for FlatAmountMinor, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

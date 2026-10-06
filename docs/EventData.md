@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to **interface{}** |  | [optional] 
-**PreviousAttributes** | Pointer to **interface{}** |  | [optional] 
+**Object** | Pointer to **interface{}** |  | [optional]
+**PreviousAttributes** | Pointer to **interface{}** |  | [optional]
 
 ## Methods
 
@@ -98,5 +98,3 @@ HasPreviousAttributes returns a boolean if a field has been set.
 UnsetPreviousAttributes ensures that no value is present for PreviousAttributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

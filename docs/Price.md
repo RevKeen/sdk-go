@@ -4,38 +4,41 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the price | 
-**Object** | **string** | Object type | 
-**ProductId** | **string** | ID of the product this price belongs to | 
-**Active** | **bool** | Whether the price is active | 
-**Currency** | **string** | Three-letter ISO currency code (lowercase) | 
-**UnitAmount** | **NullableInt32** | Price in minor units (cents). Null when the per-unit rate is sub-penny — see &#x60;unit_amount_decimal&#x60;. | 
-**UnitAmountDecimal** | Pointer to **NullableString** | Exact per-unit rate in minor units as a decimal string (sub-penny safe, e.g. \&quot;0.02\&quot; &#x3D; 0.02 pence). Set when the rate is not a whole minor unit; mirrors Stripe&#39;s &#x60;unit_amount_decimal&#x60;. | [optional] 
-**Type** | **string** | Price type | 
-**PricingModel** | **string** | Pricing model | 
-**Interval** | Pointer to **NullableString** | Billing interval (recurring only) | [optional] 
-**IntervalCount** | Pointer to **NullableInt32** | Number of intervals between billings | [optional] 
-**TrialPeriodDays** | Pointer to **NullableInt32** | Trial period in days (recurring only) | [optional] 
-**StartRule** | Pointer to **NullableString** | First-charge behavior for recurring checkout. &#x60;immediate&#x60;: full first period now. &#x60;next_anchor&#x60;: first charge on the billing anchor. &#x60;prorate&#x60;: prorated stub now, then full charge on the billing anchor. | [optional] 
-**MinimumAmount** | Pointer to **NullableInt32** | PWYW: minimum amount in cents | [optional] 
-**MaximumAmount** | Pointer to **NullableInt32** | PWYW: maximum amount in cents | [optional] 
-**SuggestedAmount** | Pointer to **NullableInt32** | PWYW: suggested amount in cents | [optional] 
-**PresetAmounts** | Pointer to **[]int32** | PWYW: quick-select amounts | [optional] 
-**Name** | Pointer to **NullableString** | Customer-facing price name (e.g., &#39;Morning&#39;, &#39;Full day&#39;) | [optional] 
-**Nickname** | Pointer to **NullableString** | Display name (e.g., &#39;Monthly&#39;, &#39;Annual - Save 17%&#39;) | [optional] 
-**Description** | Pointer to **NullableString** | Description of this price option | [optional] 
-**Version** | **int32** | Immutable version for this price row | 
-**LookupKey** | Pointer to **NullableString** | Stable key for API lookups | [optional] 
-**BillingScheme** | **string** | Billing scheme. Defaults to &#x60;per_unit&#x60;. Set to &#x60;tiered&#x60; along with &#x60;tiers_mode&#x60; + &#x60;tiers&#x60; to use graduated or volume pricing. | 
-**TiersMode** | Pointer to **NullableString** | Tiered pricing mode. Required when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;, must be null otherwise. | [optional] 
-**Tiers** | Pointer to [**[]PriceTier**](PriceTier.md) | Price tiers (ordered by &#x60;up_to&#x60;). Present only when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;. At least 2 tiers, final tier MUST have &#x60;up_to: null&#x60;. Immutable after creation. | [optional] 
-**TransformQuantity** | Pointer to [**PriceTransformQuantity**](PriceTransformQuantity.md) |  | [optional] 
-**PercentageRateBps** | Pointer to **NullableInt32** | Rate in basis points (70 &#x3D; 0.7%). Present only when &#x60;billing_scheme&#x60; is &#x60;percentage&#x60;. Null for &#x60;per_unit&#x60; and &#x60;tiered&#x60; prices. | [optional] 
-**PayInAdvance** | Pointer to **bool** | When true for a metered UBB price, usage events are debited from the customer&#39;s prepaid wallet at ingest time. | [optional] 
-**SpendingMinimumCents** | Pointer to **NullableInt32** | Minimum minor-unit amount applied to each pay-in-advance usage drawdown when set. | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**CreatedAt** | **time.Time** | Creation timestamp | 
-**UpdatedAt** | **time.Time** | Last update timestamp | 
+**Id** | **string** | Unique identifier for the price |
+**Object** | **string** | Object type |
+**ProductId** | **string** | ID of the product this price belongs to |
+**Active** | **bool** | Whether the price is active |
+**Currency** | **string** | Three-letter ISO currency code (lowercase) |
+**UnitAmount** | **NullableInt32** | Price in minor units (cents). Null when the per-unit rate is sub-penny — see &#x60;unit_amount_decimal&#x60;. |
+**UnitAmountDecimal** | Pointer to **NullableString** | Exact per-unit rate in minor units as a decimal string (sub-penny safe, e.g. \&quot;0.02\&quot; &#x3D; 0.02 pence). Set when the rate is not a whole minor unit; mirrors Stripe&#39;s &#x60;unit_amount_decimal&#x60;. | [optional]
+**Type** | **string** | Price type |
+**PricingModel** | **string** | Pricing model |
+**Interval** | Pointer to **NullableString** | Billing interval (recurring only) | [optional]
+**IntervalCount** | Pointer to **NullableInt32** | Number of intervals between billings | [optional]
+**TrialPeriodDays** | Pointer to **NullableInt32** | Trial period in days (recurring only) | [optional]
+**StartRule** | Pointer to **NullableString** | First-charge behavior for recurring checkout. &#x60;immediate&#x60;: full first period now. &#x60;next_anchor&#x60;: first charge on the billing anchor. &#x60;prorate&#x60;: prorated stub now, then full charge on the billing anchor. | [optional]
+**MinimumAmount** | Pointer to **NullableInt32** | PWYW: minimum amount in cents | [optional]
+**MaximumAmount** | Pointer to **NullableInt32** | PWYW: maximum amount in cents | [optional]
+**SuggestedAmount** | Pointer to **NullableInt32** | PWYW: suggested amount in cents | [optional]
+**PresetAmounts** | Pointer to **[]int32** | PWYW: quick-select amounts | [optional]
+**Name** | Pointer to **NullableString** | Customer-facing price name (e.g., &#39;Morning&#39;, &#39;Full day&#39;) | [optional]
+**Nickname** | Pointer to **NullableString** | Display name (e.g., &#39;Monthly&#39;, &#39;Annual - Save 17%&#39;) | [optional]
+**Description** | Pointer to **NullableString** | Description of this price option | [optional]
+**Version** | **int32** | Immutable version for this price row |
+**LookupKey** | Pointer to **NullableString** | Stable key for API lookups | [optional]
+**BillingScheme** | **string** | Billing scheme. Defaults to &#x60;per_unit&#x60;. Set to &#x60;tiered&#x60; along with &#x60;tiers_mode&#x60; + &#x60;tiers&#x60; to use graduated or volume pricing. |
+**TiersMode** | Pointer to **NullableString** | Tiered pricing mode. Required when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;, must be null otherwise. | [optional]
+**Tiers** | Pointer to [**[]PriceTier**](PriceTier.md) | Price tiers (ordered by &#x60;up_to&#x60;). Present only when &#x60;billing_scheme&#x60; is &#x60;tiered&#x60;. At least 2 tiers, final tier MUST have &#x60;up_to: null&#x60;. Immutable after creation. | [optional]
+**TransformQuantity** | Pointer to [**NullablePriceTransformQuantity**](PriceTransformQuantity.md) |  | [optional]
+**PercentageRateBps** | Pointer to **NullableInt32** | Rate in basis points (70 &#x3D; 0.7%). Present only when &#x60;billing_scheme&#x60; is &#x60;percentage&#x60;. Null for &#x60;per_unit&#x60; and &#x60;tiered&#x60; prices. | [optional]
+**PayInAdvance** | Pointer to **bool** | When true for a metered UBB price, usage events are debited from the customer&#39;s prepaid wallet at ingest time. | [optional]
+**SpendingMinimumCents** | Pointer to **NullableInt32** | Minimum minor-unit amount applied to each pay-in-advance usage drawdown when set. | [optional]
+**OptionValues** | Pointer to **map[string]string** | The variant&#39;s options, e.g. {\&quot;Colour\&quot;:\&quot;Navy\&quot;,\&quot;Size\&quot;:\&quot;M\&quot;}. Null when the price is not a variant. | [optional]
+**Sku** | Pointer to **NullableString** | The variant&#39;s SKU (what to pack). Unique per merchant among active prices. | [optional]
+**ImageUrl** | Pointer to **NullableString** | The variant&#39;s image (storage key or URL), one of the product&#39;s images. | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**CreatedAt** | **time.Time** | Creation timestamp |
+**UpdatedAt** | **time.Time** | Last update timestamp |
 
 ## Methods
 
@@ -816,6 +819,16 @@ SetTransformQuantity sets TransformQuantity field to given value.
 
 HasTransformQuantity returns a boolean if a field has been set.
 
+### SetTransformQuantityNil
+
+`func (o *Price) SetTransformQuantityNil(b bool)`
+
+ SetTransformQuantityNil sets the value for TransformQuantity to be an explicit nil
+
+### UnsetTransformQuantity
+`func (o *Price) UnsetTransformQuantity()`
+
+UnsetTransformQuantity ensures that no value is present for TransformQuantity, not even an explicit nil
 ### GetPercentageRateBps
 
 `func (o *Price) GetPercentageRateBps() int32`
@@ -911,6 +924,101 @@ HasSpendingMinimumCents returns a boolean if a field has been set.
 `func (o *Price) UnsetSpendingMinimumCents()`
 
 UnsetSpendingMinimumCents ensures that no value is present for SpendingMinimumCents, not even an explicit nil
+### GetOptionValues
+
+`func (o *Price) GetOptionValues() map[string]string`
+
+GetOptionValues returns the OptionValues field if non-nil, zero value otherwise.
+
+### GetOptionValuesOk
+
+`func (o *Price) GetOptionValuesOk() (*map[string]string, bool)`
+
+GetOptionValuesOk returns a tuple with the OptionValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptionValues
+
+`func (o *Price) SetOptionValues(v map[string]string)`
+
+SetOptionValues sets OptionValues field to given value.
+
+### HasOptionValues
+
+`func (o *Price) HasOptionValues() bool`
+
+HasOptionValues returns a boolean if a field has been set.
+
+### GetSku
+
+`func (o *Price) GetSku() string`
+
+GetSku returns the Sku field if non-nil, zero value otherwise.
+
+### GetSkuOk
+
+`func (o *Price) GetSkuOk() (*string, bool)`
+
+GetSkuOk returns a tuple with the Sku field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSku
+
+`func (o *Price) SetSku(v string)`
+
+SetSku sets Sku field to given value.
+
+### HasSku
+
+`func (o *Price) HasSku() bool`
+
+HasSku returns a boolean if a field has been set.
+
+### SetSkuNil
+
+`func (o *Price) SetSkuNil(b bool)`
+
+ SetSkuNil sets the value for Sku to be an explicit nil
+
+### UnsetSku
+`func (o *Price) UnsetSku()`
+
+UnsetSku ensures that no value is present for Sku, not even an explicit nil
+### GetImageUrl
+
+`func (o *Price) GetImageUrl() string`
+
+GetImageUrl returns the ImageUrl field if non-nil, zero value otherwise.
+
+### GetImageUrlOk
+
+`func (o *Price) GetImageUrlOk() (*string, bool)`
+
+GetImageUrlOk returns a tuple with the ImageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageUrl
+
+`func (o *Price) SetImageUrl(v string)`
+
+SetImageUrl sets ImageUrl field to given value.
+
+### HasImageUrl
+
+`func (o *Price) HasImageUrl() bool`
+
+HasImageUrl returns a boolean if a field has been set.
+
+### SetImageUrlNil
+
+`func (o *Price) SetImageUrlNil(b bool)`
+
+ SetImageUrlNil sets the value for ImageUrl to be an explicit nil
+
+### UnsetImageUrl
+`func (o *Price) UnsetImageUrl()`
+
+UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 ### GetMetadata
 
 `func (o *Price) GetMetadata() map[string]interface{}`
@@ -978,5 +1086,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

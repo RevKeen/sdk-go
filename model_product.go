@@ -1,10 +1,10 @@
 /*
 RevKeen API
 
-RevKeen is a fintech-grade API for payments, subscriptions, invoices, and billing. The canonical production MCP server is available at `https://mcp.revkeen.com/mcp`.  **API Version:** `2026-05-01` — Pin with the `RevKeen-Version` header.  **Quick Links:** [Full Documentation](https://docs.revkeen.com) | [Authentication](https://docs.revkeen.com/authentication) | [OAuth](https://docs.revkeen.com/oauth) | [SDKs](https://docs.revkeen.com/sdks) | [Webhooks](#webhooks) | [MCP Guide](https://docs.revkeen.com/mcp)  ## Authentication  Two authentication methods are supported:  ### API Keys (recommended for server-to-server REST API integrations)  Send your API key in the `x-api-key` header. Get keys from the [Dashboard](https://app.revkeen.com/settings/api-keys). Use `rk_sandbox_*` for test mode and `rk_live_*` for production.  ### OAuth 2.1 (recommended for MCP and third-party integrations)  Use OAuth 2.1 with PKCE for authorization code flow or client credentials for server-to-server. Tokens are sent via `Authorization: Bearer rk_oauth_*`. See the [OAuth guide](https://docs.revkeen.com/oauth) for setup.  - **Authorization Code + PKCE** — user-facing integrations, MCP hosts - **Client Credentials** — server-to-server, automated workflows - **Dynamic Client Registration** — MCP hosts that auto-register  ## MCP Integration  RevKeen's canonical production MCP server is `https://mcp.revkeen.com/mcp` using Streamable HTTP and OAuth 2.1 bearer tokens.  - **Customer launch surface** — read-first customer v1 tools with least-privilege scopes - **Host setup guide** — see the [MCP guide](https://docs.revkeen.com/mcp) for ChatGPT, Claude, and compatible MCP hosts  ## API Key Scopes  Scopes follow `{resource}:{action}` format (e.g., `invoices:read`, `customers:*`). See [full scope reference](https://docs.revkeen.com/authentication#scopes).  | Category | Scope | Description | |----------|-------|-------------| | **Payments & Checkout** | `checkout:read` | View checkout session details | |  | `checkout:write` | Create and manage checkout sessions | |  | `cart:read` | View cart session details (REV-3511) | |  | `cart:write` | Create and mutate cart sessions, line items, add-ons (REV-3511) | |  | `payment_links:read` | View payment links | |  | `payment_links:write` | Create and manage payment links | |  | `charges:read` | View one-time charges | |  | `charges:write` | Create one-time charges for customers | |  | `payments:read` | View payment details | |  | `payments:write` | Capture or void payments | |  | `payment_intents:read` | View payment intent details | |  | `payment_intents:write` | Create, confirm, capture, and cancel payment intents | |  | `setup_intents:read` | View setup intent details | |  | `setup_intents:write` | Create, confirm, and cancel setup intents | |  | `payment_methods:read` | View saved payment methods | |  | `payment_methods:write` | Attach and detach payment methods | | **Billing** | `invoices:read` | View invoices | |  | `invoices:write` | Create, update, and manage invoices | |  | `subscriptions:read` | View subscriptions | |  | `subscriptions:write` | Create, update, pause, and cancel subscriptions | |  | `subscription_schedules:read` | View subscription schedule details | |  | `subscription_schedules:write` | Create, update, cancel, and release subscription schedules | |  | `orders:read` | View orders | |  | `orders:write` | Create and manage orders | |  | `credit_notes:read` | View credit notes | |  | `credit_notes:write` | Create and void credit notes | | **Products & Pricing** | `products:read` | View product catalog | |  | `products:write` | Create and update products | |  | `prices:read` | View pricing information | |  | `prices:write` | Create and update prices | |  | `discounts:read` | View discount codes | |  | `discounts:write` | Create and manage discount codes | |  | `tax_rates:read` | View tax rate configurations | |  | `tax_rates:write` | Configure tax rates | | **Usage & Metering** | `meters:read` | View meter configurations | |  | `meters:write` | Create and update meters | |  | `usage:read` | View usage events and balances | |  | `usage:write` | Ingest usage events | | **Customers** | `customers:read` | View customer information | |  | `customers:write` | Create and update customers | |  | `entitlements:read` | View customer entitlements / feature access | |  | `entitlements:write` | Grant and revoke customer entitlements | |  | `businesses:read` | View business entities | |  | `businesses:write` | Manage business entities | | **Money Movement** | `refunds:read` | View refund details | |  | `refunds:write` | Issue refunds | |  | `voids:read` | View voided transactions | |  | `voids:write` | Void unsettled transactions | |  | `disputes:read` | View chargebacks and disputes | |  | `disputes:write` | Respond to disputes | |  | `payouts:read` | View payout and settlement data | | **Direct Debit** | `mandates:read` | View Direct Debit mandates and collection status | |  | `mandates:write` | Create, suspend, reinstate, and cancel Direct Debit mandates | | **Terminal** | `terminal:read` | View terminal devices and card-present payments | |  | `terminal:write` | Initiate, cancel, refund, and void terminal payments | | **Data Exchange** | `exports:read` | View and download data exports | |  | `exports:write` | Create data exports | |  | `imports:read` | View import status and history | |  | `imports:write` | Upload and run data imports | | **Analytics & Reporting** | `analytics:read` | View analytics and reports | |  | `finance:read` | View financial reports | | **Communication** | `comms:read` | View SMS and email delivery logs | |  | `comms:write` | Send SMS, email, and WhatsApp messages | |  | `automations:read` | View automations, runs, approvals, and traces | |  | `automations:write` | Create automations and trigger runs | | **Integrations** | `apps:read` | View connected applications | |  | `apps:write` | Manage app connections | |  | `webhooks:read` | View webhook endpoints | |  | `webhooks:write` | Manage webhook endpoints | |  | `integrations:read` | View integration status and sync logs | |  | `integrations:write` | Activate, configure, and sync integrations | |  | `events:read` | View webhook event logs | |  | `events:write` | Resend and test webhook events | |  | `sync:read` | View sync watermarks and state | |  | `sync:write` | Update sync watermarks |  ## Environments  | Environment | Base URL | API Key Prefix | |-------------|----------|----------------| | **Staging** | `https://staging-api.revkeen.com/v2` | `rk_sandbox_*` | | **Production** | `https://api.revkeen.com/v2` | `rk_live_*` |  ## Idempotency  Include `Idempotency-Key` header (UUID) on mutation requests. Keys are valid for 24 hours.  ## Rate Limits  | Plan | Requests/min | Burst | |------|-------------|-------| | **Staging** | 100 | 200 | | **Production** | 1000 | 2000 | | **Enterprise** | Custom | Custom | 
+RevKeen is a fintech-grade API for payments, subscriptions, invoices, and billing. The canonical production MCP server is available at `https://mcp.revkeen.com/mcp`.  **API Version:** `2026-05-01` — Pin with the `RevKeen-Version` header.  **Quick Links:** [Full Documentation](https://docs.revkeen.com) | [Authentication](https://docs.revkeen.com/authentication) | [OAuth](https://docs.revkeen.com/oauth) | [SDKs](https://docs.revkeen.com/sdks) | [Webhooks](#webhooks) | [MCP Guide](https://docs.revkeen.com/mcp)  ## Authentication  Two authentication methods are supported:  ### API Keys (recommended for server-to-server REST API integrations)  Send your merchant API key in the `x-api-key` header, or as `Authorization: Bearer <key>` — both are accepted. Create and manage keys in the [Dashboard](https://app.revkeen.com/dashboard/settings/general?tab=developer). Use `rk_sandbox_*` for staging/test and `rk_live_*` for production. Keys are scoped, rollable, IP-lockable and revocable; the raw secret is shown once, at creation.  ### OAuth 2.1 (recommended for MCP and third-party integrations)  Use OAuth 2.1 with PKCE for authorization code flow or client credentials for server-to-server. Access tokens are opaque, prefixed `rkoa_`, and sent via `Authorization: Bearer rkoa_*`. See the [OAuth guide](https://docs.revkeen.com/oauth) for setup.  - **Authorization Code + PKCE** — user-facing integrations, MCP hosts - **Client Credentials** — server-to-server, automated workflows - **Dynamic Client Registration** — MCP hosts that auto-register  ## MCP Integration  RevKeen's canonical production MCP server is `https://mcp.revkeen.com/mcp` using Streamable HTTP and OAuth 2.1 bearer tokens.  - **Customer launch surface** — read-first customer v1 tools with least-privilege scopes - **Host setup guide** — see the [MCP guide](https://docs.revkeen.com/mcp) for ChatGPT, Claude, and compatible MCP hosts  ## API Key Scopes  Scopes follow `{resource}:{action}` format (e.g., `invoices:read`, `customers:*`). See [full scope reference](https://docs.revkeen.com/authentication#scopes).  | Category | Scope | Description | |----------|-------|-------------| | **Payments & Checkout** | `checkout:read` | View checkout session details | |  | `checkout:write` | Create and manage checkout sessions | |  | `cart:read` | View cart session details | |  | `cart:write` | Create and mutate cart sessions, line items, add-ons | |  | `payment_links:read` | View payment links | |  | `payment_links:write` | Create and manage payment links | |  | `charges:read` | View one-time charges | |  | `charges:write` | Create one-time charges for customers | |  | `payments:read` | View payment details | |  | `payments:write` | Capture or void payments | |  | `payment_intents:read` | View payment intent details | |  | `payment_intents:write` | Create, confirm, capture, and cancel payment intents | |  | `setup_intents:read` | View setup intent details | |  | `setup_intents:write` | Create, confirm, and cancel setup intents | |  | `payment_methods:read` | View saved payment methods | |  | `payment_methods:write` | Attach and detach payment methods | | **Billing** | `invoices:read` | View invoices | |  | `invoices:write` | Create, update, and manage invoices | |  | `subscriptions:read` | View subscriptions | |  | `subscriptions:write` | Create, update, pause, and cancel subscriptions | |  | `subscription_schedules:read` | View subscription schedule details | |  | `subscription_schedules:write` | Create, update, cancel, and release subscription schedules | |  | `orders:read` | View orders | |  | `orders:write` | Create and manage orders | |  | `credit_notes:read` | View credit notes | |  | `credit_notes:write` | Create and void credit notes | | **Products & Pricing** | `products:read` | View product catalog | |  | `products:write` | Create and update products | |  | `prices:read` | View pricing information | |  | `prices:write` | Create and update prices | |  | `discounts:read` | View discount codes | |  | `discounts:write` | Create and manage discount codes | |  | `tax_rates:read` | View tax rate configurations | |  | `tax_rates:write` | Configure tax rates | | **Usage & Metering** | `meters:read` | View meter configurations | |  | `meters:write` | Create and update meters | |  | `usage:read` | View usage events and balances | |  | `usage:write` | Ingest usage events | | **Customers** | `customers:read` | View customer information | |  | `customers:write` | Create and update customers | |  | `entitlements:read` | View customer entitlements / feature access | |  | `entitlements:write` | Grant and revoke customer entitlements | |  | `businesses:read` | View business entities | |  | `businesses:write` | Manage business entities | | **Money Movement** | `refunds:read` | View refund details | |  | `refunds:write` | Issue refunds | |  | `voids:read` | View voided transactions | |  | `voids:write` | Void unsettled transactions | |  | `disputes:read` | View chargebacks and disputes | |  | `disputes:write` | Respond to disputes | |  | `payouts:read` | View payout and settlement data | | **Direct Debit** | `mandates:read` | View Direct Debit mandates and collection status | |  | `mandates:write` | Create, suspend, reinstate, and cancel Direct Debit mandates | | **Terminal** | `terminal:read` | View terminal devices and card-present payments | |  | `terminal:write` | Initiate, cancel, refund, and void terminal payments | | **Data Exchange** | `exports:read` | View and download data exports | |  | `exports:write` | Create data exports | |  | `imports:read` | View import status and history | |  | `imports:write` | Upload and run data imports | | **Analytics & Reporting** | `analytics:read` | View analytics and reports | |  | `finance:read` | View financial reports | | **Communication** | `comms:read` | View SMS and email delivery logs | |  | `comms:write` | Send SMS, email, and WhatsApp messages | |  | `automations:read` | View automations, runs, approvals, and traces | |  | `automations:write` | Create automations and trigger runs | | **Integrations** | `apps:read` | View connected applications | |  | `apps:write` | Manage app connections | |  | `webhooks:read` | View webhook endpoints | |  | `webhooks:write` | Manage webhook endpoints | |  | `integrations:read` | View integration status and sync logs | |  | `integrations:write` | Activate, configure, and sync integrations | |  | `events:read` | View webhook event logs | |  | `events:write` | Resend and test webhook events | |  | `sync:read` | View sync watermarks and state | |  | `sync:write` | Update sync watermarks |  ## Errors  Every non-2xx response uses one envelope: `{ \"error\": { \"type\", \"code\", \"message\", ... } }`. Branch on `error.type` and `error.code`; treat `error.message` as display text only. Error bodies never echo the credential you presented.  | Status | `error.type` | Notes | |--------|--------------|-------| | `400` | `invalid_request_error` | Schema validation failed. `details.fields` maps each rejected parameter to its reasons. | | `401` | `authentication_error` | Missing, invalid, expired or revoked credential. Always carries `WWW-Authenticate: Bearer realm=\"revkeen-api\"`. | | `402` | `card_error` | Declined by the issuer or processor; see `decline_code`. | | `403` | `authorization_error` | The caller is identified but the action is denied — scope, IP allowlist, origin, or merchant mismatch. | | `409` | `invalid_request_error` or `idempotency_error` | Resource-state conflict, or an `Idempotency-Key` replayed with a different body. | | `429` | `rate_limit_error` | See Rate Limits below. | | `500` | `api_error` | Retry with exponential backoff, quoting `error.request_id`. |  `401` codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`.  `403` codes: `insufficient_permissions`, `forbidden`, `ip_not_allowed`, `tenant_scope_mismatch`, `no_organization`, `no_merchant`, `merchant_mismatch`, `cart_disabled`, `origin_not_allowed`, `verification_required`, `read_only_impersonation_blocked`, `publishable_key_restricted`, `internal_only`.  ## Environments  | Environment | Base URL | API Key Prefix | |-------------|----------|----------------| | **Staging** | `https://staging-api.revkeen.com/v2` | `rk_sandbox_*` | | **Production** | `https://api.revkeen.com/v2` | `rk_live_*` |  ## Idempotency  Include `Idempotency-Key` header (UUID) on mutation requests. Keys are valid for 24 hours.  ## Rate Limits  Each API key (`rk_live_*`, `rk_sandbox_*`, `rk_pk_*`) may make **600 requests per minute**, in production and staging alike. The limit is per key, counted over a 60-second window, with no separate burst allowance. Some endpoints apply their own, lower limits.  An over-limit key is still valid: it receives `429`, never `401`. Wait for `Retry-After` and retry; do not re-authenticate or rotate the key.  A rate-limited request returns `429` with `type: rate_limit_error`, `code: rate_limit_exceeded` and `details.retry_after` in whole seconds.  | Header | Meaning | |--------|---------| | `Retry-After` | Whole seconds to wait before retrying. Present on every `429`. | | `X-RateLimit-Limit` | Requests permitted in the current window, when the limiter publishes one. | | `X-RateLimit-Remaining` | Requests left in the current window. | | `X-RateLimit-Reset` | UNIX timestamp in **seconds** at which the window resets. |
 
 API version: 2026-05-01
-Contact: info@revkeen.com
+Contact: support@revkeen.com
 */
 
 // Code generated by OpenAPI Generator (https://openapi-generator.tech); DO NOT EDIT.
@@ -13,8 +13,8 @@ package revkeen
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the Product type satisfies the MappedNullable interface at compile time
@@ -37,7 +37,7 @@ type Product struct {
 	// How the product is priced
 	PricingModel string `json:"pricing_model"`
 	// Price in minor units (cents/pence)
-	AmountMinor NullableInt32 `json:"amount_minor"`
+	AmountMinor NullableInt64 `json:"amount_minor"`
 	// Three-letter ISO currency code
 	Currency string `json:"currency"`
 	// Billing interval (day, week, month, year)
@@ -48,10 +48,13 @@ type Product struct {
 	TrialDays int32 `json:"trial_days"`
 	// Fulfillment type
 	FulfillmentType string `json:"fulfillment_type"`
-	// Whether a finite purchase cap is enforced
+	// Whether stock is tracked for this product (read from its availability record)
 	TrackInventory *bool `json:"track_inventory,omitempty"`
-	// Remaining purchasable units (null when not tracked)
+	// Deprecated, read-only view: units available to sell, computed from the product's availability record (null when not tracked).
+	// Deprecated
 	StockQuantity NullableInt32 `json:"stock_quantity,omitempty"`
+	// Tags for Storefront filters and search
+	Tags []string `json:"tags,omitempty"`
 	// Billing date calculation rule
 	BillingAnchorRule NullableString `json:"billing_anchor_rule,omitempty"`
 	// Day of month for billing (1-31)
@@ -64,14 +67,24 @@ type Product struct {
 	MaxPayments NullableInt32 `json:"max_payments,omitempty"`
 	// Associated usage meter ID
 	UsageMeterId NullableString `json:"usage_meter_id,omitempty"`
-	// URL-friendly slug
+	// URL handle, unique among this merchant's products
 	Slug NullableString `json:"slug,omitempty"`
 	// Whether the product is active
 	IsActive bool `json:"is_active"`
 	// Whether the product is archived
 	IsArchived bool `json:"is_archived"`
-	// Product image URL
+	// Main product image (storage key or URL)
 	ImageUrl NullableString `json:"image_url,omitempty"`
+	// Extra product images, in display order
+	Images []ProductImageResponse `json:"images,omitempty"`
+	// Search and social title
+	SeoTitle NullableString `json:"seo_title,omitempty"`
+	// Meta description
+	SeoDescription NullableString `json:"seo_description,omitempty"`
+	// Whether the product is listed on the Storefront. hidden: only payment links and invoices. scheduled: listed from store_visible_from.
+	StoreVisibility *string `json:"store_visibility,omitempty"`
+	// When a scheduled product appears on the Storefront (ISO 8601)
+	StoreVisibleFrom NullableTime `json:"store_visible_from,omitempty"`
 	// Tax behavior (exclusive, inclusive, location)
 	TaxBehavior NullableString `json:"tax_behavior,omitempty"`
 	// Tax code for tax calculation
@@ -81,7 +94,7 @@ type Product struct {
 	// Creation timestamp (ISO 8601)
 	CreatedAt time.Time `json:"created_at"`
 	// Last update timestamp (ISO 8601)
-	UpdatedAt time.Time `json:"updated_at"`
+	UpdatedAt            time.Time `json:"updated_at"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -91,7 +104,7 @@ type _Product Product
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProduct(id string, object string, productId string, name string, kind string, pricingModel string, amountMinor NullableInt32, currency string, trialDays int32, fulfillmentType string, isActive bool, isArchived bool, createdAt time.Time, updatedAt time.Time) *Product {
+func NewProduct(id string, object string, productId string, name string, kind string, pricingModel string, amountMinor NullableInt64, currency string, trialDays int32, fulfillmentType string, isActive bool, isArchived bool, createdAt time.Time, updatedAt time.Time) *Product {
 	this := Product{}
 	this.Id = id
 	this.Object = object
@@ -246,6 +259,7 @@ func (o *Product) HasDescription() bool {
 func (o *Product) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *Product) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -305,10 +319,10 @@ func (o *Product) SetPricingModel(v string) {
 }
 
 // GetAmountMinor returns the AmountMinor field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *Product) GetAmountMinor() int32 {
+// If the value is explicit nil, the zero value for int64 will be returned
+func (o *Product) GetAmountMinor() int64 {
 	if o == nil || o.AmountMinor.Get() == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -318,7 +332,7 @@ func (o *Product) GetAmountMinor() int32 {
 // GetAmountMinorOk returns a tuple with the AmountMinor field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Product) GetAmountMinorOk() (*int32, bool) {
+func (o *Product) GetAmountMinorOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -326,7 +340,7 @@ func (o *Product) GetAmountMinorOk() (*int32, bool) {
 }
 
 // SetAmountMinor sets field value
-func (o *Product) SetAmountMinor(v int32) {
+func (o *Product) SetAmountMinor(v int64) {
 	o.AmountMinor.Set(&v)
 }
 
@@ -386,6 +400,7 @@ func (o *Product) HasInterval() bool {
 func (o *Product) SetInterval(v string) {
 	o.Interval.Set(&v)
 }
+
 // SetIntervalNil sets the value for Interval to be an explicit nil
 func (o *Product) SetIntervalNil() {
 	o.Interval.Set(nil)
@@ -428,6 +443,7 @@ func (o *Product) HasIntervalCount() bool {
 func (o *Product) SetIntervalCount(v int32) {
 	o.IntervalCount.Set(&v)
 }
+
 // SetIntervalCountNil sets the value for IntervalCount to be an explicit nil
 func (o *Product) SetIntervalCountNil() {
 	o.IntervalCount.Set(nil)
@@ -519,6 +535,7 @@ func (o *Product) SetTrackInventory(v bool) {
 }
 
 // GetStockQuantity returns the StockQuantity field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *Product) GetStockQuantity() int32 {
 	if o == nil || IsNil(o.StockQuantity.Get()) {
 		var ret int32
@@ -530,6 +547,7 @@ func (o *Product) GetStockQuantity() int32 {
 // GetStockQuantityOk returns a tuple with the StockQuantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *Product) GetStockQuantityOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
@@ -547,9 +565,11 @@ func (o *Product) HasStockQuantity() bool {
 }
 
 // SetStockQuantity gets a reference to the given NullableInt32 and assigns it to the StockQuantity field.
+// Deprecated
 func (o *Product) SetStockQuantity(v int32) {
 	o.StockQuantity.Set(&v)
 }
+
 // SetStockQuantityNil sets the value for StockQuantity to be an explicit nil
 func (o *Product) SetStockQuantityNil() {
 	o.StockQuantity.Set(nil)
@@ -558,6 +578,38 @@ func (o *Product) SetStockQuantityNil() {
 // UnsetStockQuantity ensures that no value is present for StockQuantity, not even an explicit nil
 func (o *Product) UnsetStockQuantity() {
 	o.StockQuantity.Unset()
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *Product) GetTags() []string {
+	if o == nil || IsNil(o.Tags) {
+		var ret []string
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Product) GetTagsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *Product) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *Product) SetTags(v []string) {
+	o.Tags = v
 }
 
 // GetBillingAnchorRule returns the BillingAnchorRule field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -592,6 +644,7 @@ func (o *Product) HasBillingAnchorRule() bool {
 func (o *Product) SetBillingAnchorRule(v string) {
 	o.BillingAnchorRule.Set(&v)
 }
+
 // SetBillingAnchorRuleNil sets the value for BillingAnchorRule to be an explicit nil
 func (o *Product) SetBillingAnchorRuleNil() {
 	o.BillingAnchorRule.Set(nil)
@@ -634,6 +687,7 @@ func (o *Product) HasBillingAnchorDay() bool {
 func (o *Product) SetBillingAnchorDay(v int32) {
 	o.BillingAnchorDay.Set(&v)
 }
+
 // SetBillingAnchorDayNil sets the value for BillingAnchorDay to be an explicit nil
 func (o *Product) SetBillingAnchorDayNil() {
 	o.BillingAnchorDay.Set(nil)
@@ -676,6 +730,7 @@ func (o *Product) HasFirstChargeBehavior() bool {
 func (o *Product) SetFirstChargeBehavior(v string) {
 	o.FirstChargeBehavior.Set(&v)
 }
+
 // SetFirstChargeBehaviorNil sets the value for FirstChargeBehavior to be an explicit nil
 func (o *Product) SetFirstChargeBehaviorNil() {
 	o.FirstChargeBehavior.Set(nil)
@@ -718,6 +773,7 @@ func (o *Product) HasEndBehavior() bool {
 func (o *Product) SetEndBehavior(v string) {
 	o.EndBehavior.Set(&v)
 }
+
 // SetEndBehaviorNil sets the value for EndBehavior to be an explicit nil
 func (o *Product) SetEndBehaviorNil() {
 	o.EndBehavior.Set(nil)
@@ -760,6 +816,7 @@ func (o *Product) HasMaxPayments() bool {
 func (o *Product) SetMaxPayments(v int32) {
 	o.MaxPayments.Set(&v)
 }
+
 // SetMaxPaymentsNil sets the value for MaxPayments to be an explicit nil
 func (o *Product) SetMaxPaymentsNil() {
 	o.MaxPayments.Set(nil)
@@ -802,6 +859,7 @@ func (o *Product) HasUsageMeterId() bool {
 func (o *Product) SetUsageMeterId(v string) {
 	o.UsageMeterId.Set(&v)
 }
+
 // SetUsageMeterIdNil sets the value for UsageMeterId to be an explicit nil
 func (o *Product) SetUsageMeterIdNil() {
 	o.UsageMeterId.Set(nil)
@@ -844,6 +902,7 @@ func (o *Product) HasSlug() bool {
 func (o *Product) SetSlug(v string) {
 	o.Slug.Set(&v)
 }
+
 // SetSlugNil sets the value for Slug to be an explicit nil
 func (o *Product) SetSlugNil() {
 	o.Slug.Set(nil)
@@ -934,6 +993,7 @@ func (o *Product) HasImageUrl() bool {
 func (o *Product) SetImageUrl(v string) {
 	o.ImageUrl.Set(&v)
 }
+
 // SetImageUrlNil sets the value for ImageUrl to be an explicit nil
 func (o *Product) SetImageUrlNil() {
 	o.ImageUrl.Set(nil)
@@ -942,6 +1002,199 @@ func (o *Product) SetImageUrlNil() {
 // UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 func (o *Product) UnsetImageUrl() {
 	o.ImageUrl.Unset()
+}
+
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *Product) GetImages() []ProductImageResponse {
+	if o == nil || IsNil(o.Images) {
+		var ret []ProductImageResponse
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Product) GetImagesOk() ([]ProductImageResponse, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *Product) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []ProductImageResponse and assigns it to the Images field.
+func (o *Product) SetImages(v []ProductImageResponse) {
+	o.Images = v
+}
+
+// GetSeoTitle returns the SeoTitle field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Product) GetSeoTitle() string {
+	if o == nil || IsNil(o.SeoTitle.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SeoTitle.Get()
+}
+
+// GetSeoTitleOk returns a tuple with the SeoTitle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Product) GetSeoTitleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SeoTitle.Get(), o.SeoTitle.IsSet()
+}
+
+// HasSeoTitle returns a boolean if a field has been set.
+func (o *Product) HasSeoTitle() bool {
+	if o != nil && o.SeoTitle.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSeoTitle gets a reference to the given NullableString and assigns it to the SeoTitle field.
+func (o *Product) SetSeoTitle(v string) {
+	o.SeoTitle.Set(&v)
+}
+
+// SetSeoTitleNil sets the value for SeoTitle to be an explicit nil
+func (o *Product) SetSeoTitleNil() {
+	o.SeoTitle.Set(nil)
+}
+
+// UnsetSeoTitle ensures that no value is present for SeoTitle, not even an explicit nil
+func (o *Product) UnsetSeoTitle() {
+	o.SeoTitle.Unset()
+}
+
+// GetSeoDescription returns the SeoDescription field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Product) GetSeoDescription() string {
+	if o == nil || IsNil(o.SeoDescription.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SeoDescription.Get()
+}
+
+// GetSeoDescriptionOk returns a tuple with the SeoDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Product) GetSeoDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SeoDescription.Get(), o.SeoDescription.IsSet()
+}
+
+// HasSeoDescription returns a boolean if a field has been set.
+func (o *Product) HasSeoDescription() bool {
+	if o != nil && o.SeoDescription.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSeoDescription gets a reference to the given NullableString and assigns it to the SeoDescription field.
+func (o *Product) SetSeoDescription(v string) {
+	o.SeoDescription.Set(&v)
+}
+
+// SetSeoDescriptionNil sets the value for SeoDescription to be an explicit nil
+func (o *Product) SetSeoDescriptionNil() {
+	o.SeoDescription.Set(nil)
+}
+
+// UnsetSeoDescription ensures that no value is present for SeoDescription, not even an explicit nil
+func (o *Product) UnsetSeoDescription() {
+	o.SeoDescription.Unset()
+}
+
+// GetStoreVisibility returns the StoreVisibility field value if set, zero value otherwise.
+func (o *Product) GetStoreVisibility() string {
+	if o == nil || IsNil(o.StoreVisibility) {
+		var ret string
+		return ret
+	}
+	return *o.StoreVisibility
+}
+
+// GetStoreVisibilityOk returns a tuple with the StoreVisibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Product) GetStoreVisibilityOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreVisibility) {
+		return nil, false
+	}
+	return o.StoreVisibility, true
+}
+
+// HasStoreVisibility returns a boolean if a field has been set.
+func (o *Product) HasStoreVisibility() bool {
+	if o != nil && !IsNil(o.StoreVisibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreVisibility gets a reference to the given string and assigns it to the StoreVisibility field.
+func (o *Product) SetStoreVisibility(v string) {
+	o.StoreVisibility = &v
+}
+
+// GetStoreVisibleFrom returns the StoreVisibleFrom field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Product) GetStoreVisibleFrom() time.Time {
+	if o == nil || IsNil(o.StoreVisibleFrom.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.StoreVisibleFrom.Get()
+}
+
+// GetStoreVisibleFromOk returns a tuple with the StoreVisibleFrom field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Product) GetStoreVisibleFromOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StoreVisibleFrom.Get(), o.StoreVisibleFrom.IsSet()
+}
+
+// HasStoreVisibleFrom returns a boolean if a field has been set.
+func (o *Product) HasStoreVisibleFrom() bool {
+	if o != nil && o.StoreVisibleFrom.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreVisibleFrom gets a reference to the given NullableTime and assigns it to the StoreVisibleFrom field.
+func (o *Product) SetStoreVisibleFrom(v time.Time) {
+	o.StoreVisibleFrom.Set(&v)
+}
+
+// SetStoreVisibleFromNil sets the value for StoreVisibleFrom to be an explicit nil
+func (o *Product) SetStoreVisibleFromNil() {
+	o.StoreVisibleFrom.Set(nil)
+}
+
+// UnsetStoreVisibleFrom ensures that no value is present for StoreVisibleFrom, not even an explicit nil
+func (o *Product) UnsetStoreVisibleFrom() {
+	o.StoreVisibleFrom.Unset()
 }
 
 // GetTaxBehavior returns the TaxBehavior field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -976,6 +1229,7 @@ func (o *Product) HasTaxBehavior() bool {
 func (o *Product) SetTaxBehavior(v string) {
 	o.TaxBehavior.Set(&v)
 }
+
 // SetTaxBehaviorNil sets the value for TaxBehavior to be an explicit nil
 func (o *Product) SetTaxBehaviorNil() {
 	o.TaxBehavior.Set(nil)
@@ -1018,6 +1272,7 @@ func (o *Product) HasTaxCode() bool {
 func (o *Product) SetTaxCode(v string) {
 	o.TaxCode.Set(&v)
 }
+
 // SetTaxCodeNil sets the value for TaxCode to be an explicit nil
 func (o *Product) SetTaxCodeNil() {
 	o.TaxCode.Set(nil)
@@ -1109,7 +1364,7 @@ func (o *Product) SetUpdatedAt(v time.Time) {
 }
 
 func (o Product) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1143,6 +1398,9 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	if o.StockQuantity.IsSet() {
 		toSerialize["stock_quantity"] = o.StockQuantity.Get()
 	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
 	if o.BillingAnchorRule.IsSet() {
 		toSerialize["billing_anchor_rule"] = o.BillingAnchorRule.Get()
 	}
@@ -1168,6 +1426,21 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	toSerialize["is_archived"] = o.IsArchived
 	if o.ImageUrl.IsSet() {
 		toSerialize["image_url"] = o.ImageUrl.Get()
+	}
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
+	if o.SeoTitle.IsSet() {
+		toSerialize["seo_title"] = o.SeoTitle.Get()
+	}
+	if o.SeoDescription.IsSet() {
+		toSerialize["seo_description"] = o.SeoDescription.Get()
+	}
+	if !IsNil(o.StoreVisibility) {
+		toSerialize["store_visibility"] = o.StoreVisibility
+	}
+	if o.StoreVisibleFrom.IsSet() {
+		toSerialize["store_visible_from"] = o.StoreVisibleFrom.Get()
 	}
 	if o.TaxBehavior.IsSet() {
 		toSerialize["tax_behavior"] = o.TaxBehavior.Get()
@@ -1214,10 +1487,10 @@ func (o *Product) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1251,6 +1524,7 @@ func (o *Product) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "fulfillment_type")
 		delete(additionalProperties, "track_inventory")
 		delete(additionalProperties, "stock_quantity")
+		delete(additionalProperties, "tags")
 		delete(additionalProperties, "billing_anchor_rule")
 		delete(additionalProperties, "billing_anchor_day")
 		delete(additionalProperties, "first_charge_behavior")
@@ -1261,6 +1535,11 @@ func (o *Product) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "is_active")
 		delete(additionalProperties, "is_archived")
 		delete(additionalProperties, "image_url")
+		delete(additionalProperties, "images")
+		delete(additionalProperties, "seo_title")
+		delete(additionalProperties, "seo_description")
+		delete(additionalProperties, "store_visibility")
+		delete(additionalProperties, "store_visible_from")
 		delete(additionalProperties, "tax_behavior")
 		delete(additionalProperties, "tax_code")
 		delete(additionalProperties, "metadata")
@@ -1307,5 +1586,3 @@ func (v *NullableProduct) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

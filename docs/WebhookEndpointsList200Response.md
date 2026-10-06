@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**[]WebhookEndpointsList200ResponseDataInner**](WebhookEndpointsList200ResponseDataInner.md) |  | 
-**Meta** | [**WebhookEndpointsList200ResponseMeta**](WebhookEndpointsList200ResponseMeta.md) |  | 
+**Data** | [**[]WebhookEndpointsList200ResponseDataInner**](WebhookEndpointsList200ResponseDataInner.md) |  |
+**Meta** | [**WebhookEndpointsList200ResponseMeta**](WebhookEndpointsList200ResponseMeta.md) |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetMeta sets Meta field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

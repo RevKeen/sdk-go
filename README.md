@@ -1,19 +1,18 @@
 # RevKeen Go SDK
 
-> [!IMPORTANT]
-> This repository is a generated release mirror. Propose source changes in
-> [RevKeen/revkeen](https://github.com/RevKeen/revkeen); `main` here is updated only by an explicit reviewed SDK release.
-
-
-[![Go Reference](https://pkg.go.dev/badge/github.com/revkeen/revkeen-go.svg)](https://pkg.go.dev/github.com/revkeen/revkeen-go)
+[![Go Reference](https://pkg.go.dev/badge/github.com/revkeen/sdk-go.svg)](https://pkg.go.dev/github.com/revkeen/sdk-go)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Official Go client for the [RevKeen API](https://docs.revkeen.com/api-reference/openapi) — auto-generated from the OpenAPI specification via [OpenAPI Generator](https://openapi-generator.tech).
 
+> [!IMPORTANT]
+> This repository is a generated release mirror. Propose source changes in
+> [RevKeen/revkeen](https://github.com/RevKeen/revkeen); `main` here is updated only by an explicit reviewed SDK release.
+
 ## Installation
 
 ```bash
-go get github.com/revkeen/revkeen-go
+go get github.com/revkeen/sdk-go
 ```
 
 Requires Go 1.22 or later.
@@ -29,18 +28,22 @@ import (
     "log"
     "os"
 
-    revkeen "github.com/revkeen/revkeen-go"
-    "github.com/revkeen/revkeen-go/option"
+    revkeen "github.com/revkeen/sdk-go"
 )
 
 func main() {
-    client := revkeen.NewClient(
-        option.WithAPIKey(os.Getenv("REVKEEN_API_KEY")),
+    client, err := revkeen.NewClient(
+        os.Getenv("REVKEEN_API_KEY"),
+        revkeen.EnvironmentSandbox,
     )
+    if err != nil {
+        log.Fatal(err)
+    }
 
-    customers, err := client.Customers.List(context.Background(), &revkeen.CustomersListRequest{
-        Limit: revkeen.Int(10),
-    })
+    customers, _, err := client.CustomersAPI.
+        CustomersList(context.Background()).
+        Limit(10).
+        Execute()
     if err != nil {
         log.Fatal(err)
     }
@@ -56,53 +59,27 @@ func main() {
 ### API Key (recommended for server-to-server)
 
 ```go
-client := revkeen.NewClient(
-    option.WithAPIKey(os.Getenv("REVKEEN_API_KEY")),
+client, err := revkeen.NewClient(
+    os.Getenv("REVKEEN_API_KEY"),
+    revkeen.EnvironmentProduction,
 )
 ```
-
-### OAuth 2.1 (recommended for MCP and third-party integrations)
-
-```go
-client := revkeen.NewClient(
-    option.WithOAuth(revkeen.OAuthConfig{
-        ClientID:     os.Getenv("REVKEEN_CLIENT_ID"),
-        ClientSecret: os.Getenv("REVKEEN_CLIENT_SECRET"),
-        Scopes:       []string{"customers:read", "invoices:read"},
-    }),
-)
-```
-
-See the [OAuth guide](https://docs.revkeen.com/docs/developers/oauth) for details.
 
 ## Resources
 
-Every API resource is available as a typed field on the client:
-
-| Resource | Method examples |
-|----------|----------------|
-| `client.Customers` | `List()`, `Create()`, `Get()`, `Update()`, `Delete()` |
-| `client.Invoices` | `List()`, `Create()`, `Get()`, `Update()`, `Finalize()`, `Send()`, `Void()` |
-| `client.Subscriptions` | `List()`, `Create()`, `Get()`, `Update()`, `Cancel()`, `Pause()`, `Resume()` |
-| `client.Products` | `List()`, `Create()`, `Get()`, `Update()`, `Delete()` |
-| `client.Payments` | `List()`, `Create()`, `Get()` |
-| `client.CheckoutSessions` | `Create()`, `Get()` |
-| `client.Discounts` | `List()`, `Create()`, `Get()`, `Update()`, `Delete()` |
-| `client.CreditNotes` | `List()`, `Create()`, `Get()` |
-| `client.PaymentLinks` | `List()`, `Create()`, `Get()`, `Update()` |
-| `client.PaymentMethods` | `List()`, `Get()`, `Detach()` |
-| `client.WebhookEndpoints` | `List()`, `Create()`, `Delete()` |
-| `client.Events` | `List()`, `Get()` |
-| `client.Entitlements` | `List()`, `Check()` |
+OpenAPI Generator exposes typed service fields such as `CustomersAPI`,
+`InvoicesAPI`, and `SubscriptionsAPI`. Each operation uses the generated
+request builder and ends with `Execute()`. Refer to the generated API docs for
+the current method list.
 
 ## Error Handling
 
 ```go
-_, err := client.Customers.Get(context.Background(), "cus_nonexistent")
+_, _, err := client.CustomersAPI.CustomersGet(context.Background(), "cus_nonexistent").Execute()
 if err != nil {
-    var apiErr *revkeen.APIError
+    var apiErr *revkeen.RequestError
     if errors.As(err, &apiErr) {
-        fmt.Printf("API error %d: %s\n", apiErr.StatusCode, apiErr.Message)
+        fmt.Printf("API error %d (%s), request %s\n", apiErr.StatusCode, apiErr.Code, apiErr.RequestID)
     }
 }
 ```
@@ -110,10 +87,15 @@ if err != nil {
 ## Configuration
 
 ```go
-client := revkeen.NewClient(
-    option.WithAPIKey(os.Getenv("REVKEEN_API_KEY")),
-    // Staging environment
-    option.WithBaseURL("https://staging-api.revkeen.com"),
+client, err := revkeen.NewClient(
+    os.Getenv("REVKEEN_API_KEY"),
+    revkeen.EnvironmentSandbox,
+)
+
+// Custom endpoints require the explicit escape hatch.
+local, err := revkeen.NewClientWithCustomBaseURL(
+    os.Getenv("REVKEEN_API_KEY"),
+    "http://localhost:4010/v2",
 )
 ```
 

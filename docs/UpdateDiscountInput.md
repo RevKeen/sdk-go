@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**DiscountValue** | Pointer to **float32** |  | [optional] 
-**AppliesTo** | Pointer to **string** |  | [optional] 
-**Scope** | Pointer to **string** |  | [optional] 
-**ProductIds** | Pointer to **[]string** |  | [optional] 
-**MaxRedemptions** | Pointer to **NullableInt32** |  | [optional] 
-**MaxRedemptionsPerUser** | Pointer to **int32** |  | [optional] 
-**ValidFrom** | Pointer to **NullableString** |  | [optional] 
-**ValidUntil** | Pointer to **NullableString** |  | [optional] 
-**IsActive** | Pointer to **bool** |  | [optional] 
-**IsArchived** | Pointer to **bool** |  | [optional] 
-**RecurringType** | Pointer to **NullableString** |  | [optional] 
-**RecurringCycles** | Pointer to **NullableInt32** |  | [optional] 
-**FirstTimeCustomer** | Pointer to **bool** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional]
+**Description** | Pointer to **NullableString** |  | [optional]
+**DiscountValue** | Pointer to **float32** |  | [optional]
+**AppliesTo** | Pointer to **string** |  | [optional]
+**Scope** | Pointer to **string** |  | [optional]
+**ProductIds** | Pointer to **[]string** |  | [optional]
+**MaxRedemptions** | Pointer to **NullableInt32** |  | [optional]
+**MaxRedemptionsPerUser** | Pointer to **int32** |  | [optional]
+**ValidFrom** | Pointer to **NullableString** |  | [optional]
+**ValidUntil** | Pointer to **NullableString** |  | [optional]
+**IsActive** | Pointer to **bool** |  | [optional]
+**IsArchived** | Pointer to **bool** |  | [optional]
+**RecurringType** | Pointer to **NullableString** |  | [optional]
+**RecurringCycles** | Pointer to **NullableInt32** |  | [optional]
+**FirstTimeCustomer** | Pointer to **bool** |  | [optional]
 
 ## Methods
 
@@ -486,5 +486,3 @@ HasFirstTimeCustomer returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

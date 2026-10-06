@@ -1,6 +1,6 @@
 # \WebhookEndpointsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsCreateRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhookEndpointsCreateRequest** | [**WebhookEndpointsCreateRequest**](WebhookEndpointsCreateRequest.md) |  | 
+ **webhookEndpointsCreateRequest** | [**WebhookEndpointsCreateRequest**](WebhookEndpointsCreateRequest.md) |  |
 
 ### Return type
 
@@ -96,7 +96,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -166,7 +166,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -190,7 +190,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -236,7 +236,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -267,7 +267,7 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string** | Filter by endpoint status | 
+ **status** | **string** | Filter by endpoint status |
  **limit** | **int32** | Maximum number of results to return (1-100, default 20) | [default to 20]
  **offset** | **int32** | Number of results to skip for pagination | [default to 0]
 
@@ -306,7 +306,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -330,7 +330,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -376,7 +376,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -401,7 +401,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -411,7 +411,7 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsUpdateRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **webhookEndpointsUpdateRequest** | [**WebhookEndpointsUpdateRequest**](WebhookEndpointsUpdateRequest.md) |  | 
+ **webhookEndpointsUpdateRequest** | [**WebhookEndpointsUpdateRequest**](WebhookEndpointsUpdateRequest.md) |  |
 
 ### Return type
 
@@ -429,4 +429,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

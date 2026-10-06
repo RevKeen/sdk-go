@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique import job ID | 
-**Object** | **string** | Object type | 
-**Status** | **string** | Import job status. pending: queued. validating: checking data. processing: creating records. completed: all rows imported. completed_with_errors: some rows failed. failed: import aborted. | 
-**ResourceType** | **string** | The type of resource to import. | 
-**TotalRows** | Pointer to **NullableInt32** | Total rows in the uploaded file | [optional] 
-**ProcessedRows** | Pointer to **NullableInt32** | Number of rows processed so far | [optional] 
-**SuccessCount** | Pointer to **NullableInt32** | Number of rows successfully imported | [optional] 
-**ErrorCount** | Pointer to **NullableInt32** | Number of rows that failed | [optional] 
-**Errors** | Pointer to [**[]ImportErrorsInner**](ImportErrorsInner.md) | Detailed error information for failed rows | [optional] 
-**CreatedAt** | **time.Time** | When the import was created (ISO 8601) | 
-**CompletedAt** | Pointer to **NullableTime** | When the import completed (ISO 8601) | [optional] 
+**Id** | **string** | Unique import job ID |
+**Object** | **string** | Object type |
+**Status** | **string** | Import job status. pending: queued. validating: checking data. processing: creating records. completed: all rows imported. completed_with_errors: some rows failed. failed: import aborted. |
+**ResourceType** | **string** | The type of resource to import. |
+**TotalRows** | Pointer to **NullableInt32** | Total rows in the uploaded file | [optional]
+**ProcessedRows** | Pointer to **NullableInt32** | Number of rows processed so far | [optional]
+**SuccessCount** | Pointer to **NullableInt32** | Number of rows successfully imported | [optional]
+**ErrorCount** | Pointer to **NullableInt32** | Number of rows that failed | [optional]
+**Errors** | Pointer to [**[]ImportErrorsInner**](ImportErrorsInner.md) | Detailed error information for failed rows | [optional]
+**CreatedAt** | **time.Time** | When the import was created (ISO 8601) |
+**CompletedAt** | Pointer to **NullableTime** | When the import completed (ISO 8601) | [optional]
 
 ## Methods
 
@@ -347,5 +347,3 @@ HasCompletedAt returns a boolean if a field has been set.
 UnsetCompletedAt ensures that no value is present for CompletedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

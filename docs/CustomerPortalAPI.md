@@ -1,6 +1,6 @@
 # \CustomerPortalAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -36,7 +36,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -97,7 +97,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -121,7 +121,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Invoice ID. | 
+**id** | **string** | Invoice ID. |
 
 ### Other Parameters
 
@@ -167,7 +167,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -199,8 +199,8 @@ Other parameters are passed through a pointer to a apiCustomerPortalInvoicesList
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Maximum number of results to return (1-100, default 20). | [default to 20]
- **startingAfter** | **string** | Cursor — return results created before the row with this ID. | 
- **endingBefore** | **string** | Cursor — return results created after the row with this ID. | 
+ **startingAfter** | **string** | Cursor — return results created before the row with this ID. |
+ **endingBefore** | **string** | Cursor — return results created after the row with this ID. |
 
 ### Return type
 
@@ -237,7 +237,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -262,7 +262,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Mandate ID | 
+**id** | **string** | Mandate ID |
 
 ### Other Parameters
 
@@ -272,7 +272,7 @@ Other parameters are passed through a pointer to a apiCustomerPortalMandatesCanc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **paymentLinksExpireRequest** | [**PaymentLinksExpireRequest**](PaymentLinksExpireRequest.md) |  | 
+ **paymentLinksExpireRequest** | [**PaymentLinksExpireRequest**](PaymentLinksExpireRequest.md) |  |
 
 ### Return type
 
@@ -309,7 +309,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -370,12 +370,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the mandate being amended.
-	portalReauthorizeMandateRequest := *openapiclient.NewPortalReauthorizeMandateRequest("AccountHolderName_example", "SortCode_example", "AccountNumber_example", "VerificationToken_example", *openapiclient.NewPortalReauthorizeMandateRequestAcceptance(false, false)) // PortalReauthorizeMandateRequest | 
+	portalReauthorizeMandateRequest := *openapiclient.NewPortalReauthorizeMandateRequest("AccountHolderName_example", "SortCode_example", "AccountNumber_example", "VerificationToken_example", *openapiclient.NewPortalReauthorizeMandateRequestAcceptance(false, false)) // PortalReauthorizeMandateRequest |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -395,7 +395,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the mandate being amended. | 
+**id** | **string** | ID of the mandate being amended. |
 
 ### Other Parameters
 
@@ -405,7 +405,7 @@ Other parameters are passed through a pointer to a apiCustomerPortalMandatesReau
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **portalReauthorizeMandateRequest** | [**PortalReauthorizeMandateRequest**](PortalReauthorizeMandateRequest.md) |  | 
+ **portalReauthorizeMandateRequest** | [**PortalReauthorizeMandateRequest**](PortalReauthorizeMandateRequest.md) |  |
 
 ### Return type
 
@@ -442,11 +442,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -466,7 +466,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -512,12 +512,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	portalReauthorizeVerifyOtpRequest := *openapiclient.NewPortalReauthorizeVerifyOtpRequest("Code_example") // PortalReauthorizeVerifyOtpRequest | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
+	portalReauthorizeVerifyOtpRequest := *openapiclient.NewPortalReauthorizeVerifyOtpRequest("Code_example") // PortalReauthorizeVerifyOtpRequest |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -537,7 +537,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -547,7 +547,7 @@ Other parameters are passed through a pointer to a apiCustomerPortalMandatesReau
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **portalReauthorizeVerifyOtpRequest** | [**PortalReauthorizeVerifyOtpRequest**](PortalReauthorizeVerifyOtpRequest.md) |  | 
+ **portalReauthorizeVerifyOtpRequest** | [**PortalReauthorizeVerifyOtpRequest**](PortalReauthorizeVerifyOtpRequest.md) |  |
 
 ### Return type
 
@@ -584,11 +584,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	createCustomerPortalSessionRequest := *openapiclient.NewCreateCustomerPortalSessionRequest("cus_a1b2c3d4e5f6") // CreateCustomerPortalSessionRequest | 
+	createCustomerPortalSessionRequest := *openapiclient.NewCreateCustomerPortalSessionRequest("CustomerId_example") // CreateCustomerPortalSessionRequest |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -613,7 +613,7 @@ Other parameters are passed through a pointer to a apiCustomerPortalSessionsCrea
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomerPortalSessionRequest** | [**CreateCustomerPortalSessionRequest**](CreateCustomerPortalSessionRequest.md) |  | 
+ **createCustomerPortalSessionRequest** | [**CreateCustomerPortalSessionRequest**](CreateCustomerPortalSessionRequest.md) |  |
 
 ### Return type
 
@@ -650,7 +650,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -675,7 +675,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Subscription ID to cancel. | 
+**id** | **string** | Subscription ID to cancel. |
 
 ### Other Parameters
 
@@ -685,7 +685,7 @@ Other parameters are passed through a pointer to a apiCustomerPortalSubscription
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md) |  | 
+ **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md) |  |
 
 ### Return type
 
@@ -722,7 +722,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -746,7 +746,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Subscription ID. | 
+**id** | **string** | Subscription ID. |
 
 ### Other Parameters
 
@@ -792,7 +792,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -824,8 +824,8 @@ Other parameters are passed through a pointer to a apiCustomerPortalSubscription
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Maximum number of results to return (1-100, default 20). | [default to 20]
- **startingAfter** | **string** | Cursor — return results created before the row with this ID. | 
- **endingBefore** | **string** | Cursor — return results created after the row with this ID. | 
+ **startingAfter** | **string** | Cursor — return results created before the row with this ID. |
+ **endingBefore** | **string** | Cursor — return results created after the row with this ID. |
 
 ### Return type
 
@@ -843,4 +843,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Phases** | Pointer to [**[]SchedulePhase**](SchedulePhase.md) | Replace all phases | [optional] 
-**EndBehavior** | Pointer to **string** | What happens when all phases complete | [optional] 
-**ProrationBehavior** | Pointer to **string** | Proration behavior when updating phases | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom metadata | [optional] 
+**Phases** | Pointer to [**[]SchedulePhase**](SchedulePhase.md) | Replace all phases | [optional]
+**EndBehavior** | Pointer to **string** | What happens when all phases complete | [optional]
+**ProrationBehavior** | Pointer to **string** | Proration behavior when updating phases | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom metadata | [optional]
 
 ## Methods
 
@@ -130,5 +130,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

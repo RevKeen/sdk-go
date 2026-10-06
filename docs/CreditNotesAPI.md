@@ -1,6 +1,6 @@
 # \CreditNotesAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreditNotesCreate
 
-> CreditNoteCreateResponse CreditNotesCreate(ctx).CreateCreditNoteInput(createCreditNoteInput).Execute()
+> CreditNoteCreateResponse CreditNotesCreate(ctx).IdempotencyKey(idempotencyKey).CreateCreditNoteInput(createCreditNoteInput).Execute()
 
 Create a credit note
 
@@ -30,15 +30,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	createCreditNoteInput := *openapiclient.NewCreateCreditNoteInput("660e8400-e29b-41d4-a716-446655440000", int32(5000)) // CreateCreditNoteInput |  (optional)
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
+	createCreditNoteInput := *openapiclient.NewCreateCreditNoteInput("660e8400-e29b-41d4-a716-446655440000", int64(5000)) // CreateCreditNoteInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CreditNotesAPI.CreditNotesCreate(context.Background()).CreateCreditNoteInput(createCreditNoteInput).Execute()
+	resp, r, err := apiClient.CreditNotesAPI.CreditNotesCreate(context.Background()).IdempotencyKey(idempotencyKey).CreateCreditNoteInput(createCreditNoteInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CreditNotesAPI.CreditNotesCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +60,8 @@ Other parameters are passed through a pointer to a apiCreditNotesCreateRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCreditNoteInput** | [**CreateCreditNoteInput**](CreateCreditNoteInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **createCreditNoteInput** | [**CreateCreditNoteInput**](CreateCreditNoteInput.md) |  |
 
 ### Return type
 
@@ -96,7 +98,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -120,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Credit note UUID | 
+**id** | **string** | Credit note UUID |
 
 ### Other Parameters
 
@@ -166,7 +168,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -202,12 +204,12 @@ Other parameters are passed through a pointer to a apiCreditNotesListRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string** | Filter by credit note status | 
- **invoiceId** | **string** | Filter by invoice ID | 
- **customerId** | **string** | Filter by customer ID | 
- **creditMethod** | **string** | Filter by credit method | 
- **createdAfter** | **string** | ISO 8601 date - only credit notes created after this date | 
- **createdBefore** | **string** | ISO 8601 date - only credit notes created before this date | 
+ **status** | **string** | Filter by credit note status |
+ **invoiceId** | **string** | Filter by invoice ID |
+ **customerId** | **string** | Filter by customer ID |
+ **creditMethod** | **string** | Filter by credit method |
+ **createdAfter** | **string** | ISO 8601 date - only credit notes created after this date |
+ **createdBefore** | **string** | ISO 8601 date - only credit notes created before this date |
  **limit** | **float32** | Number of results to return (1-100) | [default to 20]
  **offset** | **float32** | Number of results to skip | [default to 0]
 
@@ -246,7 +248,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -271,7 +273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Credit note UUID | 
+**id** | **string** | Credit note UUID |
 
 ### Other Parameters
 
@@ -303,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## CreditNotesPreview
 
-> CreditNotePreviewResponse CreditNotesPreview(ctx).PreviewCreditNoteInput(previewCreditNoteInput).Execute()
+> CreditNotePreviewResponse CreditNotesPreview(ctx).PreviewCreditNoteInput(previewCreditNoteInput).IdempotencyKey(idempotencyKey).Execute()
 
 Preview a credit note without creating it
 
@@ -318,15 +320,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	previewCreditNoteInput := *openapiclient.NewPreviewCreditNoteInput("660e8400-e29b-41d4-a716-446655440000", int32(5000)) // PreviewCreditNoteInput | 
+	previewCreditNoteInput := *openapiclient.NewPreviewCreditNoteInput("660e8400-e29b-41d4-a716-446655440000", int64(5000)) // PreviewCreditNoteInput |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CreditNotesAPI.CreditNotesPreview(context.Background()).PreviewCreditNoteInput(previewCreditNoteInput).Execute()
+	resp, r, err := apiClient.CreditNotesAPI.CreditNotesPreview(context.Background()).PreviewCreditNoteInput(previewCreditNoteInput).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CreditNotesAPI.CreditNotesPreview``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -347,7 +350,8 @@ Other parameters are passed through a pointer to a apiCreditNotesPreviewRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **previewCreditNoteInput** | [**PreviewCreditNoteInput**](PreviewCreditNoteInput.md) |  | 
+ **previewCreditNoteInput** | [**PreviewCreditNoteInput**](PreviewCreditNoteInput.md) |  |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -369,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## CreditNotesVoid
 
-> CreditNoteVoidResponse CreditNotesVoid(ctx, id).Execute()
+> CreditNoteVoidResponse CreditNotesVoid(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Void a credit note
 
@@ -384,15 +388,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credit note UUID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CreditNotesAPI.CreditNotesVoid(context.Background(), id).Execute()
+	resp, r, err := apiClient.CreditNotesAPI.CreditNotesVoid(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CreditNotesAPI.CreditNotesVoid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -408,7 +413,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Credit note UUID | 
+**id** | **string** | Credit note UUID |
 
 ### Other Parameters
 
@@ -418,6 +423,7 @@ Other parameters are passed through a pointer to a apiCreditNotesVoidRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -435,4 +441,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

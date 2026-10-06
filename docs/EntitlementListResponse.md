@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**[]Entitlement**](Entitlement.md) |  | 
-**Pagination** | [**PaymentLinksList200ResponsePagination**](PaymentLinksList200ResponsePagination.md) |  | 
-**Customer** | [**EntitlementListResponseCustomer**](EntitlementListResponseCustomer.md) |  | 
+**Data** | [**[]Entitlement**](Entitlement.md) |  |
+**Pagination** | [**PaymentLinksList200ResponsePagination**](PaymentLinksList200ResponsePagination.md) |  |
+**Customer** | [**EntitlementListResponseCustomer**](EntitlementListResponseCustomer.md) |  |
 
 ## Methods
 
@@ -89,5 +89,3 @@ SetCustomer sets Customer field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

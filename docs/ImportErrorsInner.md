@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Row** | **int32** | Row number (1-based) | 
-**Field** | Pointer to **string** | Field that caused the error | [optional] 
-**Message** | **string** | Error message | 
+**Row** | **int32** | Row number (1-based) |
+**Field** | Pointer to **string** | Field that caused the error | [optional]
+**Message** | **string** | Error message |
 
 ## Methods
 
@@ -94,5 +94,3 @@ SetMessage sets Message field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

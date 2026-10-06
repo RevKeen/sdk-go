@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** | ID of the customer to attach the payment method to | 
+**CustomerId** | **string** | ID of the customer to attach the payment method to |
 
 ## Methods
 
@@ -47,5 +47,3 @@ SetCustomerId sets CustomerId field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | **int32** |  | 
-**Origins** | **[]string** |  | 
+**Count** | **int32** |  |
+**Origins** | **[]string** |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetOrigins sets Origins field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

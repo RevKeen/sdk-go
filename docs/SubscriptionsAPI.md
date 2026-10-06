@@ -1,6 +1,6 @@
 # \SubscriptionsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## SubscriptionsCancel
 
-> SubscriptionCancelSubscriptionResponse SubscriptionsCancel(ctx, id).CancelSubscriptionInput(cancelSubscriptionInput).Execute()
+> SubscriptionCancelSubscriptionResponse SubscriptionsCancel(ctx, id).IdempotencyKey(idempotencyKey).CancelSubscriptionInput(cancelSubscriptionInput).Execute()
 
 Cancel subscription
 
@@ -29,16 +29,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Subscription UUID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	cancelSubscriptionInput := *openapiclient.NewCancelSubscriptionInput("Mode_example") // CancelSubscriptionInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsCancel(context.Background(), id).CancelSubscriptionInput(cancelSubscriptionInput).Execute()
+	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsCancel(context.Background(), id).IdempotencyKey(idempotencyKey).CancelSubscriptionInput(cancelSubscriptionInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubscriptionsAPI.SubscriptionsCancel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Subscription UUID | 
+**id** | **string** | Subscription UUID |
 
 ### Other Parameters
 
@@ -64,7 +65,8 @@ Other parameters are passed through a pointer to a apiSubscriptionsCancelRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cancelSubscriptionInput** | [**CancelSubscriptionInput**](CancelSubscriptionInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **cancelSubscriptionInput** | [**CancelSubscriptionInput**](CancelSubscriptionInput.md) |  |
 
 ### Return type
 
@@ -86,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## SubscriptionsCreate
 
-> SubscriptionCreateResponse SubscriptionsCreate(ctx).SubscriptionsCreateRequest(subscriptionsCreateRequest).Execute()
+> SubscriptionCreateResponse SubscriptionsCreate(ctx).IdempotencyKey(idempotencyKey).SubscriptionsCreateRequest(subscriptionsCreateRequest).Execute()
 
 Create a new subscription
 
@@ -101,15 +103,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	subscriptionsCreateRequest := *openapiclient.NewSubscriptionsCreateRequest("CustomerId_example") // SubscriptionsCreateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsCreate(context.Background()).SubscriptionsCreateRequest(subscriptionsCreateRequest).Execute()
+	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsCreate(context.Background()).IdempotencyKey(idempotencyKey).SubscriptionsCreateRequest(subscriptionsCreateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubscriptionsAPI.SubscriptionsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +133,8 @@ Other parameters are passed through a pointer to a apiSubscriptionsCreateRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscriptionsCreateRequest** | [**SubscriptionsCreateRequest**](SubscriptionsCreateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **subscriptionsCreateRequest** | [**SubscriptionsCreateRequest**](SubscriptionsCreateRequest.md) |  |
 
 ### Return type
 
@@ -167,7 +171,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -191,7 +195,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Subscription UUID | 
+**id** | **string** | Subscription UUID |
 
 ### Other Parameters
 
@@ -237,7 +241,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -271,8 +275,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int32** | Page number | [default to 1]
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
- **status** | **string** | Filter by subscription status | 
- **customerId** | **string** | Filter by customer UUID | 
+ **status** | **string** | Filter by subscription status |
+ **customerId** | **string** | Filter by customer UUID |
 
 ### Return type
 
@@ -294,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## SubscriptionsUpdate
 
-> SubscriptionUpdateResponse SubscriptionsUpdate(ctx, id).SubscriptionsUpdateRequest(subscriptionsUpdateRequest).Execute()
+> SubscriptionUpdateResponse SubscriptionsUpdate(ctx, id).IdempotencyKey(idempotencyKey).SubscriptionsUpdateRequest(subscriptionsUpdateRequest).Execute()
 
 Update subscription details
 
@@ -309,16 +313,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Subscription UUID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	subscriptionsUpdateRequest := *openapiclient.NewSubscriptionsUpdateRequest() // SubscriptionsUpdateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsUpdate(context.Background(), id).SubscriptionsUpdateRequest(subscriptionsUpdateRequest).Execute()
+	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsUpdate(context.Background(), id).IdempotencyKey(idempotencyKey).SubscriptionsUpdateRequest(subscriptionsUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubscriptionsAPI.SubscriptionsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,7 +339,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Subscription UUID | 
+**id** | **string** | Subscription UUID |
 
 ### Other Parameters
 
@@ -344,7 +349,8 @@ Other parameters are passed through a pointer to a apiSubscriptionsUpdateRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **subscriptionsUpdateRequest** | [**SubscriptionsUpdateRequest**](SubscriptionsUpdateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **subscriptionsUpdateRequest** | [**SubscriptionsUpdateRequest**](SubscriptionsUpdateRequest.md) |  |
 
 ### Return type
 
@@ -362,4 +368,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

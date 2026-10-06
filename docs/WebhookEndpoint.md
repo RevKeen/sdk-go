@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the webhook endpoint | 
-**Url** | **string** | The URL that receives webhook POST requests | 
-**Description** | **NullableString** | Optional human-readable description | 
-**EnabledEvents** | **[]string** | Event types this endpoint subscribes to | 
-**Status** | **string** | Whether the endpoint is currently receiving events | 
-**Secret** | Pointer to **string** | Signing secret. Returned only on create or secret rotation. | [optional] 
-**CircuitBreakerState** | **string** | Circuit breaker status. Opens after repeated delivery failures. | 
-**TotalDeliveries** | **float32** | Total number of delivery attempts | 
-**SuccessfulDeliveries** | **float32** | Number of successful deliveries | 
-**FailedDeliveries** | **float32** | Number of failed deliveries | 
-**LastDeliveryAt** | **NullableString** | Timestamp of the most recent delivery attempt | 
-**CreatedAt** | **string** | When the endpoint was created | 
-**UpdatedAt** | **string** | When the endpoint was last modified | 
+**Id** | **string** | Unique identifier for the webhook endpoint |
+**Url** | **string** | The URL that receives webhook POST requests |
+**Description** | **NullableString** | Optional human-readable description |
+**EnabledEvents** | **[]string** | Event types this endpoint subscribes to |
+**Status** | **string** | Whether the endpoint is currently receiving events |
+**Secret** | Pointer to **string** | Signing secret. Returned only on create or secret rotation. | [optional]
+**CircuitBreakerState** | **string** | Circuit breaker status. Opens after repeated delivery failures. |
+**TotalDeliveries** | **float32** | Total number of delivery attempts |
+**SuccessfulDeliveries** | **float32** | Number of successful deliveries |
+**FailedDeliveries** | **float32** | Number of failed deliveries |
+**LastDeliveryAt** | **NullableTime** | Timestamp of the most recent delivery attempt |
+**CreatedAt** | **time.Time** | When the endpoint was created |
+**UpdatedAt** | **time.Time** | When the endpoint was last modified |
 
 ## Methods
 
 ### NewWebhookEndpoint
 
-`func NewWebhookEndpoint(id string, url string, description NullableString, enabledEvents []string, status string, circuitBreakerState string, totalDeliveries float32, successfulDeliveries float32, failedDeliveries float32, lastDeliveryAt NullableString, createdAt string, updatedAt string, ) *WebhookEndpoint`
+`func NewWebhookEndpoint(id string, url string, description NullableString, enabledEvents []string, status string, circuitBreakerState string, totalDeliveries float32, successfulDeliveries float32, failedDeliveries float32, lastDeliveryAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *WebhookEndpoint`
 
 NewWebhookEndpoint instantiates a new WebhookEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -254,20 +254,20 @@ SetFailedDeliveries sets FailedDeliveries field to given value.
 
 ### GetLastDeliveryAt
 
-`func (o *WebhookEndpoint) GetLastDeliveryAt() string`
+`func (o *WebhookEndpoint) GetLastDeliveryAt() time.Time`
 
 GetLastDeliveryAt returns the LastDeliveryAt field if non-nil, zero value otherwise.
 
 ### GetLastDeliveryAtOk
 
-`func (o *WebhookEndpoint) GetLastDeliveryAtOk() (*string, bool)`
+`func (o *WebhookEndpoint) GetLastDeliveryAtOk() (*time.Time, bool)`
 
 GetLastDeliveryAtOk returns a tuple with the LastDeliveryAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastDeliveryAt
 
-`func (o *WebhookEndpoint) SetLastDeliveryAt(v string)`
+`func (o *WebhookEndpoint) SetLastDeliveryAt(v time.Time)`
 
 SetLastDeliveryAt sets LastDeliveryAt field to given value.
 
@@ -284,45 +284,43 @@ SetLastDeliveryAt sets LastDeliveryAt field to given value.
 UnsetLastDeliveryAt ensures that no value is present for LastDeliveryAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *WebhookEndpoint) GetCreatedAt() string`
+`func (o *WebhookEndpoint) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *WebhookEndpoint) GetCreatedAtOk() (*string, bool)`
+`func (o *WebhookEndpoint) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *WebhookEndpoint) SetCreatedAt(v string)`
+`func (o *WebhookEndpoint) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *WebhookEndpoint) GetUpdatedAt() string`
+`func (o *WebhookEndpoint) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *WebhookEndpoint) GetUpdatedAtOk() (*string, bool)`
+`func (o *WebhookEndpoint) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *WebhookEndpoint) SetUpdatedAt(v string)`
+`func (o *WebhookEndpoint) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

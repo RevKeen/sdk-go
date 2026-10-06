@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SuccessUrl** | Pointer to **NullableString** |  | [optional] 
-**CancelUrl** | Pointer to **NullableString** |  | [optional] 
-**AllowedMethods** | Pointer to **[]string** |  | [optional] 
+**SuccessUrl** | Pointer to **NullableString** |  | [optional]
+**CancelUrl** | Pointer to **NullableString** |  | [optional]
+**AllowedMethods** | Pointer to **[]string** |  | [optional]
 
 ## Methods
 
@@ -134,5 +134,3 @@ HasAllowedMethods returns a boolean if a field has been set.
 UnsetAllowedMethods ensures that no value is present for AllowedMethods, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

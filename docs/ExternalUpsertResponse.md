@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**Invoice**](Invoice.md) |  | 
-**Created** | **bool** |  | 
-**Warnings** | Pointer to **[]string** |  | [optional] 
-**RequestId** | **string** |  | 
+**Data** | [**Invoice**](Invoice.md) |  |
+**Created** | **bool** |  |
+**Warnings** | Pointer to **[]string** |  | [optional]
+**RequestId** | **string** |  |
 
 ## Methods
 
@@ -115,5 +115,3 @@ SetRequestId sets RequestId field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

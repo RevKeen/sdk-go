@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PaymentMethod** | Pointer to **string** | Payment method ID. Required if not already set on the intent. | [optional] 
-**ReturnUrl** | Pointer to **string** | URL to redirect to after 3DS authentication | [optional] 
+**PaymentMethod** | Pointer to **string** | Payment method ID. Required if not already set on the intent. | [optional]
+**ReturnUrl** | Pointer to **string** | URL to redirect to after 3DS authentication | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasReturnUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

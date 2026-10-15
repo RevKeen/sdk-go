@@ -1,6 +1,6 @@
 # \WebhookEndpointsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**WebhookEndpointsDelete**](WebhookEndpointsAPI.md#WebhookEndpointsDelete) | **Delete** /webhook-endpoints/{id} | Delete webhook endpoint
 [**WebhookEndpointsGet**](WebhookEndpointsAPI.md#WebhookEndpointsGet) | **Get** /webhook-endpoints/{id} | Get webhook endpoint
 [**WebhookEndpointsList**](WebhookEndpointsAPI.md#WebhookEndpointsList) | **Get** /webhook-endpoints | List webhook endpoints
+[**WebhookEndpointsRedeliver**](WebhookEndpointsAPI.md#WebhookEndpointsRedeliver) | **Post** /webhook-endpoints/{id}/redeliver | Redeliver an event to this endpoint
 [**WebhookEndpointsRotateSecret**](WebhookEndpointsAPI.md#WebhookEndpointsRotateSecret) | **Post** /webhook-endpoints/{id}/rotate-secret | Rotate signing secret
 [**WebhookEndpointsUpdate**](WebhookEndpointsAPI.md#WebhookEndpointsUpdate) | **Patch** /webhook-endpoints/{id} | Update webhook endpoint
 
@@ -15,7 +16,7 @@ Method | HTTP request | Description
 
 ## WebhookEndpointsCreate
 
-> WebhookEndpointsCreate201Response WebhookEndpointsCreate(ctx).WebhookEndpointsCreateRequest(webhookEndpointsCreateRequest).Execute()
+> WebhookEndpointsCreate201Response WebhookEndpointsCreate(ctx).IdempotencyKey(idempotencyKey).WebhookEndpointsCreateRequest(webhookEndpointsCreateRequest).Execute()
 
 Create webhook endpoint
 
@@ -30,15 +31,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	webhookEndpointsCreateRequest := *openapiclient.NewWebhookEndpointsCreateRequest("Url_example", []string{"EnabledEvents_example"}) // WebhookEndpointsCreateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsCreate(context.Background()).WebhookEndpointsCreateRequest(webhookEndpointsCreateRequest).Execute()
+	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsCreate(context.Background()).IdempotencyKey(idempotencyKey).WebhookEndpointsCreateRequest(webhookEndpointsCreateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.WebhookEndpointsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +61,8 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsCreateRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhookEndpointsCreateRequest** | [**WebhookEndpointsCreateRequest**](WebhookEndpointsCreateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **webhookEndpointsCreateRequest** | [**WebhookEndpointsCreateRequest**](WebhookEndpointsCreateRequest.md) |  |
 
 ### Return type
 
@@ -81,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## WebhookEndpointsDelete
 
-> WebhookEndpointsDelete200Response WebhookEndpointsDelete(ctx, id).Execute()
+> WebhookEndpointsDelete200Response WebhookEndpointsDelete(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Delete webhook endpoint
 
@@ -96,15 +99,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook endpoint ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsDelete(context.Background(), id).Execute()
+	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsDelete(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.WebhookEndpointsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -120,7 +124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -130,6 +134,7 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsDeleteRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -166,7 +171,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -190,7 +195,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -236,7 +241,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -267,7 +272,7 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string** | Filter by endpoint status | 
+ **status** | **string** | Filter by endpoint status |
  **limit** | **int32** | Maximum number of results to return (1-100, default 20) | [default to 20]
  **offset** | **int32** | Number of results to skip for pagination | [default to 0]
 
@@ -289,9 +294,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## WebhookEndpointsRedeliver
+
+> WebhookEndpointRedeliverResponse WebhookEndpointsRedeliver(ctx, id).WebhookEndpointsRedeliverRequest(webhookEndpointsRedeliverRequest).IdempotencyKey(idempotencyKey).Execute()
+
+Redeliver an event to this endpoint
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/sdk-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook endpoint ID
+	webhookEndpointsRedeliverRequest := *openapiclient.NewWebhookEndpointsRedeliverRequest("1f8d9e0b-3a2e-4d9a-b0fe-1c2a3f4d5e6f") // WebhookEndpointsRedeliverRequest |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsRedeliver(context.Background(), id).WebhookEndpointsRedeliverRequest(webhookEndpointsRedeliverRequest).IdempotencyKey(idempotencyKey).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.WebhookEndpointsRedeliver``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `WebhookEndpointsRedeliver`: WebhookEndpointRedeliverResponse
+	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.WebhookEndpointsRedeliver`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Webhook endpoint ID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiWebhookEndpointsRedeliverRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **webhookEndpointsRedeliverRequest** | [**WebhookEndpointsRedeliverRequest**](WebhookEndpointsRedeliverRequest.md) |  |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+
+### Return type
+
+[**WebhookEndpointRedeliverResponse**](WebhookEndpointRedeliverResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## WebhookEndpointsRotateSecret
 
-> WebhookEndpointsCreate201Response WebhookEndpointsRotateSecret(ctx, id).Execute()
+> WebhookEndpointsCreate201Response WebhookEndpointsRotateSecret(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Rotate signing secret
 
@@ -306,15 +385,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook endpoint ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsRotateSecret(context.Background(), id).Execute()
+	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsRotateSecret(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.WebhookEndpointsRotateSecret``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -330,7 +410,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -340,6 +420,7 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsRotateSecr
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -361,7 +442,7 @@ Name | Type | Description  | Notes
 
 ## WebhookEndpointsUpdate
 
-> WebhookEndpointsGet200Response WebhookEndpointsUpdate(ctx, id).WebhookEndpointsUpdateRequest(webhookEndpointsUpdateRequest).Execute()
+> WebhookEndpointsGet200Response WebhookEndpointsUpdate(ctx, id).IdempotencyKey(idempotencyKey).WebhookEndpointsUpdateRequest(webhookEndpointsUpdateRequest).Execute()
 
 Update webhook endpoint
 
@@ -376,16 +457,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook endpoint ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	webhookEndpointsUpdateRequest := *openapiclient.NewWebhookEndpointsUpdateRequest() // WebhookEndpointsUpdateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsUpdate(context.Background(), id).WebhookEndpointsUpdateRequest(webhookEndpointsUpdateRequest).Execute()
+	resp, r, err := apiClient.WebhookEndpointsAPI.WebhookEndpointsUpdate(context.Background(), id).IdempotencyKey(idempotencyKey).WebhookEndpointsUpdateRequest(webhookEndpointsUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.WebhookEndpointsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -401,7 +483,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook endpoint ID | 
+**id** | **string** | Webhook endpoint ID |
 
 ### Other Parameters
 
@@ -411,7 +493,8 @@ Other parameters are passed through a pointer to a apiWebhookEndpointsUpdateRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **webhookEndpointsUpdateRequest** | [**WebhookEndpointsUpdateRequest**](WebhookEndpointsUpdateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **webhookEndpointsUpdateRequest** | [**WebhookEndpointsUpdateRequest**](WebhookEndpointsUpdateRequest.md) |  |
 
 ### Return type
 
@@ -429,4 +512,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

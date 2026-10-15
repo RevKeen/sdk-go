@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique credit note identifier | 
-**CreditNoteNumber** | **NullableString** | Sequential credit note number for accounting reference | 
-**InvoiceId** | **string** | ID of the invoice this credit note applies to | 
-**CustomerId** | **NullableString** | ID of the customer who received the credit | 
-**AmountMinor** | **int32** | Credit amount in minor units (cents) | 
-**TaxAmountMinor** | **NullableInt32** | Tax portion of the credit in minor units | 
-**Currency** | **string** | Three-letter ISO 4217 currency code | 
-**Status** | **string** | Credit note status: draft, issued, or void | 
-**Reason** | **NullableString** | Human-readable reason for the credit | 
-**ReasonCode** | **NullableString** | Machine-readable reason code (e.g., billing_error, customer_request) | 
-**CreditMethod** | **NullableString** | How the credit is applied: refund_to_payment_method, customer_balance, or external | 
-**PdfUrl** | **NullableString** | URL to the credit note PDF document | 
-**IssuedAt** | **NullableString** | When the credit note was issued (ISO 8601) | 
-**CreatedAt** | **string** | When the credit note was created (ISO 8601) | 
-**UpdatedAt** | **string** | When the credit note was last updated (ISO 8601) | 
+**Id** | **string** | Unique credit note identifier |
+**CreditNoteNumber** | **NullableString** | Sequential credit note number for accounting reference |
+**InvoiceId** | **string** | ID of the invoice this credit note applies to |
+**CustomerId** | **NullableString** | ID of the customer who received the credit |
+**AmountMinor** | **int64** | Credit amount in minor units (cents) |
+**TaxAmountMinor** | **NullableInt64** | Tax portion of the credit in minor units |
+**Currency** | **string** | Three-letter ISO 4217 currency code |
+**Status** | **string** | Credit note status: draft, issued, or void |
+**Reason** | **NullableString** | Human-readable reason for the credit |
+**ReasonCode** | **NullableString** | Machine-readable reason code (e.g., billing_error, customer_request) |
+**CreditMethod** | **NullableString** | How the credit is applied: refund_to_payment_method, customer_balance, or external |
+**PdfUrl** | **NullableString** | URL to the credit note PDF document |
+**IssuedAt** | **NullableTime** | When the credit note was issued (ISO 8601) |
+**CreatedAt** | **time.Time** | When the credit note was created (ISO 8601) |
+**UpdatedAt** | **time.Time** | When the credit note was last updated (ISO 8601) |
 
 ## Methods
 
 ### NewCreditNote
 
-`func NewCreditNote(id string, creditNoteNumber NullableString, invoiceId string, customerId NullableString, amountMinor int32, taxAmountMinor NullableInt32, currency string, status string, reason NullableString, reasonCode NullableString, creditMethod NullableString, pdfUrl NullableString, issuedAt NullableString, createdAt string, updatedAt string, ) *CreditNote`
+`func NewCreditNote(id string, creditNoteNumber NullableString, invoiceId string, customerId NullableString, amountMinor int64, taxAmountMinor NullableInt64, currency string, status string, reason NullableString, reasonCode NullableString, creditMethod NullableString, pdfUrl NullableString, issuedAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *CreditNote`
 
 NewCreditNote instantiates a new CreditNote object
 This constructor will assign default values to properties that have it defined,
@@ -141,40 +141,40 @@ SetCustomerId sets CustomerId field to given value.
 UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *CreditNote) GetAmountMinor() int32`
+`func (o *CreditNote) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreditNote) GetAmountMinorOk() (*int32, bool)`
+`func (o *CreditNote) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreditNote) SetAmountMinor(v int32)`
+`func (o *CreditNote) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
 
 ### GetTaxAmountMinor
 
-`func (o *CreditNote) GetTaxAmountMinor() int32`
+`func (o *CreditNote) GetTaxAmountMinor() int64`
 
 GetTaxAmountMinor returns the TaxAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTaxAmountMinorOk
 
-`func (o *CreditNote) GetTaxAmountMinorOk() (*int32, bool)`
+`func (o *CreditNote) GetTaxAmountMinorOk() (*int64, bool)`
 
 GetTaxAmountMinorOk returns a tuple with the TaxAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTaxAmountMinor
 
-`func (o *CreditNote) SetTaxAmountMinor(v int32)`
+`func (o *CreditNote) SetTaxAmountMinor(v int64)`
 
 SetTaxAmountMinor sets TaxAmountMinor field to given value.
 
@@ -351,20 +351,20 @@ SetPdfUrl sets PdfUrl field to given value.
 UnsetPdfUrl ensures that no value is present for PdfUrl, not even an explicit nil
 ### GetIssuedAt
 
-`func (o *CreditNote) GetIssuedAt() string`
+`func (o *CreditNote) GetIssuedAt() time.Time`
 
 GetIssuedAt returns the IssuedAt field if non-nil, zero value otherwise.
 
 ### GetIssuedAtOk
 
-`func (o *CreditNote) GetIssuedAtOk() (*string, bool)`
+`func (o *CreditNote) GetIssuedAtOk() (*time.Time, bool)`
 
 GetIssuedAtOk returns a tuple with the IssuedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssuedAt
 
-`func (o *CreditNote) SetIssuedAt(v string)`
+`func (o *CreditNote) SetIssuedAt(v time.Time)`
 
 SetIssuedAt sets IssuedAt field to given value.
 
@@ -381,45 +381,43 @@ SetIssuedAt sets IssuedAt field to given value.
 UnsetIssuedAt ensures that no value is present for IssuedAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *CreditNote) GetCreatedAt() string`
+`func (o *CreditNote) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CreditNote) GetCreatedAtOk() (*string, bool)`
+`func (o *CreditNote) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CreditNote) SetCreatedAt(v string)`
+`func (o *CreditNote) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *CreditNote) GetUpdatedAt() string`
+`func (o *CreditNote) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CreditNote) GetUpdatedAtOk() (*string, bool)`
+`func (o *CreditNote) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CreditNote) SetUpdatedAt(v string)`
+`func (o *CreditNote) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

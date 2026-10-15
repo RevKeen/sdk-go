@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**[]PaymentLinksList200ResponseDataInner**](PaymentLinksList200ResponseDataInner.md) |  | 
-**Pagination** | [**PaymentLinksList200ResponsePagination**](PaymentLinksList200ResponsePagination.md) |  | 
+**Data** | [**[]PaymentLinksList200ResponseDataInner**](PaymentLinksList200ResponseDataInner.md) |  |
+**Pagination** | [**PaymentLinksList200ResponsePagination**](PaymentLinksList200ResponsePagination.md) |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetPagination sets Pagination field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

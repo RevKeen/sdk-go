@@ -1,6 +1,6 @@
 # \TransactionsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Transaction UUID | 
+**id** | **string** | Transaction UUID |
 
 ### Other Parameters
 
@@ -96,7 +96,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -107,8 +107,8 @@ func main() {
 	createdGte := float32(8.14) // float32 | Filter by created_at >= (Unix timestamp) (optional)
 	createdLte := float32(8.14) // float32 | Filter by created_at <= (Unix timestamp) (optional)
 	limit := int32(56) // int32 | Maximum number of results (1-100) (optional) (default to 20)
-	startingAfter := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination - return results after this ID (optional)
-	endingBefore := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination - return results before this ID (optional)
+	startingAfter := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination: return transactions after this transaction ID. Mutually exclusive with `ending_before` — supplying both is rejected with 400 `parameter_invalid`. The ID must name a transaction of the authenticated merchant, or the request is rejected with 400 `resource_missing`. (optional)
+	endingBefore := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination: return transactions before this transaction ID. Mutually exclusive with `starting_after` — supplying both is rejected with 400 `parameter_invalid`. The ID must name a transaction of the authenticated merchant, or the request is rejected with 400 `resource_missing`. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -133,15 +133,15 @@ Other parameters are passed through a pointer to a apiTransactionsListRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type_** | **string** | Filter by transaction type | 
- **status** | **string** | Filter by status | 
- **customerId** | **string** | Filter by customer ID | 
- **invoiceId** | **string** | Filter by invoice ID | 
- **createdGte** | **float32** | Filter by created_at &gt;&#x3D; (Unix timestamp) | 
- **createdLte** | **float32** | Filter by created_at &lt;&#x3D; (Unix timestamp) | 
+ **type_** | **string** | Filter by transaction type |
+ **status** | **string** | Filter by status |
+ **customerId** | **string** | Filter by customer ID |
+ **invoiceId** | **string** | Filter by invoice ID |
+ **createdGte** | **float32** | Filter by created_at &gt;&#x3D; (Unix timestamp) |
+ **createdLte** | **float32** | Filter by created_at &lt;&#x3D; (Unix timestamp) |
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
- **startingAfter** | **string** | Cursor for pagination - return results after this ID | 
- **endingBefore** | **string** | Cursor for pagination - return results before this ID | 
+ **startingAfter** | **string** | Cursor for pagination: return transactions after this transaction ID. Mutually exclusive with &#x60;ending_before&#x60; — supplying both is rejected with 400 &#x60;parameter_invalid&#x60;. The ID must name a transaction of the authenticated merchant, or the request is rejected with 400 &#x60;resource_missing&#x60;. |
+ **endingBefore** | **string** | Cursor for pagination: return transactions before this transaction ID. Mutually exclusive with &#x60;starting_after&#x60; — supplying both is rejected with 400 &#x60;parameter_invalid&#x60;. The ID must name a transaction of the authenticated merchant, or the request is rejected with 400 &#x60;resource_missing&#x60;. |
 
 ### Return type
 
@@ -159,4 +159,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

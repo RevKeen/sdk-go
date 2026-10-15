@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TrackingNumber** | Pointer to **string** | Shipping tracking number | [optional] 
-**Carrier** | Pointer to **string** | Shipping carrier (e.g., &#39;ups&#39;, &#39;fedex&#39;, &#39;usps&#39;) | [optional] 
-**LineItemIds** | Pointer to **[]string** | Specific line items to fulfill (defaults to all) | [optional] 
+**TrackingNumber** | Pointer to **string** | Shipping tracking number | [optional]
+**Carrier** | Pointer to **string** | Shipping carrier (e.g., &#39;ups&#39;, &#39;fedex&#39;, &#39;usps&#39;) | [optional]
+**LineItemIds** | Pointer to **[]string** | Specific line items to fulfill, each in full (defaults to every unfulfilled line) | [optional]
+**TrackingUrl** | Pointer to **string** | Carrier tracking link | [optional]
+**Status** | Pointer to **string** | Mark the lines shipped (default) or delivered | [optional] [default to "shipped"]
 **NotifyCustomer** | Pointer to **bool** | Send fulfillment notification to customer | [optional] [default to true]
 
 ## Methods
@@ -103,6 +105,56 @@ SetLineItemIds sets LineItemIds field to given value.
 
 HasLineItemIds returns a boolean if a field has been set.
 
+### GetTrackingUrl
+
+`func (o *FulfillOrderRequest) GetTrackingUrl() string`
+
+GetTrackingUrl returns the TrackingUrl field if non-nil, zero value otherwise.
+
+### GetTrackingUrlOk
+
+`func (o *FulfillOrderRequest) GetTrackingUrlOk() (*string, bool)`
+
+GetTrackingUrlOk returns a tuple with the TrackingUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrackingUrl
+
+`func (o *FulfillOrderRequest) SetTrackingUrl(v string)`
+
+SetTrackingUrl sets TrackingUrl field to given value.
+
+### HasTrackingUrl
+
+`func (o *FulfillOrderRequest) HasTrackingUrl() bool`
+
+HasTrackingUrl returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *FulfillOrderRequest) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *FulfillOrderRequest) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *FulfillOrderRequest) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *FulfillOrderRequest) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
 ### GetNotifyCustomer
 
 `func (o *FulfillOrderRequest) GetNotifyCustomer() bool`
@@ -130,5 +182,3 @@ HasNotifyCustomer returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

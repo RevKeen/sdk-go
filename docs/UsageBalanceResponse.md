@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**Meters** | [**[]UsageBalanceMeter**](UsageBalanceMeter.md) |  | 
-**TotalEstimatedAmountMinor** | **float32** | Total estimated charge across all meters | 
-**TotalCostMinor** | **NullableFloat32** | Total cost across all meters (null if no cost data) | 
-**TotalPaymentProcessingCostMinor** | **NullableFloat32** | Payment-processing cost from transaction_costs for matching paid transactions. Null when no matching settled/paid cost evidence is available. | 
-**TotalPlatformFeeMinor** | **NullableFloat32** | RevKeen/platform fee from transaction_costs for matching paid transactions. Null when no matching settled/paid cost evidence is available. | 
-**TrueNetMarginMinor** | **NullableFloat32** | Total estimated charge minus AI provider COGS, payment-processing cost, and platform fee. Null until all cost inputs are available. | 
-**TrueNetMarginPercent** | **NullableFloat32** | true_net_margin_minor as a percentage of total_estimated_amount_minor. Null until true-net margin is available. | 
-**Currency** | **string** | Currency code | 
+**Object** | **string** |  |
+**Meters** | [**[]UsageBalanceMeter**](UsageBalanceMeter.md) |  |
+**TotalEstimatedAmountMinor** | **int64** | Total estimated charge across all meters |
+**TotalCostMinor** | **NullableInt64** | Total cost across all meters (null if no cost data) |
+**TotalPaymentProcessingCostMinor** | **NullableInt64** | Payment-processing cost from transaction_costs for matching paid transactions. Null when no matching settled/paid cost evidence is available. |
+**TotalPlatformFeeMinor** | **NullableInt64** | RevKeen/platform fee from transaction_costs for matching paid transactions. Null when no matching settled/paid cost evidence is available. |
+**TrueNetMarginMinor** | **NullableInt64** | Total estimated charge minus AI provider COGS, payment-processing cost, and platform fee. Null until all cost inputs are available. |
+**TrueNetMarginPercent** | **NullableFloat32** | true_net_margin_minor as a percentage of total_estimated_amount_minor. Null until true-net margin is available. |
+**Currency** | **string** | Currency code |
 
 ## Methods
 
 ### NewUsageBalanceResponse
 
-`func NewUsageBalanceResponse(object string, meters []UsageBalanceMeter, totalEstimatedAmountMinor float32, totalCostMinor NullableFloat32, totalPaymentProcessingCostMinor NullableFloat32, totalPlatformFeeMinor NullableFloat32, trueNetMarginMinor NullableFloat32, trueNetMarginPercent NullableFloat32, currency string, ) *UsageBalanceResponse`
+`func NewUsageBalanceResponse(object string, meters []UsageBalanceMeter, totalEstimatedAmountMinor int64, totalCostMinor NullableInt64, totalPaymentProcessingCostMinor NullableInt64, totalPlatformFeeMinor NullableInt64, trueNetMarginMinor NullableInt64, trueNetMarginPercent NullableFloat32, currency string, ) *UsageBalanceResponse`
 
 NewUsageBalanceResponse instantiates a new UsageBalanceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -75,40 +75,40 @@ SetMeters sets Meters field to given value.
 
 ### GetTotalEstimatedAmountMinor
 
-`func (o *UsageBalanceResponse) GetTotalEstimatedAmountMinor() float32`
+`func (o *UsageBalanceResponse) GetTotalEstimatedAmountMinor() int64`
 
 GetTotalEstimatedAmountMinor returns the TotalEstimatedAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTotalEstimatedAmountMinorOk
 
-`func (o *UsageBalanceResponse) GetTotalEstimatedAmountMinorOk() (*float32, bool)`
+`func (o *UsageBalanceResponse) GetTotalEstimatedAmountMinorOk() (*int64, bool)`
 
 GetTotalEstimatedAmountMinorOk returns a tuple with the TotalEstimatedAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalEstimatedAmountMinor
 
-`func (o *UsageBalanceResponse) SetTotalEstimatedAmountMinor(v float32)`
+`func (o *UsageBalanceResponse) SetTotalEstimatedAmountMinor(v int64)`
 
 SetTotalEstimatedAmountMinor sets TotalEstimatedAmountMinor field to given value.
 
 
 ### GetTotalCostMinor
 
-`func (o *UsageBalanceResponse) GetTotalCostMinor() float32`
+`func (o *UsageBalanceResponse) GetTotalCostMinor() int64`
 
 GetTotalCostMinor returns the TotalCostMinor field if non-nil, zero value otherwise.
 
 ### GetTotalCostMinorOk
 
-`func (o *UsageBalanceResponse) GetTotalCostMinorOk() (*float32, bool)`
+`func (o *UsageBalanceResponse) GetTotalCostMinorOk() (*int64, bool)`
 
 GetTotalCostMinorOk returns a tuple with the TotalCostMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalCostMinor
 
-`func (o *UsageBalanceResponse) SetTotalCostMinor(v float32)`
+`func (o *UsageBalanceResponse) SetTotalCostMinor(v int64)`
 
 SetTotalCostMinor sets TotalCostMinor field to given value.
 
@@ -125,20 +125,20 @@ SetTotalCostMinor sets TotalCostMinor field to given value.
 UnsetTotalCostMinor ensures that no value is present for TotalCostMinor, not even an explicit nil
 ### GetTotalPaymentProcessingCostMinor
 
-`func (o *UsageBalanceResponse) GetTotalPaymentProcessingCostMinor() float32`
+`func (o *UsageBalanceResponse) GetTotalPaymentProcessingCostMinor() int64`
 
 GetTotalPaymentProcessingCostMinor returns the TotalPaymentProcessingCostMinor field if non-nil, zero value otherwise.
 
 ### GetTotalPaymentProcessingCostMinorOk
 
-`func (o *UsageBalanceResponse) GetTotalPaymentProcessingCostMinorOk() (*float32, bool)`
+`func (o *UsageBalanceResponse) GetTotalPaymentProcessingCostMinorOk() (*int64, bool)`
 
 GetTotalPaymentProcessingCostMinorOk returns a tuple with the TotalPaymentProcessingCostMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalPaymentProcessingCostMinor
 
-`func (o *UsageBalanceResponse) SetTotalPaymentProcessingCostMinor(v float32)`
+`func (o *UsageBalanceResponse) SetTotalPaymentProcessingCostMinor(v int64)`
 
 SetTotalPaymentProcessingCostMinor sets TotalPaymentProcessingCostMinor field to given value.
 
@@ -155,20 +155,20 @@ SetTotalPaymentProcessingCostMinor sets TotalPaymentProcessingCostMinor field to
 UnsetTotalPaymentProcessingCostMinor ensures that no value is present for TotalPaymentProcessingCostMinor, not even an explicit nil
 ### GetTotalPlatformFeeMinor
 
-`func (o *UsageBalanceResponse) GetTotalPlatformFeeMinor() float32`
+`func (o *UsageBalanceResponse) GetTotalPlatformFeeMinor() int64`
 
 GetTotalPlatformFeeMinor returns the TotalPlatformFeeMinor field if non-nil, zero value otherwise.
 
 ### GetTotalPlatformFeeMinorOk
 
-`func (o *UsageBalanceResponse) GetTotalPlatformFeeMinorOk() (*float32, bool)`
+`func (o *UsageBalanceResponse) GetTotalPlatformFeeMinorOk() (*int64, bool)`
 
 GetTotalPlatformFeeMinorOk returns a tuple with the TotalPlatformFeeMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalPlatformFeeMinor
 
-`func (o *UsageBalanceResponse) SetTotalPlatformFeeMinor(v float32)`
+`func (o *UsageBalanceResponse) SetTotalPlatformFeeMinor(v int64)`
 
 SetTotalPlatformFeeMinor sets TotalPlatformFeeMinor field to given value.
 
@@ -185,20 +185,20 @@ SetTotalPlatformFeeMinor sets TotalPlatformFeeMinor field to given value.
 UnsetTotalPlatformFeeMinor ensures that no value is present for TotalPlatformFeeMinor, not even an explicit nil
 ### GetTrueNetMarginMinor
 
-`func (o *UsageBalanceResponse) GetTrueNetMarginMinor() float32`
+`func (o *UsageBalanceResponse) GetTrueNetMarginMinor() int64`
 
 GetTrueNetMarginMinor returns the TrueNetMarginMinor field if non-nil, zero value otherwise.
 
 ### GetTrueNetMarginMinorOk
 
-`func (o *UsageBalanceResponse) GetTrueNetMarginMinorOk() (*float32, bool)`
+`func (o *UsageBalanceResponse) GetTrueNetMarginMinorOk() (*int64, bool)`
 
 GetTrueNetMarginMinorOk returns a tuple with the TrueNetMarginMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrueNetMarginMinor
 
-`func (o *UsageBalanceResponse) SetTrueNetMarginMinor(v float32)`
+`func (o *UsageBalanceResponse) SetTrueNetMarginMinor(v int64)`
 
 SetTrueNetMarginMinor sets TrueNetMarginMinor field to given value.
 
@@ -265,5 +265,3 @@ SetCurrency sets Currency field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

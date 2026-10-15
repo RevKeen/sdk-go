@@ -1,10 +1,8 @@
 /*
 RevKeen API
 
-RevKeen is a fintech-grade API for payments, subscriptions, invoices, and billing. The canonical production MCP server is available at `https://mcp.revkeen.com/mcp`.  **API Version:** `2026-05-01` — Pin with the `RevKeen-Version` header.  **Quick Links:** [Full Documentation](https://docs.revkeen.com) | [Authentication](https://docs.revkeen.com/authentication) | [OAuth](https://docs.revkeen.com/oauth) | [SDKs](https://docs.revkeen.com/sdks) | [Webhooks](#webhooks) | [MCP Guide](https://docs.revkeen.com/mcp)  ## Authentication  Two authentication methods are supported:  ### API Keys (recommended for server-to-server REST API integrations)  Send your API key in the `x-api-key` header. Get keys from the [Dashboard](https://app.revkeen.com/settings/api-keys). Use `rk_sandbox_*` for test mode and `rk_live_*` for production.  ### OAuth 2.1 (recommended for MCP and third-party integrations)  Use OAuth 2.1 with PKCE for authorization code flow or client credentials for server-to-server. Tokens are sent via `Authorization: Bearer rk_oauth_*`. See the [OAuth guide](https://docs.revkeen.com/oauth) for setup.  - **Authorization Code + PKCE** — user-facing integrations, MCP hosts - **Client Credentials** — server-to-server, automated workflows - **Dynamic Client Registration** — MCP hosts that auto-register  ## MCP Integration  RevKeen's canonical production MCP server is `https://mcp.revkeen.com/mcp` using Streamable HTTP and OAuth 2.1 bearer tokens.  - **Customer launch surface** — read-first customer v1 tools with least-privilege scopes - **Host setup guide** — see the [MCP guide](https://docs.revkeen.com/mcp) for ChatGPT, Claude, and compatible MCP hosts  ## API Key Scopes  Scopes follow `{resource}:{action}` format (e.g., `invoices:read`, `customers:*`). See [full scope reference](https://docs.revkeen.com/authentication#scopes).  | Category | Scope | Description | |----------|-------|-------------| | **Payments & Checkout** | `checkout:read` | View checkout session details | |  | `checkout:write` | Create and manage checkout sessions | |  | `cart:read` | View cart session details (REV-3511) | |  | `cart:write` | Create and mutate cart sessions, line items, add-ons (REV-3511) | |  | `payment_links:read` | View payment links | |  | `payment_links:write` | Create and manage payment links | |  | `charges:read` | View one-time charges | |  | `charges:write` | Create one-time charges for customers | |  | `payments:read` | View payment details | |  | `payments:write` | Capture or void payments | |  | `payment_intents:read` | View payment intent details | |  | `payment_intents:write` | Create, confirm, capture, and cancel payment intents | |  | `setup_intents:read` | View setup intent details | |  | `setup_intents:write` | Create, confirm, and cancel setup intents | |  | `payment_methods:read` | View saved payment methods | |  | `payment_methods:write` | Attach and detach payment methods | | **Billing** | `invoices:read` | View invoices | |  | `invoices:write` | Create, update, and manage invoices | |  | `subscriptions:read` | View subscriptions | |  | `subscriptions:write` | Create, update, pause, and cancel subscriptions | |  | `subscription_schedules:read` | View subscription schedule details | |  | `subscription_schedules:write` | Create, update, cancel, and release subscription schedules | |  | `orders:read` | View orders | |  | `orders:write` | Create and manage orders | |  | `credit_notes:read` | View credit notes | |  | `credit_notes:write` | Create and void credit notes | | **Products & Pricing** | `products:read` | View product catalog | |  | `products:write` | Create and update products | |  | `prices:read` | View pricing information | |  | `prices:write` | Create and update prices | |  | `discounts:read` | View discount codes | |  | `discounts:write` | Create and manage discount codes | |  | `tax_rates:read` | View tax rate configurations | |  | `tax_rates:write` | Configure tax rates | | **Usage & Metering** | `meters:read` | View meter configurations | |  | `meters:write` | Create and update meters | |  | `usage:read` | View usage events and balances | |  | `usage:write` | Ingest usage events | | **Customers** | `customers:read` | View customer information | |  | `customers:write` | Create and update customers | |  | `entitlements:read` | View customer entitlements / feature access | |  | `entitlements:write` | Grant and revoke customer entitlements | |  | `businesses:read` | View business entities | |  | `businesses:write` | Manage business entities | | **Money Movement** | `refunds:read` | View refund details | |  | `refunds:write` | Issue refunds | |  | `voids:read` | View voided transactions | |  | `voids:write` | Void unsettled transactions | |  | `disputes:read` | View chargebacks and disputes | |  | `disputes:write` | Respond to disputes | |  | `payouts:read` | View payout and settlement data | | **Direct Debit** | `mandates:read` | View Direct Debit mandates and collection status | |  | `mandates:write` | Create, suspend, reinstate, and cancel Direct Debit mandates | | **Terminal** | `terminal:read` | View terminal devices and card-present payments | |  | `terminal:write` | Initiate, cancel, refund, and void terminal payments | | **Data Exchange** | `exports:read` | View and download data exports | |  | `exports:write` | Create data exports | |  | `imports:read` | View import status and history | |  | `imports:write` | Upload and run data imports | | **Analytics & Reporting** | `analytics:read` | View analytics and reports | |  | `finance:read` | View financial reports | | **Communication** | `comms:read` | View SMS and email delivery logs | |  | `comms:write` | Send SMS, email, and WhatsApp messages | |  | `automations:read` | View automations, runs, approvals, and traces | |  | `automations:write` | Create automations and trigger runs | | **Integrations** | `apps:read` | View connected applications | |  | `apps:write` | Manage app connections | |  | `webhooks:read` | View webhook endpoints | |  | `webhooks:write` | Manage webhook endpoints | |  | `integrations:read` | View integration status and sync logs | |  | `integrations:write` | Activate, configure, and sync integrations | |  | `events:read` | View webhook event logs | |  | `events:write` | Resend and test webhook events | |  | `sync:read` | View sync watermarks and state | |  | `sync:write` | Update sync watermarks |  ## Environments  | Environment | Base URL | API Key Prefix | |-------------|----------|----------------| | **Staging** | `https://staging-api.revkeen.com/v2` | `rk_sandbox_*` | | **Production** | `https://api.revkeen.com/v2` | `rk_live_*` |  ## Idempotency  Include `Idempotency-Key` header (UUID) on mutation requests. Keys are valid for 24 hours.  ## Rate Limits  | Plan | Requests/min | Burst | |------|-------------|-------| | **Staging** | 100 | 200 | | **Production** | 1000 | 2000 | | **Enterprise** | Custom | Custom | 
-
 API version: 2026-05-01
-Contact: info@revkeen.com
+Contact: support@revkeen.com
 */
 
 // Code generated by OpenAPI Generator (https://openapi-generator.tech); DO NOT EDIT.
@@ -22,21 +20,21 @@ var _ MappedNullable = &AnalyticsRevenueMrrSummary200Response{}
 // AnalyticsRevenueMrrSummary200Response struct for AnalyticsRevenueMrrSummary200Response
 type AnalyticsRevenueMrrSummary200Response struct {
 	// Current Monthly Recurring Revenue in minor units
-	CurrentMrr float32 `json:"current_mrr"`
+	CurrentMrr int64 `json:"current_mrr"`
 	// Previous period MRR in minor units
-	PreviousMrr float32 `json:"previous_mrr"`
+	PreviousMrr int64 `json:"previous_mrr"`
 	// Net MRR growth in minor units
-	Growth float32 `json:"growth"`
+	Growth int64 `json:"growth"`
 	// MRR from new subscriptions
-	NewMrr float32 `json:"new_mrr"`
+	NewMrr int64 `json:"new_mrr"`
 	// MRR lost to churn
-	ChurnedMrr float32 `json:"churned_mrr"`
+	ChurnedMrr int64 `json:"churned_mrr"`
 	// MRR gained from upgrades
-	ExpansionMrr float32 `json:"expansion_mrr"`
+	ExpansionMrr int64 `json:"expansion_mrr"`
 	// MRR lost to downgrades
-	ContractionMrr float32 `json:"contraction_mrr"`
+	ContractionMrr int64 `json:"contraction_mrr"`
 	// Date the MRR was calculated as of
-	AsOfDate string `json:"as_of_date"`
+	AsOfDate             string `json:"as_of_date"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,7 +44,7 @@ type _AnalyticsRevenueMrrSummary200Response AnalyticsRevenueMrrSummary200Respons
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAnalyticsRevenueMrrSummary200Response(currentMrr float32, previousMrr float32, growth float32, newMrr float32, churnedMrr float32, expansionMrr float32, contractionMrr float32, asOfDate string) *AnalyticsRevenueMrrSummary200Response {
+func NewAnalyticsRevenueMrrSummary200Response(currentMrr int64, previousMrr int64, growth int64, newMrr int64, churnedMrr int64, expansionMrr int64, contractionMrr int64, asOfDate string) *AnalyticsRevenueMrrSummary200Response {
 	this := AnalyticsRevenueMrrSummary200Response{}
 	this.CurrentMrr = currentMrr
 	this.PreviousMrr = previousMrr
@@ -68,9 +66,9 @@ func NewAnalyticsRevenueMrrSummary200ResponseWithDefaults() *AnalyticsRevenueMrr
 }
 
 // GetCurrentMrr returns the CurrentMrr field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetCurrentMrr() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetCurrentMrr() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -79,7 +77,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetCurrentMrr() float32 {
 
 // GetCurrentMrrOk returns a tuple with the CurrentMrr field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetCurrentMrrOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetCurrentMrrOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,14 +85,14 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetCurrentMrrOk() (*float32, boo
 }
 
 // SetCurrentMrr sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetCurrentMrr(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetCurrentMrr(v int64) {
 	o.CurrentMrr = v
 }
 
 // GetPreviousMrr returns the PreviousMrr field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetPreviousMrr() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetPreviousMrr() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -103,7 +101,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetPreviousMrr() float32 {
 
 // GetPreviousMrrOk returns a tuple with the PreviousMrr field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetPreviousMrrOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetPreviousMrrOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,14 +109,14 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetPreviousMrrOk() (*float32, bo
 }
 
 // SetPreviousMrr sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetPreviousMrr(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetPreviousMrr(v int64) {
 	o.PreviousMrr = v
 }
 
 // GetGrowth returns the Growth field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetGrowth() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetGrowth() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -127,7 +125,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetGrowth() float32 {
 
 // GetGrowthOk returns a tuple with the Growth field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetGrowthOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetGrowthOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -135,14 +133,14 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetGrowthOk() (*float32, bool) {
 }
 
 // SetGrowth sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetGrowth(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetGrowth(v int64) {
 	o.Growth = v
 }
 
 // GetNewMrr returns the NewMrr field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetNewMrr() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetNewMrr() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -151,7 +149,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetNewMrr() float32 {
 
 // GetNewMrrOk returns a tuple with the NewMrr field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetNewMrrOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetNewMrrOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -159,14 +157,14 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetNewMrrOk() (*float32, bool) {
 }
 
 // SetNewMrr sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetNewMrr(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetNewMrr(v int64) {
 	o.NewMrr = v
 }
 
 // GetChurnedMrr returns the ChurnedMrr field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetChurnedMrr() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetChurnedMrr() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -175,7 +173,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetChurnedMrr() float32 {
 
 // GetChurnedMrrOk returns a tuple with the ChurnedMrr field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetChurnedMrrOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetChurnedMrrOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -183,14 +181,14 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetChurnedMrrOk() (*float32, boo
 }
 
 // SetChurnedMrr sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetChurnedMrr(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetChurnedMrr(v int64) {
 	o.ChurnedMrr = v
 }
 
 // GetExpansionMrr returns the ExpansionMrr field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetExpansionMrr() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetExpansionMrr() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -199,7 +197,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetExpansionMrr() float32 {
 
 // GetExpansionMrrOk returns a tuple with the ExpansionMrr field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetExpansionMrrOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetExpansionMrrOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -207,14 +205,14 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetExpansionMrrOk() (*float32, b
 }
 
 // SetExpansionMrr sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetExpansionMrr(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetExpansionMrr(v int64) {
 	o.ExpansionMrr = v
 }
 
 // GetContractionMrr returns the ContractionMrr field value
-func (o *AnalyticsRevenueMrrSummary200Response) GetContractionMrr() float32 {
+func (o *AnalyticsRevenueMrrSummary200Response) GetContractionMrr() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -223,7 +221,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetContractionMrr() float32 {
 
 // GetContractionMrrOk returns a tuple with the ContractionMrr field value
 // and a boolean to check if the value has been set.
-func (o *AnalyticsRevenueMrrSummary200Response) GetContractionMrrOk() (*float32, bool) {
+func (o *AnalyticsRevenueMrrSummary200Response) GetContractionMrrOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,7 +229,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) GetContractionMrrOk() (*float32,
 }
 
 // SetContractionMrr sets field value
-func (o *AnalyticsRevenueMrrSummary200Response) SetContractionMrr(v float32) {
+func (o *AnalyticsRevenueMrrSummary200Response) SetContractionMrr(v int64) {
 	o.ContractionMrr = v
 }
 
@@ -260,7 +258,7 @@ func (o *AnalyticsRevenueMrrSummary200Response) SetAsOfDate(v string) {
 }
 
 func (o AnalyticsRevenueMrrSummary200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,10 +303,10 @@ func (o *AnalyticsRevenueMrrSummary200Response) UnmarshalJSON(data []byte) (err 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -376,5 +374,3 @@ func (v *NullableAnalyticsRevenueMrrSummary200Response) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

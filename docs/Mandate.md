@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Mandate ID | 
-**MandateRef** | **string** | RevKeen mandate reference (Bacs DDI reference) | 
-**MandateReference** | **NullableString** | Human-facing mandate reference | 
-**CustomerId** | **string** | Customer the mandate belongs to | 
-**Status** | **string** | Mandate status | 
-**AccountHolderName** | **NullableString** | Name on the bank account | 
-**SortCode** | **string** | Masked sort code — never the full value | 
-**AccountNumberLast4** | **NullableString** | Last 4 digits of the account number | 
-**BankName** | **NullableString** | Resolved bank name | 
-**StatementName** | Pointer to **NullableString** | Bacs statement descriptor (max 18 chars) | [optional] 
-**NoticeDays** | **NullableInt32** | Advance-notice days applied | 
-**FirstCollectionDate** | Pointer to **NullableString** | Earliest collection date (YYYY-MM-DD) | [optional] 
-**NextCollectionDate** | Pointer to **NullableString** | Next scheduled collection date (YYYY-MM-DD) | [optional] 
-**BackupPaymentMethodId** | Pointer to **NullableString** | Recovery fallback card | [optional] 
-**ActivatedAt** | Pointer to **NullableString** | When the mandate became active (ISO 8601) | [optional] 
-**SuspendedAt** | Pointer to **NullableString** | When the mandate was suspended (ISO 8601) | [optional] 
-**CancelledAt** | Pointer to **NullableString** | When the mandate was cancelled (ISO 8601) | [optional] 
-**FailureReason** | Pointer to **NullableString** | Most recent failure reason | [optional] 
-**MandateRequestId** | Pointer to **NullableString** | Mandate-request consumed on creation, if any | [optional] 
-**InvoiceId** | Pointer to **NullableString** | Invoice linked via the mandate-request, if any | [optional] 
-**PdfDocuments** | Pointer to [**[]DdMandatePdfReference**](DdMandatePdfReference.md) |  | [optional] 
-**CreatedAt** | Pointer to **NullableString** | Creation timestamp (ISO 8601) | [optional] 
-**UpdatedAt** | Pointer to **NullableString** | Last-updated timestamp (ISO 8601) | [optional] 
+**Id** | **string** | Mandate ID |
+**MandateRef** | **string** | RevKeen mandate reference (Bacs DDI reference) |
+**MandateReference** | **NullableString** | Human-facing mandate reference |
+**CustomerId** | **string** | Customer the mandate belongs to |
+**Status** | **string** | Mandate status |
+**AccountHolderName** | **NullableString** | Name on the bank account |
+**SortCode** | **string** | Masked sort code — never the full value |
+**AccountNumberLast4** | **NullableString** | Last 4 digits of the account number |
+**BankName** | **NullableString** | Resolved bank name |
+**StatementName** | Pointer to **NullableString** | Bacs statement descriptor (max 18 chars) | [optional]
+**NoticeDays** | **NullableInt32** | Advance-notice days applied |
+**FirstCollectionDate** | Pointer to **NullableString** | Earliest collection date (YYYY-MM-DD) | [optional]
+**NextCollectionDate** | Pointer to **NullableString** | Next scheduled collection date (YYYY-MM-DD) | [optional]
+**BackupPaymentMethodId** | Pointer to **NullableString** | Recovery fallback card | [optional]
+**ActivatedAt** | Pointer to **NullableTime** | When the mandate became active (ISO 8601) | [optional]
+**SuspendedAt** | Pointer to **NullableTime** | When the mandate was suspended (ISO 8601) | [optional]
+**CancelledAt** | Pointer to **NullableTime** | When the mandate was cancelled (ISO 8601) | [optional]
+**FailureReason** | Pointer to **NullableString** | Most recent failure reason | [optional]
+**MandateRequestId** | Pointer to **NullableString** | Mandate-request consumed on creation, if any | [optional]
+**InvoiceId** | Pointer to **NullableString** | Invoice linked via the mandate-request, if any | [optional]
+**PdfDocuments** | Pointer to [**[]DdMandatePdfReference**](DdMandatePdfReference.md) |  | [optional]
+**CreatedAt** | Pointer to **NullableTime** | Creation timestamp (ISO 8601) | [optional]
+**UpdatedAt** | Pointer to **NullableTime** | Last-updated timestamp (ISO 8601) | [optional]
 
 ## Methods
 
@@ -439,20 +439,20 @@ HasBackupPaymentMethodId returns a boolean if a field has been set.
 UnsetBackupPaymentMethodId ensures that no value is present for BackupPaymentMethodId, not even an explicit nil
 ### GetActivatedAt
 
-`func (o *Mandate) GetActivatedAt() string`
+`func (o *Mandate) GetActivatedAt() time.Time`
 
 GetActivatedAt returns the ActivatedAt field if non-nil, zero value otherwise.
 
 ### GetActivatedAtOk
 
-`func (o *Mandate) GetActivatedAtOk() (*string, bool)`
+`func (o *Mandate) GetActivatedAtOk() (*time.Time, bool)`
 
 GetActivatedAtOk returns a tuple with the ActivatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActivatedAt
 
-`func (o *Mandate) SetActivatedAt(v string)`
+`func (o *Mandate) SetActivatedAt(v time.Time)`
 
 SetActivatedAt sets ActivatedAt field to given value.
 
@@ -474,20 +474,20 @@ HasActivatedAt returns a boolean if a field has been set.
 UnsetActivatedAt ensures that no value is present for ActivatedAt, not even an explicit nil
 ### GetSuspendedAt
 
-`func (o *Mandate) GetSuspendedAt() string`
+`func (o *Mandate) GetSuspendedAt() time.Time`
 
 GetSuspendedAt returns the SuspendedAt field if non-nil, zero value otherwise.
 
 ### GetSuspendedAtOk
 
-`func (o *Mandate) GetSuspendedAtOk() (*string, bool)`
+`func (o *Mandate) GetSuspendedAtOk() (*time.Time, bool)`
 
 GetSuspendedAtOk returns a tuple with the SuspendedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuspendedAt
 
-`func (o *Mandate) SetSuspendedAt(v string)`
+`func (o *Mandate) SetSuspendedAt(v time.Time)`
 
 SetSuspendedAt sets SuspendedAt field to given value.
 
@@ -509,20 +509,20 @@ HasSuspendedAt returns a boolean if a field has been set.
 UnsetSuspendedAt ensures that no value is present for SuspendedAt, not even an explicit nil
 ### GetCancelledAt
 
-`func (o *Mandate) GetCancelledAt() string`
+`func (o *Mandate) GetCancelledAt() time.Time`
 
 GetCancelledAt returns the CancelledAt field if non-nil, zero value otherwise.
 
 ### GetCancelledAtOk
 
-`func (o *Mandate) GetCancelledAtOk() (*string, bool)`
+`func (o *Mandate) GetCancelledAtOk() (*time.Time, bool)`
 
 GetCancelledAtOk returns a tuple with the CancelledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCancelledAt
 
-`func (o *Mandate) SetCancelledAt(v string)`
+`func (o *Mandate) SetCancelledAt(v time.Time)`
 
 SetCancelledAt sets CancelledAt field to given value.
 
@@ -674,20 +674,20 @@ HasPdfDocuments returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Mandate) GetCreatedAt() string`
+`func (o *Mandate) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Mandate) GetCreatedAtOk() (*string, bool)`
+`func (o *Mandate) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Mandate) SetCreatedAt(v string)`
+`func (o *Mandate) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -709,20 +709,20 @@ HasCreatedAt returns a boolean if a field has been set.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *Mandate) GetUpdatedAt() string`
+`func (o *Mandate) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Mandate) GetUpdatedAtOk() (*string, bool)`
+`func (o *Mandate) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Mandate) SetUpdatedAt(v string)`
+`func (o *Mandate) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
@@ -744,5 +744,3 @@ HasUpdatedAt returns a boolean if a field has been set.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

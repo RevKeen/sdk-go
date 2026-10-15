@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **bool** |  | 
-**MarkedDelivered** | **int32** |  | 
-**ReminderEligibleNow** | **int32** | Count of invoices that would match the default overdue ladder (day 1+) at the next hourly reminder cron. With anchor &#x3D; NOW() on mark, this is typically 0 — the first reminder fires tomorrow. | 
-**ReminderEligibleWithin7Days** | **int32** | Count of invoices that will receive at least one reminder within 7 days of this attestation, assuming the default ladder [1, 7, 14, 30]. | 
-**Skipped** | [**[]MarkDeliveredResponseSkippedInner**](MarkDeliveredResponseSkippedInner.md) |  | 
-**RequestId** | **string** |  | 
+**Success** | **bool** |  |
+**MarkedDelivered** | **int32** |  |
+**ReminderEligibleNow** | **int32** | Count of invoices that would match the default overdue ladder (day 1+) at the next hourly reminder cron. With anchor &#x3D; NOW() on mark, this is typically 0 — the first reminder fires tomorrow. |
+**ReminderEligibleWithin7Days** | **int32** | Count of invoices that will receive at least one reminder within 7 days of this attestation, assuming the default ladder [1, 7, 14, 30]. |
+**Skipped** | [**[]MarkDeliveredResponseSkippedInner**](MarkDeliveredResponseSkippedInner.md) |  |
+**RequestId** | **string** |  |
 
 ## Methods
 
@@ -152,5 +152,3 @@ SetRequestId sets RequestId field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

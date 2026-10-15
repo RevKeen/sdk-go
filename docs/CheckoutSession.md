@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**Status** | **string** |  | 
-**Mode** | **NullableString** |  | 
-**AmountTotal** | **NullableFloat32** |  | 
-**Currency** | **NullableString** |  | 
-**CustomerId** | **NullableString** |  | 
-**PaymentIntentId** | **NullableString** |  | 
-**InvoiceId** | **NullableString** |  | 
-**SubscriptionId** | **NullableString** |  | 
-**Url** | **NullableString** |  | 
-**SuccessUrl** | **NullableString** |  | 
-**CancelUrl** | **NullableString** |  | 
-**ExpiresAt** | **NullableString** |  | 
-**CreatedAt** | **NullableString** |  | 
-**AllowedMethods** | **[]string** |  | 
-**SelectedMethod** | **NullableString** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**Status** | **string** |  |
+**Mode** | **NullableString** |  |
+**AmountTotal** | **NullableInt64** |  |
+**Currency** | **NullableString** |  |
+**CustomerId** | **NullableString** |  |
+**PaymentIntentId** | **NullableString** |  |
+**InvoiceId** | **NullableString** |  |
+**SubscriptionId** | **NullableString** |  |
+**Url** | **NullableString** | The hosted checkout URL to redirect the customer to. Present only while the session is &#x60;pending&#x60; or &#x60;open&#x60; and has not expired, and only when the request is made with a merchant API key; otherwise &#x60;null&#x60;. |
+**SuccessUrl** | **NullableString** |  |
+**CancelUrl** | **NullableString** |  |
+**ExpiresAt** | **NullableTime** |  |
+**CreatedAt** | **NullableTime** |  |
+**AllowedMethods** | **[]string** |  |
+**SelectedMethod** | **NullableString** |  |
 
 ## Methods
 
 ### NewCheckoutSession
 
-`func NewCheckoutSession(id string, object string, status string, mode NullableString, amountTotal NullableFloat32, currency NullableString, customerId NullableString, paymentIntentId NullableString, invoiceId NullableString, subscriptionId NullableString, url NullableString, successUrl NullableString, cancelUrl NullableString, expiresAt NullableString, createdAt NullableString, allowedMethods []string, selectedMethod NullableString, ) *CheckoutSession`
+`func NewCheckoutSession(id string, object string, status string, mode NullableString, amountTotal NullableInt64, currency NullableString, customerId NullableString, paymentIntentId NullableString, invoiceId NullableString, subscriptionId NullableString, url NullableString, successUrl NullableString, cancelUrl NullableString, expiresAt NullableTime, createdAt NullableTime, allowedMethods []string, selectedMethod NullableString, ) *CheckoutSession`
 
 NewCheckoutSession instantiates a new CheckoutSession object
 This constructor will assign default values to properties that have it defined,
@@ -133,20 +133,20 @@ SetMode sets Mode field to given value.
 UnsetMode ensures that no value is present for Mode, not even an explicit nil
 ### GetAmountTotal
 
-`func (o *CheckoutSession) GetAmountTotal() float32`
+`func (o *CheckoutSession) GetAmountTotal() int64`
 
 GetAmountTotal returns the AmountTotal field if non-nil, zero value otherwise.
 
 ### GetAmountTotalOk
 
-`func (o *CheckoutSession) GetAmountTotalOk() (*float32, bool)`
+`func (o *CheckoutSession) GetAmountTotalOk() (*int64, bool)`
 
 GetAmountTotalOk returns a tuple with the AmountTotal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountTotal
 
-`func (o *CheckoutSession) SetAmountTotal(v float32)`
+`func (o *CheckoutSession) SetAmountTotal(v int64)`
 
 SetAmountTotal sets AmountTotal field to given value.
 
@@ -403,20 +403,20 @@ SetCancelUrl sets CancelUrl field to given value.
 UnsetCancelUrl ensures that no value is present for CancelUrl, not even an explicit nil
 ### GetExpiresAt
 
-`func (o *CheckoutSession) GetExpiresAt() string`
+`func (o *CheckoutSession) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *CheckoutSession) GetExpiresAtOk() (*string, bool)`
+`func (o *CheckoutSession) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *CheckoutSession) SetExpiresAt(v string)`
+`func (o *CheckoutSession) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -433,20 +433,20 @@ SetExpiresAt sets ExpiresAt field to given value.
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *CheckoutSession) GetCreatedAt() string`
+`func (o *CheckoutSession) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CheckoutSession) GetCreatedAtOk() (*string, bool)`
+`func (o *CheckoutSession) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CheckoutSession) SetCreatedAt(v string)`
+`func (o *CheckoutSession) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -513,5 +513,3 @@ SetSelectedMethod sets SelectedMethod field to given value.
 UnsetSelectedMethod ensures that no value is present for SelectedMethod, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

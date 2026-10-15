@@ -4,34 +4,40 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | **string** |  | 
-**Name** | **string** |  | 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**Kind** | **string** |  | 
-**PricingModel** | **string** |  | 
-**AmountMinor** | **int32** |  | 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**Interval** | Pointer to **NullableString** |  | [optional] 
-**IntervalCount** | Pointer to **NullableInt32** |  | [optional] 
-**TrialDays** | Pointer to **int32** |  | [optional] 
-**UsageMeterId** | Pointer to **NullableString** |  | [optional] 
-**Slug** | Pointer to **string** |  | [optional] 
+**ProductId** | **string** |  |
+**Name** | **string** |  |
+**Description** | Pointer to **NullableString** |  | [optional]
+**Kind** | **string** |  |
+**PricingModel** | **string** |  |
+**AmountMinor** | **int64** |  |
+**Currency** | Pointer to **string** | Three-letter ISO currency code. Defaults to the merchant&#39;s default currency. | [optional]
+**Interval** | Pointer to **NullableString** |  | [optional]
+**IntervalCount** | Pointer to **NullableInt32** |  | [optional]
+**TrialDays** | Pointer to **int32** |  | [optional]
+**UsageMeterId** | Pointer to **NullableString** |  | [optional]
+**Slug** | Pointer to **string** | URL handle, unique among this merchant&#39;s products. Normalised to lower-case letters, digits and hyphens. Derived from product_id when omitted. | [optional]
+**Images** | Pointer to [**[]ProductImage**](ProductImage.md) | Ordered extra images (at most 20). Replaces the list. The main image stays in image_url. | [optional]
+**SeoTitle** | Pointer to **NullableString** | Search and social title (at most 70 characters). Defaults to the name. | [optional]
+**SeoDescription** | Pointer to **NullableString** | Meta description (at most 320 characters). | [optional]
+**StoreVisibility** | Pointer to **string** | Whether the product is listed on the Storefront. hidden: only payment links and invoices. scheduled: listed from store_visible_from. | [optional]
+**StoreVisibleFrom** | Pointer to **NullableTime** | When a scheduled product appears on the Storefront (ISO 8601). Required when store_visibility is scheduled. | [optional]
 **FulfillmentType** | Pointer to **string** | Fulfillment type for the product. Defaults to &#39;none&#39; (service). | [optional] [default to "none"]
-**TrackInventory** | Pointer to **bool** | Enable a finite purchase cap that blocks purchase once stock reaches zero. One-time products only; requires stock_quantity. | [optional] [default to false]
-**StockQuantity** | Pointer to **NullableInt32** | Remaining units that can be purchased. Required (non-negative) when track_inventory is true; ignored otherwise. | [optional] 
-**BillingAnchorRule** | Pointer to **string** | How billing dates are calculated. same_day: Bill on same day as start. day_of_month: Bill on specific day (1-31). last_day: Bill on last day of month. | [optional] 
-**BillingAnchorDay** | Pointer to **NullableInt32** | Day of month (1-31) when billing_anchor_rule is &#39;day_of_month&#39; | [optional] 
-**FirstChargeBehavior** | Pointer to **string** | When first payment is collected. immediate: Charge on start. next_anchor: Charge on first scheduled date. prorate: Prorate until first date. | [optional] 
-**EndBehavior** | Pointer to **string** | How subscription ends. until_canceled: Runs forever. fixed_payments: Ends after N billing cycles. | [optional] 
-**MaxPayments** | Pointer to **NullableInt32** | Max billing cycles when end_behavior is &#39;fixed_payments&#39; | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata for the product | [optional] 
-**ImageUrl** | Pointer to **NullableString** | Product image S3 key or public URL (upload via /internal/storage first) | [optional] 
+**TrackInventory** | Pointer to **bool** | Track stock for this product (one-time products only; requires stock_quantity). Stock is stored in the product&#39;s availability record, not on the product. | [optional] [default to false]
+**StockQuantity** | Pointer to **NullableInt32** | Deprecated. Sets the units available to sell in the product&#39;s availability record. Required (non-negative) when track_inventory is true. | [optional]
+**Tags** | Pointer to **[]string** | Tags for Storefront filters and search. Replaces the product&#39;s tags. At most 50, each up to 50 characters. | [optional]
+**BillingAnchorRule** | Pointer to **string** | How billing dates are calculated. same_day: Bill on same day as start. day_of_month: Bill on specific day (1-31). last_day: Bill on last day of month. | [optional]
+**BillingAnchorDay** | Pointer to **NullableInt32** | Day of month (1-31) when billing_anchor_rule is &#39;day_of_month&#39; | [optional]
+**FirstChargeBehavior** | Pointer to **string** | When first payment is collected. immediate: Charge on start. next_anchor: Charge on first scheduled date. prorate: Prorate until first date. | [optional]
+**EndBehavior** | Pointer to **string** | How subscription ends. until_canceled: Runs forever. fixed_payments: Ends after N billing cycles. | [optional]
+**MaxPayments** | Pointer to **NullableInt32** | Max billing cycles when end_behavior is &#39;fixed_payments&#39; | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata for the product | [optional]
+**ImageUrl** | Pointer to **NullableString** | Product image S3 key or public URL (upload via /internal/storage first) | [optional]
 
 ## Methods
 
 ### NewCreateProductRequest
 
-`func NewCreateProductRequest(productId string, name string, kind string, pricingModel string, amountMinor int32, ) *CreateProductRequest`
+`func NewCreateProductRequest(productId string, name string, kind string, pricingModel string, amountMinor int64, ) *CreateProductRequest`
 
 NewCreateProductRequest instantiates a new CreateProductRequest object
 This constructor will assign default values to properties that have it defined,
@@ -163,20 +169,20 @@ SetPricingModel sets PricingModel field to given value.
 
 ### GetAmountMinor
 
-`func (o *CreateProductRequest) GetAmountMinor() int32`
+`func (o *CreateProductRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreateProductRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *CreateProductRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreateProductRequest) SetAmountMinor(v int32)`
+`func (o *CreateProductRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -361,6 +367,161 @@ SetSlug sets Slug field to given value.
 
 HasSlug returns a boolean if a field has been set.
 
+### GetImages
+
+`func (o *CreateProductRequest) GetImages() []ProductImage`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *CreateProductRequest) GetImagesOk() (*[]ProductImage, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *CreateProductRequest) SetImages(v []ProductImage)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *CreateProductRequest) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
+
+### GetSeoTitle
+
+`func (o *CreateProductRequest) GetSeoTitle() string`
+
+GetSeoTitle returns the SeoTitle field if non-nil, zero value otherwise.
+
+### GetSeoTitleOk
+
+`func (o *CreateProductRequest) GetSeoTitleOk() (*string, bool)`
+
+GetSeoTitleOk returns a tuple with the SeoTitle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoTitle
+
+`func (o *CreateProductRequest) SetSeoTitle(v string)`
+
+SetSeoTitle sets SeoTitle field to given value.
+
+### HasSeoTitle
+
+`func (o *CreateProductRequest) HasSeoTitle() bool`
+
+HasSeoTitle returns a boolean if a field has been set.
+
+### SetSeoTitleNil
+
+`func (o *CreateProductRequest) SetSeoTitleNil(b bool)`
+
+ SetSeoTitleNil sets the value for SeoTitle to be an explicit nil
+
+### UnsetSeoTitle
+`func (o *CreateProductRequest) UnsetSeoTitle()`
+
+UnsetSeoTitle ensures that no value is present for SeoTitle, not even an explicit nil
+### GetSeoDescription
+
+`func (o *CreateProductRequest) GetSeoDescription() string`
+
+GetSeoDescription returns the SeoDescription field if non-nil, zero value otherwise.
+
+### GetSeoDescriptionOk
+
+`func (o *CreateProductRequest) GetSeoDescriptionOk() (*string, bool)`
+
+GetSeoDescriptionOk returns a tuple with the SeoDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoDescription
+
+`func (o *CreateProductRequest) SetSeoDescription(v string)`
+
+SetSeoDescription sets SeoDescription field to given value.
+
+### HasSeoDescription
+
+`func (o *CreateProductRequest) HasSeoDescription() bool`
+
+HasSeoDescription returns a boolean if a field has been set.
+
+### SetSeoDescriptionNil
+
+`func (o *CreateProductRequest) SetSeoDescriptionNil(b bool)`
+
+ SetSeoDescriptionNil sets the value for SeoDescription to be an explicit nil
+
+### UnsetSeoDescription
+`func (o *CreateProductRequest) UnsetSeoDescription()`
+
+UnsetSeoDescription ensures that no value is present for SeoDescription, not even an explicit nil
+### GetStoreVisibility
+
+`func (o *CreateProductRequest) GetStoreVisibility() string`
+
+GetStoreVisibility returns the StoreVisibility field if non-nil, zero value otherwise.
+
+### GetStoreVisibilityOk
+
+`func (o *CreateProductRequest) GetStoreVisibilityOk() (*string, bool)`
+
+GetStoreVisibilityOk returns a tuple with the StoreVisibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreVisibility
+
+`func (o *CreateProductRequest) SetStoreVisibility(v string)`
+
+SetStoreVisibility sets StoreVisibility field to given value.
+
+### HasStoreVisibility
+
+`func (o *CreateProductRequest) HasStoreVisibility() bool`
+
+HasStoreVisibility returns a boolean if a field has been set.
+
+### GetStoreVisibleFrom
+
+`func (o *CreateProductRequest) GetStoreVisibleFrom() time.Time`
+
+GetStoreVisibleFrom returns the StoreVisibleFrom field if non-nil, zero value otherwise.
+
+### GetStoreVisibleFromOk
+
+`func (o *CreateProductRequest) GetStoreVisibleFromOk() (*time.Time, bool)`
+
+GetStoreVisibleFromOk returns a tuple with the StoreVisibleFrom field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreVisibleFrom
+
+`func (o *CreateProductRequest) SetStoreVisibleFrom(v time.Time)`
+
+SetStoreVisibleFrom sets StoreVisibleFrom field to given value.
+
+### HasStoreVisibleFrom
+
+`func (o *CreateProductRequest) HasStoreVisibleFrom() bool`
+
+HasStoreVisibleFrom returns a boolean if a field has been set.
+
+### SetStoreVisibleFromNil
+
+`func (o *CreateProductRequest) SetStoreVisibleFromNil(b bool)`
+
+ SetStoreVisibleFromNil sets the value for StoreVisibleFrom to be an explicit nil
+
+### UnsetStoreVisibleFrom
+`func (o *CreateProductRequest) UnsetStoreVisibleFrom()`
+
+UnsetStoreVisibleFrom ensures that no value is present for StoreVisibleFrom, not even an explicit nil
 ### GetFulfillmentType
 
 `func (o *CreateProductRequest) GetFulfillmentType() string`
@@ -446,6 +607,31 @@ HasStockQuantity returns a boolean if a field has been set.
 `func (o *CreateProductRequest) UnsetStockQuantity()`
 
 UnsetStockQuantity ensures that no value is present for StockQuantity, not even an explicit nil
+### GetTags
+
+`func (o *CreateProductRequest) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *CreateProductRequest) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *CreateProductRequest) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *CreateProductRequest) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
 ### GetBillingAnchorRule
 
 `func (o *CreateProductRequest) GetBillingAnchorRule() string`
@@ -593,20 +779,20 @@ HasMaxPayments returns a boolean if a field has been set.
 UnsetMaxPayments ensures that no value is present for MaxPayments, not even an explicit nil
 ### GetMetadata
 
-`func (o *CreateProductRequest) GetMetadata() map[string]interface{}`
+`func (o *CreateProductRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreateProductRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreateProductRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreateProductRequest) SetMetadata(v map[string]interface{})`
+`func (o *CreateProductRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -653,5 +839,3 @@ HasImageUrl returns a boolean if a field has been set.
 UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

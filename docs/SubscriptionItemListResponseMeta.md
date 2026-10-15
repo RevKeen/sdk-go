@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Total** | **float32** |  | 
-**Limit** | **float32** |  | 
-**Offset** | **float32** |  | 
-**HasMore** | **bool** |  | 
+**Total** | **float32** |  |
+**Limit** | **float32** |  |
+**Offset** | **float32** |  |
+**HasMore** | **bool** |  |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetHasMore sets HasMore field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

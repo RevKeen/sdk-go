@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CanReverse** | **bool** |  | 
-**TransactionId** | **string** |  | 
-**Gateway** | **string** |  | 
-**PaymentMethod** | **NullableString** |  | 
-**AvailableOperations** | **[]string** |  | 
-**Constraints** | [**TransactionReversalEligibilityResponseConstraints**](TransactionReversalEligibilityResponseConstraints.md) |  | 
-**CardBrand** | **NullableString** |  | 
-**CardLast4** | **NullableString** |  | 
-**TerminalSerial** | **NullableString** |  | 
-**TerminalUti** | **NullableString** |  | 
+**CanReverse** | **bool** |  |
+**TransactionId** | **string** |  |
+**Gateway** | **string** |  |
+**PaymentMethod** | **NullableString** |  |
+**AvailableOperations** | **[]string** |  |
+**Constraints** | [**TransactionReversalEligibilityResponseConstraints**](TransactionReversalEligibilityResponseConstraints.md) |  |
+**CardBrand** | **NullableString** |  |
+**CardLast4** | **NullableString** |  |
+**TerminalSerial** | **NullableString** |  |
+**TerminalUti** | **NullableString** |  |
 
 ## Methods
 
@@ -286,5 +286,3 @@ SetTerminalUti sets TerminalUti field to given value.
 UnsetTerminalUti ensures that no value is present for TerminalUti, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

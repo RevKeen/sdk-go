@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** |  | 
-**InvoiceId** | Pointer to **NullableString** |  | [optional] 
-**Rails** | [**[]CustomersPaymentRailsGet200ResponseDataRailsInner**](CustomersPaymentRailsGet200ResponseDataRailsInner.md) |  | 
+**CustomerId** | **string** |  |
+**InvoiceId** | Pointer to **NullableString** |  | [optional]
+**Rails** | [**[]CustomersPaymentRailsGet200ResponseDataRailsInner**](CustomersPaymentRailsGet200ResponseDataRailsInner.md) |  |
 
 ## Methods
 
@@ -104,5 +104,3 @@ SetRails sets Rails field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

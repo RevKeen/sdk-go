@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **NullableString** | Discount code to apply. Pass &#x60;null&#x60; to clear. Valid discounts are priced into cart totals before checkout handoff. | 
+**Code** | **NullableString** | Discount code to apply. Pass &#x60;null&#x60; to clear. Valid discounts are priced into cart totals before checkout handoff. |
 
 ## Methods
 
@@ -57,5 +57,3 @@ SetCode sets Code field to given value.
 UnsetCode ensures that no value is present for Code, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

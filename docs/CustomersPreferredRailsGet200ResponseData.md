@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** |  | 
-**InvoiceId** | **NullableString** |  | 
-**AmountMinor** | **NullableInt32** |  | 
-**Currency** | **NullableString** |  | 
-**PreferredRails** | [**[]CustomersPreferredRailsGet200ResponseDataPreferredRailsInner**](CustomersPreferredRailsGet200ResponseDataPreferredRailsInner.md) |  | 
+**CustomerId** | **string** |  |
+**InvoiceId** | **NullableString** |  |
+**AmountMinor** | **NullableInt64** |  |
+**Currency** | **NullableString** |  |
+**PreferredRails** | [**[]CustomersPreferredRailsGet200ResponseDataPreferredRailsInner**](CustomersPreferredRailsGet200ResponseDataPreferredRailsInner.md) |  |
 
 ## Methods
 
 ### NewCustomersPreferredRailsGet200ResponseData
 
-`func NewCustomersPreferredRailsGet200ResponseData(customerId string, invoiceId NullableString, amountMinor NullableInt32, currency NullableString, preferredRails []CustomersPreferredRailsGet200ResponseDataPreferredRailsInner, ) *CustomersPreferredRailsGet200ResponseData`
+`func NewCustomersPreferredRailsGet200ResponseData(customerId string, invoiceId NullableString, amountMinor NullableInt64, currency NullableString, preferredRails []CustomersPreferredRailsGet200ResponseDataPreferredRailsInner, ) *CustomersPreferredRailsGet200ResponseData`
 
 NewCustomersPreferredRailsGet200ResponseData instantiates a new CustomersPreferredRailsGet200ResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -81,20 +81,20 @@ SetInvoiceId sets InvoiceId field to given value.
 UnsetInvoiceId ensures that no value is present for InvoiceId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *CustomersPreferredRailsGet200ResponseData) GetAmountMinor() int32`
+`func (o *CustomersPreferredRailsGet200ResponseData) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CustomersPreferredRailsGet200ResponseData) GetAmountMinorOk() (*int32, bool)`
+`func (o *CustomersPreferredRailsGet200ResponseData) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CustomersPreferredRailsGet200ResponseData) SetAmountMinor(v int32)`
+`func (o *CustomersPreferredRailsGet200ResponseData) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -161,5 +161,3 @@ SetPreferredRails sets PreferredRails field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

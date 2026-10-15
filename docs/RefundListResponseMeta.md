@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Total** | **float32** | Total number of results matching the query | 
-**Limit** | **float32** | Maximum results per page | 
-**Offset** | **float32** | Number of results skipped | 
-**HasMore** | **bool** | Whether more results exist beyond this page | 
+**Total** | **float32** | Total number of results matching the query |
+**Limit** | **float32** | Maximum results per page |
+**Offset** | **float32** | Number of results skipped |
+**HasMore** | **bool** | Whether more results exist beyond this page |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetHasMore sets HasMore field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

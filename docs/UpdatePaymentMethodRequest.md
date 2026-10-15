@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BillingDetails** | Pointer to [**BillingDetails**](BillingDetails.md) | Updated billing details | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom metadata to attach | [optional] 
+**BillingDetails** | Pointer to [**NullableBillingDetails**](BillingDetails.md) | Updated billing details | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom metadata to attach | [optional]
 
 ## Methods
 
@@ -51,22 +51,32 @@ SetBillingDetails sets BillingDetails field to given value.
 
 HasBillingDetails returns a boolean if a field has been set.
 
+### SetBillingDetailsNil
+
+`func (o *UpdatePaymentMethodRequest) SetBillingDetailsNil(b bool)`
+
+ SetBillingDetailsNil sets the value for BillingDetails to be an explicit nil
+
+### UnsetBillingDetails
+`func (o *UpdatePaymentMethodRequest) UnsetBillingDetails()`
+
+UnsetBillingDetails ensures that no value is present for BillingDetails, not even an explicit nil
 ### GetMetadata
 
-`func (o *UpdatePaymentMethodRequest) GetMetadata() map[string]interface{}`
+`func (o *UpdatePaymentMethodRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *UpdatePaymentMethodRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *UpdatePaymentMethodRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *UpdatePaymentMethodRequest) SetMetadata(v map[string]interface{})`
+`func (o *UpdatePaymentMethodRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -78,5 +88,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

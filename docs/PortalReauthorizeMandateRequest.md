@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountHolderName** | **string** |  | 
-**SortCode** | **string** |  | 
-**AccountNumber** | **string** |  | 
-**VerificationToken** | **string** |  | 
-**Acceptance** | [**PortalReauthorizeMandateRequestAcceptance**](PortalReauthorizeMandateRequestAcceptance.md) |  | 
+**AccountHolderName** | **string** |  |
+**SortCode** | **string** |  |
+**AccountNumber** | **string** |  |
+**VerificationToken** | **string** |  |
+**Acceptance** | [**PortalReauthorizeMandateRequestAcceptance**](PortalReauthorizeMandateRequestAcceptance.md) |  |
 
 ## Methods
 
@@ -131,5 +131,3 @@ SetAcceptance sets Acceptance field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

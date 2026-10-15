@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**ProductId** | **string** |  | 
-**Name** | **string** |  | 
-**Quantity** | **int32** |  | 
-**UnitPriceMinor** | **int32** |  | 
-**Currency** | **string** |  | 
-**Recurring** | [**CartLineItemRecurring**](CartLineItemRecurring.md) |  | 
-**BillingMaxCycles** | Pointer to **NullableInt32** |  | [optional] 
-**TrialPeriodDays** | Pointer to **NullableInt32** |  | [optional] 
-**StartRule** | Pointer to [**NullableCartStartRule**](CartStartRule.md) |  | [optional] 
-**BillingAnchorRule** | Pointer to [**NullableCartBillingAnchorRule**](CartBillingAnchorRule.md) |  | [optional] 
-**BillingAnchorDay** | Pointer to **NullableInt32** |  | [optional] 
-**DueTodayMinor** | Pointer to **NullableInt32** |  | [optional] 
-**FirstChargeMinor** | Pointer to **NullableInt32** |  | [optional] 
-**FirstRenewalAt** | Pointer to **NullableTime** |  | [optional] 
-**EffectiveStartRule** | Pointer to [**NullableCartStartRule**](CartStartRule.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**Id** | **string** |  |
+**ProductId** | **string** |  |
+**Name** | **string** |  |
+**Quantity** | **int32** |  |
+**UnitPriceMinor** | **int64** |  |
+**Currency** | **string** |  |
+**Recurring** | [**NullableCartLineItemRecurring**](CartLineItemRecurring.md) |  |
+**BillingMaxCycles** | Pointer to **NullableInt32** |  | [optional]
+**TrialPeriodDays** | Pointer to **NullableInt32** |  | [optional]
+**StartRule** | Pointer to [**NullableCartStartRule**](CartStartRule.md) |  | [optional]
+**BillingAnchorRule** | Pointer to [**NullableCartBillingAnchorRule**](CartBillingAnchorRule.md) |  | [optional]
+**BillingAnchorDay** | Pointer to **NullableInt32** |  | [optional]
+**DueTodayMinor** | Pointer to **NullableInt64** |  | [optional]
+**FirstChargeMinor** | Pointer to **NullableInt64** |  | [optional]
+**FirstRenewalAt** | Pointer to **NullableTime** |  | [optional]
+**EffectiveStartRule** | Pointer to [**NullableCartStartRule**](CartStartRule.md) |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
 
 ## Methods
 
 ### NewCartLineItem
 
-`func NewCartLineItem(id string, productId string, name string, quantity int32, unitPriceMinor int32, currency string, recurring CartLineItemRecurring, ) *CartLineItem`
+`func NewCartLineItem(id string, productId string, name string, quantity int32, unitPriceMinor int64, currency string, recurring NullableCartLineItemRecurring, ) *CartLineItem`
 
 NewCartLineItem instantiates a new CartLineItem object
 This constructor will assign default values to properties that have it defined,
@@ -123,20 +123,20 @@ SetQuantity sets Quantity field to given value.
 
 ### GetUnitPriceMinor
 
-`func (o *CartLineItem) GetUnitPriceMinor() int32`
+`func (o *CartLineItem) GetUnitPriceMinor() int64`
 
 GetUnitPriceMinor returns the UnitPriceMinor field if non-nil, zero value otherwise.
 
 ### GetUnitPriceMinorOk
 
-`func (o *CartLineItem) GetUnitPriceMinorOk() (*int32, bool)`
+`func (o *CartLineItem) GetUnitPriceMinorOk() (*int64, bool)`
 
 GetUnitPriceMinorOk returns a tuple with the UnitPriceMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitPriceMinor
 
-`func (o *CartLineItem) SetUnitPriceMinor(v int32)`
+`func (o *CartLineItem) SetUnitPriceMinor(v int64)`
 
 SetUnitPriceMinor sets UnitPriceMinor field to given value.
 
@@ -181,6 +181,16 @@ and a boolean to check if the value has been set.
 SetRecurring sets Recurring field to given value.
 
 
+### SetRecurringNil
+
+`func (o *CartLineItem) SetRecurringNil(b bool)`
+
+ SetRecurringNil sets the value for Recurring to be an explicit nil
+
+### UnsetRecurring
+`func (o *CartLineItem) UnsetRecurring()`
+
+UnsetRecurring ensures that no value is present for Recurring, not even an explicit nil
 ### GetBillingMaxCycles
 
 `func (o *CartLineItem) GetBillingMaxCycles() int32`
@@ -358,20 +368,20 @@ HasBillingAnchorDay returns a boolean if a field has been set.
 UnsetBillingAnchorDay ensures that no value is present for BillingAnchorDay, not even an explicit nil
 ### GetDueTodayMinor
 
-`func (o *CartLineItem) GetDueTodayMinor() int32`
+`func (o *CartLineItem) GetDueTodayMinor() int64`
 
 GetDueTodayMinor returns the DueTodayMinor field if non-nil, zero value otherwise.
 
 ### GetDueTodayMinorOk
 
-`func (o *CartLineItem) GetDueTodayMinorOk() (*int32, bool)`
+`func (o *CartLineItem) GetDueTodayMinorOk() (*int64, bool)`
 
 GetDueTodayMinorOk returns a tuple with the DueTodayMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDueTodayMinor
 
-`func (o *CartLineItem) SetDueTodayMinor(v int32)`
+`func (o *CartLineItem) SetDueTodayMinor(v int64)`
 
 SetDueTodayMinor sets DueTodayMinor field to given value.
 
@@ -393,20 +403,20 @@ HasDueTodayMinor returns a boolean if a field has been set.
 UnsetDueTodayMinor ensures that no value is present for DueTodayMinor, not even an explicit nil
 ### GetFirstChargeMinor
 
-`func (o *CartLineItem) GetFirstChargeMinor() int32`
+`func (o *CartLineItem) GetFirstChargeMinor() int64`
 
 GetFirstChargeMinor returns the FirstChargeMinor field if non-nil, zero value otherwise.
 
 ### GetFirstChargeMinorOk
 
-`func (o *CartLineItem) GetFirstChargeMinorOk() (*int32, bool)`
+`func (o *CartLineItem) GetFirstChargeMinorOk() (*int64, bool)`
 
 GetFirstChargeMinorOk returns a tuple with the FirstChargeMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFirstChargeMinor
 
-`func (o *CartLineItem) SetFirstChargeMinor(v int32)`
+`func (o *CartLineItem) SetFirstChargeMinor(v int64)`
 
 SetFirstChargeMinor sets FirstChargeMinor field to given value.
 
@@ -498,20 +508,20 @@ HasEffectiveStartRule returns a boolean if a field has been set.
 UnsetEffectiveStartRule ensures that no value is present for EffectiveStartRule, not even an explicit nil
 ### GetMetadata
 
-`func (o *CartLineItem) GetMetadata() map[string]interface{}`
+`func (o *CartLineItem) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CartLineItem) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CartLineItem) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CartLineItem) SetMetadata(v map[string]interface{})`
+`func (o *CartLineItem) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -523,5 +533,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

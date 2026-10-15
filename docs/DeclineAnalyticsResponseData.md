@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalAttempts** | **int32** |  | 
-**ApprovedCount** | **int32** |  | 
-**DeclinedCount** | **int32** |  | 
-**ApprovalRate** | **float32** |  | 
-**SoftDeclineCount** | **int32** |  | 
-**HardDeclineCount** | **int32** |  | 
-**TopDeclineCategories** | [**[]DeclineAnalyticsResponseDataTopDeclineCategoriesInner**](DeclineAnalyticsResponseDataTopDeclineCategoriesInner.md) |  | 
-**ByGateway** | [**map[string]DeclineAnalyticsResponseDataByGatewayValue**](DeclineAnalyticsResponseDataByGatewayValue.md) | Breakdown by gateway | 
+**TotalAttempts** | **int32** |  |
+**ApprovedCount** | **int32** |  |
+**DeclinedCount** | **int32** |  |
+**ApprovalRate** | **float32** |  |
+**SoftDeclineCount** | **int32** |  |
+**HardDeclineCount** | **int32** |  |
+**TopDeclineCategories** | [**[]DeclineAnalyticsResponseDataTopDeclineCategoriesInner**](DeclineAnalyticsResponseDataTopDeclineCategoriesInner.md) |  |
+**ByGateway** | [**map[string]DeclineAnalyticsResponseDataByGatewayValue**](DeclineAnalyticsResponseDataByGatewayValue.md) | Breakdown by gateway |
 
 ## Methods
 
@@ -194,5 +194,3 @@ SetByGateway sets ByGateway field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

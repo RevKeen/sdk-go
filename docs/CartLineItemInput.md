@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | **string** |  | 
-**Name** | **string** |  | 
-**Quantity** | **int32** |  | 
-**UnitPriceMinor** | **int32** | Unit price in minor units (pence, cents). | 
-**Currency** | **string** |  | 
-**Recurring** | Pointer to [**CartLineItemRecurring**](CartLineItemRecurring.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**ProductId** | **string** |  |
+**Name** | **string** |  |
+**Quantity** | **int32** |  |
+**UnitPriceMinor** | **int64** | Unit price in minor units (pence, cents). |
+**Currency** | **string** |  |
+**Recurring** | Pointer to [**NullableCartLineItemRecurring**](CartLineItemRecurring.md) |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
 
 ## Methods
 
 ### NewCartLineItemInput
 
-`func NewCartLineItemInput(productId string, name string, quantity int32, unitPriceMinor int32, currency string, ) *CartLineItemInput`
+`func NewCartLineItemInput(productId string, name string, quantity int32, unitPriceMinor int64, currency string, ) *CartLineItemInput`
 
 NewCartLineItemInput instantiates a new CartLineItemInput object
 This constructor will assign default values to properties that have it defined,
@@ -93,20 +93,20 @@ SetQuantity sets Quantity field to given value.
 
 ### GetUnitPriceMinor
 
-`func (o *CartLineItemInput) GetUnitPriceMinor() int32`
+`func (o *CartLineItemInput) GetUnitPriceMinor() int64`
 
 GetUnitPriceMinor returns the UnitPriceMinor field if non-nil, zero value otherwise.
 
 ### GetUnitPriceMinorOk
 
-`func (o *CartLineItemInput) GetUnitPriceMinorOk() (*int32, bool)`
+`func (o *CartLineItemInput) GetUnitPriceMinorOk() (*int64, bool)`
 
 GetUnitPriceMinorOk returns a tuple with the UnitPriceMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitPriceMinor
 
-`func (o *CartLineItemInput) SetUnitPriceMinor(v int32)`
+`func (o *CartLineItemInput) SetUnitPriceMinor(v int64)`
 
 SetUnitPriceMinor sets UnitPriceMinor field to given value.
 
@@ -156,22 +156,32 @@ SetRecurring sets Recurring field to given value.
 
 HasRecurring returns a boolean if a field has been set.
 
+### SetRecurringNil
+
+`func (o *CartLineItemInput) SetRecurringNil(b bool)`
+
+ SetRecurringNil sets the value for Recurring to be an explicit nil
+
+### UnsetRecurring
+`func (o *CartLineItemInput) UnsetRecurring()`
+
+UnsetRecurring ensures that no value is present for Recurring, not even an explicit nil
 ### GetMetadata
 
-`func (o *CartLineItemInput) GetMetadata() map[string]interface{}`
+`func (o *CartLineItemInput) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CartLineItemInput) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CartLineItemInput) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CartLineItemInput) SetMetadata(v map[string]interface{})`
+`func (o *CartLineItemInput) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -183,5 +193,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

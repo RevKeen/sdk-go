@@ -1,6 +1,6 @@
 # \AccountingIntegrationsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## AccountingInvoicePaymentRequestsCreate
 
-> AccountingInvoicePaymentRequestsCreate200Response AccountingInvoicePaymentRequestsCreate(ctx).CreateAccountingInvoicePaymentRequestInput(createAccountingInvoicePaymentRequestInput).Execute()
+> AccountingInvoicePaymentRequestsCreate200Response AccountingInvoicePaymentRequestsCreate(ctx).IdempotencyKey(idempotencyKey).CreateAccountingInvoicePaymentRequestInput(createAccountingInvoicePaymentRequestInput).Execute()
 
 Create an accounting-led invoice payment request
 
@@ -26,15 +26,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	createAccountingInvoicePaymentRequestInput := *openapiclient.NewCreateAccountingInvoicePaymentRequestInput("Provider_example", "ConnectionId_example", "ProviderAccountId_example", *openapiclient.NewCreateAccountingInvoicePaymentRequestInputExternalInvoice("Id_example"), int32(123), "Currency_example") // CreateAccountingInvoicePaymentRequestInput |  (optional)
+	idempotencyKey := "idempotencyKey_example" // string | Required stable key for this logical payment request. Reuse the same key only with an identical request.
+	createAccountingInvoicePaymentRequestInput := *openapiclient.NewCreateAccountingInvoicePaymentRequestInput("Provider_example", "ConnectionId_example", "ProviderAccountId_example", *openapiclient.NewCreateAccountingInvoicePaymentRequestInputExternalInvoice("Id_example"), int64(123), "Currency_example") // CreateAccountingInvoicePaymentRequestInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountingIntegrationsAPI.AccountingInvoicePaymentRequestsCreate(context.Background()).CreateAccountingInvoicePaymentRequestInput(createAccountingInvoicePaymentRequestInput).Execute()
+	resp, r, err := apiClient.AccountingIntegrationsAPI.AccountingInvoicePaymentRequestsCreate(context.Background()).IdempotencyKey(idempotencyKey).CreateAccountingInvoicePaymentRequestInput(createAccountingInvoicePaymentRequestInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountingIntegrationsAPI.AccountingInvoicePaymentRequestsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -55,7 +56,8 @@ Other parameters are passed through a pointer to a apiAccountingInvoicePaymentRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createAccountingInvoicePaymentRequestInput** | [**CreateAccountingInvoicePaymentRequestInput**](CreateAccountingInvoicePaymentRequestInput.md) |  | 
+ **idempotencyKey** | **string** | Required stable key for this logical payment request. Reuse the same key only with an identical request. |
+ **createAccountingInvoicePaymentRequestInput** | [**CreateAccountingInvoicePaymentRequestInput**](CreateAccountingInvoicePaymentRequestInput.md) |  |
 
 ### Return type
 
@@ -92,11 +94,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -116,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -143,4 +145,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DataPoints** | [**[]AnalyticsRevenueTimeSeries200ResponseDataPointsInner**](AnalyticsRevenueTimeSeries200ResponseDataPointsInner.md) |  | 
-**TotalRevenue** | **float32** | Total revenue across the period in minor units | 
-**TotalInvoices** | **float32** | Total number of invoices across the period | 
-**PeriodStart** | **string** | Start of the period | 
-**PeriodEnd** | **string** | End of the period | 
+**DataPoints** | [**[]AnalyticsRevenueTimeSeries200ResponseDataPointsInner**](AnalyticsRevenueTimeSeries200ResponseDataPointsInner.md) |  |
+**TotalRevenue** | **int64** | Total revenue across the period in minor units |
+**TotalInvoices** | **float32** | Total number of invoices across the period |
+**PeriodStart** | **string** | Start of the period |
+**PeriodEnd** | **string** | End of the period |
 
 ## Methods
 
 ### NewAnalyticsRevenueTimeSeries200Response
 
-`func NewAnalyticsRevenueTimeSeries200Response(dataPoints []AnalyticsRevenueTimeSeries200ResponseDataPointsInner, totalRevenue float32, totalInvoices float32, periodStart string, periodEnd string, ) *AnalyticsRevenueTimeSeries200Response`
+`func NewAnalyticsRevenueTimeSeries200Response(dataPoints []AnalyticsRevenueTimeSeries200ResponseDataPointsInner, totalRevenue int64, totalInvoices float32, periodStart string, periodEnd string, ) *AnalyticsRevenueTimeSeries200Response`
 
 NewAnalyticsRevenueTimeSeries200Response instantiates a new AnalyticsRevenueTimeSeries200Response object
 This constructor will assign default values to properties that have it defined,
@@ -51,20 +51,20 @@ SetDataPoints sets DataPoints field to given value.
 
 ### GetTotalRevenue
 
-`func (o *AnalyticsRevenueTimeSeries200Response) GetTotalRevenue() float32`
+`func (o *AnalyticsRevenueTimeSeries200Response) GetTotalRevenue() int64`
 
 GetTotalRevenue returns the TotalRevenue field if non-nil, zero value otherwise.
 
 ### GetTotalRevenueOk
 
-`func (o *AnalyticsRevenueTimeSeries200Response) GetTotalRevenueOk() (*float32, bool)`
+`func (o *AnalyticsRevenueTimeSeries200Response) GetTotalRevenueOk() (*int64, bool)`
 
 GetTotalRevenueOk returns a tuple with the TotalRevenue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalRevenue
 
-`func (o *AnalyticsRevenueTimeSeries200Response) SetTotalRevenue(v float32)`
+`func (o *AnalyticsRevenueTimeSeries200Response) SetTotalRevenue(v int64)`
 
 SetTotalRevenue sets TotalRevenue field to given value.
 
@@ -131,5 +131,3 @@ SetPeriodEnd sets PeriodEnd field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

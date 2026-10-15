@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **NullableString** | Request ID that triggered this event (if applicable) | 
-**IdempotencyKey** | **NullableString** | Idempotency key used in the request (if applicable) | 
+**Id** | **NullableString** | Request ID that triggered this event (if applicable) |
+**IdempotencyKey** | **NullableString** | Idempotency key used in the request (if applicable) |
 
 ## Methods
 
@@ -88,5 +88,3 @@ SetIdempotencyKey sets IdempotencyKey field to given value.
 UnsetIdempotencyKey ensures that no value is present for IdempotencyKey, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

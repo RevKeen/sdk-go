@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | **string** |  | 
-**Mode** | Pointer to **string** |  | [optional] 
-**CustomerId** | Pointer to **string** |  | [optional] 
-**LineItems** | Pointer to [**[]CartLineItemInput**](CartLineItemInput.md) |  | [optional] 
-**AddOnsOffered** | Pointer to **[]string** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**PaymentLinkId** | Pointer to **string** | Seed this cart from a cart-enabled payment link. | [optional] 
+**Currency** | **string** |  |
+**Mode** | Pointer to **string** |  | [optional]
+**CustomerId** | Pointer to **string** |  | [optional]
+**LineItems** | Pointer to [**[]CartLineItemInput**](CartLineItemInput.md) |  | [optional]
+**AddOnsOffered** | Pointer to **[]string** |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
+**PaymentLinkId** | Pointer to **string** | Seed this cart from a cart-enabled payment link. | [optional]
 
 ## Methods
 
@@ -153,20 +153,20 @@ HasAddOnsOffered returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *CreateCartSessionInput) GetMetadata() map[string]interface{}`
+`func (o *CreateCartSessionInput) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreateCartSessionInput) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreateCartSessionInput) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreateCartSessionInput) SetMetadata(v map[string]interface{})`
+`func (o *CreateCartSessionInput) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -203,5 +203,3 @@ HasPaymentLinkId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

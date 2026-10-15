@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeviceId** | **string** | The ID of the terminal device to send the payment to. Use List Devices to discover available device IDs. Even merchants with a single terminal must pass the device_id explicitly — there is no auto-routing fallback. | 
-**AmountMinor** | **int32** | Amount in minor units (e.g., pence for GBP, cents for USD) | 
-**Currency** | **string** | ISO 4217 currency code | 
-**InvoiceId** | Pointer to **string** | The invoice to charge. Omit for walk-in or ad-hoc payments where no invoice exists. When omitted, the terminal payment is recorded without an invoice association. | [optional] 
-**Reference** | Pointer to **string** | Custom reference for the payment. Auto-generated if not provided. | [optional] 
+**DeviceId** | **string** | The ID of the terminal device to send the payment to. Use List Devices to discover available device IDs. Even merchants with a single terminal must pass the device_id explicitly — there is no auto-routing fallback. |
+**AmountMinor** | **int64** | Amount in minor units (e.g., pence for GBP, cents for USD) |
+**Currency** | **string** | ISO 4217 currency code |
+**InvoiceId** | Pointer to **string** | The invoice to charge. Omit for walk-in or ad-hoc payments where no invoice exists. When omitted, the terminal payment is recorded without an invoice association. | [optional]
+**Reference** | Pointer to **string** | Custom reference for the payment. Auto-generated if not provided. | [optional]
 
 ## Methods
 
 ### NewCreateTerminalPaymentRequest
 
-`func NewCreateTerminalPaymentRequest(deviceId string, amountMinor int32, currency string, ) *CreateTerminalPaymentRequest`
+`func NewCreateTerminalPaymentRequest(deviceId string, amountMinor int64, currency string, ) *CreateTerminalPaymentRequest`
 
 NewCreateTerminalPaymentRequest instantiates a new CreateTerminalPaymentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -51,20 +51,20 @@ SetDeviceId sets DeviceId field to given value.
 
 ### GetAmountMinor
 
-`func (o *CreateTerminalPaymentRequest) GetAmountMinor() int32`
+`func (o *CreateTerminalPaymentRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreateTerminalPaymentRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *CreateTerminalPaymentRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreateTerminalPaymentRequest) SetAmountMinor(v int32)`
+`func (o *CreateTerminalPaymentRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -141,5 +141,3 @@ HasReference returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**MerchantId** | **string** |  | 
-**CustomerId** | **string** |  | 
-**InvoiceId** | **NullableString** |  | 
-**Token** | **string** | Signed mandate-request token for the emailed link | 
-**SignableUrl** | **string** | Customer-facing URL that opens the sign flow | 
-**CreatedAt** | **NullableString** |  | 
-**ExpiresAt** | **NullableString** |  | 
-**Status** | **string** |  | 
-**Idempotent** | **bool** | True when an existing live request was returned instead of creating a new one | 
+**Id** | **string** |  |
+**MerchantId** | **string** |  |
+**CustomerId** | **string** |  |
+**InvoiceId** | **NullableString** |  |
+**Token** | **string** | Signed mandate-request token for the emailed link |
+**SignableUrl** | **string** | Customer-facing URL that opens the sign flow |
+**CreatedAt** | **NullableTime** |  |
+**ExpiresAt** | **NullableTime** |  |
+**Status** | **string** |  |
+**Idempotent** | **bool** | True when an existing live request was returned instead of creating a new one |
 
 ## Methods
 
 ### NewDdMandateRequestCreateResponseData
 
-`func NewDdMandateRequestCreateResponseData(id string, merchantId string, customerId string, invoiceId NullableString, token string, signableUrl string, createdAt NullableString, expiresAt NullableString, status string, idempotent bool, ) *DdMandateRequestCreateResponseData`
+`func NewDdMandateRequestCreateResponseData(id string, merchantId string, customerId string, invoiceId NullableString, token string, signableUrl string, createdAt NullableTime, expiresAt NullableTime, status string, idempotent bool, ) *DdMandateRequestCreateResponseData`
 
 NewDdMandateRequestCreateResponseData instantiates a new DdMandateRequestCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -166,20 +166,20 @@ SetSignableUrl sets SignableUrl field to given value.
 
 ### GetCreatedAt
 
-`func (o *DdMandateRequestCreateResponseData) GetCreatedAt() string`
+`func (o *DdMandateRequestCreateResponseData) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *DdMandateRequestCreateResponseData) GetCreatedAtOk() (*string, bool)`
+`func (o *DdMandateRequestCreateResponseData) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *DdMandateRequestCreateResponseData) SetCreatedAt(v string)`
+`func (o *DdMandateRequestCreateResponseData) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -196,20 +196,20 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetExpiresAt
 
-`func (o *DdMandateRequestCreateResponseData) GetExpiresAt() string`
+`func (o *DdMandateRequestCreateResponseData) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *DdMandateRequestCreateResponseData) GetExpiresAtOk() (*string, bool)`
+`func (o *DdMandateRequestCreateResponseData) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *DdMandateRequestCreateResponseData) SetExpiresAt(v string)`
+`func (o *DdMandateRequestCreateResponseData) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -266,5 +266,3 @@ SetIdempotent sets Idempotent field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

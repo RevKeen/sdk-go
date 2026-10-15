@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **int32** | Amount in cents. Must be greater than 0. | 
-**Currency** | Pointer to **string** | Three-letter ISO currency code. Defaults to USD. | [optional] [default to "USD"]
-**Customer** | **string** | Customer ID to charge | 
-**PaymentMethod** | Pointer to **string** | Payment method ID. If not provided, status will be requires_payment_method. | [optional] 
+**Amount** | **int32** | Amount in cents. Must be greater than 0. |
+**Currency** | Pointer to **string** | Three-letter ISO currency code. Defaults to the merchant&#39;s default currency. | [optional]
+**Customer** | **string** | Customer ID to charge |
+**PaymentMethod** | Pointer to **string** | Payment method ID. If not provided, status will be requires_payment_method. | [optional]
 **CaptureMethod** | Pointer to **string** | Capture method. Defaults to automatic. | [optional] [default to "automatic"]
-**Description** | Pointer to **string** | Description for merchant reference | [optional] 
-**StatementDescriptor** | Pointer to **string** | Statement descriptor shown on customer&#39;s statement | [optional] 
-**StatementDescriptorSuffix** | Pointer to **string** | Statement descriptor suffix | [optional] 
-**ReceiptEmail** | Pointer to **string** | Email to send receipt to | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**GatewayMerchantId** | Pointer to **string** | Specific gateway merchant ID for multi-MID setups (NMI) | [optional] 
+**Description** | Pointer to **string** | Description for merchant reference | [optional]
+**StatementDescriptor** | Pointer to **string** | Statement descriptor shown on customer&#39;s statement | [optional]
+**StatementDescriptorSuffix** | Pointer to **string** | Statement descriptor suffix | [optional]
+**ReceiptEmail** | Pointer to **string** | Email to send receipt to | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**GatewayMerchantId** | Pointer to **string** | Specific gateway merchant ID for multi-MID setups (NMI) | [optional]
 
 ## Methods
 
@@ -302,5 +302,3 @@ HasGatewayMerchantId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

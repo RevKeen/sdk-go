@@ -4,38 +4,38 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the dispute | 
-**PublicId** | **string** | Public-facing dispute identifier | 
-**PaymentId** | **NullableString** | The original payment ID this dispute is for (alias for parent_transaction_id) | 
-**ParentTransactionId** | **NullableString** | Parent transaction ID in unified transaction model. Same as payment_id for disputes. | 
-**Gateway** | **string** | Name of the payment processor that handled the original transaction | 
-**PaymentRail** | **NullableString** | Rail/payment method for the disputed transaction | 
-**DisputeKind** | **NullableString** | Rail-specific dispute subtype, when available | 
-**GatewayDisputeId** | **string** | Dispute identifier assigned by the payment gateway | 
-**GatewayTransactionId** | **NullableString** | Original transaction identifier from the payment gateway | 
-**AmountMinor** | **float32** | Disputed amount in cents | 
-**Currency** | **string** | Three-letter ISO 4217 currency code | 
-**ReasonCode** | **NullableString** | Card network reason code | 
-**Reason** | **NullableString** | Human-readable reason for the dispute | 
-**NetworkReasonCode** | **NullableString** | Card network-specific reason code | 
-**NetworkReasonDescription** | **NullableString** | Card network-specific reason description | 
-**CustomerName** | **NullableString** | Name of the customer who filed the dispute | 
-**CardBrand** | **NullableString** | Card brand used for the original payment | 
-**CardLast4** | **NullableString** | Last four digits of the card used for the original payment | 
-**EvidenceDueBy** | **NullableString** | Deadline for submitting evidence to contest the dispute | 
-**EvidenceSubmitted** | **bool** | Whether evidence has been submitted for this dispute | 
-**EvidenceSubmittedAt** | **NullableString** | Timestamp when evidence was submitted | 
-**Status** | **string** | Current status of the dispute lifecycle | 
-**Resolution** | **NullableString** | Final resolution outcome of the dispute | 
-**ResolvedAt** | **NullableString** | Timestamp when the dispute was resolved | 
-**DisputedAt** | **string** | Timestamp when the dispute was filed | 
-**CreatedAt** | **string** | Timestamp when the dispute record was created | 
+**Id** | **string** | Unique identifier for the dispute |
+**PublicId** | **string** | Public-facing dispute identifier |
+**PaymentId** | **NullableString** | The original payment ID this dispute is for (alias for parent_transaction_id) |
+**ParentTransactionId** | **NullableString** | Parent transaction ID in unified transaction model. Same as payment_id for disputes. |
+**Gateway** | **string** | Name of the payment processor that handled the original transaction |
+**PaymentRail** | **NullableString** | Rail/payment method for the disputed transaction |
+**DisputeKind** | **NullableString** | Rail-specific dispute subtype, when available |
+**GatewayDisputeId** | **string** | Dispute identifier assigned by the payment gateway |
+**GatewayTransactionId** | **NullableString** | Original transaction identifier from the payment gateway |
+**AmountMinor** | **int64** | Disputed amount in cents |
+**Currency** | **string** | Three-letter ISO 4217 currency code |
+**ReasonCode** | **NullableString** | Card network reason code |
+**Reason** | **NullableString** | Human-readable reason for the dispute |
+**NetworkReasonCode** | **NullableString** | Card network-specific reason code |
+**NetworkReasonDescription** | **NullableString** | Card network-specific reason description |
+**CustomerName** | **NullableString** | Name of the customer who filed the dispute |
+**CardBrand** | **NullableString** | Card brand used for the original payment |
+**CardLast4** | **NullableString** | Last four digits of the card used for the original payment |
+**EvidenceDueBy** | **NullableString** | Deadline for submitting evidence to contest the dispute |
+**EvidenceSubmitted** | **bool** | Whether evidence has been submitted for this dispute |
+**EvidenceSubmittedAt** | **NullableTime** | Timestamp when evidence was submitted |
+**Status** | **string** | Current status of the dispute lifecycle |
+**Resolution** | **NullableString** | Final resolution outcome of the dispute |
+**ResolvedAt** | **NullableTime** | Timestamp when the dispute was resolved |
+**DisputedAt** | **time.Time** | Timestamp when the dispute was filed |
+**CreatedAt** | **time.Time** | Timestamp when the dispute record was created |
 
 ## Methods
 
 ### NewDispute
 
-`func NewDispute(id string, publicId string, paymentId NullableString, parentTransactionId NullableString, gateway string, paymentRail NullableString, disputeKind NullableString, gatewayDisputeId string, gatewayTransactionId NullableString, amountMinor float32, currency string, reasonCode NullableString, reason NullableString, networkReasonCode NullableString, networkReasonDescription NullableString, customerName NullableString, cardBrand NullableString, cardLast4 NullableString, evidenceDueBy NullableString, evidenceSubmitted bool, evidenceSubmittedAt NullableString, status string, resolution NullableString, resolvedAt NullableString, disputedAt string, createdAt string, ) *Dispute`
+`func NewDispute(id string, publicId string, paymentId NullableString, parentTransactionId NullableString, gateway string, paymentRail NullableString, disputeKind NullableString, gatewayDisputeId string, gatewayTransactionId NullableString, amountMinor int64, currency string, reasonCode NullableString, reason NullableString, networkReasonCode NullableString, networkReasonDescription NullableString, customerName NullableString, cardBrand NullableString, cardLast4 NullableString, evidenceDueBy NullableString, evidenceSubmitted bool, evidenceSubmittedAt NullableTime, status string, resolution NullableString, resolvedAt NullableTime, disputedAt time.Time, createdAt time.Time, ) *Dispute`
 
 NewDispute instantiates a new Dispute object
 This constructor will assign default values to properties that have it defined,
@@ -282,20 +282,20 @@ SetGatewayTransactionId sets GatewayTransactionId field to given value.
 UnsetGatewayTransactionId ensures that no value is present for GatewayTransactionId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *Dispute) GetAmountMinor() float32`
+`func (o *Dispute) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *Dispute) GetAmountMinorOk() (*float32, bool)`
+`func (o *Dispute) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *Dispute) SetAmountMinor(v float32)`
+`func (o *Dispute) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -582,20 +582,20 @@ SetEvidenceSubmitted sets EvidenceSubmitted field to given value.
 
 ### GetEvidenceSubmittedAt
 
-`func (o *Dispute) GetEvidenceSubmittedAt() string`
+`func (o *Dispute) GetEvidenceSubmittedAt() time.Time`
 
 GetEvidenceSubmittedAt returns the EvidenceSubmittedAt field if non-nil, zero value otherwise.
 
 ### GetEvidenceSubmittedAtOk
 
-`func (o *Dispute) GetEvidenceSubmittedAtOk() (*string, bool)`
+`func (o *Dispute) GetEvidenceSubmittedAtOk() (*time.Time, bool)`
 
 GetEvidenceSubmittedAtOk returns a tuple with the EvidenceSubmittedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvidenceSubmittedAt
 
-`func (o *Dispute) SetEvidenceSubmittedAt(v string)`
+`func (o *Dispute) SetEvidenceSubmittedAt(v time.Time)`
 
 SetEvidenceSubmittedAt sets EvidenceSubmittedAt field to given value.
 
@@ -662,20 +662,20 @@ SetResolution sets Resolution field to given value.
 UnsetResolution ensures that no value is present for Resolution, not even an explicit nil
 ### GetResolvedAt
 
-`func (o *Dispute) GetResolvedAt() string`
+`func (o *Dispute) GetResolvedAt() time.Time`
 
 GetResolvedAt returns the ResolvedAt field if non-nil, zero value otherwise.
 
 ### GetResolvedAtOk
 
-`func (o *Dispute) GetResolvedAtOk() (*string, bool)`
+`func (o *Dispute) GetResolvedAtOk() (*time.Time, bool)`
 
 GetResolvedAtOk returns a tuple with the ResolvedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolvedAt
 
-`func (o *Dispute) SetResolvedAt(v string)`
+`func (o *Dispute) SetResolvedAt(v time.Time)`
 
 SetResolvedAt sets ResolvedAt field to given value.
 
@@ -692,45 +692,43 @@ SetResolvedAt sets ResolvedAt field to given value.
 UnsetResolvedAt ensures that no value is present for ResolvedAt, not even an explicit nil
 ### GetDisputedAt
 
-`func (o *Dispute) GetDisputedAt() string`
+`func (o *Dispute) GetDisputedAt() time.Time`
 
 GetDisputedAt returns the DisputedAt field if non-nil, zero value otherwise.
 
 ### GetDisputedAtOk
 
-`func (o *Dispute) GetDisputedAtOk() (*string, bool)`
+`func (o *Dispute) GetDisputedAtOk() (*time.Time, bool)`
 
 GetDisputedAtOk returns a tuple with the DisputedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisputedAt
 
-`func (o *Dispute) SetDisputedAt(v string)`
+`func (o *Dispute) SetDisputedAt(v time.Time)`
 
 SetDisputedAt sets DisputedAt field to given value.
 
 
 ### GetCreatedAt
 
-`func (o *Dispute) GetCreatedAt() string`
+`func (o *Dispute) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Dispute) GetCreatedAtOk() (*string, bool)`
+`func (o *Dispute) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Dispute) SetCreatedAt(v string)`
+`func (o *Dispute) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

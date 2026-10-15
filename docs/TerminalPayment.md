@@ -4,31 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for this terminal payment attempt | 
-**InvoiceId** | **NullableString** | Associated invoice ID, or null for walk-in/ad-hoc payments | 
-**DeviceId** | **NullableString** | The terminal device that processed (or is processing) this payment | 
-**Type** | **string** | Transaction type. sale: original charge. refund: money returned. void: pre-settlement cancellation. | 
-**Status** | **string** | Payment lifecycle status. requested: command sent, awaiting card. in_progress: terminal processing. approved: payment succeeded. declined: issuer declined. cancelled: merchant cancelled. error: terminal error. timed_out: no response within 3 minutes. | 
-**AmountMinor** | **float32** | Amount in minor units (e.g., pence for GBP, cents for USD) | 
-**Currency** | **string** | ISO 4217 currency code | 
-**Reference** | **NullableString** | Payment reference (invoice number or custom reference) | 
-**TerminalSerial** | **NullableString** | Serial number of the PAX terminal that processed this payment | 
-**Uti** | **NullableString** | Unique Transaction Identifier from the terminal | 
-**AuthCode** | **NullableString** | Authorization code from the payment processor. Present when approved. | 
-**ResponseCode** | **NullableString** | Terminal response code. &#39;00&#39; indicates approval. | 
-**Rrn** | **NullableString** | Retrieval Reference Number for settlement reconciliation | 
-**CardScheme** | **NullableString** | Card network (e.g., VISA, MASTERCARD, AMEX) | 
-**MaskedPan** | **NullableString** | Masked card number — only the last 4 digits are visible | 
-**EntryMode** | **NullableString** | How the card was read: contactless (NFC tap), emv_chip (chip insert), magnetic_stripe (swipe), manual_entry (keyed), or fallback (chip-to-swipe) | 
-**ErrorMessage** | **NullableString** | Human-readable error message when status is error or timed_out | 
-**CreatedAt** | **string** | ISO 8601 timestamp when the payment was initiated | 
-**CompletedAt** | **NullableString** | ISO 8601 timestamp when the terminal returned a result, or null if still in progress | 
+**Id** | **string** | Unique identifier for this terminal payment attempt |
+**InvoiceId** | **NullableString** | Associated invoice ID, or null for walk-in/ad-hoc payments |
+**DeviceId** | **NullableString** | The terminal device that processed (or is processing) this payment |
+**Type** | **string** | Transaction type. sale: original charge. refund: money returned. void: pre-settlement cancellation. |
+**Status** | **string** | Payment lifecycle status. requested: command sent, awaiting card. in_progress: terminal processing. approved: payment succeeded. declined: issuer declined. cancelled: merchant cancelled. error: terminal error. timed_out: no response within 3 minutes. |
+**AmountMinor** | **int64** | Amount in minor units (e.g., pence for GBP, cents for USD) |
+**Currency** | **string** | ISO 4217 currency code |
+**Reference** | **NullableString** | Payment reference (invoice number or custom reference) |
+**TerminalSerial** | **NullableString** | Serial number of the PAX terminal that processed this payment |
+**Uti** | **NullableString** | Unique Transaction Identifier from the terminal |
+**AuthCode** | **NullableString** | Authorization code from the payment processor. Present when approved. |
+**ResponseCode** | **NullableString** | Terminal response code. &#39;00&#39; indicates approval. |
+**Rrn** | **NullableString** | Retrieval Reference Number for settlement reconciliation |
+**CardScheme** | **NullableString** | Card network (e.g., VISA, MASTERCARD, AMEX) |
+**MaskedPan** | **NullableString** | Masked card number — only the last 4 digits are visible |
+**EntryMode** | **NullableString** | How the card was read: contactless (NFC tap), emv_chip (chip insert), magnetic_stripe (swipe), manual_entry (keyed), or fallback (chip-to-swipe) |
+**ErrorMessage** | **NullableString** | Human-readable error message when status is error or timed_out |
+**CreatedAt** | **time.Time** | ISO 8601 timestamp when the payment was initiated |
+**CompletedAt** | **NullableTime** | ISO 8601 timestamp when the terminal returned a result, or null if still in progress |
 
 ## Methods
 
 ### NewTerminalPayment
 
-`func NewTerminalPayment(id string, invoiceId NullableString, deviceId NullableString, type_ string, status string, amountMinor float32, currency string, reference NullableString, terminalSerial NullableString, uti NullableString, authCode NullableString, responseCode NullableString, rrn NullableString, cardScheme NullableString, maskedPan NullableString, entryMode NullableString, errorMessage NullableString, createdAt string, completedAt NullableString, ) *TerminalPayment`
+`func NewTerminalPayment(id string, invoiceId NullableString, deviceId NullableString, type_ string, status string, amountMinor int64, currency string, reference NullableString, terminalSerial NullableString, uti NullableString, authCode NullableString, responseCode NullableString, rrn NullableString, cardScheme NullableString, maskedPan NullableString, entryMode NullableString, errorMessage NullableString, createdAt time.Time, completedAt NullableTime, ) *TerminalPayment`
 
 NewTerminalPayment instantiates a new TerminalPayment object
 This constructor will assign default values to properties that have it defined,
@@ -165,20 +165,20 @@ SetStatus sets Status field to given value.
 
 ### GetAmountMinor
 
-`func (o *TerminalPayment) GetAmountMinor() float32`
+`func (o *TerminalPayment) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *TerminalPayment) GetAmountMinorOk() (*float32, bool)`
+`func (o *TerminalPayment) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *TerminalPayment) SetAmountMinor(v float32)`
+`func (o *TerminalPayment) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -505,40 +505,40 @@ SetErrorMessage sets ErrorMessage field to given value.
 UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *TerminalPayment) GetCreatedAt() string`
+`func (o *TerminalPayment) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *TerminalPayment) GetCreatedAtOk() (*string, bool)`
+`func (o *TerminalPayment) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *TerminalPayment) SetCreatedAt(v string)`
+`func (o *TerminalPayment) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetCompletedAt
 
-`func (o *TerminalPayment) GetCompletedAt() string`
+`func (o *TerminalPayment) GetCompletedAt() time.Time`
 
 GetCompletedAt returns the CompletedAt field if non-nil, zero value otherwise.
 
 ### GetCompletedAtOk
 
-`func (o *TerminalPayment) GetCompletedAtOk() (*string, bool)`
+`func (o *TerminalPayment) GetCompletedAtOk() (*time.Time, bool)`
 
 GetCompletedAtOk returns a tuple with the CompletedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletedAt
 
-`func (o *TerminalPayment) SetCompletedAt(v string)`
+`func (o *TerminalPayment) SetCompletedAt(v time.Time)`
 
 SetCompletedAt sets CompletedAt field to given value.
 
@@ -555,5 +555,3 @@ SetCompletedAt sets CompletedAt field to given value.
 UnsetCompletedAt ensures that no value is present for CompletedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

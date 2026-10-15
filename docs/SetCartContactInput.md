@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | Pointer to **NullableString** | Customer email for abandoned-cart recovery. Pass &#x60;null&#x60; to clear. | [optional] 
-**PromotionalConsent** | Pointer to **NullableBool** | Whether the customer consented to marketing/recovery email. Records the consent timestamp when set. | [optional] 
-**SmsConsent** | Pointer to **NullableBool** | Whether the customer consented to marketing/recovery SMS. Records the consent timestamp when set. | [optional] 
+**Email** | Pointer to **NullableString** | Customer email for abandoned-cart recovery. Pass &#x60;null&#x60; to clear. | [optional]
+**PromotionalConsent** | Pointer to **NullableBool** | Whether the customer consented to marketing/recovery email. Records the consent timestamp when set. | [optional]
+**SmsConsent** | Pointer to **NullableBool** | Whether the customer consented to marketing/recovery SMS. Records the consent timestamp when set. | [optional]
 
 ## Methods
 
@@ -134,5 +134,3 @@ HasSmsConsent returns a boolean if a field has been set.
 UnsetSmsConsent ensures that no value is present for SmsConsent, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

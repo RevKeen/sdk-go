@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SortCode** | **string** | UK sort code (6 digits, dashes optional) | 
-**AccountNumber** | **string** | UK account number (8 digits) | 
+**SortCode** | **string** | UK sort code (6 digits, dashes optional) |
+**AccountNumber** | **string** | UK account number (8 digits) |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetAccountNumber sets AccountNumber field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

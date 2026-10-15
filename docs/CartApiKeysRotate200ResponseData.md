@@ -4,19 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | **string** |  | 
-**Id** | **string** |  | 
-**UnkeyKeyId** | **string** |  | 
-**KeyKind** | **string** |  | 
-**RolledFrom** | **NullableString** |  | 
-**OldKeyExpiresAt** | **NullableString** |  | 
-**GraceHours** | **float32** |  | 
+**ApiKey** | **string** |  |
+**Id** | **string** |  |
+**KeyKind** | **string** |  |
+**RolledFrom** | **NullableString** |  |
+**OldKeyExpiresAt** | **NullableTime** |  |
+**GraceHours** | **float32** |  |
 
 ## Methods
 
 ### NewCartApiKeysRotate200ResponseData
 
-`func NewCartApiKeysRotate200ResponseData(apiKey string, id string, unkeyKeyId string, keyKind string, rolledFrom NullableString, oldKeyExpiresAt NullableString, graceHours float32, ) *CartApiKeysRotate200ResponseData`
+`func NewCartApiKeysRotate200ResponseData(apiKey string, id string, keyKind string, rolledFrom NullableString, oldKeyExpiresAt NullableTime, graceHours float32, ) *CartApiKeysRotate200ResponseData`
 
 NewCartApiKeysRotate200ResponseData instantiates a new CartApiKeysRotate200ResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -71,26 +70,6 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
-### GetUnkeyKeyId
-
-`func (o *CartApiKeysRotate200ResponseData) GetUnkeyKeyId() string`
-
-GetUnkeyKeyId returns the UnkeyKeyId field if non-nil, zero value otherwise.
-
-### GetUnkeyKeyIdOk
-
-`func (o *CartApiKeysRotate200ResponseData) GetUnkeyKeyIdOk() (*string, bool)`
-
-GetUnkeyKeyIdOk returns a tuple with the UnkeyKeyId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUnkeyKeyId
-
-`func (o *CartApiKeysRotate200ResponseData) SetUnkeyKeyId(v string)`
-
-SetUnkeyKeyId sets UnkeyKeyId field to given value.
-
-
 ### GetKeyKind
 
 `func (o *CartApiKeysRotate200ResponseData) GetKeyKind() string`
@@ -143,20 +122,20 @@ SetRolledFrom sets RolledFrom field to given value.
 UnsetRolledFrom ensures that no value is present for RolledFrom, not even an explicit nil
 ### GetOldKeyExpiresAt
 
-`func (o *CartApiKeysRotate200ResponseData) GetOldKeyExpiresAt() string`
+`func (o *CartApiKeysRotate200ResponseData) GetOldKeyExpiresAt() time.Time`
 
 GetOldKeyExpiresAt returns the OldKeyExpiresAt field if non-nil, zero value otherwise.
 
 ### GetOldKeyExpiresAtOk
 
-`func (o *CartApiKeysRotate200ResponseData) GetOldKeyExpiresAtOk() (*string, bool)`
+`func (o *CartApiKeysRotate200ResponseData) GetOldKeyExpiresAtOk() (*time.Time, bool)`
 
 GetOldKeyExpiresAtOk returns a tuple with the OldKeyExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOldKeyExpiresAt
 
-`func (o *CartApiKeysRotate200ResponseData) SetOldKeyExpiresAt(v string)`
+`func (o *CartApiKeysRotate200ResponseData) SetOldKeyExpiresAt(v time.Time)`
 
 SetOldKeyExpiresAt sets OldKeyExpiresAt field to given value.
 
@@ -193,5 +172,3 @@ SetGraceHours sets GraceHours field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

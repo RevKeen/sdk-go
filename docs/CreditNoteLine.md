@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**CreditNoteId** | **string** |  | 
-**InvoiceLineItemId** | **NullableString** | The invoice line item this credit line applies to, when the credit was scoped to a specific line. Null for invoice-level credits. | 
-**Description** | **string** |  | 
-**Quantity** | **int32** |  | 
-**UnitAmountMinor** | **int32** | Per-unit credit amount in cents | 
-**TotalAmountMinor** | **int32** | Total credit for this line in cents | 
-**Metadata** | **map[string]interface{}** |  | 
-**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**CreditNoteId** | **string** |  |
+**InvoiceLineItemId** | **NullableString** | The invoice line item this credit line applies to, when the credit was scoped to a specific line. Null for invoice-level credits. |
+**Description** | **string** |  |
+**Quantity** | **int32** |  |
+**UnitAmountMinor** | **int64** | Per-unit credit amount in cents |
+**TotalAmountMinor** | **int64** | Total credit for this line in cents |
+**Metadata** | **map[string]interface{}** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCreditNoteLine
 
-`func NewCreditNoteLine(id string, object string, creditNoteId string, invoiceLineItemId NullableString, description string, quantity int32, unitAmountMinor int32, totalAmountMinor int32, metadata map[string]interface{}, createdAt time.Time, ) *CreditNoteLine`
+`func NewCreditNoteLine(id string, object string, creditNoteId string, invoiceLineItemId NullableString, description string, quantity int32, unitAmountMinor int64, totalAmountMinor int64, metadata map[string]*interface{}, createdAt time.Time, ) *CreditNoteLine`
 
 NewCreditNoteLine instantiates a new CreditNoteLine object
 This constructor will assign default values to properties that have it defined,
@@ -166,60 +166,60 @@ SetQuantity sets Quantity field to given value.
 
 ### GetUnitAmountMinor
 
-`func (o *CreditNoteLine) GetUnitAmountMinor() int32`
+`func (o *CreditNoteLine) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *CreditNoteLine) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *CreditNoteLine) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *CreditNoteLine) SetUnitAmountMinor(v int32)`
+`func (o *CreditNoteLine) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
 
 ### GetTotalAmountMinor
 
-`func (o *CreditNoteLine) GetTotalAmountMinor() int32`
+`func (o *CreditNoteLine) GetTotalAmountMinor() int64`
 
 GetTotalAmountMinor returns the TotalAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTotalAmountMinorOk
 
-`func (o *CreditNoteLine) GetTotalAmountMinorOk() (*int32, bool)`
+`func (o *CreditNoteLine) GetTotalAmountMinorOk() (*int64, bool)`
 
 GetTotalAmountMinorOk returns a tuple with the TotalAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalAmountMinor
 
-`func (o *CreditNoteLine) SetTotalAmountMinor(v int32)`
+`func (o *CreditNoteLine) SetTotalAmountMinor(v int64)`
 
 SetTotalAmountMinor sets TotalAmountMinor field to given value.
 
 
 ### GetMetadata
 
-`func (o *CreditNoteLine) GetMetadata() map[string]interface{}`
+`func (o *CreditNoteLine) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreditNoteLine) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreditNoteLine) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreditNoteLine) SetMetadata(v map[string]interface{})`
+`func (o *CreditNoteLine) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -246,5 +246,3 @@ SetCreatedAt sets CreatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

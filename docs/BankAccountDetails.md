@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BankName** | **NullableString** | The name of the bank | 
-**Last4** | **NullableString** | The last 4 digits of the account number | 
-**RoutingNumberLast4** | **NullableString** | The last 4 digits of the routing number | 
-**AccountType** | **NullableString** | The type of bank account | 
+**BankName** | **NullableString** | The name of the bank |
+**Last4** | **NullableString** | The last 4 digits of the account number |
+**RoutingNumberLast4** | **NullableString** | The last 4 digits of the routing number |
+**AccountType** | **NullableString** | The type of bank account |
 
 ## Methods
 
@@ -150,5 +150,3 @@ SetAccountType sets AccountType field to given value.
 UnsetAccountType ensures that no value is present for AccountType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

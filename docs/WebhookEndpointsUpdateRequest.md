@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | Pointer to **string** | New URL for the endpoint | [optional] 
-**EnabledEvents** | Pointer to **[]string** | Replace the subscribed event types | [optional] 
-**Description** | Pointer to **NullableString** | Update the description | [optional] 
-**Enabled** | Pointer to **bool** | Enable or disable the endpoint | [optional] 
+**Url** | Pointer to **string** | New URL for the endpoint | [optional]
+**EnabledEvents** | Pointer to **[]string** | Replace the subscribed event types. Event types to subscribe to: &#x60;*&#x60; for every event, an event name (e.g. &#x60;invoice.paid&#x60;), or a prefix wildcard (e.g. &#x60;invoice.*&#x60;). Unknown names are rejected with 400 invalid_event_type; duplicates are removed. | [optional]
+**Description** | Pointer to **NullableString** | Update the description | [optional]
+**Enabled** | Pointer to **bool** | Enable or disable the endpoint | [optional]
 
 ## Methods
 
@@ -140,5 +140,3 @@ HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier (UUID) | 
-**Object** | **string** | Object type | 
-**CustomerId** | Pointer to **NullableString** | Associated customer ID | [optional] 
-**Name** | **string** | Business name | 
-**CompanyNumber** | Pointer to **NullableString** | Company registration number | [optional] 
-**TaxIdentifier** | Pointer to **NullableString** | Tax ID (VAT, EIN, etc.) | [optional] 
-**BillingEmail** | Pointer to **NullableString** | Billing email address | [optional] 
-**BillingPhone** | Pointer to **NullableString** | Billing phone number | [optional] 
-**BillingAddressLine1** | Pointer to **NullableString** | Billing address line 1 | [optional] 
-**BillingAddressLine2** | Pointer to **NullableString** | Billing address line 2 | [optional] 
-**BillingCity** | Pointer to **NullableString** | Billing city | [optional] 
-**BillingPostcode** | Pointer to **NullableString** | Billing postcode/ZIP | [optional] 
-**BillingCountry** | Pointer to **NullableString** | Billing country (ISO 3166-1 alpha-2) | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) | 
-**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) | 
+**Id** | **string** | Unique identifier (UUID) |
+**Object** | **string** | Object type |
+**CustomerId** | Pointer to **NullableString** | Associated customer ID | [optional]
+**Name** | **string** | Business name |
+**CompanyNumber** | Pointer to **NullableString** | Company registration number | [optional]
+**TaxIdentifier** | Pointer to **NullableString** | Tax ID (VAT, EIN, etc.) | [optional]
+**BillingEmail** | Pointer to **NullableString** | Billing email address | [optional]
+**BillingPhone** | Pointer to **NullableString** | Billing phone number | [optional]
+**BillingAddressLine1** | Pointer to **NullableString** | Billing address line 1 | [optional]
+**BillingAddressLine2** | Pointer to **NullableString** | Billing address line 2 | [optional]
+**BillingCity** | Pointer to **NullableString** | Billing city | [optional]
+**BillingPostcode** | Pointer to **NullableString** | Billing postcode/ZIP | [optional]
+**BillingCountry** | Pointer to **NullableString** | Billing country (ISO 3166-1 alpha-2) | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) |
+**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) |
 
 ## Methods
 
@@ -517,5 +517,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

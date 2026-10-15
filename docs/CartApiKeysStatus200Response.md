@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **bool** |  | 
-**Data** | [**CartApiKeysStatus200ResponseData**](CartApiKeysStatus200ResponseData.md) |  | 
+**Success** | **bool** |  |
+**Data** | [**CartApiKeysStatus200ResponseData**](CartApiKeysStatus200ResponseData.md) |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetData sets Data field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

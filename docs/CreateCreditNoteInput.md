@@ -4,25 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InvoiceId** | **string** | The ID of the invoice to issue a credit note for | 
-**AmountMinor** | **int32** | Amount to credit in minor units (cents). Capped at 2,000,000,000 to stay below the 32-bit integer ceiling of the underlying DB column. | 
-**TaxAmountMinor** | Pointer to **int32** | Tax portion of the credit in minor units (cents). For UK/EU VAT compliance. Capped at 2,000,000,000. | [optional] 
+**InvoiceId** | **string** | The ID of the invoice to issue a credit note for |
+**AmountMinor** | **int64** | Amount to credit in minor units (cents). Capped at 2,000,000,000 to stay below the 32-bit integer ceiling of the underlying DB column. |
+**TaxAmountMinor** | Pointer to **int64** | Tax portion of the credit in minor units (cents). For UK/EU VAT compliance. Capped at 2,000,000,000. | [optional]
+**LineAllocationVersion** | Pointer to **string** | Version of the explicit credit-note line allocation contract | [optional]
+**LineAllocations** | Pointer to [**[]CreditNoteLineAllocationInputV1**](CreditNoteLineAllocationInputV1.md) | Exact source invoice lines and amounts being credited | [optional]
 **CreditMethod** | Pointer to **string** | How the credit should be applied | [optional] [default to "refund_to_payment_method"]
-**Reason** | Pointer to **string** | Reason for the credit note | [optional] 
-**ReasonCode** | Pointer to **string** | Standardized reason code | [optional] 
+**Reason** | Pointer to **string** | Reason for the credit note | [optional]
+**ReasonCode** | Pointer to **string** | Standardized reason code | [optional]
 **CancelSubscription** | Pointer to **bool** | Whether to cancel the associated subscription after issuing | [optional] [default to false]
-**IsProrated** | Pointer to **bool** | Whether this credit note represents a prorated amount | [optional] 
-**ProrationDaysTotal** | Pointer to **int32** | Total days in the billing period (for prorated credits). Constrained to 1–366. | [optional] 
-**ProrationDaysUnused** | Pointer to **int32** | Unused days in the billing period (for prorated credits). Must be &lt;&#x3D; proration_days_total. Constrained to 0–366. | [optional] 
-**IdempotencyKey** | Pointer to **string** | Idempotency key to prevent duplicate credit notes | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata | [optional] 
+**IsProrated** | Pointer to **bool** | Whether this credit note represents a prorated amount | [optional]
+**ProrationDaysTotal** | Pointer to **int32** | Total days in the billing period (for prorated credits). Constrained to 1–366. | [optional]
+**ProrationDaysUnused** | Pointer to **int32** | Unused days in the billing period (for prorated credits). Must be &lt;&#x3D; proration_days_total. Constrained to 0–366. | [optional]
+**IdempotencyKey** | Pointer to **string** | Idempotency key to prevent duplicate credit notes | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata | [optional]
 **AutoRoute** | Pointer to **bool** | When true, automatically trigger the process-credit-note task for multi-gateway reversal routing. Response will include gateway_operations array. Always combine with &#x60;idempotency_key&#x60; to avoid duplicate gateway operations. | [optional] [default to false]
 
 ## Methods
 
 ### NewCreateCreditNoteInput
 
-`func NewCreateCreditNoteInput(invoiceId string, amountMinor int32, ) *CreateCreditNoteInput`
+`func NewCreateCreditNoteInput(invoiceId string, amountMinor int64, ) *CreateCreditNoteInput`
 
 NewCreateCreditNoteInput instantiates a new CreateCreditNoteInput object
 This constructor will assign default values to properties that have it defined,
@@ -59,40 +61,40 @@ SetInvoiceId sets InvoiceId field to given value.
 
 ### GetAmountMinor
 
-`func (o *CreateCreditNoteInput) GetAmountMinor() int32`
+`func (o *CreateCreditNoteInput) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreateCreditNoteInput) GetAmountMinorOk() (*int32, bool)`
+`func (o *CreateCreditNoteInput) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreateCreditNoteInput) SetAmountMinor(v int32)`
+`func (o *CreateCreditNoteInput) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
 
 ### GetTaxAmountMinor
 
-`func (o *CreateCreditNoteInput) GetTaxAmountMinor() int32`
+`func (o *CreateCreditNoteInput) GetTaxAmountMinor() int64`
 
 GetTaxAmountMinor returns the TaxAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTaxAmountMinorOk
 
-`func (o *CreateCreditNoteInput) GetTaxAmountMinorOk() (*int32, bool)`
+`func (o *CreateCreditNoteInput) GetTaxAmountMinorOk() (*int64, bool)`
 
 GetTaxAmountMinorOk returns a tuple with the TaxAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTaxAmountMinor
 
-`func (o *CreateCreditNoteInput) SetTaxAmountMinor(v int32)`
+`func (o *CreateCreditNoteInput) SetTaxAmountMinor(v int64)`
 
 SetTaxAmountMinor sets TaxAmountMinor field to given value.
 
@@ -101,6 +103,56 @@ SetTaxAmountMinor sets TaxAmountMinor field to given value.
 `func (o *CreateCreditNoteInput) HasTaxAmountMinor() bool`
 
 HasTaxAmountMinor returns a boolean if a field has been set.
+
+### GetLineAllocationVersion
+
+`func (o *CreateCreditNoteInput) GetLineAllocationVersion() string`
+
+GetLineAllocationVersion returns the LineAllocationVersion field if non-nil, zero value otherwise.
+
+### GetLineAllocationVersionOk
+
+`func (o *CreateCreditNoteInput) GetLineAllocationVersionOk() (*string, bool)`
+
+GetLineAllocationVersionOk returns a tuple with the LineAllocationVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLineAllocationVersion
+
+`func (o *CreateCreditNoteInput) SetLineAllocationVersion(v string)`
+
+SetLineAllocationVersion sets LineAllocationVersion field to given value.
+
+### HasLineAllocationVersion
+
+`func (o *CreateCreditNoteInput) HasLineAllocationVersion() bool`
+
+HasLineAllocationVersion returns a boolean if a field has been set.
+
+### GetLineAllocations
+
+`func (o *CreateCreditNoteInput) GetLineAllocations() []CreditNoteLineAllocationInputV1`
+
+GetLineAllocations returns the LineAllocations field if non-nil, zero value otherwise.
+
+### GetLineAllocationsOk
+
+`func (o *CreateCreditNoteInput) GetLineAllocationsOk() (*[]CreditNoteLineAllocationInputV1, bool)`
+
+GetLineAllocationsOk returns a tuple with the LineAllocations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLineAllocations
+
+`func (o *CreateCreditNoteInput) SetLineAllocations(v []CreditNoteLineAllocationInputV1)`
+
+SetLineAllocations sets LineAllocations field to given value.
+
+### HasLineAllocations
+
+`func (o *CreateCreditNoteInput) HasLineAllocations() bool`
+
+HasLineAllocations returns a boolean if a field has been set.
 
 ### GetCreditMethod
 
@@ -304,20 +356,20 @@ HasIdempotencyKey returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *CreateCreditNoteInput) GetMetadata() map[string]interface{}`
+`func (o *CreateCreditNoteInput) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreateCreditNoteInput) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreateCreditNoteInput) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreateCreditNoteInput) SetMetadata(v map[string]interface{})`
+`func (o *CreateCreditNoteInput) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -354,5 +406,3 @@ HasAutoRoute returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

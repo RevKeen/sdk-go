@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | **[]map[string]interface{}** | Array of meter objects | 
-**Pagination** | [**MeterListResponsePagination**](MeterListResponsePagination.md) |  | 
+**Data** | **[]map[string]*interface{}** | Array of meter objects |
+**Pagination** | [**MeterListResponsePagination**](MeterListResponsePagination.md) |  |
 
 ## Methods
 
 ### NewMeterListResponse
 
-`func NewMeterListResponse(data []map[string]interface{}, pagination MeterListResponsePagination, ) *MeterListResponse`
+`func NewMeterListResponse(data []map[string]*interface{}, pagination MeterListResponsePagination, ) *MeterListResponse`
 
 NewMeterListResponse instantiates a new MeterListResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *MeterListResponse) GetData() []map[string]interface{}`
+`func (o *MeterListResponse) GetData() []map[string]*interface{}`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *MeterListResponse) GetDataOk() (*[]map[string]interface{}, bool)`
+`func (o *MeterListResponse) GetDataOk() (*[]map[string]*interface{}, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *MeterListResponse) SetData(v []map[string]interface{})`
+`func (o *MeterListResponse) SetData(v []map[string]*interface{})`
 
 SetData sets Data field to given value.
 
@@ -68,5 +68,3 @@ SetPagination sets Pagination field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

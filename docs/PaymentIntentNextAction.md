@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Type of action required | 
-**RedirectToUrl** | Pointer to [**PaymentIntentNextActionRedirectToUrl**](PaymentIntentNextActionRedirectToUrl.md) |  | [optional] 
+**Type** | **string** | Type of action required |
+**RedirectToUrl** | Pointer to [**PaymentIntentNextActionRedirectToUrl**](PaymentIntentNextActionRedirectToUrl.md) |  | [optional]
 
 ## Methods
 
@@ -73,5 +73,3 @@ HasRedirectToUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

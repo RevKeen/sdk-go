@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Quantity** | Pointer to **int32** | Item quantity | [optional] 
-**Description** | Pointer to **string** | Item description | [optional] 
-**UnitAmountMinor** | Pointer to **int32** | Unit price in cents | [optional] 
-**FulfillmentType** | Pointer to **string** | Determines if orders are created on renewal | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**PriceId** | Pointer to **string** | Swap the item onto another Price. Allowed only when the new Price shares the same meter_id (fail closed otherwise). | [optional] 
+**Quantity** | Pointer to **int32** | Item quantity | [optional]
+**Description** | Pointer to **string** | Item description | [optional]
+**UnitAmountMinor** | Pointer to **int64** | Unit price in cents | [optional]
+**FulfillmentType** | Pointer to **string** | Determines if orders are created on renewal | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**PriceId** | Pointer to **string** | Swap the item onto another Price. Allowed only when the new Price shares the same meter_id (fail closed otherwise). | [optional]
 
 ## Methods
 
@@ -82,20 +82,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetUnitAmountMinor
 
-`func (o *UpdateSubscriptionItemInput) GetUnitAmountMinor() int32`
+`func (o *UpdateSubscriptionItemInput) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *UpdateSubscriptionItemInput) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *UpdateSubscriptionItemInput) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *UpdateSubscriptionItemInput) SetUnitAmountMinor(v int32)`
+`func (o *UpdateSubscriptionItemInput) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -132,20 +132,20 @@ HasFulfillmentType returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *UpdateSubscriptionItemInput) GetMetadata() map[string]interface{}`
+`func (o *UpdateSubscriptionItemInput) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *UpdateSubscriptionItemInput) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *UpdateSubscriptionItemInput) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *UpdateSubscriptionItemInput) SetMetadata(v map[string]interface{})`
+`func (o *UpdateSubscriptionItemInput) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -182,5 +182,3 @@ HasPriceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**PublicId** | **NullableString** |  | 
-**AmountMinor** | **float32** |  | 
-**Currency** | **string** |  | 
-**Status** | **string** |  | 
-**Kind** | **NullableString** |  | 
-**PaidAt** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
+**Id** | **string** |  |
+**PublicId** | **NullableString** |  |
+**AmountMinor** | **int64** |  |
+**Currency** | **string** |  |
+**Status** | **string** |  |
+**Kind** | **NullableString** |  |
+**PaidAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewPayoutPayment
 
-`func NewPayoutPayment(id string, publicId NullableString, amountMinor float32, currency string, status string, kind NullableString, paidAt NullableString, createdAt string, ) *PayoutPayment`
+`func NewPayoutPayment(id string, publicId NullableString, amountMinor int64, currency string, status string, kind NullableString, paidAt NullableTime, createdAt time.Time, ) *PayoutPayment`
 
 NewPayoutPayment instantiates a new PayoutPayment object
 This constructor will assign default values to properties that have it defined,
@@ -84,20 +84,20 @@ SetPublicId sets PublicId field to given value.
 UnsetPublicId ensures that no value is present for PublicId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *PayoutPayment) GetAmountMinor() float32`
+`func (o *PayoutPayment) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *PayoutPayment) GetAmountMinorOk() (*float32, bool)`
+`func (o *PayoutPayment) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *PayoutPayment) SetAmountMinor(v float32)`
+`func (o *PayoutPayment) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -174,20 +174,20 @@ SetKind sets Kind field to given value.
 UnsetKind ensures that no value is present for Kind, not even an explicit nil
 ### GetPaidAt
 
-`func (o *PayoutPayment) GetPaidAt() string`
+`func (o *PayoutPayment) GetPaidAt() time.Time`
 
 GetPaidAt returns the PaidAt field if non-nil, zero value otherwise.
 
 ### GetPaidAtOk
 
-`func (o *PayoutPayment) GetPaidAtOk() (*string, bool)`
+`func (o *PayoutPayment) GetPaidAtOk() (*time.Time, bool)`
 
 GetPaidAtOk returns a tuple with the PaidAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaidAt
 
-`func (o *PayoutPayment) SetPaidAt(v string)`
+`func (o *PayoutPayment) SetPaidAt(v time.Time)`
 
 SetPaidAt sets PaidAt field to given value.
 
@@ -204,25 +204,23 @@ SetPaidAt sets PaidAt field to given value.
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *PayoutPayment) GetCreatedAt() string`
+`func (o *PayoutPayment) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *PayoutPayment) GetCreatedAtOk() (*string, bool)`
+`func (o *PayoutPayment) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *PayoutPayment) SetCreatedAt(v string)`
+`func (o *PayoutPayment) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

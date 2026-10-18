@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Line1** | **NullableString** |  | 
-**Line2** | **NullableString** |  | 
-**City** | **NullableString** |  | 
-**State** | **NullableString** |  | 
-**PostalCode** | **NullableString** |  | 
-**Country** | **NullableString** |  | 
+**Line1** | **NullableString** |  |
+**Line2** | **NullableString** |  |
+**City** | **NullableString** |  |
+**State** | **NullableString** |  |
+**PostalCode** | **NullableString** |  |
+**Country** | **NullableString** |  |
 
 ## Methods
 
@@ -212,5 +212,3 @@ SetCountry sets Country field to given value.
 UnsetCountry ensures that no value is present for Country, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

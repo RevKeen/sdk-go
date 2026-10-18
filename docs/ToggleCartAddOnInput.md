@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | **string** |  | 
-**Selected** | **bool** |  | 
+**ProductId** | **string** |  |
+**Selected** | **bool** |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetSelected sets Selected field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

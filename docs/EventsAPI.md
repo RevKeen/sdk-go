@@ -1,6 +1,6 @@
 # \EventsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Event ID | 
+**id** | **string** | Event ID |
 
 ### Other Parameters
 
@@ -97,7 +97,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -136,17 +136,17 @@ Other parameters are passed through a pointer to a apiEventsListRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type_** | **string** | Filter by event type (e.g., invoice.paid) | 
- **types** | **string** | Filter by multiple event types (comma-separated) | 
- **customerId** | **string** | Filter by customer ID | 
- **invoiceId** | **string** | Filter by invoice ID | 
- **subscriptionId** | **string** | Filter by subscription ID | 
- **orderId** | **string** | Filter by order ID | 
- **createdGte** | **float32** | Filter by created_at &gt;&#x3D; (Unix timestamp) | 
- **createdLte** | **float32** | Filter by created_at &lt;&#x3D; (Unix timestamp) | 
+ **type_** | **string** | Filter by event type (e.g., invoice.paid) |
+ **types** | **string** | Filter by multiple event types (comma-separated) |
+ **customerId** | **string** | Filter by customer ID |
+ **invoiceId** | **string** | Filter by invoice ID |
+ **subscriptionId** | **string** | Filter by subscription ID |
+ **orderId** | **string** | Filter by order ID |
+ **createdGte** | **float32** | Filter by created_at &gt;&#x3D; (Unix timestamp) |
+ **createdLte** | **float32** | Filter by created_at &lt;&#x3D; (Unix timestamp) |
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
- **startingAfter** | **string** | Cursor for pagination - return results after this event ID | 
- **endingBefore** | **string** | Cursor for pagination - return results before this event ID | 
+ **startingAfter** | **string** | Cursor for pagination - return results after this event ID |
+ **endingBefore** | **string** | Cursor for pagination - return results before this event ID |
 
 ### Return type
 
@@ -183,7 +183,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -207,7 +207,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Event ID | 
+**id** | **string** | Event ID |
 
 ### Other Parameters
 
@@ -234,4 +234,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

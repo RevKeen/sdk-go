@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | **string** |  | 
-**Label** | **string** |  | 
-**Description** | **string** |  | 
+**Value** | **string** |  |
+**Label** | **string** |  |
+**Description** | **string** |  |
 
 ## Methods
 
@@ -89,5 +89,3 @@ SetDescription sets Description field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

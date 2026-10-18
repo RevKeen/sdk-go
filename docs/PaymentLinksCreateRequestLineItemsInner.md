@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Price** | Pointer to **string** |  | [optional] 
-**PriceData** | Pointer to [**PaymentLinksCreateRequestLineItemsInnerPriceData**](PaymentLinksCreateRequestLineItemsInnerPriceData.md) |  | [optional] 
+**Price** | Pointer to **string** |  | [optional]
+**PriceData** | Pointer to [**PaymentLinksCreateRequestLineItemsInnerPriceData**](PaymentLinksCreateRequestLineItemsInnerPriceData.md) |  | [optional]
 **Quantity** | Pointer to **int32** |  | [optional] [default to 1]
-**MerchantReference** | Pointer to **NullableString** |  | [optional] 
+**MerchantReference** | Pointer to **NullableString** |  | [optional]
 
 ## Methods
 
@@ -140,5 +140,3 @@ HasMerchantReference returns a boolean if a field has been set.
 UnsetMerchantReference ensures that no value is present for MerchantReference, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

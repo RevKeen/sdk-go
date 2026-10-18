@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** | UUID of the customer this session will authenticate as. | 
-**TtlMinutes** | Pointer to **int32** | Lifetime of the session token in minutes. Between 5 and 240; default 60. Shorter TTLs reduce blast radius if a token leaks. | [optional] 
+**CustomerId** | **string** | UUID of the customer this session will authenticate as. |
+**TtlMinutes** | Pointer to **int32** | Lifetime of the session token in minutes. Between 5 and 240; default 60. Shorter TTLs reduce blast radius if a token leaks. | [optional]
 
 ## Methods
 
@@ -73,5 +73,3 @@ HasTtlMinutes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

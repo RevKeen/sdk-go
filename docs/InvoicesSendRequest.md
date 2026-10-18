@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Channel** | Pointer to **string** | Communication channel to send the invoice through | [optional] [default to "email"]
-**TemplateId** | Pointer to **string** | Optional custom template ID to use for the notification | [optional] 
+**TemplateId** | Pointer to **string** | Optional custom template ID to use for the notification | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasTemplateId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,42 +4,48 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier (UUID) | 
-**Object** | **string** | Object type | 
-**ProductId** | **string** | User-facing product identifier | 
-**Name** | **string** | Product display name | 
-**Description** | Pointer to **NullableString** | Product description | [optional] 
-**Kind** | **string** | Product kind | 
-**PricingModel** | **string** | How the product is priced | 
-**AmountMinor** | **NullableInt32** | Price in minor units (cents/pence) | 
-**Currency** | **string** | Three-letter ISO currency code | 
-**Interval** | Pointer to **NullableString** | Billing interval (day, week, month, year) | [optional] 
-**IntervalCount** | Pointer to **NullableInt32** | Number of intervals between billings | [optional] 
-**TrialDays** | **int32** | Free trial period in days | 
-**FulfillmentType** | **string** | Fulfillment type | 
-**TrackInventory** | Pointer to **bool** | Whether a finite purchase cap is enforced | [optional] 
-**StockQuantity** | Pointer to **NullableInt32** | Remaining purchasable units (null when not tracked) | [optional] 
-**BillingAnchorRule** | Pointer to **NullableString** | Billing date calculation rule | [optional] 
-**BillingAnchorDay** | Pointer to **NullableInt32** | Day of month for billing (1-31) | [optional] 
-**FirstChargeBehavior** | Pointer to **NullableString** | First payment timing | [optional] 
-**EndBehavior** | Pointer to **NullableString** | Subscription end behavior | [optional] 
-**MaxPayments** | Pointer to **NullableInt32** | Max billing cycles for fixed-payment subscriptions | [optional] 
-**UsageMeterId** | Pointer to **NullableString** | Associated usage meter ID | [optional] 
-**Slug** | Pointer to **NullableString** | URL-friendly slug | [optional] 
-**IsActive** | **bool** | Whether the product is active | 
-**IsArchived** | **bool** | Whether the product is archived | 
-**ImageUrl** | Pointer to **NullableString** | Product image URL | [optional] 
-**TaxBehavior** | Pointer to **NullableString** | Tax behavior (exclusive, inclusive, location) | [optional] 
-**TaxCode** | Pointer to **NullableString** | Tax code for tax calculation | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) | 
-**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) | 
+**Id** | **string** | Unique identifier (UUID) |
+**Object** | **string** | Object type |
+**ProductId** | **string** | User-facing product identifier |
+**Name** | **string** | Product display name |
+**Description** | Pointer to **NullableString** | Product description | [optional]
+**Kind** | **string** | Product kind |
+**PricingModel** | **string** | How the product is priced |
+**AmountMinor** | **NullableInt64** | Price in minor units (cents/pence) |
+**Currency** | **string** | Three-letter ISO currency code |
+**Interval** | Pointer to **NullableString** | Billing interval (day, week, month, year) | [optional]
+**IntervalCount** | Pointer to **NullableInt32** | Number of intervals between billings | [optional]
+**TrialDays** | **int32** | Free trial period in days |
+**FulfillmentType** | **string** | Fulfillment type |
+**TrackInventory** | Pointer to **bool** | Whether stock is tracked for this product (read from its availability record) | [optional]
+**StockQuantity** | Pointer to **NullableInt32** | Deprecated, read-only view: units available to sell, computed from the product&#39;s availability record (null when not tracked). | [optional]
+**Tags** | Pointer to **[]string** | Tags for Storefront filters and search | [optional]
+**BillingAnchorRule** | Pointer to **NullableString** | Billing date calculation rule | [optional]
+**BillingAnchorDay** | Pointer to **NullableInt32** | Day of month for billing (1-31) | [optional]
+**FirstChargeBehavior** | Pointer to **NullableString** | First payment timing | [optional]
+**EndBehavior** | Pointer to **NullableString** | Subscription end behavior | [optional]
+**MaxPayments** | Pointer to **NullableInt32** | Max billing cycles for fixed-payment subscriptions | [optional]
+**UsageMeterId** | Pointer to **NullableString** | Associated usage meter ID | [optional]
+**Slug** | Pointer to **NullableString** | URL handle, unique among this merchant&#39;s products | [optional]
+**IsActive** | **bool** | Whether the product is active |
+**IsArchived** | **bool** | Whether the product is archived |
+**ImageUrl** | Pointer to **NullableString** | Main product image (storage key or URL) | [optional]
+**Images** | Pointer to [**[]ProductImageResponse**](ProductImageResponse.md) | Extra product images, in display order | [optional]
+**SeoTitle** | Pointer to **NullableString** | Search and social title | [optional]
+**SeoDescription** | Pointer to **NullableString** | Meta description | [optional]
+**StoreVisibility** | Pointer to **string** | Whether the product is listed on the Storefront. hidden: only payment links and invoices. scheduled: listed from store_visible_from. | [optional]
+**StoreVisibleFrom** | Pointer to **NullableTime** | When a scheduled product appears on the Storefront (ISO 8601) | [optional]
+**TaxBehavior** | Pointer to **NullableString** | Tax behavior (exclusive, inclusive, location) | [optional]
+**TaxCode** | Pointer to **NullableString** | Tax code for tax calculation | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata. Omitted when the product has none. | [optional]
+**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) |
+**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) |
 
 ## Methods
 
 ### NewProduct
 
-`func NewProduct(id string, object string, productId string, name string, kind string, pricingModel string, amountMinor NullableInt32, currency string, trialDays int32, fulfillmentType string, isActive bool, isArchived bool, createdAt time.Time, updatedAt time.Time, ) *Product`
+`func NewProduct(id string, object string, productId string, name string, kind string, pricingModel string, amountMinor NullableInt64, currency string, trialDays int32, fulfillmentType string, isActive bool, isArchived bool, createdAt time.Time, updatedAt time.Time, ) *Product`
 
 NewProduct instantiates a new Product object
 This constructor will assign default values to properties that have it defined,
@@ -211,20 +217,20 @@ SetPricingModel sets PricingModel field to given value.
 
 ### GetAmountMinor
 
-`func (o *Product) GetAmountMinor() int32`
+`func (o *Product) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *Product) GetAmountMinorOk() (*int32, bool)`
+`func (o *Product) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *Product) SetAmountMinor(v int32)`
+`func (o *Product) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -429,6 +435,31 @@ HasStockQuantity returns a boolean if a field has been set.
 `func (o *Product) UnsetStockQuantity()`
 
 UnsetStockQuantity ensures that no value is present for StockQuantity, not even an explicit nil
+### GetTags
+
+`func (o *Product) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *Product) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *Product) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *Product) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
 ### GetBillingAnchorRule
 
 `func (o *Product) GetBillingAnchorRule() string`
@@ -749,6 +780,161 @@ HasImageUrl returns a boolean if a field has been set.
 `func (o *Product) UnsetImageUrl()`
 
 UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
+### GetImages
+
+`func (o *Product) GetImages() []ProductImageResponse`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *Product) GetImagesOk() (*[]ProductImageResponse, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *Product) SetImages(v []ProductImageResponse)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *Product) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
+
+### GetSeoTitle
+
+`func (o *Product) GetSeoTitle() string`
+
+GetSeoTitle returns the SeoTitle field if non-nil, zero value otherwise.
+
+### GetSeoTitleOk
+
+`func (o *Product) GetSeoTitleOk() (*string, bool)`
+
+GetSeoTitleOk returns a tuple with the SeoTitle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoTitle
+
+`func (o *Product) SetSeoTitle(v string)`
+
+SetSeoTitle sets SeoTitle field to given value.
+
+### HasSeoTitle
+
+`func (o *Product) HasSeoTitle() bool`
+
+HasSeoTitle returns a boolean if a field has been set.
+
+### SetSeoTitleNil
+
+`func (o *Product) SetSeoTitleNil(b bool)`
+
+ SetSeoTitleNil sets the value for SeoTitle to be an explicit nil
+
+### UnsetSeoTitle
+`func (o *Product) UnsetSeoTitle()`
+
+UnsetSeoTitle ensures that no value is present for SeoTitle, not even an explicit nil
+### GetSeoDescription
+
+`func (o *Product) GetSeoDescription() string`
+
+GetSeoDescription returns the SeoDescription field if non-nil, zero value otherwise.
+
+### GetSeoDescriptionOk
+
+`func (o *Product) GetSeoDescriptionOk() (*string, bool)`
+
+GetSeoDescriptionOk returns a tuple with the SeoDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoDescription
+
+`func (o *Product) SetSeoDescription(v string)`
+
+SetSeoDescription sets SeoDescription field to given value.
+
+### HasSeoDescription
+
+`func (o *Product) HasSeoDescription() bool`
+
+HasSeoDescription returns a boolean if a field has been set.
+
+### SetSeoDescriptionNil
+
+`func (o *Product) SetSeoDescriptionNil(b bool)`
+
+ SetSeoDescriptionNil sets the value for SeoDescription to be an explicit nil
+
+### UnsetSeoDescription
+`func (o *Product) UnsetSeoDescription()`
+
+UnsetSeoDescription ensures that no value is present for SeoDescription, not even an explicit nil
+### GetStoreVisibility
+
+`func (o *Product) GetStoreVisibility() string`
+
+GetStoreVisibility returns the StoreVisibility field if non-nil, zero value otherwise.
+
+### GetStoreVisibilityOk
+
+`func (o *Product) GetStoreVisibilityOk() (*string, bool)`
+
+GetStoreVisibilityOk returns a tuple with the StoreVisibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreVisibility
+
+`func (o *Product) SetStoreVisibility(v string)`
+
+SetStoreVisibility sets StoreVisibility field to given value.
+
+### HasStoreVisibility
+
+`func (o *Product) HasStoreVisibility() bool`
+
+HasStoreVisibility returns a boolean if a field has been set.
+
+### GetStoreVisibleFrom
+
+`func (o *Product) GetStoreVisibleFrom() time.Time`
+
+GetStoreVisibleFrom returns the StoreVisibleFrom field if non-nil, zero value otherwise.
+
+### GetStoreVisibleFromOk
+
+`func (o *Product) GetStoreVisibleFromOk() (*time.Time, bool)`
+
+GetStoreVisibleFromOk returns a tuple with the StoreVisibleFrom field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreVisibleFrom
+
+`func (o *Product) SetStoreVisibleFrom(v time.Time)`
+
+SetStoreVisibleFrom sets StoreVisibleFrom field to given value.
+
+### HasStoreVisibleFrom
+
+`func (o *Product) HasStoreVisibleFrom() bool`
+
+HasStoreVisibleFrom returns a boolean if a field has been set.
+
+### SetStoreVisibleFromNil
+
+`func (o *Product) SetStoreVisibleFromNil(b bool)`
+
+ SetStoreVisibleFromNil sets the value for StoreVisibleFrom to be an explicit nil
+
+### UnsetStoreVisibleFrom
+`func (o *Product) UnsetStoreVisibleFrom()`
+
+UnsetStoreVisibleFrom ensures that no value is present for StoreVisibleFrom, not even an explicit nil
 ### GetTaxBehavior
 
 `func (o *Product) GetTaxBehavior() string`
@@ -886,5 +1072,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

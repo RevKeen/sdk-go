@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Provider** | **string** |  | 
-**ConnectionId** | **string** |  | 
-**ProviderAccountId** | **string** |  | 
-**ExternalInvoice** | [**CreateAccountingInvoicePaymentRequestInputExternalInvoice**](CreateAccountingInvoicePaymentRequestInputExternalInvoice.md) |  | 
-**ExternalCustomer** | Pointer to [**CreateAccountingInvoicePaymentRequestInputExternalCustomer**](CreateAccountingInvoicePaymentRequestInputExternalCustomer.md) |  | [optional] 
-**AmountDueMinor** | **int32** |  | 
-**TotalAmountMinor** | Pointer to **NullableInt32** |  | [optional] 
-**AmountPaidMinor** | Pointer to **NullableInt32** |  | [optional] 
-**Currency** | **string** |  | 
-**Checkout** | Pointer to [**CreateAccountingInvoicePaymentRequestInputCheckout**](CreateAccountingInvoicePaymentRequestInputCheckout.md) |  | [optional] 
-**PayloadFingerprint** | Pointer to **NullableString** |  | [optional] 
-**ProviderMetadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**SafeProviderInvoiceSnapshot** | Pointer to **map[string]interface{}** |  | [optional] 
+**Provider** | **string** |  |
+**ConnectionId** | **string** |  |
+**ProviderAccountId** | **string** |  |
+**ExternalInvoice** | [**CreateAccountingInvoicePaymentRequestInputExternalInvoice**](CreateAccountingInvoicePaymentRequestInputExternalInvoice.md) |  |
+**ExternalCustomer** | Pointer to [**NullableCreateAccountingInvoicePaymentRequestInputExternalCustomer**](CreateAccountingInvoicePaymentRequestInputExternalCustomer.md) |  | [optional]
+**AmountDueMinor** | **int64** |  |
+**TotalAmountMinor** | Pointer to **NullableInt64** |  | [optional]
+**AmountPaidMinor** | Pointer to **NullableInt64** |  | [optional]
+**Currency** | **string** |  |
+**Checkout** | Pointer to [**NullableCreateAccountingInvoicePaymentRequestInputCheckout**](CreateAccountingInvoicePaymentRequestInputCheckout.md) |  | [optional]
+**PayloadFingerprint** | Pointer to **NullableString** |  | [optional]
+**ProviderMetadata** | Pointer to **map[string]interface{}** |  | [optional]
+**SafeProviderInvoiceSnapshot** | Pointer to **map[string]interface{}** |  | [optional]
 
 ## Methods
 
 ### NewCreateAccountingInvoicePaymentRequestInput
 
-`func NewCreateAccountingInvoicePaymentRequestInput(provider string, connectionId string, providerAccountId string, externalInvoice CreateAccountingInvoicePaymentRequestInputExternalInvoice, amountDueMinor int32, currency string, ) *CreateAccountingInvoicePaymentRequestInput`
+`func NewCreateAccountingInvoicePaymentRequestInput(provider string, connectionId string, providerAccountId string, externalInvoice CreateAccountingInvoicePaymentRequestInputExternalInvoice, amountDueMinor int64, currency string, ) *CreateAccountingInvoicePaymentRequestInput`
 
 NewCreateAccountingInvoicePaymentRequestInput instantiates a new CreateAccountingInvoicePaymentRequestInput object
 This constructor will assign default values to properties that have it defined,
@@ -142,42 +142,52 @@ SetExternalCustomer sets ExternalCustomer field to given value.
 
 HasExternalCustomer returns a boolean if a field has been set.
 
+### SetExternalCustomerNil
+
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetExternalCustomerNil(b bool)`
+
+ SetExternalCustomerNil sets the value for ExternalCustomer to be an explicit nil
+
+### UnsetExternalCustomer
+`func (o *CreateAccountingInvoicePaymentRequestInput) UnsetExternalCustomer()`
+
+UnsetExternalCustomer ensures that no value is present for ExternalCustomer, not even an explicit nil
 ### GetAmountDueMinor
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountDueMinor() int32`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountDueMinor() int64`
 
 GetAmountDueMinor returns the AmountDueMinor field if non-nil, zero value otherwise.
 
 ### GetAmountDueMinorOk
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountDueMinorOk() (*int32, bool)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountDueMinorOk() (*int64, bool)`
 
 GetAmountDueMinorOk returns a tuple with the AmountDueMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountDueMinor
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) SetAmountDueMinor(v int32)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetAmountDueMinor(v int64)`
 
 SetAmountDueMinor sets AmountDueMinor field to given value.
 
 
 ### GetTotalAmountMinor
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetTotalAmountMinor() int32`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetTotalAmountMinor() int64`
 
 GetTotalAmountMinor returns the TotalAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTotalAmountMinorOk
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetTotalAmountMinorOk() (*int32, bool)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetTotalAmountMinorOk() (*int64, bool)`
 
 GetTotalAmountMinorOk returns a tuple with the TotalAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalAmountMinor
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) SetTotalAmountMinor(v int32)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetTotalAmountMinor(v int64)`
 
 SetTotalAmountMinor sets TotalAmountMinor field to given value.
 
@@ -199,20 +209,20 @@ HasTotalAmountMinor returns a boolean if a field has been set.
 UnsetTotalAmountMinor ensures that no value is present for TotalAmountMinor, not even an explicit nil
 ### GetAmountPaidMinor
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountPaidMinor() int32`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountPaidMinor() int64`
 
 GetAmountPaidMinor returns the AmountPaidMinor field if non-nil, zero value otherwise.
 
 ### GetAmountPaidMinorOk
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountPaidMinorOk() (*int32, bool)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetAmountPaidMinorOk() (*int64, bool)`
 
 GetAmountPaidMinorOk returns a tuple with the AmountPaidMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountPaidMinor
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) SetAmountPaidMinor(v int32)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetAmountPaidMinor(v int64)`
 
 SetAmountPaidMinor sets AmountPaidMinor field to given value.
 
@@ -277,6 +287,16 @@ SetCheckout sets Checkout field to given value.
 
 HasCheckout returns a boolean if a field has been set.
 
+### SetCheckoutNil
+
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetCheckoutNil(b bool)`
+
+ SetCheckoutNil sets the value for Checkout to be an explicit nil
+
+### UnsetCheckout
+`func (o *CreateAccountingInvoicePaymentRequestInput) UnsetCheckout()`
+
+UnsetCheckout ensures that no value is present for Checkout, not even an explicit nil
 ### GetPayloadFingerprint
 
 `func (o *CreateAccountingInvoicePaymentRequestInput) GetPayloadFingerprint() string`
@@ -314,20 +334,20 @@ HasPayloadFingerprint returns a boolean if a field has been set.
 UnsetPayloadFingerprint ensures that no value is present for PayloadFingerprint, not even an explicit nil
 ### GetProviderMetadata
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetProviderMetadata() map[string]interface{}`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetProviderMetadata() map[string]*interface{}`
 
 GetProviderMetadata returns the ProviderMetadata field if non-nil, zero value otherwise.
 
 ### GetProviderMetadataOk
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetProviderMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetProviderMetadataOk() (*map[string]*interface{}, bool)`
 
 GetProviderMetadataOk returns a tuple with the ProviderMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderMetadata
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) SetProviderMetadata(v map[string]interface{})`
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetProviderMetadata(v map[string]*interface{})`
 
 SetProviderMetadata sets ProviderMetadata field to given value.
 
@@ -339,20 +359,20 @@ HasProviderMetadata returns a boolean if a field has been set.
 
 ### GetSafeProviderInvoiceSnapshot
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetSafeProviderInvoiceSnapshot() map[string]interface{}`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetSafeProviderInvoiceSnapshot() map[string]*interface{}`
 
 GetSafeProviderInvoiceSnapshot returns the SafeProviderInvoiceSnapshot field if non-nil, zero value otherwise.
 
 ### GetSafeProviderInvoiceSnapshotOk
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) GetSafeProviderInvoiceSnapshotOk() (*map[string]interface{}, bool)`
+`func (o *CreateAccountingInvoicePaymentRequestInput) GetSafeProviderInvoiceSnapshotOk() (*map[string]*interface{}, bool)`
 
 GetSafeProviderInvoiceSnapshotOk returns a tuple with the SafeProviderInvoiceSnapshot field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSafeProviderInvoiceSnapshot
 
-`func (o *CreateAccountingInvoicePaymentRequestInput) SetSafeProviderInvoiceSnapshot(v map[string]interface{})`
+`func (o *CreateAccountingInvoicePaymentRequestInput) SetSafeProviderInvoiceSnapshot(v map[string]*interface{})`
 
 SetSafeProviderInvoiceSnapshot sets SafeProviderInvoiceSnapshot field to given value.
 
@@ -364,5 +384,3 @@ HasSafeProviderInvoiceSnapshot returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

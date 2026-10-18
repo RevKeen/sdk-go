@@ -1,10 +1,8 @@
 /*
 RevKeen API
 
-RevKeen is a fintech-grade API for payments, subscriptions, invoices, and billing. The canonical production MCP server is available at `https://mcp.revkeen.com/mcp`.  **API Version:** `2026-05-01` — Pin with the `RevKeen-Version` header.  **Quick Links:** [Full Documentation](https://docs.revkeen.com) | [Authentication](https://docs.revkeen.com/authentication) | [OAuth](https://docs.revkeen.com/oauth) | [SDKs](https://docs.revkeen.com/sdks) | [Webhooks](#webhooks) | [MCP Guide](https://docs.revkeen.com/mcp)  ## Authentication  Two authentication methods are supported:  ### API Keys (recommended for server-to-server REST API integrations)  Send your API key in the `x-api-key` header. Get keys from the [Dashboard](https://app.revkeen.com/settings/api-keys). Use `rk_sandbox_*` for test mode and `rk_live_*` for production.  ### OAuth 2.1 (recommended for MCP and third-party integrations)  Use OAuth 2.1 with PKCE for authorization code flow or client credentials for server-to-server. Tokens are sent via `Authorization: Bearer rk_oauth_*`. See the [OAuth guide](https://docs.revkeen.com/oauth) for setup.  - **Authorization Code + PKCE** — user-facing integrations, MCP hosts - **Client Credentials** — server-to-server, automated workflows - **Dynamic Client Registration** — MCP hosts that auto-register  ## MCP Integration  RevKeen's canonical production MCP server is `https://mcp.revkeen.com/mcp` using Streamable HTTP and OAuth 2.1 bearer tokens.  - **Customer launch surface** — read-first customer v1 tools with least-privilege scopes - **Host setup guide** — see the [MCP guide](https://docs.revkeen.com/mcp) for ChatGPT, Claude, and compatible MCP hosts  ## API Key Scopes  Scopes follow `{resource}:{action}` format (e.g., `invoices:read`, `customers:*`). See [full scope reference](https://docs.revkeen.com/authentication#scopes).  | Category | Scope | Description | |----------|-------|-------------| | **Payments & Checkout** | `checkout:read` | View checkout session details | |  | `checkout:write` | Create and manage checkout sessions | |  | `cart:read` | View cart session details (REV-3511) | |  | `cart:write` | Create and mutate cart sessions, line items, add-ons (REV-3511) | |  | `payment_links:read` | View payment links | |  | `payment_links:write` | Create and manage payment links | |  | `charges:read` | View one-time charges | |  | `charges:write` | Create one-time charges for customers | |  | `payments:read` | View payment details | |  | `payments:write` | Capture or void payments | |  | `payment_intents:read` | View payment intent details | |  | `payment_intents:write` | Create, confirm, capture, and cancel payment intents | |  | `setup_intents:read` | View setup intent details | |  | `setup_intents:write` | Create, confirm, and cancel setup intents | |  | `payment_methods:read` | View saved payment methods | |  | `payment_methods:write` | Attach and detach payment methods | | **Billing** | `invoices:read` | View invoices | |  | `invoices:write` | Create, update, and manage invoices | |  | `subscriptions:read` | View subscriptions | |  | `subscriptions:write` | Create, update, pause, and cancel subscriptions | |  | `subscription_schedules:read` | View subscription schedule details | |  | `subscription_schedules:write` | Create, update, cancel, and release subscription schedules | |  | `orders:read` | View orders | |  | `orders:write` | Create and manage orders | |  | `credit_notes:read` | View credit notes | |  | `credit_notes:write` | Create and void credit notes | | **Products & Pricing** | `products:read` | View product catalog | |  | `products:write` | Create and update products | |  | `prices:read` | View pricing information | |  | `prices:write` | Create and update prices | |  | `discounts:read` | View discount codes | |  | `discounts:write` | Create and manage discount codes | |  | `tax_rates:read` | View tax rate configurations | |  | `tax_rates:write` | Configure tax rates | | **Usage & Metering** | `meters:read` | View meter configurations | |  | `meters:write` | Create and update meters | |  | `usage:read` | View usage events and balances | |  | `usage:write` | Ingest usage events | | **Customers** | `customers:read` | View customer information | |  | `customers:write` | Create and update customers | |  | `entitlements:read` | View customer entitlements / feature access | |  | `entitlements:write` | Grant and revoke customer entitlements | |  | `businesses:read` | View business entities | |  | `businesses:write` | Manage business entities | | **Money Movement** | `refunds:read` | View refund details | |  | `refunds:write` | Issue refunds | |  | `voids:read` | View voided transactions | |  | `voids:write` | Void unsettled transactions | |  | `disputes:read` | View chargebacks and disputes | |  | `disputes:write` | Respond to disputes | |  | `payouts:read` | View payout and settlement data | | **Direct Debit** | `mandates:read` | View Direct Debit mandates and collection status | |  | `mandates:write` | Create, suspend, reinstate, and cancel Direct Debit mandates | | **Terminal** | `terminal:read` | View terminal devices and card-present payments | |  | `terminal:write` | Initiate, cancel, refund, and void terminal payments | | **Data Exchange** | `exports:read` | View and download data exports | |  | `exports:write` | Create data exports | |  | `imports:read` | View import status and history | |  | `imports:write` | Upload and run data imports | | **Analytics & Reporting** | `analytics:read` | View analytics and reports | |  | `finance:read` | View financial reports | | **Communication** | `comms:read` | View SMS and email delivery logs | |  | `comms:write` | Send SMS, email, and WhatsApp messages | |  | `automations:read` | View automations, runs, approvals, and traces | |  | `automations:write` | Create automations and trigger runs | | **Integrations** | `apps:read` | View connected applications | |  | `apps:write` | Manage app connections | |  | `webhooks:read` | View webhook endpoints | |  | `webhooks:write` | Manage webhook endpoints | |  | `integrations:read` | View integration status and sync logs | |  | `integrations:write` | Activate, configure, and sync integrations | |  | `events:read` | View webhook event logs | |  | `events:write` | Resend and test webhook events | |  | `sync:read` | View sync watermarks and state | |  | `sync:write` | Update sync watermarks |  ## Environments  | Environment | Base URL | API Key Prefix | |-------------|----------|----------------| | **Staging** | `https://staging-api.revkeen.com/v2` | `rk_sandbox_*` | | **Production** | `https://api.revkeen.com/v2` | `rk_live_*` |  ## Idempotency  Include `Idempotency-Key` header (UUID) on mutation requests. Keys are valid for 24 hours.  ## Rate Limits  | Plan | Requests/min | Burst | |------|-------------|-------| | **Staging** | 100 | 200 | | **Production** | 1000 | 2000 | | **Enterprise** | Custom | Custom | 
-
 API version: 2026-05-01
-Contact: info@revkeen.com
+Contact: support@revkeen.com
 */
 
 // Code generated by OpenAPI Generator (https://openapi-generator.tech); DO NOT EDIT.
@@ -20,41 +18,40 @@ import (
 	"strings"
 )
 
-
 type CartSessionsAPI interface {
 
 	/*
-	CartSessionsAddLineItem Add a line item to a cart session
+			CartSessionsAddLineItem Add a line item to a cart session
 
-	Append a line item to an open cart session. Subtotals are recomputed atomically; the updated cart is returned.
+			Append a line item to an open cart session. Subtotals are recomputed atomically; the updated cart is returned.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCartSessionsAddLineItemRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@return ApiCartSessionsAddLineItemRequest
 	*/
 	CartSessionsAddLineItem(ctx context.Context, id string) ApiCartSessionsAddLineItemRequest
 
@@ -63,37 +60,37 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsAddLineItemExecute(r ApiCartSessionsAddLineItemRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsApplyDiscountCode Set or clear a cart discount code
+			CartSessionsApplyDiscountCode Set or clear a cart discount code
 
-	Set the cart's discount code. Pass `null` to clear. The code is validated against the merchant's active discounts and priced into the cart total immediately; convert then carries the discounted amount.
+			Set the cart's discount code. Pass `null` to clear. The code is validated against the merchant's active discounts and priced into the cart total immediately; convert then carries the discounted amount.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCartSessionsApplyDiscountCodeRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@return ApiCartSessionsApplyDiscountCodeRequest
 	*/
 	CartSessionsApplyDiscountCode(ctx context.Context, id string) ApiCartSessionsApplyDiscountCodeRequest
 
@@ -102,46 +99,46 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsApplyDiscountCodeExecute(r ApiCartSessionsApplyDiscountCodeRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsConvert Convert a cart session into a checkout session
+			CartSessionsConvert Convert a cart session into a checkout session
 
-	Atomically materialise a pending checkout session from the cart snapshot, reserve tracked availability, flip the cart to `converted`, and emit `commerce.cart.converted` + `commerce.checkout.started` through the outbox.
+			Atomically materialise a pending checkout session from the cart snapshot, reserve tracked availability, flip the cart to `converted`, and emit `commerce.cart.converted` + `commerce.checkout.started` through the outbox.
 
-Idempotent on re-call (returns the existing checkout session). Concurrency-safe via a compare-and-swap lock on cart status; product availability is guarded by the database reserve step.
+		Idempotent on re-call (returns the existing checkout session). Concurrency-safe via a compare-and-swap lock on cart status; product availability is guarded by the database reserve step.
 
-Validation that runs inside the lock and rolls back on failure:
-- `CART_SESSION_EMPTY` — the cart has no line items.
-- `AVAILABILITY_EXCEEDED` — a tracked/capacity-limited product can no longer satisfy the requested quantity.
-- `CART_SESSION_NOT_FOUND` — no cart for this id under the calling merchant.
-- `CART_SESSION_CLOSED` — the cart is already `abandoned` or `expired`.
+		Validation that runs inside the lock and rolls back on failure:
+		- `CART_SESSION_EMPTY` — the cart has no line items.
+		- `AVAILABILITY_EXCEEDED` — a tracked/capacity-limited product can no longer satisfy the requested quantity.
+		- `CART_SESSION_NOT_FOUND` — no cart for this id under the calling merchant.
+		- `CART_SESSION_CLOSED` — the cart is already `abandoned` or `expired`.
 
-On rollback the cart returns to `open` and the customer can retry after fixing the cause.
+		On rollback the cart returns to `open` and the customer can retry after fixing the cause.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
 
-**Common errors**
+		**Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCartSessionsConvertRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@return ApiCartSessionsConvertRequest
 	*/
 	CartSessionsConvert(ctx context.Context, id string) ApiCartSessionsConvertRequest
 
@@ -150,47 +147,47 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsConvertExecute(r ApiCartSessionsConvertRequest) (*CartConversionResponse, *http.Response, error)
 
 	/*
-	CartSessionsCreate Create a cart session
+			CartSessionsCreate Create a cart session
 
-	Create an empty (or pre-populated) cart session. The returned cart is `open` and mutable until it is converted into a checkout session, or until it is swept to `abandoned` / `expired`.
+			Create an empty (or pre-populated) cart session. The returned cart is `open` and mutable until it is converted into a checkout session, or until it is swept to `abandoned` / `expired`.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/convert` — Convert to a checkout session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/convert` — Convert to a checkout session
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `422 unprocessable_entity` — business-rule failure (for example, refunding more than the original charge).
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `422 unprocessable_entity` — business-rule failure (for example, refunding more than the original charge).
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCartSessionsCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiCartSessionsCreateRequest
 	*/
 	CartSessionsCreate(ctx context.Context) ApiCartSessionsCreateRequest
 
@@ -199,31 +196,31 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsCreateExecute(r ApiCartSessionsCreateRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsGet Retrieve a cart session
+			CartSessionsGet Retrieve a cart session
 
-	Fetch the current state of a cart session by id. Returns the same shape as the create response.
+			Fetch the current state of a cart session by id. Returns the same shape as the create response.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCartSessionsGetRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@return ApiCartSessionsGetRequest
 	*/
 	CartSessionsGet(ctx context.Context, id string) ApiCartSessionsGetRequest
 
@@ -232,37 +229,37 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsGetExecute(r ApiCartSessionsGetRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsRemoveLineItem Remove a line item from a cart session
+			CartSessionsRemoveLineItem Remove a line item from a cart session
 
-	Remove a line item from an open cart. Subtotals are recomputed; the updated cart is returned.
+			Remove a line item from an open cart. Subtotals are recomputed; the updated cart is returned.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
-	@return ApiCartSessionsRemoveLineItemRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
+			@return ApiCartSessionsRemoveLineItemRequest
 	*/
 	CartSessionsRemoveLineItem(ctx context.Context, id string, lineId string) ApiCartSessionsRemoveLineItemRequest
 
@@ -271,37 +268,37 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsRemoveLineItemExecute(r ApiCartSessionsRemoveLineItemRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsSetContact Capture customer email + consent on a cart
+			CartSessionsSetContact Capture customer email + consent on a cart
 
-	Capture the customer's email and marketing/recovery consent on an open cart so an abandoned cart can be recovered (REV-5517). Every field is optional; pass `null` to clear. Setting a field records its consent/capture timestamp. Idempotent — an input that changes nothing is a no-op.
+			Capture the customer's email and marketing/recovery consent on an open cart so an abandoned cart can be recovered. Every field is optional; pass `null` to clear. Setting a field records its consent/capture timestamp. Idempotent — an input that changes nothing is a no-op.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCartSessionsSetContactRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@return ApiCartSessionsSetContactRequest
 	*/
 	CartSessionsSetContact(ctx context.Context, id string) ApiCartSessionsSetContactRequest
 
@@ -310,37 +307,37 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsSetContactExecute(r ApiCartSessionsSetContactRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsToggleAddOn Toggle an add-on on a cart session
+			CartSessionsToggleAddOn Toggle an add-on on a cart session
 
-	Add or remove an add-on product from `add_ons_selected`. The call is idempotent: sending the same desired state for an add-on already in that state is a no-op and emits no event.
+			Add or remove an add-on product from `add_ons_selected`. The call is idempotent: sending the same desired state for an add-on already in that state is a no-op and emits no event.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `PATCH /cart-sessions/{id}/line-items/{lineId}` — Update a line item's quantity
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCartSessionsToggleAddOnRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@return ApiCartSessionsToggleAddOnRequest
 	*/
 	CartSessionsToggleAddOn(ctx context.Context, id string) ApiCartSessionsToggleAddOnRequest
 
@@ -349,38 +346,38 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	CartSessionsToggleAddOnExecute(r ApiCartSessionsToggleAddOnRequest) (*CartSessionResponse, *http.Response, error)
 
 	/*
-	CartSessionsUpdateLineItem Update a line item's quantity
+			CartSessionsUpdateLineItem Update a line item's quantity
 
-	Change the quantity of a single line item on an open cart. Other fields on the line item are immutable; recreate the item to change them.
+			Change the quantity of a single line item on an open cart. Other fields on the line item are immutable; recreate the item to change them.
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /cart-sessions` — Create a cart session
-- `GET /cart-sessions/{id}` — Retrieve a cart session
-- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
-- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
-- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
-- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
-- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
-- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
+		- `POST /cart-sessions` — Create a cart session
+		- `GET /cart-sessions/{id}` — Retrieve a cart session
+		- `POST /cart-sessions/{id}/line-items` — Add a line item to a cart session
+		- `DELETE /cart-sessions/{id}/line-items/{lineId}` — Remove a line item from a cart session
+		- `POST /cart-sessions/{id}/add-ons` — Toggle an add-on on a cart session
+		- `POST /cart-sessions/{id}/discount-code` — Set or clear a cart discount code
+		- `POST /cart-sessions/{id}/contact` — Capture customer email + consent on a cart
+		- `POST /cart-sessions/{id}/convert` — Convert a cart session into a checkout session
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
-- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
-	@return ApiCartSessionsUpdateLineItemRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id
+			@param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
+			@return ApiCartSessionsUpdateLineItemRequest
 	*/
 	CartSessionsUpdateLineItem(ctx context.Context, id string, lineId string) ApiCartSessionsUpdateLineItemRequest
 
@@ -393,10 +390,18 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 type CartSessionsAPIService service
 
 type ApiCartSessionsAddLineItemRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
+	ctx               context.Context
+	ApiService        CartSessionsAPI
+	id                string
+	idempotencyKey    *string
 	cartLineItemInput *CartLineItemInput
+	runtimeOptions    []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsAddLineItemRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsAddLineItemRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiCartSessionsAddLineItemRequest) CartLineItemInput(cartLineItemInput CartLineItemInput) ApiCartSessionsAddLineItemRequest {
@@ -404,8 +409,21 @@ func (r ApiCartSessionsAddLineItemRequest) CartLineItemInput(cartLineItemInput C
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsAddLineItemRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsAddLineItemRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiCartSessionsAddLineItemRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsAddLineItemExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsAddLineItemExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -429,7 +447,7 @@ Append a line item to an open cart session. Subtotals are recomputed atomically;
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -437,26 +455,27 @@ Append a line item to an open cart session. Subtotals are recomputed atomically;
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCartSessionsAddLineItemRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCartSessionsAddLineItemRequest
 */
 func (a *CartSessionsAPIService) CartSessionsAddLineItem(ctx context.Context, id string) ApiCartSessionsAddLineItemRequest {
 	return ApiCartSessionsAddLineItemRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSessionsAddLineItemRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsAddLineItem")
@@ -487,6 +506,9 @@ func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSession
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.cartLineItemInput
@@ -533,8 +555,8 @@ func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -544,8 +566,8 @@ func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -555,8 +577,8 @@ func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -566,8 +588,9 @@ func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -585,10 +608,18 @@ func (a *CartSessionsAPIService) CartSessionsAddLineItemExecute(r ApiCartSession
 }
 
 type ApiCartSessionsApplyDiscountCodeRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
+	ctx                        context.Context
+	ApiService                 CartSessionsAPI
+	id                         string
+	idempotencyKey             *string
 	applyCartDiscountCodeInput *ApplyCartDiscountCodeInput
+	runtimeOptions             []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsApplyDiscountCodeRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsApplyDiscountCodeRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiCartSessionsApplyDiscountCodeRequest) ApplyCartDiscountCodeInput(applyCartDiscountCodeInput ApplyCartDiscountCodeInput) ApiCartSessionsApplyDiscountCodeRequest {
@@ -596,8 +627,21 @@ func (r ApiCartSessionsApplyDiscountCodeRequest) ApplyCartDiscountCodeInput(appl
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsApplyDiscountCodeRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsApplyDiscountCodeRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiCartSessionsApplyDiscountCodeRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsApplyDiscountCodeExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsApplyDiscountCodeExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -621,7 +665,7 @@ Set the cart's discount code. Pass `null` to clear. The code is validated agains
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -629,26 +673,27 @@ Set the cart's discount code. Pass `null` to clear. The code is validated agains
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCartSessionsApplyDiscountCodeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCartSessionsApplyDiscountCodeRequest
 */
 func (a *CartSessionsAPIService) CartSessionsApplyDiscountCode(ctx context.Context, id string) ApiCartSessionsApplyDiscountCodeRequest {
 	return ApiCartSessionsApplyDiscountCodeRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartSessionsApplyDiscountCodeRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsApplyDiscountCode")
@@ -679,6 +724,9 @@ func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartS
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.applyCartDiscountCodeInput
@@ -725,8 +773,8 @@ func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -736,8 +784,8 @@ func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -747,8 +795,8 @@ func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -758,8 +806,9 @@ func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -777,13 +826,34 @@ func (a *CartSessionsAPIService) CartSessionsApplyDiscountCodeExecute(r ApiCartS
 }
 
 type ApiCartSessionsConvertRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
+	ctx            context.Context
+	ApiService     CartSessionsAPI
+	id             string
+	idempotencyKey *string
+	runtimeOptions []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsConvertRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsConvertRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsConvertRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsConvertRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
 }
 
 func (r ApiCartSessionsConvertRequest) Execute() (*CartConversionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsConvertExecute(r)
+	var value *CartConversionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsConvertExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -816,7 +886,7 @@ On rollback the cart returns to `open` and the customer can retry after fixing t
 
 **Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -824,26 +894,27 @@ On rollback the cart returns to `open` and the customer can retry after fixing t
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCartSessionsConvertRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCartSessionsConvertRequest
 */
 func (a *CartSessionsAPIService) CartSessionsConvert(ctx context.Context, id string) ApiCartSessionsConvertRequest {
 	return ApiCartSessionsConvertRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CartConversionResponse
+//
+//	@return CartConversionResponse
 func (a *CartSessionsAPIService) CartSessionsConvertExecute(r ApiCartSessionsConvertRequest) (*CartConversionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartConversionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartConversionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsConvert")
@@ -874,6 +945,9 @@ func (a *CartSessionsAPIService) CartSessionsConvertExecute(r ApiCartSessionsCon
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -918,8 +992,8 @@ func (a *CartSessionsAPIService) CartSessionsConvertExecute(r ApiCartSessionsCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -929,8 +1003,8 @@ func (a *CartSessionsAPIService) CartSessionsConvertExecute(r ApiCartSessionsCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -940,8 +1014,19 @@ func (a *CartSessionsAPIService) CartSessionsConvertExecute(r ApiCartSessionsCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v NoPaymentMethodsAvailableError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -959,9 +1044,17 @@ func (a *CartSessionsAPIService) CartSessionsConvertExecute(r ApiCartSessionsCon
 }
 
 type ApiCartSessionsCreateRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
+	ctx                    context.Context
+	ApiService             CartSessionsAPI
+	idempotencyKey         *string
 	createCartSessionInput *CreateCartSessionInput
+	runtimeOptions         []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsCreateRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsCreateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiCartSessionsCreateRequest) CreateCartSessionInput(createCartSessionInput CreateCartSessionInput) ApiCartSessionsCreateRequest {
@@ -969,8 +1062,21 @@ func (r ApiCartSessionsCreateRequest) CreateCartSessionInput(createCartSessionIn
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsCreateRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsCreateRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiCartSessionsCreateRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsCreateExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsCreateExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -1005,7 +1111,7 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `422 unprocessable_entity` — business-rule failure (for example, refunding more than the original charge).
 
@@ -1013,24 +1119,25 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCartSessionsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCartSessionsCreateRequest
 */
 func (a *CartSessionsAPIService) CartSessionsCreate(ctx context.Context) ApiCartSessionsCreateRequest {
 	return ApiCartSessionsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCreateRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsCreate")
@@ -1060,6 +1167,9 @@ func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCrea
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.createCartSessionInput
@@ -1106,8 +1216,8 @@ func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1117,8 +1227,8 @@ func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1128,8 +1238,8 @@ func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1139,8 +1249,9 @@ func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1158,13 +1269,27 @@ func (a *CartSessionsAPIService) CartSessionsCreateExecute(r ApiCartSessionsCrea
 }
 
 type ApiCartSessionsGetRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
+	ctx            context.Context
+	ApiService     CartSessionsAPI
+	id             string
+	runtimeOptions []RequestOption
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsGetRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsGetRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
 }
 
 func (r ApiCartSessionsGetRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsGetExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, false)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsGetExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -1187,29 +1312,30 @@ Fetch the current state of a cart session by id. Returns the same shape as the c
 
 **Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCartSessionsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCartSessionsGetRequest
 */
 func (a *CartSessionsAPIService) CartSessionsGet(ctx context.Context, id string) ApiCartSessionsGetRequest {
 	return ApiCartSessionsGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsGetExecute(r ApiCartSessionsGetRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsGet")
@@ -1284,8 +1410,8 @@ func (a *CartSessionsAPIService) CartSessionsGetExecute(r ApiCartSessionsGetRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1295,8 +1421,9 @@ func (a *CartSessionsAPIService) CartSessionsGetExecute(r ApiCartSessionsGetRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1314,14 +1441,35 @@ func (a *CartSessionsAPIService) CartSessionsGetExecute(r ApiCartSessionsGetRequ
 }
 
 type ApiCartSessionsRemoveLineItemRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
-	lineId string
+	ctx            context.Context
+	ApiService     CartSessionsAPI
+	id             string
+	lineId         string
+	idempotencyKey *string
+	runtimeOptions []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsRemoveLineItemRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsRemoveLineItemRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsRemoveLineItemRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsRemoveLineItemRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
 }
 
 func (r ApiCartSessionsRemoveLineItemRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsRemoveLineItemExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsRemoveLineItemExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -1344,7 +1492,7 @@ Remove a line item from an open cart. Subtotals are recomputed; the updated cart
 
 **Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -1352,28 +1500,29 @@ Remove a line item from an open cart. Subtotals are recomputed; the updated cart
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
- @return ApiCartSessionsRemoveLineItemRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
+	@return ApiCartSessionsRemoveLineItemRequest
 */
 func (a *CartSessionsAPIService) CartSessionsRemoveLineItem(ctx context.Context, id string, lineId string) ApiCartSessionsRemoveLineItemRequest {
 	return ApiCartSessionsRemoveLineItemRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
-		lineId: lineId,
+		ctx:        ctx,
+		id:         id,
+		lineId:     lineId,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsRemoveLineItemExecute(r ApiCartSessionsRemoveLineItemRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsRemoveLineItem")
@@ -1405,6 +1554,9 @@ func (a *CartSessionsAPIService) CartSessionsRemoveLineItemExecute(r ApiCartSess
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -1449,8 +1601,8 @@ func (a *CartSessionsAPIService) CartSessionsRemoveLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1460,8 +1612,8 @@ func (a *CartSessionsAPIService) CartSessionsRemoveLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1471,8 +1623,9 @@ func (a *CartSessionsAPIService) CartSessionsRemoveLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1490,10 +1643,18 @@ func (a *CartSessionsAPIService) CartSessionsRemoveLineItemExecute(r ApiCartSess
 }
 
 type ApiCartSessionsSetContactRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
+	ctx                 context.Context
+	ApiService          CartSessionsAPI
+	id                  string
+	idempotencyKey      *string
 	setCartContactInput *SetCartContactInput
+	runtimeOptions      []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsSetContactRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsSetContactRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiCartSessionsSetContactRequest) SetCartContactInput(setCartContactInput SetCartContactInput) ApiCartSessionsSetContactRequest {
@@ -1501,14 +1662,27 @@ func (r ApiCartSessionsSetContactRequest) SetCartContactInput(setCartContactInpu
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsSetContactRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsSetContactRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiCartSessionsSetContactRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsSetContactExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsSetContactExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
 CartSessionsSetContact Capture customer email + consent on a cart
 
-Capture the customer's email and marketing/recovery consent on an open cart so an abandoned cart can be recovered (REV-5517). Every field is optional; pass `null` to clear. Setting a field records its consent/capture timestamp. Idempotent — an input that changes nothing is a no-op.
+Capture the customer's email and marketing/recovery consent on an open cart so an abandoned cart can be recovered. Every field is optional; pass `null` to clear. Setting a field records its consent/capture timestamp. Idempotent — an input that changes nothing is a no-op.
 
 ---
 
@@ -1526,7 +1700,7 @@ Capture the customer's email and marketing/recovery consent on an open cart so a
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -1534,26 +1708,27 @@ Capture the customer's email and marketing/recovery consent on an open cart so a
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCartSessionsSetContactRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCartSessionsSetContactRequest
 */
 func (a *CartSessionsAPIService) CartSessionsSetContact(ctx context.Context, id string) ApiCartSessionsSetContactRequest {
 	return ApiCartSessionsSetContactRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessionsSetContactRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsSetContact")
@@ -1584,6 +1759,9 @@ func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessions
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.setCartContactInput
@@ -1630,8 +1808,8 @@ func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessions
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1641,8 +1819,8 @@ func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessions
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1652,8 +1830,8 @@ func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessions
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1663,8 +1841,9 @@ func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessions
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1682,10 +1861,18 @@ func (a *CartSessionsAPIService) CartSessionsSetContactExecute(r ApiCartSessions
 }
 
 type ApiCartSessionsToggleAddOnRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
+	ctx                  context.Context
+	ApiService           CartSessionsAPI
+	id                   string
+	idempotencyKey       *string
 	toggleCartAddOnInput *ToggleCartAddOnInput
+	runtimeOptions       []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsToggleAddOnRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsToggleAddOnRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiCartSessionsToggleAddOnRequest) ToggleCartAddOnInput(toggleCartAddOnInput ToggleCartAddOnInput) ApiCartSessionsToggleAddOnRequest {
@@ -1693,8 +1880,21 @@ func (r ApiCartSessionsToggleAddOnRequest) ToggleCartAddOnInput(toggleCartAddOnI
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsToggleAddOnRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsToggleAddOnRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiCartSessionsToggleAddOnRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsToggleAddOnExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsToggleAddOnExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -1718,7 +1918,7 @@ Add or remove an add-on product from `add_ons_selected`. The call is idempotent:
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -1726,26 +1926,27 @@ Add or remove an add-on product from `add_ons_selected`. The call is idempotent:
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCartSessionsToggleAddOnRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCartSessionsToggleAddOnRequest
 */
 func (a *CartSessionsAPIService) CartSessionsToggleAddOn(ctx context.Context, id string) ApiCartSessionsToggleAddOnRequest {
 	return ApiCartSessionsToggleAddOnRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSessionsToggleAddOnRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsToggleAddOn")
@@ -1776,6 +1977,9 @@ func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSession
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.toggleCartAddOnInput
@@ -1822,8 +2026,8 @@ func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1833,8 +2037,8 @@ func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1844,8 +2048,8 @@ func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1855,8 +2059,9 @@ func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSession
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1874,11 +2079,19 @@ func (a *CartSessionsAPIService) CartSessionsToggleAddOnExecute(r ApiCartSession
 }
 
 type ApiCartSessionsUpdateLineItemRequest struct {
-	ctx context.Context
-	ApiService CartSessionsAPI
-	id string
-	lineId string
+	ctx                     context.Context
+	ApiService              CartSessionsAPI
+	id                      string
+	lineId                  string
+	idempotencyKey          *string
 	updateCartLineItemInput *UpdateCartLineItemInput
+	runtimeOptions          []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiCartSessionsUpdateLineItemRequest) IdempotencyKey(idempotencyKey string) ApiCartSessionsUpdateLineItemRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiCartSessionsUpdateLineItemRequest) UpdateCartLineItemInput(updateCartLineItemInput UpdateCartLineItemInput) ApiCartSessionsUpdateLineItemRequest {
@@ -1886,8 +2099,21 @@ func (r ApiCartSessionsUpdateLineItemRequest) UpdateCartLineItemInput(updateCart
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiCartSessionsUpdateLineItemRequest) WithRequestOptions(opts ...RequestOption) ApiCartSessionsUpdateLineItemRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiCartSessionsUpdateLineItemRequest) Execute() (*CartSessionResponse, *http.Response, error) {
-	return r.ApiService.CartSessionsUpdateLineItemExecute(r)
+	var value *CartSessionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.CartSessionsUpdateLineItemExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -1911,7 +2137,7 @@ Change the quantity of a single line item on an open cart. Other fields on the l
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 - `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
 
@@ -1919,28 +2145,29 @@ Change the quantity of a single line item on an open cart. Other fields on the l
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
- @return ApiCartSessionsUpdateLineItemRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@param lineId Cart line item id (the `id` field returned on `cart_session.line_items[]`).
+	@return ApiCartSessionsUpdateLineItemRequest
 */
 func (a *CartSessionsAPIService) CartSessionsUpdateLineItem(ctx context.Context, id string, lineId string) ApiCartSessionsUpdateLineItemRequest {
 	return ApiCartSessionsUpdateLineItemRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
-		lineId: lineId,
+		ctx:        ctx,
+		id:         id,
+		lineId:     lineId,
 	}
 }
 
 // Execute executes the request
-//  @return CartSessionResponse
+//
+//	@return CartSessionResponse
 func (a *CartSessionsAPIService) CartSessionsUpdateLineItemExecute(r ApiCartSessionsUpdateLineItemRequest) (*CartSessionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CartSessionResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CartSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartSessionsAPIService.CartSessionsUpdateLineItem")
@@ -1972,6 +2199,9 @@ func (a *CartSessionsAPIService) CartSessionsUpdateLineItemExecute(r ApiCartSess
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.updateCartLineItemInput
@@ -2018,8 +2248,8 @@ func (a *CartSessionsAPIService) CartSessionsUpdateLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2029,8 +2259,8 @@ func (a *CartSessionsAPIService) CartSessionsUpdateLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2040,8 +2270,8 @@ func (a *CartSessionsAPIService) CartSessionsUpdateLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2051,8 +2281,9 @@ func (a *CartSessionsAPIService) CartSessionsUpdateLineItemExecute(r ApiCartSess
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

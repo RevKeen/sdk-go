@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Index** | **float32** |  | 
-**Status** | **string** |  | 
-**ValidationDetails** | [**DryRunResultDataInnerValidationDetails**](DryRunResultDataInnerValidationDetails.md) |  | 
-**Reason** | Pointer to **string** |  | [optional] 
+**Index** | **float32** |  |
+**Status** | **string** |  |
+**ValidationDetails** | [**DryRunResultDataInnerValidationDetails**](DryRunResultDataInnerValidationDetails.md) |  |
+**Reason** | Pointer to **string** |  | [optional]
 
 ## Methods
 
@@ -115,5 +115,3 @@ HasReason returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,26 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**MerchantId** | **string** |  | 
-**CustomerId** | **NullableString** |  | 
-**SessionToken** | **NullableString** |  | 
-**Status** | **string** |  | 
-**Mode** | **NullableString** |  | 
-**AmountMinor** | **NullableInt32** |  | 
-**Currency** | **NullableString** |  | 
-**LineItems** | [**[]CartLineItem**](CartLineItem.md) |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**ExpiresAt** | **NullableTime** |  | 
-**CreatedAt** | **NullableTime** |  | 
-**UpdatedAt** | **NullableTime** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**MerchantId** | **string** |  |
+**CustomerId** | **NullableString** |  |
+**SessionToken** | **NullableString** |  |
+**CheckoutUrl** | Pointer to **NullableString** | Hosted checkout URL for this session, built server-side from the configured RevKeen checkout origin. Redirect the customer here. Null when the session has no token. | [optional]
+**Status** | **string** |  |
+**Mode** | **NullableString** |  |
+**AmountMinor** | **NullableInt64** |  |
+**Currency** | **NullableString** |  |
+**LineItems** | [**[]CartLineItem**](CartLineItem.md) |  |
+**Metadata** | **map[string]interface{}** |  |
+**ExpiresAt** | **NullableTime** |  |
+**CreatedAt** | **NullableTime** |  |
+**UpdatedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewCartCheckoutSession
 
-`func NewCartCheckoutSession(id string, object string, merchantId string, customerId NullableString, sessionToken NullableString, status string, mode NullableString, amountMinor NullableInt32, currency NullableString, lineItems []CartLineItem, metadata map[string]interface{}, expiresAt NullableTime, createdAt NullableTime, updatedAt NullableTime, ) *CartCheckoutSession`
+`func NewCartCheckoutSession(id string, object string, merchantId string, customerId NullableString, sessionToken NullableString, status string, mode NullableString, amountMinor NullableInt64, currency NullableString, lineItems []CartLineItem, metadata map[string]*interface{}, expiresAt NullableTime, createdAt NullableTime, updatedAt NullableTime, ) *CartCheckoutSession`
 
 NewCartCheckoutSession instantiates a new CartCheckoutSession object
 This constructor will assign default values to properties that have it defined,
@@ -158,6 +159,41 @@ SetSessionToken sets SessionToken field to given value.
 `func (o *CartCheckoutSession) UnsetSessionToken()`
 
 UnsetSessionToken ensures that no value is present for SessionToken, not even an explicit nil
+### GetCheckoutUrl
+
+`func (o *CartCheckoutSession) GetCheckoutUrl() string`
+
+GetCheckoutUrl returns the CheckoutUrl field if non-nil, zero value otherwise.
+
+### GetCheckoutUrlOk
+
+`func (o *CartCheckoutSession) GetCheckoutUrlOk() (*string, bool)`
+
+GetCheckoutUrlOk returns a tuple with the CheckoutUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckoutUrl
+
+`func (o *CartCheckoutSession) SetCheckoutUrl(v string)`
+
+SetCheckoutUrl sets CheckoutUrl field to given value.
+
+### HasCheckoutUrl
+
+`func (o *CartCheckoutSession) HasCheckoutUrl() bool`
+
+HasCheckoutUrl returns a boolean if a field has been set.
+
+### SetCheckoutUrlNil
+
+`func (o *CartCheckoutSession) SetCheckoutUrlNil(b bool)`
+
+ SetCheckoutUrlNil sets the value for CheckoutUrl to be an explicit nil
+
+### UnsetCheckoutUrl
+`func (o *CartCheckoutSession) UnsetCheckoutUrl()`
+
+UnsetCheckoutUrl ensures that no value is present for CheckoutUrl, not even an explicit nil
 ### GetStatus
 
 `func (o *CartCheckoutSession) GetStatus() string`
@@ -210,20 +246,20 @@ SetMode sets Mode field to given value.
 UnsetMode ensures that no value is present for Mode, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *CartCheckoutSession) GetAmountMinor() int32`
+`func (o *CartCheckoutSession) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CartCheckoutSession) GetAmountMinorOk() (*int32, bool)`
+`func (o *CartCheckoutSession) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CartCheckoutSession) SetAmountMinor(v int32)`
+`func (o *CartCheckoutSession) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -290,20 +326,20 @@ SetLineItems sets LineItems field to given value.
 
 ### GetMetadata
 
-`func (o *CartCheckoutSession) GetMetadata() map[string]interface{}`
+`func (o *CartCheckoutSession) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CartCheckoutSession) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CartCheckoutSession) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CartCheckoutSession) SetMetadata(v map[string]interface{})`
+`func (o *CartCheckoutSession) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -400,5 +436,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

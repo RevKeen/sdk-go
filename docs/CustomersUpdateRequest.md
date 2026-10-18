@@ -4,18 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | Pointer to **string** | Updated email address | [optional] 
-**Name** | Pointer to **string** | Updated full name | [optional] 
-**Phone** | Pointer to **string** | Updated phone number | [optional] 
-**CompanyName** | Pointer to **string** | Updated company name | [optional] 
-**AddressLine1** | Pointer to **string** | Updated billing address line 1 | [optional] 
-**AddressLine2** | Pointer to **string** | Updated billing address line 2 | [optional] 
-**City** | Pointer to **string** | Updated billing address city | [optional] 
-**State** | Pointer to **string** | Updated billing address state or county | [optional] 
-**PostalCode** | Pointer to **string** | Updated billing address postal code | [optional] 
-**Country** | Pointer to **string** | Updated billing address country code | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Metadata to merge with existing values (set a key to null to remove it) | [optional] 
-**CustomFields** | Pointer to **map[string]interface{}** | Merchant-defined custom fields displayed as columns in the dashboard | [optional] 
+**Email** | Pointer to **string** | Updated email address | [optional]
+**ExternalId** | Pointer to **string** | Your system&#39;s identifier for this customer. Unique per merchant and source: no two customers whose external id you set through the API can share one, but a customer synced from an integration can carry the same value. Cannot be changed on a customer that is linked to an integration. | [optional]
+**Name** | Pointer to **string** | Updated full name | [optional]
+**Phone** | Pointer to **string** | Updated phone number | [optional]
+**CompanyName** | Pointer to **string** | Updated company name | [optional]
+**AddressLine1** | Pointer to **string** | Updated billing address line 1 | [optional]
+**AddressLine2** | Pointer to **string** | Updated billing address line 2 | [optional]
+**City** | Pointer to **string** | Updated billing address city | [optional]
+**State** | Pointer to **string** | Updated billing address state or county | [optional]
+**PostalCode** | Pointer to **string** | Updated billing address postal code | [optional]
+**Country** | Pointer to **string** | Updated billing address country code | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Metadata to merge with existing values (set a key to null to remove it) | [optional]
+**CustomFields** | Pointer to **map[string]interface{}** | Merchant-defined custom fields displayed as columns in the dashboard | [optional]
 
 ## Methods
 
@@ -60,6 +61,31 @@ SetEmail sets Email field to given value.
 `func (o *CustomersUpdateRequest) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
+
+### GetExternalId
+
+`func (o *CustomersUpdateRequest) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *CustomersUpdateRequest) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *CustomersUpdateRequest) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *CustomersUpdateRequest) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -288,20 +314,20 @@ HasCountry returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *CustomersUpdateRequest) GetMetadata() map[string]interface{}`
+`func (o *CustomersUpdateRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CustomersUpdateRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CustomersUpdateRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CustomersUpdateRequest) SetMetadata(v map[string]interface{})`
+`func (o *CustomersUpdateRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -338,5 +364,3 @@ HasCustomFields returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

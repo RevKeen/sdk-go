@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rail** | **string** |  | 
-**Available** | **bool** |  | 
-**ReasonIfNot** | **NullableString** |  | 
-**LastUsedAt** | **NullableTime** |  | 
-**MandateId** | Pointer to **string** |  | [optional] 
-**MandateRef** | Pointer to **NullableString** |  | [optional] 
-**Rank** | **int32** |  | 
-**Score** | **float32** |  | 
-**Reason** | **string** |  | 
-**Reasons** | **[]string** |  | 
-**EstimatedFeeMinor** | Pointer to **int32** |  | [optional] 
-**NetAfterFeesMinor** | Pointer to **int32** |  | [optional] 
-**Mandate** | Pointer to [**CustomersPreferredRailsGet200ResponseDataPreferredRailsInnerMandate**](CustomersPreferredRailsGet200ResponseDataPreferredRailsInnerMandate.md) |  | [optional] 
+**Rail** | **string** |  |
+**Available** | **bool** |  |
+**ReasonIfNot** | **NullableString** |  |
+**LastUsedAt** | **NullableTime** |  |
+**MandateId** | Pointer to **string** |  | [optional]
+**MandateRef** | Pointer to **NullableString** |  | [optional]
+**Rank** | **int32** |  |
+**Score** | **float32** |  |
+**Reason** | **string** |  |
+**Reasons** | **[]string** |  |
+**EstimatedFeeMinor** | Pointer to **int64** |  | [optional]
+**NetAfterFeesMinor** | Pointer to **int64** |  | [optional]
+**Mandate** | Pointer to [**CustomersPreferredRailsGet200ResponseDataPreferredRailsInnerMandate**](CustomersPreferredRailsGet200ResponseDataPreferredRailsInnerMandate.md) |  | [optional]
 
 ## Methods
 
@@ -279,20 +279,20 @@ SetReasons sets Reasons field to given value.
 
 ### GetEstimatedFeeMinor
 
-`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetEstimatedFeeMinor() int32`
+`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetEstimatedFeeMinor() int64`
 
 GetEstimatedFeeMinor returns the EstimatedFeeMinor field if non-nil, zero value otherwise.
 
 ### GetEstimatedFeeMinorOk
 
-`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetEstimatedFeeMinorOk() (*int32, bool)`
+`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetEstimatedFeeMinorOk() (*int64, bool)`
 
 GetEstimatedFeeMinorOk returns a tuple with the EstimatedFeeMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEstimatedFeeMinor
 
-`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) SetEstimatedFeeMinor(v int32)`
+`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) SetEstimatedFeeMinor(v int64)`
 
 SetEstimatedFeeMinor sets EstimatedFeeMinor field to given value.
 
@@ -304,20 +304,20 @@ HasEstimatedFeeMinor returns a boolean if a field has been set.
 
 ### GetNetAfterFeesMinor
 
-`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetNetAfterFeesMinor() int32`
+`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetNetAfterFeesMinor() int64`
 
 GetNetAfterFeesMinor returns the NetAfterFeesMinor field if non-nil, zero value otherwise.
 
 ### GetNetAfterFeesMinorOk
 
-`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetNetAfterFeesMinorOk() (*int32, bool)`
+`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) GetNetAfterFeesMinorOk() (*int64, bool)`
 
 GetNetAfterFeesMinorOk returns a tuple with the NetAfterFeesMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetAfterFeesMinor
 
-`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) SetNetAfterFeesMinor(v int32)`
+`func (o *CustomersPreferredRailsGet200ResponseDataPreferredRailsInner) SetNetAfterFeesMinor(v int64)`
 
 SetNetAfterFeesMinor sets NetAfterFeesMinor field to given value.
 
@@ -354,5 +354,3 @@ HasMandate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

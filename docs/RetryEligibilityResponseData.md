@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ShouldRetry** | **bool** | Whether the subscription should be retried | 
-**Reason** | **string** | Explanation for the retry decision | 
-**LastAttempt** | [**RetryEligibilityResponseDataLastAttempt**](RetryEligibilityResponseDataLastAttempt.md) |  | 
+**ShouldRetry** | **bool** | Whether the subscription should be retried |
+**Reason** | **string** | Explanation for the retry decision |
+**LastAttempt** | [**RetryEligibilityResponseDataLastAttempt**](RetryEligibilityResponseDataLastAttempt.md) |  |
 
 ## Methods
 
@@ -89,5 +89,3 @@ SetLastAttempt sets LastAttempt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

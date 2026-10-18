@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | **map[string]interface{}** | Updated meter object | 
+**Data** | **map[string]interface{}** | Updated meter object |
 
 ## Methods
 
 ### NewUpdateMeterResponse
 
-`func NewUpdateMeterResponse(data map[string]interface{}, ) *UpdateMeterResponse`
+`func NewUpdateMeterResponse(data map[string]*interface{}, ) *UpdateMeterResponse`
 
 NewUpdateMeterResponse instantiates a new UpdateMeterResponse object
 This constructor will assign default values to properties that have it defined,
@@ -27,25 +27,23 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *UpdateMeterResponse) GetData() map[string]interface{}`
+`func (o *UpdateMeterResponse) GetData() map[string]*interface{}`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *UpdateMeterResponse) GetDataOk() (*map[string]interface{}, bool)`
+`func (o *UpdateMeterResponse) GetDataOk() (*map[string]*interface{}, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *UpdateMeterResponse) SetData(v map[string]interface{})`
+`func (o *UpdateMeterResponse) SetData(v map[string]*interface{})`
 
 SetData sets Data field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

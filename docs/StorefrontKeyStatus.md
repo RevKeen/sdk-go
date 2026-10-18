@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Present** | **bool** |  | 
-**Active** | **bool** |  | 
-**CreatedAt** | **NullableString** |  | 
-**LastUsedAt** | **NullableString** |  | 
+**Present** | **bool** |  |
+**Active** | **bool** |  |
+**CreatedAt** | **NullableTime** |  |
+**LastUsedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewStorefrontKeyStatus
 
-`func NewStorefrontKeyStatus(present bool, active bool, createdAt NullableString, lastUsedAt NullableString, ) *StorefrontKeyStatus`
+`func NewStorefrontKeyStatus(present bool, active bool, createdAt NullableTime, lastUsedAt NullableTime, ) *StorefrontKeyStatus`
 
 NewStorefrontKeyStatus instantiates a new StorefrontKeyStatus object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetActive sets Active field to given value.
 
 ### GetCreatedAt
 
-`func (o *StorefrontKeyStatus) GetCreatedAt() string`
+`func (o *StorefrontKeyStatus) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *StorefrontKeyStatus) GetCreatedAtOk() (*string, bool)`
+`func (o *StorefrontKeyStatus) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *StorefrontKeyStatus) SetCreatedAt(v string)`
+`func (o *StorefrontKeyStatus) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -100,20 +100,20 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetLastUsedAt
 
-`func (o *StorefrontKeyStatus) GetLastUsedAt() string`
+`func (o *StorefrontKeyStatus) GetLastUsedAt() time.Time`
 
 GetLastUsedAt returns the LastUsedAt field if non-nil, zero value otherwise.
 
 ### GetLastUsedAtOk
 
-`func (o *StorefrontKeyStatus) GetLastUsedAtOk() (*string, bool)`
+`func (o *StorefrontKeyStatus) GetLastUsedAtOk() (*time.Time, bool)`
 
 GetLastUsedAtOk returns a tuple with the LastUsedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUsedAt
 
-`func (o *StorefrontKeyStatus) SetLastUsedAt(v string)`
+`func (o *StorefrontKeyStatus) SetLastUsedAt(v time.Time)`
 
 SetLastUsedAt sets LastUsedAt field to given value.
 
@@ -130,5 +130,3 @@ SetLastUsedAt sets LastUsedAt field to given value.
 UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

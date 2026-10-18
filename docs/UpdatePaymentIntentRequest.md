@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **int32** | Amount in cents | [optional] 
-**Currency** | Pointer to **string** | Three-letter ISO currency code | [optional] 
-**PaymentMethod** | Pointer to **string** | Payment method ID | [optional] 
-**Description** | Pointer to **string** | Description for merchant reference | [optional] 
-**StatementDescriptor** | Pointer to **string** | Statement descriptor | [optional] 
-**StatementDescriptorSuffix** | Pointer to **string** | Statement descriptor suffix | [optional] 
-**ReceiptEmail** | Pointer to **string** | Email to send receipt to | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
+**Amount** | Pointer to **int32** | Amount in cents | [optional]
+**Currency** | Pointer to **string** | Three-letter ISO currency code | [optional]
+**PaymentMethod** | Pointer to **string** | Payment method ID | [optional]
+**Description** | Pointer to **string** | Description for merchant reference | [optional]
+**StatementDescriptor** | Pointer to **string** | Statement descriptor | [optional]
+**StatementDescriptorSuffix** | Pointer to **string** | Statement descriptor suffix | [optional]
+**ReceiptEmail** | Pointer to **string** | Email to send receipt to | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
 
 ## Methods
 
@@ -234,5 +234,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

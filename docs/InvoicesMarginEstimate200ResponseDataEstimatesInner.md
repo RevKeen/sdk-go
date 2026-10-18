@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rail** | **string** |  | 
-**CardScheme** | **NullableString** |  | 
-**GrossMinor** | **int32** |  | 
-**EstimatedFeeMinor** | **int32** |  | 
-**NetAfterFeesMinor** | **int32** |  | 
-**FeeBreakdown** | [**InvoicesMarginEstimate200ResponseDataEstimatesInnerFeeBreakdown**](InvoicesMarginEstimate200ResponseDataEstimatesInnerFeeBreakdown.md) |  | 
-**PricingSource** | **string** |  | 
-**MatrixVersion** | **string** |  | 
+**Rail** | **string** |  |
+**CardScheme** | **NullableString** |  |
+**GrossMinor** | **int64** |  |
+**EstimatedFeeMinor** | **int64** |  |
+**NetAfterFeesMinor** | **int64** |  |
+**FeeBreakdown** | [**InvoicesMarginEstimate200ResponseDataEstimatesInnerFeeBreakdown**](InvoicesMarginEstimate200ResponseDataEstimatesInnerFeeBreakdown.md) |  |
+**PricingSource** | **string** |  |
+**MatrixVersion** | **string** |  |
 
 ## Methods
 
 ### NewInvoicesMarginEstimate200ResponseDataEstimatesInner
 
-`func NewInvoicesMarginEstimate200ResponseDataEstimatesInner(rail string, cardScheme NullableString, grossMinor int32, estimatedFeeMinor int32, netAfterFeesMinor int32, feeBreakdown InvoicesMarginEstimate200ResponseDataEstimatesInnerFeeBreakdown, pricingSource string, matrixVersion string, ) *InvoicesMarginEstimate200ResponseDataEstimatesInner`
+`func NewInvoicesMarginEstimate200ResponseDataEstimatesInner(rail string, cardScheme NullableString, grossMinor int64, estimatedFeeMinor int64, netAfterFeesMinor int64, feeBreakdown InvoicesMarginEstimate200ResponseDataEstimatesInnerFeeBreakdown, pricingSource string, matrixVersion string, ) *InvoicesMarginEstimate200ResponseDataEstimatesInner`
 
 NewInvoicesMarginEstimate200ResponseDataEstimatesInner instantiates a new InvoicesMarginEstimate200ResponseDataEstimatesInner object
 This constructor will assign default values to properties that have it defined,
@@ -84,60 +84,60 @@ SetCardScheme sets CardScheme field to given value.
 UnsetCardScheme ensures that no value is present for CardScheme, not even an explicit nil
 ### GetGrossMinor
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetGrossMinor() int32`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetGrossMinor() int64`
 
 GetGrossMinor returns the GrossMinor field if non-nil, zero value otherwise.
 
 ### GetGrossMinorOk
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetGrossMinorOk() (*int32, bool)`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetGrossMinorOk() (*int64, bool)`
 
 GetGrossMinorOk returns a tuple with the GrossMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrossMinor
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) SetGrossMinor(v int32)`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) SetGrossMinor(v int64)`
 
 SetGrossMinor sets GrossMinor field to given value.
 
 
 ### GetEstimatedFeeMinor
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetEstimatedFeeMinor() int32`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetEstimatedFeeMinor() int64`
 
 GetEstimatedFeeMinor returns the EstimatedFeeMinor field if non-nil, zero value otherwise.
 
 ### GetEstimatedFeeMinorOk
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetEstimatedFeeMinorOk() (*int32, bool)`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetEstimatedFeeMinorOk() (*int64, bool)`
 
 GetEstimatedFeeMinorOk returns a tuple with the EstimatedFeeMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEstimatedFeeMinor
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) SetEstimatedFeeMinor(v int32)`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) SetEstimatedFeeMinor(v int64)`
 
 SetEstimatedFeeMinor sets EstimatedFeeMinor field to given value.
 
 
 ### GetNetAfterFeesMinor
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetNetAfterFeesMinor() int32`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetNetAfterFeesMinor() int64`
 
 GetNetAfterFeesMinor returns the NetAfterFeesMinor field if non-nil, zero value otherwise.
 
 ### GetNetAfterFeesMinorOk
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetNetAfterFeesMinorOk() (*int32, bool)`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) GetNetAfterFeesMinorOk() (*int64, bool)`
 
 GetNetAfterFeesMinorOk returns a tuple with the NetAfterFeesMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetAfterFeesMinor
 
-`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) SetNetAfterFeesMinor(v int32)`
+`func (o *InvoicesMarginEstimate200ResponseDataEstimatesInner) SetNetAfterFeesMinor(v int64)`
 
 SetNetAfterFeesMinor sets NetAfterFeesMinor field to given value.
 
@@ -204,5 +204,3 @@ SetMatrixVersion sets MatrixVersion field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

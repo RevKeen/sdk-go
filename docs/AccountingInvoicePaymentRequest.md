@@ -4,45 +4,45 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**MerchantId** | **string** |  | 
-**Provider** | **string** |  | 
-**ConnectionId** | **string** |  | 
-**ProviderAccountId** | **string** |  | 
-**ExternalInvoiceId** | **string** |  | 
-**ExternalInvoiceNumber** | Pointer to **NullableString** |  | [optional] 
-**ExternalInvoiceStatus** | Pointer to **NullableString** |  | [optional] 
-**ExternalInvoiceUrl** | Pointer to **NullableString** |  | [optional] 
-**ExternalInvoiceIssuedAt** | Pointer to **NullableString** |  | [optional] 
-**ExternalInvoiceDueAt** | Pointer to **NullableString** |  | [optional] 
-**ExternalInvoiceUpdatedAt** | Pointer to **NullableString** |  | [optional] 
-**ExternalCustomerId** | Pointer to **NullableString** |  | [optional] 
-**ExternalCustomerReference** | Pointer to **NullableString** |  | [optional] 
-**ExternalCustomerName** | Pointer to **NullableString** |  | [optional] 
-**ExternalCustomerEmail** | Pointer to **NullableString** |  | [optional] 
-**AmountDueMinor** | **int32** |  | 
-**TotalAmountMinor** | Pointer to **NullableInt32** |  | [optional] 
-**AmountPaidMinor** | Pointer to **NullableInt32** |  | [optional] 
-**Currency** | **string** |  | 
-**CheckoutSessionId** | Pointer to **NullableString** |  | [optional] 
-**CheckoutUrl** | Pointer to **NullableString** |  | [optional] 
-**CheckoutExpiresAt** | Pointer to **NullableString** |  | [optional] 
-**CheckoutSuccessUrl** | Pointer to **NullableString** |  | [optional] 
-**CheckoutCancelUrl** | Pointer to **NullableString** |  | [optional] 
-**CheckoutAllowedMethods** | Pointer to **[]string** |  | [optional] 
-**Status** | **string** |  | 
-**SyncStatus** | **string** |  | 
-**IdempotencyKey** | **string** |  | 
-**PayloadFingerprint** | **string** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**MerchantId** | **string** |  |
+**Provider** | **string** |  |
+**ConnectionId** | **string** |  |
+**ProviderAccountId** | **string** |  |
+**ExternalInvoiceId** | **string** |  |
+**ExternalInvoiceNumber** | Pointer to **NullableString** |  | [optional]
+**ExternalInvoiceStatus** | Pointer to **NullableString** |  | [optional]
+**ExternalInvoiceUrl** | Pointer to **NullableString** |  | [optional]
+**ExternalInvoiceIssuedAt** | Pointer to **NullableTime** |  | [optional]
+**ExternalInvoiceDueAt** | Pointer to **NullableTime** |  | [optional]
+**ExternalInvoiceUpdatedAt** | Pointer to **NullableTime** |  | [optional]
+**ExternalCustomerId** | Pointer to **NullableString** |  | [optional]
+**ExternalCustomerReference** | Pointer to **NullableString** |  | [optional]
+**ExternalCustomerName** | Pointer to **NullableString** |  | [optional]
+**ExternalCustomerEmail** | Pointer to **NullableString** |  | [optional]
+**AmountDueMinor** | **int64** |  |
+**TotalAmountMinor** | Pointer to **NullableInt64** |  | [optional]
+**AmountPaidMinor** | Pointer to **NullableInt64** |  | [optional]
+**Currency** | **string** |  |
+**CheckoutSessionId** | Pointer to **NullableString** |  | [optional]
+**CheckoutUrl** | Pointer to **NullableString** |  | [optional]
+**CheckoutExpiresAt** | Pointer to **NullableTime** |  | [optional]
+**CheckoutSuccessUrl** | Pointer to **NullableString** |  | [optional]
+**CheckoutCancelUrl** | Pointer to **NullableString** |  | [optional]
+**CheckoutAllowedMethods** | Pointer to **[]string** |  | [optional]
+**Status** | **string** |  |
+**SyncStatus** | **string** |  |
+**IdempotencyKey** | **string** |  |
+**PayloadFingerprint** | **string** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewAccountingInvoicePaymentRequest
 
-`func NewAccountingInvoicePaymentRequest(id string, object string, merchantId string, provider string, connectionId string, providerAccountId string, externalInvoiceId string, amountDueMinor int32, currency string, status string, syncStatus string, idempotencyKey string, payloadFingerprint string, createdAt string, updatedAt string, ) *AccountingInvoicePaymentRequest`
+`func NewAccountingInvoicePaymentRequest(id string, object string, merchantId string, provider string, connectionId string, providerAccountId string, externalInvoiceId string, amountDueMinor int64, currency string, status string, syncStatus string, idempotencyKey string, payloadFingerprint string, createdAt time.Time, updatedAt time.Time, ) *AccountingInvoicePaymentRequest`
 
 NewAccountingInvoicePaymentRequest instantiates a new AccountingInvoicePaymentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -304,20 +304,20 @@ HasExternalInvoiceUrl returns a boolean if a field has been set.
 UnsetExternalInvoiceUrl ensures that no value is present for ExternalInvoiceUrl, not even an explicit nil
 ### GetExternalInvoiceIssuedAt
 
-`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceIssuedAt() string`
+`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceIssuedAt() time.Time`
 
 GetExternalInvoiceIssuedAt returns the ExternalInvoiceIssuedAt field if non-nil, zero value otherwise.
 
 ### GetExternalInvoiceIssuedAtOk
 
-`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceIssuedAtOk() (*string, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceIssuedAtOk() (*time.Time, bool)`
 
 GetExternalInvoiceIssuedAtOk returns a tuple with the ExternalInvoiceIssuedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalInvoiceIssuedAt
 
-`func (o *AccountingInvoicePaymentRequest) SetExternalInvoiceIssuedAt(v string)`
+`func (o *AccountingInvoicePaymentRequest) SetExternalInvoiceIssuedAt(v time.Time)`
 
 SetExternalInvoiceIssuedAt sets ExternalInvoiceIssuedAt field to given value.
 
@@ -339,20 +339,20 @@ HasExternalInvoiceIssuedAt returns a boolean if a field has been set.
 UnsetExternalInvoiceIssuedAt ensures that no value is present for ExternalInvoiceIssuedAt, not even an explicit nil
 ### GetExternalInvoiceDueAt
 
-`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceDueAt() string`
+`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceDueAt() time.Time`
 
 GetExternalInvoiceDueAt returns the ExternalInvoiceDueAt field if non-nil, zero value otherwise.
 
 ### GetExternalInvoiceDueAtOk
 
-`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceDueAtOk() (*string, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceDueAtOk() (*time.Time, bool)`
 
 GetExternalInvoiceDueAtOk returns a tuple with the ExternalInvoiceDueAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalInvoiceDueAt
 
-`func (o *AccountingInvoicePaymentRequest) SetExternalInvoiceDueAt(v string)`
+`func (o *AccountingInvoicePaymentRequest) SetExternalInvoiceDueAt(v time.Time)`
 
 SetExternalInvoiceDueAt sets ExternalInvoiceDueAt field to given value.
 
@@ -374,20 +374,20 @@ HasExternalInvoiceDueAt returns a boolean if a field has been set.
 UnsetExternalInvoiceDueAt ensures that no value is present for ExternalInvoiceDueAt, not even an explicit nil
 ### GetExternalInvoiceUpdatedAt
 
-`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceUpdatedAt() string`
+`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceUpdatedAt() time.Time`
 
 GetExternalInvoiceUpdatedAt returns the ExternalInvoiceUpdatedAt field if non-nil, zero value otherwise.
 
 ### GetExternalInvoiceUpdatedAtOk
 
-`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceUpdatedAtOk() (*string, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetExternalInvoiceUpdatedAtOk() (*time.Time, bool)`
 
 GetExternalInvoiceUpdatedAtOk returns a tuple with the ExternalInvoiceUpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalInvoiceUpdatedAt
 
-`func (o *AccountingInvoicePaymentRequest) SetExternalInvoiceUpdatedAt(v string)`
+`func (o *AccountingInvoicePaymentRequest) SetExternalInvoiceUpdatedAt(v time.Time)`
 
 SetExternalInvoiceUpdatedAt sets ExternalInvoiceUpdatedAt field to given value.
 
@@ -549,40 +549,40 @@ HasExternalCustomerEmail returns a boolean if a field has been set.
 UnsetExternalCustomerEmail ensures that no value is present for ExternalCustomerEmail, not even an explicit nil
 ### GetAmountDueMinor
 
-`func (o *AccountingInvoicePaymentRequest) GetAmountDueMinor() int32`
+`func (o *AccountingInvoicePaymentRequest) GetAmountDueMinor() int64`
 
 GetAmountDueMinor returns the AmountDueMinor field if non-nil, zero value otherwise.
 
 ### GetAmountDueMinorOk
 
-`func (o *AccountingInvoicePaymentRequest) GetAmountDueMinorOk() (*int32, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetAmountDueMinorOk() (*int64, bool)`
 
 GetAmountDueMinorOk returns a tuple with the AmountDueMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountDueMinor
 
-`func (o *AccountingInvoicePaymentRequest) SetAmountDueMinor(v int32)`
+`func (o *AccountingInvoicePaymentRequest) SetAmountDueMinor(v int64)`
 
 SetAmountDueMinor sets AmountDueMinor field to given value.
 
 
 ### GetTotalAmountMinor
 
-`func (o *AccountingInvoicePaymentRequest) GetTotalAmountMinor() int32`
+`func (o *AccountingInvoicePaymentRequest) GetTotalAmountMinor() int64`
 
 GetTotalAmountMinor returns the TotalAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTotalAmountMinorOk
 
-`func (o *AccountingInvoicePaymentRequest) GetTotalAmountMinorOk() (*int32, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetTotalAmountMinorOk() (*int64, bool)`
 
 GetTotalAmountMinorOk returns a tuple with the TotalAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalAmountMinor
 
-`func (o *AccountingInvoicePaymentRequest) SetTotalAmountMinor(v int32)`
+`func (o *AccountingInvoicePaymentRequest) SetTotalAmountMinor(v int64)`
 
 SetTotalAmountMinor sets TotalAmountMinor field to given value.
 
@@ -604,20 +604,20 @@ HasTotalAmountMinor returns a boolean if a field has been set.
 UnsetTotalAmountMinor ensures that no value is present for TotalAmountMinor, not even an explicit nil
 ### GetAmountPaidMinor
 
-`func (o *AccountingInvoicePaymentRequest) GetAmountPaidMinor() int32`
+`func (o *AccountingInvoicePaymentRequest) GetAmountPaidMinor() int64`
 
 GetAmountPaidMinor returns the AmountPaidMinor field if non-nil, zero value otherwise.
 
 ### GetAmountPaidMinorOk
 
-`func (o *AccountingInvoicePaymentRequest) GetAmountPaidMinorOk() (*int32, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetAmountPaidMinorOk() (*int64, bool)`
 
 GetAmountPaidMinorOk returns a tuple with the AmountPaidMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountPaidMinor
 
-`func (o *AccountingInvoicePaymentRequest) SetAmountPaidMinor(v int32)`
+`func (o *AccountingInvoicePaymentRequest) SetAmountPaidMinor(v int64)`
 
 SetAmountPaidMinor sets AmountPaidMinor field to given value.
 
@@ -729,20 +729,20 @@ HasCheckoutUrl returns a boolean if a field has been set.
 UnsetCheckoutUrl ensures that no value is present for CheckoutUrl, not even an explicit nil
 ### GetCheckoutExpiresAt
 
-`func (o *AccountingInvoicePaymentRequest) GetCheckoutExpiresAt() string`
+`func (o *AccountingInvoicePaymentRequest) GetCheckoutExpiresAt() time.Time`
 
 GetCheckoutExpiresAt returns the CheckoutExpiresAt field if non-nil, zero value otherwise.
 
 ### GetCheckoutExpiresAtOk
 
-`func (o *AccountingInvoicePaymentRequest) GetCheckoutExpiresAtOk() (*string, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetCheckoutExpiresAtOk() (*time.Time, bool)`
 
 GetCheckoutExpiresAtOk returns a tuple with the CheckoutExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCheckoutExpiresAt
 
-`func (o *AccountingInvoicePaymentRequest) SetCheckoutExpiresAt(v string)`
+`func (o *AccountingInvoicePaymentRequest) SetCheckoutExpiresAt(v time.Time)`
 
 SetCheckoutExpiresAt sets CheckoutExpiresAt field to given value.
 
@@ -949,45 +949,43 @@ SetPayloadFingerprint sets PayloadFingerprint field to given value.
 
 ### GetCreatedAt
 
-`func (o *AccountingInvoicePaymentRequest) GetCreatedAt() string`
+`func (o *AccountingInvoicePaymentRequest) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *AccountingInvoicePaymentRequest) GetCreatedAtOk() (*string, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *AccountingInvoicePaymentRequest) SetCreatedAt(v string)`
+`func (o *AccountingInvoicePaymentRequest) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *AccountingInvoicePaymentRequest) GetUpdatedAt() string`
+`func (o *AccountingInvoicePaymentRequest) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *AccountingInvoicePaymentRequest) GetUpdatedAtOk() (*string, bool)`
+`func (o *AccountingInvoicePaymentRequest) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *AccountingInvoicePaymentRequest) SetUpdatedAt(v string)`
+`func (o *AccountingInvoicePaymentRequest) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**CreditNote**](CreditNote.md) |  | 
-**RequestId** | **string** |  | 
+**Data** | [**InvoiceCreditNote**](InvoiceCreditNote.md) |  |
+**RequestId** | **string** |  |
 
 ## Methods
 
 ### NewCreditNoteResponse
 
-`func NewCreditNoteResponse(data CreditNote, requestId string, ) *CreditNoteResponse`
+`func NewCreditNoteResponse(data InvoiceCreditNote, requestId string, ) *CreditNoteResponse`
 
 NewCreditNoteResponse instantiates a new CreditNoteResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *CreditNoteResponse) GetData() CreditNote`
+`func (o *CreditNoteResponse) GetData() InvoiceCreditNote`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *CreditNoteResponse) GetDataOk() (*CreditNote, bool)`
+`func (o *CreditNoteResponse) GetDataOk() (*InvoiceCreditNote, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *CreditNoteResponse) SetData(v CreditNote)`
+`func (o *CreditNoteResponse) SetData(v InvoiceCreditNote)`
 
 SetData sets Data field to given value.
 
@@ -68,5 +68,3 @@ SetRequestId sets RequestId field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

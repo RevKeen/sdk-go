@@ -4,20 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Usage event ID | 
-**MerchantId** | **string** | Owning merchant ID | 
-**CustomerId** | **NullableString** | Customer ID | 
-**SubscriptionId** | **NullableString** | Subscription ID | 
-**MeterId** | **NullableString** | Meter ID | 
-**Quantity** | **float32** | Event quantity | 
-**EventTime** | **time.Time** | Event timestamp (ISO 8601) | 
-**IdempotencyKey** | **NullableString** | Deduplication key | 
-**ExternalId** | **NullableString** | External event identifier | 
-**Source** | **string** | Ingestion source | 
-**Metadata** | **map[string]interface{}** | Arbitrary event metadata | 
-**Properties** | **map[string]interface{}** | Arbitrary event properties used for filtering/aggregation | 
-**IngestionTimestamp** | **NullableTime** | When the event was ingested (ISO 8601) | 
-**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) | 
+**Id** | **string** | Usage event ID |
+**MerchantId** | **string** | Owning merchant ID |
+**CustomerId** | **NullableString** | Customer ID |
+**SubscriptionId** | **NullableString** | Subscription ID |
+**MeterId** | **NullableString** | Meter ID |
+**Name** | Pointer to **NullableString** | Event name (Polar-compatible alias of event_name) | [optional]
+**EventName** | Pointer to **NullableString** | Event name that matched the meter | [optional]
+**Quantity** | **float32** | Event quantity |
+**EventTime** | **time.Time** | Event timestamp (ISO 8601) |
+**IdempotencyKey** | **NullableString** | Deduplication key |
+**ExternalId** | **NullableString** | External event identifier |
+**Source** | **string** | Ingestion source |
+**Metadata** | **map[string]interface{}** | Arbitrary event metadata |
+**Properties** | **map[string]interface{}** | Arbitrary event properties used for filtering/aggregation |
+**IngestionTimestamp** | **NullableTime** | When the event was ingested (ISO 8601) |
+**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) |
 
 ## Methods
 
@@ -168,6 +170,76 @@ SetMeterId sets MeterId field to given value.
 `func (o *UsageEventRecord) UnsetMeterId()`
 
 UnsetMeterId ensures that no value is present for MeterId, not even an explicit nil
+### GetName
+
+`func (o *UsageEventRecord) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *UsageEventRecord) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *UsageEventRecord) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *UsageEventRecord) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *UsageEventRecord) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *UsageEventRecord) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetEventName
+
+`func (o *UsageEventRecord) GetEventName() string`
+
+GetEventName returns the EventName field if non-nil, zero value otherwise.
+
+### GetEventNameOk
+
+`func (o *UsageEventRecord) GetEventNameOk() (*string, bool)`
+
+GetEventNameOk returns a tuple with the EventName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventName
+
+`func (o *UsageEventRecord) SetEventName(v string)`
+
+SetEventName sets EventName field to given value.
+
+### HasEventName
+
+`func (o *UsageEventRecord) HasEventName() bool`
+
+HasEventName returns a boolean if a field has been set.
+
+### SetEventNameNil
+
+`func (o *UsageEventRecord) SetEventNameNil(b bool)`
+
+ SetEventNameNil sets the value for EventName to be an explicit nil
+
+### UnsetEventName
+`func (o *UsageEventRecord) UnsetEventName()`
+
+UnsetEventName ensures that no value is present for EventName, not even an explicit nil
 ### GetQuantity
 
 `func (o *UsageEventRecord) GetQuantity() float32`
@@ -380,5 +452,3 @@ SetCreatedAt sets CreatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

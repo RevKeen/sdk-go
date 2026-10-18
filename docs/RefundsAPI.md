@@ -1,6 +1,6 @@
 # \RefundsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## RefundsCreate
 
-> RefundCreateResponse RefundsCreate(ctx).CreateRefundInput(createRefundInput).Execute()
+> RefundCreateResponse RefundsCreate(ctx).IdempotencyKey(idempotencyKey).CreateRefundInput(createRefundInput).Execute()
 
 Create a refund
 
@@ -27,15 +27,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	createRefundInput := *openapiclient.NewCreateRefundInput("660e8400-e29b-41d4-a716-446655440000") // CreateRefundInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RefundsAPI.RefundsCreate(context.Background()).CreateRefundInput(createRefundInput).Execute()
+	resp, r, err := apiClient.RefundsAPI.RefundsCreate(context.Background()).IdempotencyKey(idempotencyKey).CreateRefundInput(createRefundInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RefundsAPI.RefundsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +57,8 @@ Other parameters are passed through a pointer to a apiRefundsCreateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createRefundInput** | [**CreateRefundInput**](CreateRefundInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **createRefundInput** | [**CreateRefundInput**](CreateRefundInput.md) |  |
 
 ### Return type
 
@@ -93,11 +95,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "id_example" // string | Refund public ID (ref_xxx) or UUID
+	id := "ref_abc123" // string | Refund public ID (`ref_…`) or UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +119,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Refund public ID (ref_xxx) or UUID | 
+**id** | **string** | Refund public ID (&#x60;ref_…&#x60;) or UUID. |
 
 ### Other Parameters
 
@@ -163,7 +165,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -199,12 +201,12 @@ Other parameters are passed through a pointer to a apiRefundsListRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string** | Filter by refund status | 
- **paymentId** | **string** | Filter by original payment ID | 
- **gateway** | **string** | Filter by payment gateway (nmi, stripe, etc.) | 
- **reason** | **string** | Filter by refund reason | 
- **createdAfter** | **string** | ISO 8601 date - only refunds created after this date | 
- **createdBefore** | **string** | ISO 8601 date - only refunds created before this date | 
+ **status** | **string** | Filter by refund status |
+ **paymentId** | **string** | Filter by original payment ID |
+ **gateway** | **string** | Filter by payment gateway (nmi, stripe, etc.) |
+ **reason** | **string** | Filter by refund reason |
+ **createdAfter** | **string** | ISO 8601 date - only refunds created after this date |
+ **createdBefore** | **string** | ISO 8601 date - only refunds created before this date |
  **limit** | **float32** | Number of results to return (1-100) | [default to 20]
  **offset** | **float32** | Number of results to skip | [default to 0]
 
@@ -224,4 +226,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

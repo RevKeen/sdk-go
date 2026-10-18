@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Publishable** | [**StorefrontKeyStatus**](StorefrontKeyStatus.md) |  | 
-**Secret** | [**StorefrontKeyStatus**](StorefrontKeyStatus.md) |  | 
+**Publishable** | [**StorefrontKeyStatus**](StorefrontKeyStatus.md) |  |
+**Secret** | [**StorefrontKeyStatus**](StorefrontKeyStatus.md) |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetSecret sets Secret field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**CustomerId** | **NullableString** |  | 
-**AmountMinor** | **int32** |  | 
-**Currency** | **string** |  | 
-**Status** | **string** |  | 
-**PaymentMethodType** | **NullableString** |  | 
-**GatewayTransactionId** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+**Id** | **string** |  |
+**CustomerId** | **NullableString** |  |
+**AmountMinor** | **int64** |  |
+**Currency** | **string** |  |
+**Status** | **string** |  |
+**PaymentMethodType** | **NullableString** |  |
+**GatewayTransactionId** | **NullableString** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCustomerPayment
 
-`func NewCustomerPayment(id string, customerId NullableString, amountMinor int32, currency string, status string, paymentMethodType NullableString, gatewayTransactionId NullableString, createdAt string, updatedAt string, ) *CustomerPayment`
+`func NewCustomerPayment(id string, customerId NullableString, amountMinor int64, currency string, status string, paymentMethodType NullableString, gatewayTransactionId NullableString, createdAt time.Time, updatedAt time.Time, ) *CustomerPayment`
 
 NewCustomerPayment instantiates a new CustomerPayment object
 This constructor will assign default values to properties that have it defined,
@@ -85,20 +85,20 @@ SetCustomerId sets CustomerId field to given value.
 UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *CustomerPayment) GetAmountMinor() int32`
+`func (o *CustomerPayment) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CustomerPayment) GetAmountMinorOk() (*int32, bool)`
+`func (o *CustomerPayment) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CustomerPayment) SetAmountMinor(v int32)`
+`func (o *CustomerPayment) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -205,45 +205,43 @@ SetGatewayTransactionId sets GatewayTransactionId field to given value.
 UnsetGatewayTransactionId ensures that no value is present for GatewayTransactionId, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *CustomerPayment) GetCreatedAt() string`
+`func (o *CustomerPayment) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CustomerPayment) GetCreatedAtOk() (*string, bool)`
+`func (o *CustomerPayment) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CustomerPayment) SetCreatedAt(v string)`
+`func (o *CustomerPayment) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *CustomerPayment) GetUpdatedAt() string`
+`func (o *CustomerPayment) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CustomerPayment) GetUpdatedAtOk() (*string, bool)`
+`func (o *CustomerPayment) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CustomerPayment) SetUpdatedAt(v string)`
+`func (o *CustomerPayment) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**CustomerId** | **string** |  | 
-**BenefitId** | **string** |  | 
-**Benefit** | [**Benefit**](Benefit.md) |  | 
-**GrantedAt** | **time.Time** |  | 
-**ExpiresAt** | **NullableTime** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**Status** | **string** |  | 
-**HasAccess** | **bool** |  | 
-**AccessLevel** | **string** |  | 
-**SubscriptionId** | **NullableString** |  | 
-**SubscriptionStatus** | **NullableString** |  | 
+**Id** | **string** |  |
+**CustomerId** | **string** |  |
+**BenefitId** | **string** |  |
+**Benefit** | [**NullableBenefit**](Benefit.md) |  |
+**GrantedAt** | **time.Time** |  |
+**ExpiresAt** | **NullableTime** |  |
+**Metadata** | **map[string]interface{}** |  |
+**Status** | **string** |  |
+**HasAccess** | **bool** |  |
+**AccessLevel** | **string** |  |
+**SubscriptionId** | **NullableString** |  |
+**SubscriptionStatus** | **NullableString** |  |
 
 ## Methods
 
 ### NewEntitlement
 
-`func NewEntitlement(id string, customerId string, benefitId string, benefit Benefit, grantedAt time.Time, expiresAt NullableTime, metadata map[string]interface{}, status string, hasAccess bool, accessLevel string, subscriptionId NullableString, subscriptionStatus NullableString, ) *Entitlement`
+`func NewEntitlement(id string, customerId string, benefitId string, benefit NullableBenefit, grantedAt time.Time, expiresAt NullableTime, metadata map[string]interface{}, status string, hasAccess bool, accessLevel string, subscriptionId NullableString, subscriptionStatus NullableString, ) *Entitlement`
 
 NewEntitlement instantiates a new Entitlement object
 This constructor will assign default values to properties that have it defined,
@@ -116,6 +116,16 @@ and a boolean to check if the value has been set.
 SetBenefit sets Benefit field to given value.
 
 
+### SetBenefitNil
+
+`func (o *Entitlement) SetBenefitNil(b bool)`
+
+ SetBenefitNil sets the value for Benefit to be an explicit nil
+
+### UnsetBenefit
+`func (o *Entitlement) UnsetBenefit()`
+
+UnsetBenefit ensures that no value is present for Benefit, not even an explicit nil
 ### GetGrantedAt
 
 `func (o *Entitlement) GetGrantedAt() time.Time`
@@ -308,5 +318,3 @@ SetSubscriptionStatus sets SubscriptionStatus field to given value.
 UnsetSubscriptionStatus ensures that no value is present for SubscriptionStatus, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

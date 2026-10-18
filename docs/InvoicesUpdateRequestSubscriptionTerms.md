@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CollectionMethod** | **string** | How to collect payment for recurring invoices | 
-**StartMode** | **string** | When the subscription billing cycle starts | 
-**StartDate** | Pointer to **string** | Start date (ISO 8601) — required when start_mode is &#39;specific_date&#39; | [optional] 
-**DurationType** | **string** | How the subscription duration is determined | 
-**DurationCount** | Pointer to **int32** | Number of billing cycles — required when duration_type is &#39;fixed_cycles&#39; | [optional] 
-**EndDate** | Pointer to **string** | End date (ISO 8601) — required when duration_type is &#39;end_date&#39; | [optional] 
-**FirstPaymentBehavior** | **string** | Whether to charge the first cycle immediately or defer to the start date | 
+**CollectionMethod** | **string** | How to collect payment for recurring invoices |
+**StartMode** | **string** | When the subscription billing cycle starts |
+**StartDate** | Pointer to **string** | Start date (ISO 8601) — required when start_mode is &#39;specific_date&#39; | [optional]
+**DurationType** | **string** | How the subscription duration is determined |
+**DurationCount** | Pointer to **int32** | Number of billing cycles — required when duration_type is &#39;fixed_cycles&#39; | [optional]
+**EndDate** | Pointer to **string** | End date (ISO 8601) — required when duration_type is &#39;end_date&#39; | [optional]
+**FirstPaymentBehavior** | **string** | Whether to charge the first cycle immediately or defer to the start date |
 
 ## Methods
 
@@ -188,5 +188,3 @@ SetFirstPaymentBehavior sets FirstPaymentBehavior field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

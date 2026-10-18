@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Payment method ID | 
-**Type** | **string** | Payment method type | 
+**Id** | **string** | Payment method ID |
+**Type** | **string** | Payment method type |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetType sets Type field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

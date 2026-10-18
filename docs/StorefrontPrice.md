@@ -4,18 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**ProductId** | **string** |  | 
-**Currency** | **string** |  | 
-**UnitAmount** | **NullableInt32** |  | 
-**UnitAmountDecimal** | **NullableString** |  | 
-**Type** | **NullableString** |  | 
-**Interval** | **NullableString** |  | 
-**IntervalCount** | **NullableInt32** |  | 
-**BillingScheme** | **string** |  | 
-**UsageType** | **NullableString** |  | 
-**PackageSize** | **NullableInt32** |  | 
-**TrialPeriodDays** | **NullableInt32** |  | 
+**Id** | **string** |  |
+**ProductId** | **string** |  |
+**Currency** | **string** |  |
+**UnitAmount** | **NullableInt32** |  |
+**UnitAmountDecimal** | **NullableString** |  |
+**Type** | **NullableString** |  |
+**Interval** | **NullableString** |  |
+**IntervalCount** | **NullableInt32** |  |
+**BillingScheme** | **string** |  |
+**UsageType** | **NullableString** |  |
+**PackageSize** | **NullableInt32** |  |
+**TrialPeriodDays** | **NullableInt32** |  |
+**OptionValues** | Pointer to **map[string]string** | The variant&#39;s options, e.g. {\&quot;Size\&quot;:\&quot;M\&quot;}. Null when the price is not a variant. | [optional]
+**Sku** | Pointer to **NullableString** | The variant&#39;s SKU. Null when not set. | [optional]
+**ImageUrl** | Pointer to **NullableString** | The variant&#39;s image as a browser URL. Null when not set. | [optional]
 
 ## Methods
 
@@ -356,7 +359,100 @@ SetTrialPeriodDays sets TrialPeriodDays field to given value.
 `func (o *StorefrontPrice) UnsetTrialPeriodDays()`
 
 UnsetTrialPeriodDays ensures that no value is present for TrialPeriodDays, not even an explicit nil
+### GetOptionValues
+
+`func (o *StorefrontPrice) GetOptionValues() map[string]string`
+
+GetOptionValues returns the OptionValues field if non-nil, zero value otherwise.
+
+### GetOptionValuesOk
+
+`func (o *StorefrontPrice) GetOptionValuesOk() (*map[string]string, bool)`
+
+GetOptionValuesOk returns a tuple with the OptionValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptionValues
+
+`func (o *StorefrontPrice) SetOptionValues(v map[string]string)`
+
+SetOptionValues sets OptionValues field to given value.
+
+### HasOptionValues
+
+`func (o *StorefrontPrice) HasOptionValues() bool`
+
+HasOptionValues returns a boolean if a field has been set.
+
+### GetSku
+
+`func (o *StorefrontPrice) GetSku() string`
+
+GetSku returns the Sku field if non-nil, zero value otherwise.
+
+### GetSkuOk
+
+`func (o *StorefrontPrice) GetSkuOk() (*string, bool)`
+
+GetSkuOk returns a tuple with the Sku field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSku
+
+`func (o *StorefrontPrice) SetSku(v string)`
+
+SetSku sets Sku field to given value.
+
+### HasSku
+
+`func (o *StorefrontPrice) HasSku() bool`
+
+HasSku returns a boolean if a field has been set.
+
+### SetSkuNil
+
+`func (o *StorefrontPrice) SetSkuNil(b bool)`
+
+ SetSkuNil sets the value for Sku to be an explicit nil
+
+### UnsetSku
+`func (o *StorefrontPrice) UnsetSku()`
+
+UnsetSku ensures that no value is present for Sku, not even an explicit nil
+### GetImageUrl
+
+`func (o *StorefrontPrice) GetImageUrl() string`
+
+GetImageUrl returns the ImageUrl field if non-nil, zero value otherwise.
+
+### GetImageUrlOk
+
+`func (o *StorefrontPrice) GetImageUrlOk() (*string, bool)`
+
+GetImageUrlOk returns a tuple with the ImageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageUrl
+
+`func (o *StorefrontPrice) SetImageUrl(v string)`
+
+SetImageUrl sets ImageUrl field to given value.
+
+### HasImageUrl
+
+`func (o *StorefrontPrice) HasImageUrl() bool`
+
+HasImageUrl returns a boolean if a field has been set.
+
+### SetImageUrlNil
+
+`func (o *StorefrontPrice) SetImageUrlNil(b bool)`
+
+ SetImageUrlNil sets the value for ImageUrl to be an explicit nil
+
+### UnsetImageUrl
+`func (o *StorefrontPrice) UnsetImageUrl()`
+
+UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

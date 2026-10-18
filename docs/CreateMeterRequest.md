@@ -4,19 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Human-readable meter name | 
-**EventName** | **string** | Event name to match against | 
+**Name** | **string** | Human-readable meter name |
+**EventName** | **string** | Event name to match against |
 **Aggregation** | Pointer to **string** | Aggregation method | [optional] [default to "count"]
-**Slug** | Pointer to **string** | URL-safe identifier | [optional] 
-**Description** | Pointer to **string** | Meter description | [optional] 
-**ValueKey** | Pointer to **string** | Property key for sum/max/last aggregations | [optional] 
-**ValueExpression** | Pointer to **string** | Constrained arithmetic expression over numeric event properties. Example: input_tokens + output_tokens | [optional] 
-**FilterConditions** | Pointer to **[]map[string]interface{}** | Filter conditions for matching events | [optional] 
-**UniqueCountKey** | Pointer to **string** | Property key for count_unique aggregation | [optional] 
-**UnitName** | Pointer to **string** | Display unit name | [optional] 
-**CarryForward** | Pointer to **bool** | Carry forward last value across periods | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata | [optional] 
-**AlertThresholds** | Pointer to **[]float32** | Threshold percentages that trigger usage.threshold.reached webhooks. | [optional] 
+**Slug** | Pointer to **string** | URL-safe identifier | [optional]
+**Description** | Pointer to **string** | Meter description | [optional]
+**ValueKey** | Pointer to **string** | Property key for sum/max/last aggregations | [optional]
+**ValueExpression** | Pointer to **string** | Constrained arithmetic expression over numeric event properties. Example: input_tokens + output_tokens | [optional]
+**FilterConditions** | Pointer to **[]map[string]*interface{}** | Filter conditions for matching events | [optional]
+**UniqueCountKey** | Pointer to **string** | Property key for count_unique aggregation | [optional]
+**UnitName** | Pointer to **string** | Display unit name | [optional]
+**UnitOfMeasureCode** | Pointer to **string** | UN/ECE Rec 20 code. Omitted &#x3D;&gt; C62. unit_name remains the display label. | [optional]
+**CarryForward** | Pointer to **bool** | Carry forward last value across periods | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata | [optional]
+**AlertThresholds** | Pointer to **[]float32** | Threshold percentages that trigger usage.threshold.reached webhooks. | [optional]
 
 ## Methods
 
@@ -204,20 +205,20 @@ HasValueExpression returns a boolean if a field has been set.
 
 ### GetFilterConditions
 
-`func (o *CreateMeterRequest) GetFilterConditions() []map[string]interface{}`
+`func (o *CreateMeterRequest) GetFilterConditions() []map[string]*interface{}`
 
 GetFilterConditions returns the FilterConditions field if non-nil, zero value otherwise.
 
 ### GetFilterConditionsOk
 
-`func (o *CreateMeterRequest) GetFilterConditionsOk() (*[]map[string]interface{}, bool)`
+`func (o *CreateMeterRequest) GetFilterConditionsOk() (*[]map[string]*interface{}, bool)`
 
 GetFilterConditionsOk returns a tuple with the FilterConditions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilterConditions
 
-`func (o *CreateMeterRequest) SetFilterConditions(v []map[string]interface{})`
+`func (o *CreateMeterRequest) SetFilterConditions(v []map[string]*interface{})`
 
 SetFilterConditions sets FilterConditions field to given value.
 
@@ -277,6 +278,31 @@ SetUnitName sets UnitName field to given value.
 
 HasUnitName returns a boolean if a field has been set.
 
+### GetUnitOfMeasureCode
+
+`func (o *CreateMeterRequest) GetUnitOfMeasureCode() string`
+
+GetUnitOfMeasureCode returns the UnitOfMeasureCode field if non-nil, zero value otherwise.
+
+### GetUnitOfMeasureCodeOk
+
+`func (o *CreateMeterRequest) GetUnitOfMeasureCodeOk() (*string, bool)`
+
+GetUnitOfMeasureCodeOk returns a tuple with the UnitOfMeasureCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnitOfMeasureCode
+
+`func (o *CreateMeterRequest) SetUnitOfMeasureCode(v string)`
+
+SetUnitOfMeasureCode sets UnitOfMeasureCode field to given value.
+
+### HasUnitOfMeasureCode
+
+`func (o *CreateMeterRequest) HasUnitOfMeasureCode() bool`
+
+HasUnitOfMeasureCode returns a boolean if a field has been set.
+
 ### GetCarryForward
 
 `func (o *CreateMeterRequest) GetCarryForward() bool`
@@ -304,20 +330,20 @@ HasCarryForward returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *CreateMeterRequest) GetMetadata() map[string]interface{}`
+`func (o *CreateMeterRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreateMeterRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *CreateMeterRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreateMeterRequest) SetMetadata(v map[string]interface{})`
+`func (o *CreateMeterRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -354,5 +380,3 @@ HasAlertThresholds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

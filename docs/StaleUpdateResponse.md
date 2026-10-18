@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ignored** | **bool** |  | 
-**Reason** | **string** |  | 
-**StoredTimestamp** | **string** |  | 
-**IncomingTimestamp** | **string** |  | 
-**RequestId** | **string** |  | 
+**Ignored** | **bool** |  |
+**Reason** | **string** |  |
+**StoredTimestamp** | **time.Time** |  |
+**IncomingTimestamp** | **time.Time** |  |
+**RequestId** | **string** |  |
 
 ## Methods
 
 ### NewStaleUpdateResponse
 
-`func NewStaleUpdateResponse(ignored bool, reason string, storedTimestamp string, incomingTimestamp string, requestId string, ) *StaleUpdateResponse`
+`func NewStaleUpdateResponse(ignored bool, reason string, storedTimestamp time.Time, incomingTimestamp time.Time, requestId string, ) *StaleUpdateResponse`
 
 NewStaleUpdateResponse instantiates a new StaleUpdateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -71,40 +71,40 @@ SetReason sets Reason field to given value.
 
 ### GetStoredTimestamp
 
-`func (o *StaleUpdateResponse) GetStoredTimestamp() string`
+`func (o *StaleUpdateResponse) GetStoredTimestamp() time.Time`
 
 GetStoredTimestamp returns the StoredTimestamp field if non-nil, zero value otherwise.
 
 ### GetStoredTimestampOk
 
-`func (o *StaleUpdateResponse) GetStoredTimestampOk() (*string, bool)`
+`func (o *StaleUpdateResponse) GetStoredTimestampOk() (*time.Time, bool)`
 
 GetStoredTimestampOk returns a tuple with the StoredTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStoredTimestamp
 
-`func (o *StaleUpdateResponse) SetStoredTimestamp(v string)`
+`func (o *StaleUpdateResponse) SetStoredTimestamp(v time.Time)`
 
 SetStoredTimestamp sets StoredTimestamp field to given value.
 
 
 ### GetIncomingTimestamp
 
-`func (o *StaleUpdateResponse) GetIncomingTimestamp() string`
+`func (o *StaleUpdateResponse) GetIncomingTimestamp() time.Time`
 
 GetIncomingTimestamp returns the IncomingTimestamp field if non-nil, zero value otherwise.
 
 ### GetIncomingTimestampOk
 
-`func (o *StaleUpdateResponse) GetIncomingTimestampOk() (*string, bool)`
+`func (o *StaleUpdateResponse) GetIncomingTimestampOk() (*time.Time, bool)`
 
 GetIncomingTimestampOk returns a tuple with the IncomingTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIncomingTimestamp
 
-`func (o *StaleUpdateResponse) SetIncomingTimestamp(v string)`
+`func (o *StaleUpdateResponse) SetIncomingTimestamp(v time.Time)`
 
 SetIncomingTimestamp sets IncomingTimestamp field to given value.
 
@@ -131,5 +131,3 @@ SetRequestId sets RequestId field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

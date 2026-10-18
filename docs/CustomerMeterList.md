@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**Data** | [**[]CustomerMeter**](CustomerMeter.md) |  | 
-**HasMore** | **bool** | Customer-meter list responses are not paginated — every meter the merchant has is returned for the specified customer. | 
-**Url** | **string** |  | 
+**Object** | **string** |  |
+**Data** | [**[]CustomerMeter**](CustomerMeter.md) |  |
+**HasMore** | **bool** | Customer-meter list responses are not paginated — every meter the merchant has is returned for the specified customer. |
+**Url** | **string** |  |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetUrl sets Url field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

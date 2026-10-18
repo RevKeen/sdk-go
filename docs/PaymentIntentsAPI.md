@@ -1,6 +1,6 @@
 # \PaymentIntentsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## PaymentIntentsCancel
 
-> PaymentIntent PaymentIntentsCancel(ctx, id).CancelPaymentIntentRequest(cancelPaymentIntentRequest).Execute()
+> PaymentIntent PaymentIntentsCancel(ctx, id).IdempotencyKey(idempotencyKey).CancelPaymentIntentRequest(cancelPaymentIntentRequest).Execute()
 
 Cancel a payment intent
 
@@ -30,16 +30,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "id_example" // string | Payment intent ID (pi_xxx)
+	id := "pi_abc123" // string | Payment intent public ID (`pi_…`) or UUID.
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	cancelPaymentIntentRequest := *openapiclient.NewCancelPaymentIntentRequest() // CancelPaymentIntentRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsCancel(context.Background(), id).CancelPaymentIntentRequest(cancelPaymentIntentRequest).Execute()
+	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsCancel(context.Background(), id).IdempotencyKey(idempotencyKey).CancelPaymentIntentRequest(cancelPaymentIntentRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentIntentsAPI.PaymentIntentsCancel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -55,7 +56,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment intent ID (pi_xxx) | 
+**id** | **string** | Payment intent public ID (&#x60;pi_…&#x60;) or UUID. |
 
 ### Other Parameters
 
@@ -65,7 +66,8 @@ Other parameters are passed through a pointer to a apiPaymentIntentsCancelReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cancelPaymentIntentRequest** | [**CancelPaymentIntentRequest**](CancelPaymentIntentRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **cancelPaymentIntentRequest** | [**CancelPaymentIntentRequest**](CancelPaymentIntentRequest.md) |  |
 
 ### Return type
 
@@ -87,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## PaymentIntentsCapture
 
-> PaymentIntent PaymentIntentsCapture(ctx, id).CapturePaymentIntentRequest(capturePaymentIntentRequest).Execute()
+> PaymentIntent PaymentIntentsCapture(ctx, id).IdempotencyKey(idempotencyKey).CapturePaymentIntentRequest(capturePaymentIntentRequest).Execute()
 
 Capture a payment intent
 
@@ -102,16 +104,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "id_example" // string | Payment intent ID (pi_xxx)
+	id := "pi_abc123" // string | Payment intent public ID (`pi_…`) or UUID.
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	capturePaymentIntentRequest := *openapiclient.NewCapturePaymentIntentRequest() // CapturePaymentIntentRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsCapture(context.Background(), id).CapturePaymentIntentRequest(capturePaymentIntentRequest).Execute()
+	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsCapture(context.Background(), id).IdempotencyKey(idempotencyKey).CapturePaymentIntentRequest(capturePaymentIntentRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentIntentsAPI.PaymentIntentsCapture``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,7 +130,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment intent ID (pi_xxx) | 
+**id** | **string** | Payment intent public ID (&#x60;pi_…&#x60;) or UUID. |
 
 ### Other Parameters
 
@@ -137,7 +140,8 @@ Other parameters are passed through a pointer to a apiPaymentIntentsCaptureReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **capturePaymentIntentRequest** | [**CapturePaymentIntentRequest**](CapturePaymentIntentRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **capturePaymentIntentRequest** | [**CapturePaymentIntentRequest**](CapturePaymentIntentRequest.md) |  |
 
 ### Return type
 
@@ -159,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## PaymentIntentsConfirm
 
-> PaymentIntent PaymentIntentsConfirm(ctx, id).ConfirmPaymentIntentRequest(confirmPaymentIntentRequest).Execute()
+> PaymentIntent PaymentIntentsConfirm(ctx, id).IdempotencyKey(idempotencyKey).ConfirmPaymentIntentRequest(confirmPaymentIntentRequest).Execute()
 
 Confirm a payment intent
 
@@ -174,16 +178,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "id_example" // string | Payment intent ID (pi_xxx)
+	id := "pi_abc123" // string | Payment intent public ID (`pi_…`) or UUID.
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	confirmPaymentIntentRequest := *openapiclient.NewConfirmPaymentIntentRequest() // ConfirmPaymentIntentRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsConfirm(context.Background(), id).ConfirmPaymentIntentRequest(confirmPaymentIntentRequest).Execute()
+	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsConfirm(context.Background(), id).IdempotencyKey(idempotencyKey).ConfirmPaymentIntentRequest(confirmPaymentIntentRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentIntentsAPI.PaymentIntentsConfirm``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -199,7 +204,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment intent ID (pi_xxx) | 
+**id** | **string** | Payment intent public ID (&#x60;pi_…&#x60;) or UUID. |
 
 ### Other Parameters
 
@@ -209,7 +214,8 @@ Other parameters are passed through a pointer to a apiPaymentIntentsConfirmReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **confirmPaymentIntentRequest** | [**ConfirmPaymentIntentRequest**](ConfirmPaymentIntentRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **confirmPaymentIntentRequest** | [**ConfirmPaymentIntentRequest**](ConfirmPaymentIntentRequest.md) |  |
 
 ### Return type
 
@@ -231,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## PaymentIntentsCreate
 
-> PaymentIntent PaymentIntentsCreate(ctx).CreatePaymentIntentRequest(createPaymentIntentRequest).Execute()
+> PaymentIntent PaymentIntentsCreate(ctx).IdempotencyKey(idempotencyKey).CreatePaymentIntentRequest(createPaymentIntentRequest).Execute()
 
 Create a payment intent
 
@@ -246,15 +252,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	createPaymentIntentRequest := *openapiclient.NewCreatePaymentIntentRequest(int32(5000), "Customer_example") // CreatePaymentIntentRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsCreate(context.Background()).CreatePaymentIntentRequest(createPaymentIntentRequest).Execute()
+	resp, r, err := apiClient.PaymentIntentsAPI.PaymentIntentsCreate(context.Background()).IdempotencyKey(idempotencyKey).CreatePaymentIntentRequest(createPaymentIntentRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentIntentsAPI.PaymentIntentsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,7 +282,8 @@ Other parameters are passed through a pointer to a apiPaymentIntentsCreateReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createPaymentIntentRequest** | [**CreatePaymentIntentRequest**](CreatePaymentIntentRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **createPaymentIntentRequest** | [**CreatePaymentIntentRequest**](CreatePaymentIntentRequest.md) |  |
 
 ### Return type
 
@@ -312,11 +320,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "id_example" // string | Payment intent ID (pi_xxx)
+	id := "pi_abc123" // string | Payment intent public ID (`pi_…`) or UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -336,7 +344,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment intent ID (pi_xxx) | 
+**id** | **string** | Payment intent public ID (&#x60;pi_…&#x60;) or UUID. |
 
 ### Other Parameters
 
@@ -382,14 +390,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	customer := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Filter by customer ID (optional)
 	status := "status_example" // string | Filter by status (optional)
-	createdGte := float32(8.14) // float32 | Filter by created_at >= (Unix timestamp) (optional)
-	createdLte := float32(8.14) // float32 | Filter by created_at <= (Unix timestamp) (optional)
+	createdGte := float32(8.14) // float32 | Filter by created_at >= (Unix timestamp, seconds) (optional)
+	createdLte := float32(8.14) // float32 | Filter by created_at <= (Unix timestamp, seconds) (optional)
 	limit := int32(56) // int32 | Maximum number of results (1-100) (optional) (default to 20)
 	startingAfter := "startingAfter_example" // string | Cursor for pagination - return results after this ID (pi_xxx) (optional)
 	endingBefore := "endingBefore_example" // string | Cursor for pagination - return results before this ID (pi_xxx) (optional)
@@ -417,13 +425,13 @@ Other parameters are passed through a pointer to a apiPaymentIntentsListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customer** | **string** | Filter by customer ID | 
- **status** | **string** | Filter by status | 
- **createdGte** | **float32** | Filter by created_at &gt;&#x3D; (Unix timestamp) | 
- **createdLte** | **float32** | Filter by created_at &lt;&#x3D; (Unix timestamp) | 
+ **customer** | **string** | Filter by customer ID |
+ **status** | **string** | Filter by status |
+ **createdGte** | **float32** | Filter by created_at &gt;&#x3D; (Unix timestamp, seconds) |
+ **createdLte** | **float32** | Filter by created_at &lt;&#x3D; (Unix timestamp, seconds) |
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
- **startingAfter** | **string** | Cursor for pagination - return results after this ID (pi_xxx) | 
- **endingBefore** | **string** | Cursor for pagination - return results before this ID (pi_xxx) | 
+ **startingAfter** | **string** | Cursor for pagination - return results after this ID (pi_xxx) |
+ **endingBefore** | **string** | Cursor for pagination - return results before this ID (pi_xxx) |
 
 ### Return type
 
@@ -441,4 +449,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** | Customer the mandate is created for | 
-**AccountHolderName** | **string** | Name on the bank account | 
-**SortCode** | **string** | UK sort code (6 digits, dashes optional) | 
-**AccountNumber** | **string** | UK account number (8 digits) | 
-**BackupPaymentMethodId** | Pointer to **string** | Stored card used as recovery fallback if a collection fails | [optional] 
-**RequestToken** | Pointer to **string** | Signed mandate-request token to consume on creation | [optional] 
-**Acceptance** | Pointer to [**CreateMandateRequestAcceptance**](CreateMandateRequestAcceptance.md) |  | [optional] 
+**CustomerId** | **string** | Customer the mandate is created for |
+**AccountHolderName** | **string** | Name on the bank account |
+**SortCode** | **string** | UK sort code (6 digits, dashes optional) |
+**AccountNumber** | **string** | UK account number (8 digits) |
+**BackupPaymentMethodId** | Pointer to **string** | Stored card used as recovery fallback if a collection fails | [optional]
+**RequestToken** | Pointer to **string** | Signed mandate-request token to consume on creation | [optional]
+**Acceptance** | Pointer to [**CreateMandateRequestAcceptance**](CreateMandateRequestAcceptance.md) |  | [optional]
 
 ## Methods
 
@@ -188,5 +188,3 @@ HasAcceptance returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

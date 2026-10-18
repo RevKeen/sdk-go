@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**Images** | Pointer to **[]string** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**Name** | **string** |  |
+**Description** | Pointer to **NullableString** |  | [optional]
+**Images** | Pointer to **[]string** |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
 
 ## Methods
 
@@ -120,20 +120,20 @@ HasImages returns a boolean if a field has been set.
 UnsetImages ensures that no value is present for Images, not even an explicit nil
 ### GetMetadata
 
-`func (o *PaymentLinksCreateRequestLineItemsInnerPriceDataProductData) GetMetadata() map[string]interface{}`
+`func (o *PaymentLinksCreateRequestLineItemsInnerPriceDataProductData) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PaymentLinksCreateRequestLineItemsInnerPriceDataProductData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PaymentLinksCreateRequestLineItemsInnerPriceDataProductData) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PaymentLinksCreateRequestLineItemsInnerPriceDataProductData) SetMetadata(v map[string]interface{})`
+`func (o *PaymentLinksCreateRequestLineItemsInnerPriceDataProductData) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -145,5 +145,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

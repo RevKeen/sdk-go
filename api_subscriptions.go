@@ -1,10 +1,8 @@
 /*
 RevKeen API
 
-RevKeen is a fintech-grade API for payments, subscriptions, invoices, and billing. The canonical production MCP server is available at `https://mcp.revkeen.com/mcp`.  **API Version:** `2026-05-01` — Pin with the `RevKeen-Version` header.  **Quick Links:** [Full Documentation](https://docs.revkeen.com) | [Authentication](https://docs.revkeen.com/authentication) | [OAuth](https://docs.revkeen.com/oauth) | [SDKs](https://docs.revkeen.com/sdks) | [Webhooks](#webhooks) | [MCP Guide](https://docs.revkeen.com/mcp)  ## Authentication  Two authentication methods are supported:  ### API Keys (recommended for server-to-server REST API integrations)  Send your API key in the `x-api-key` header. Get keys from the [Dashboard](https://app.revkeen.com/settings/api-keys). Use `rk_sandbox_*` for test mode and `rk_live_*` for production.  ### OAuth 2.1 (recommended for MCP and third-party integrations)  Use OAuth 2.1 with PKCE for authorization code flow or client credentials for server-to-server. Tokens are sent via `Authorization: Bearer rk_oauth_*`. See the [OAuth guide](https://docs.revkeen.com/oauth) for setup.  - **Authorization Code + PKCE** — user-facing integrations, MCP hosts - **Client Credentials** — server-to-server, automated workflows - **Dynamic Client Registration** — MCP hosts that auto-register  ## MCP Integration  RevKeen's canonical production MCP server is `https://mcp.revkeen.com/mcp` using Streamable HTTP and OAuth 2.1 bearer tokens.  - **Customer launch surface** — read-first customer v1 tools with least-privilege scopes - **Host setup guide** — see the [MCP guide](https://docs.revkeen.com/mcp) for ChatGPT, Claude, and compatible MCP hosts  ## API Key Scopes  Scopes follow `{resource}:{action}` format (e.g., `invoices:read`, `customers:*`). See [full scope reference](https://docs.revkeen.com/authentication#scopes).  | Category | Scope | Description | |----------|-------|-------------| | **Payments & Checkout** | `checkout:read` | View checkout session details | |  | `checkout:write` | Create and manage checkout sessions | |  | `cart:read` | View cart session details (REV-3511) | |  | `cart:write` | Create and mutate cart sessions, line items, add-ons (REV-3511) | |  | `payment_links:read` | View payment links | |  | `payment_links:write` | Create and manage payment links | |  | `charges:read` | View one-time charges | |  | `charges:write` | Create one-time charges for customers | |  | `payments:read` | View payment details | |  | `payments:write` | Capture or void payments | |  | `payment_intents:read` | View payment intent details | |  | `payment_intents:write` | Create, confirm, capture, and cancel payment intents | |  | `setup_intents:read` | View setup intent details | |  | `setup_intents:write` | Create, confirm, and cancel setup intents | |  | `payment_methods:read` | View saved payment methods | |  | `payment_methods:write` | Attach and detach payment methods | | **Billing** | `invoices:read` | View invoices | |  | `invoices:write` | Create, update, and manage invoices | |  | `subscriptions:read` | View subscriptions | |  | `subscriptions:write` | Create, update, pause, and cancel subscriptions | |  | `subscription_schedules:read` | View subscription schedule details | |  | `subscription_schedules:write` | Create, update, cancel, and release subscription schedules | |  | `orders:read` | View orders | |  | `orders:write` | Create and manage orders | |  | `credit_notes:read` | View credit notes | |  | `credit_notes:write` | Create and void credit notes | | **Products & Pricing** | `products:read` | View product catalog | |  | `products:write` | Create and update products | |  | `prices:read` | View pricing information | |  | `prices:write` | Create and update prices | |  | `discounts:read` | View discount codes | |  | `discounts:write` | Create and manage discount codes | |  | `tax_rates:read` | View tax rate configurations | |  | `tax_rates:write` | Configure tax rates | | **Usage & Metering** | `meters:read` | View meter configurations | |  | `meters:write` | Create and update meters | |  | `usage:read` | View usage events and balances | |  | `usage:write` | Ingest usage events | | **Customers** | `customers:read` | View customer information | |  | `customers:write` | Create and update customers | |  | `entitlements:read` | View customer entitlements / feature access | |  | `entitlements:write` | Grant and revoke customer entitlements | |  | `businesses:read` | View business entities | |  | `businesses:write` | Manage business entities | | **Money Movement** | `refunds:read` | View refund details | |  | `refunds:write` | Issue refunds | |  | `voids:read` | View voided transactions | |  | `voids:write` | Void unsettled transactions | |  | `disputes:read` | View chargebacks and disputes | |  | `disputes:write` | Respond to disputes | |  | `payouts:read` | View payout and settlement data | | **Direct Debit** | `mandates:read` | View Direct Debit mandates and collection status | |  | `mandates:write` | Create, suspend, reinstate, and cancel Direct Debit mandates | | **Terminal** | `terminal:read` | View terminal devices and card-present payments | |  | `terminal:write` | Initiate, cancel, refund, and void terminal payments | | **Data Exchange** | `exports:read` | View and download data exports | |  | `exports:write` | Create data exports | |  | `imports:read` | View import status and history | |  | `imports:write` | Upload and run data imports | | **Analytics & Reporting** | `analytics:read` | View analytics and reports | |  | `finance:read` | View financial reports | | **Communication** | `comms:read` | View SMS and email delivery logs | |  | `comms:write` | Send SMS, email, and WhatsApp messages | |  | `automations:read` | View automations, runs, approvals, and traces | |  | `automations:write` | Create automations and trigger runs | | **Integrations** | `apps:read` | View connected applications | |  | `apps:write` | Manage app connections | |  | `webhooks:read` | View webhook endpoints | |  | `webhooks:write` | Manage webhook endpoints | |  | `integrations:read` | View integration status and sync logs | |  | `integrations:write` | Activate, configure, and sync integrations | |  | `events:read` | View webhook event logs | |  | `events:write` | Resend and test webhook events | |  | `sync:read` | View sync watermarks and state | |  | `sync:write` | Update sync watermarks |  ## Environments  | Environment | Base URL | API Key Prefix | |-------------|----------|----------------| | **Staging** | `https://staging-api.revkeen.com/v2` | `rk_sandbox_*` | | **Production** | `https://api.revkeen.com/v2` | `rk_live_*` |  ## Idempotency  Include `Idempotency-Key` header (UUID) on mutation requests. Keys are valid for 24 hours.  ## Rate Limits  | Plan | Requests/min | Burst | |------|-------------|-------| | **Staging** | 100 | 200 | | **Production** | 1000 | 2000 | | **Enterprise** | Custom | Custom | 
-
 API version: 2026-05-01
-Contact: info@revkeen.com
+Contact: support@revkeen.com
 */
 
 // Code generated by OpenAPI Generator (https://openapi-generator.tech); DO NOT EDIT.
@@ -20,44 +18,43 @@ import (
 	"strings"
 )
 
-
 type SubscriptionsAPI interface {
 
 	/*
-	SubscriptionsCancel Cancel subscription
+			SubscriptionsCancel Cancel subscription
 
-	Cancel a subscription either immediately or at the end of the current billing period.
+			Cancel a subscription either immediately or at the end of the current billing period.
 
-**Modes:**
-- `immediately`: Status set to "canceled", access revoked now
-- `period_end`: cancelAtPeriodEnd flag set, access continues until period end
+		**Modes:**
+		- `immediately`: Status set to "canceled", access revoked now
+		- `period_end`: cancelAtPeriodEnd flag set, access continues until period end
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /subscriptions` — Create a new subscription
-- `GET /subscriptions` — List subscriptions
-- `GET /subscriptions/{id}` — Get subscription by ID
-- `PATCH /subscriptions/{id}` — Update subscription details
-- `DELETE /subscriptions/{id}` — Delete subscription
-- `POST /subscriptions/{id}/change-plan` — Change subscription plan
-- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
-- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
 
-**Common errors**
+		**Common errors**
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
-**Idempotency**
+		**Idempotency**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Subscription UUID
-	@return ApiSubscriptionsCancelRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsCancelRequest
 	*/
 	SubscriptionsCancel(ctx context.Context, id string) ApiSubscriptionsCancelRequest
 
@@ -66,34 +63,90 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	SubscriptionsCancelExecute(r ApiSubscriptionsCancelRequest) (*SubscriptionCancelSubscriptionResponse, *http.Response, error)
 
 	/*
-	SubscriptionsCreate Create a new subscription
+			SubscriptionsChangePlan Change subscription plan
 
-	Create a new subscription for a customer
+			Move an `active`, `trialing` or `past_due` subscription to another recurring price, from now.
 
----
+		**Nothing is charged when the plan changes.** With `prorationBehavior` `next_invoice` (the default, and what `invoice_immediately` means here), the difference for the rest of the current period is added to the next renewal invoice, or credited there for a downgrade. Two changes before a renewal are netted. With `none` the plan changes and no proration is added. The renewal amount becomes the new price times the subscription's quantity.
 
-**Related endpoints**
+		The new price must bill on the subscription's own interval and in its currency (`interval_mismatch`, `currency_mismatch`), and must have an amount above zero (`price_amount_missing`). See the figures first with `POST /v2/subscriptions/{id}/preview-change-plan`, which uses the same calculation.
 
-- `GET /subscriptions` — List subscriptions
-- `GET /subscriptions/{id}` — Get subscription by ID
-- `PATCH /subscriptions/{id}` — Update subscription details
-- `DELETE /subscriptions/{id}` — Delete subscription
-- `POST /subscriptions/{id}/change-plan` — Change subscription plan
-- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
-- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
+		**Direct Debit.** A Direct Debit subscription is refused with `409 direct_debit_plan_change_unsupported`: a new amount needs advance notice to the payer, which this operation does not send.
 
-**Common errors**
+		Emits `subscription.plan_changed`. Requires the `subscriptions:write` scope and the `subscription:update` permission. Send an `Idempotency-Key` header to make retries safe.
 
-- `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+		---
 
-**Idempotency**
+		**Related endpoints**
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+		- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSubscriptionsCreateRequest
+		**Common errors**
+
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+		**Idempotency**
+
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsChangePlanRequest
+	*/
+	SubscriptionsChangePlan(ctx context.Context, id string) ApiSubscriptionsChangePlanRequest
+
+	// SubscriptionsChangePlanExecute executes the request
+	//  @return SubscriptionChangePlanResponse
+	SubscriptionsChangePlanExecute(r ApiSubscriptionsChangePlanRequest) (*SubscriptionChangePlanResponse, *http.Response, error)
+
+	/*
+			SubscriptionsCreate Create a new subscription
+
+			Create a new subscription for a customer.
+
+		**The first period is billed at creation**, at the price's amount for the quantity. On card the saved `paymentMethodId` is charged straight away (it is required unless the subscription starts in a trial). On Direct Debit the first collection is scheduled with advance notice, typically 5–7 working days after creation. With a trial, nothing is billed until the trial ends.
+
+		Set `paymentRail: direct_debit` with an active `mandateId` to create a Direct Debit subscription (GBP only). This needs a signed-in team member or an OAuth app; API keys are refused with 403.
+
+		---
+
+		**Related endpoints**
+
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+		- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
+
+		**Common errors**
+
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `422 unprocessable_entity` — business-rule failure (for example, refunding more than the original charge).
+
+		**Idempotency**
+
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiSubscriptionsCreateRequest
 	*/
 	SubscriptionsCreate(ctx context.Context) ApiSubscriptionsCreateRequest
 
@@ -102,31 +155,31 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	SubscriptionsCreateExecute(r ApiSubscriptionsCreateRequest) (*SubscriptionCreateResponse, *http.Response, error)
 
 	/*
-	SubscriptionsGet Get subscription by ID
+			SubscriptionsGet Get subscription by ID
 
-	Retrieve detailed information about a specific subscription
+			Retrieve detailed information about a specific subscription
 
----
+		---
 
-**Related endpoints**
+		**Related endpoints**
 
-- `POST /subscriptions` — Create a new subscription
-- `GET /subscriptions` — List subscriptions
-- `PATCH /subscriptions/{id}` — Update subscription details
-- `DELETE /subscriptions/{id}` — Delete subscription
-- `POST /subscriptions/{id}/change-plan` — Change subscription plan
-- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
-- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+		- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
 
-**Common errors**
+		**Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Subscription UUID
-	@return ApiSubscriptionsGetRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsGetRequest
 	*/
 	SubscriptionsGet(ctx context.Context, id string) ApiSubscriptionsGetRequest
 
@@ -135,33 +188,36 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 	SubscriptionsGetExecute(r ApiSubscriptionsGetRequest) (*SubscriptionRetrieveResponse, *http.Response, error)
 
 	/*
-	SubscriptionsList List subscriptions
+			SubscriptionsList List subscriptions
 
-	Retrieve a paginated list of subscriptions with optional filters
+			Retrieve a paginated list of subscriptions with optional filters.
 
----
+		Every query parameter is optional: a bare call lists the merchant's subscriptions, newest first, with a default page size of 20. `customerId` must name a customer of the authenticated merchant; an unknown id is rejected with 404 `resource_missing` rather than returning an empty list, so a mistyped filter is not mistaken for a customer who has no subscriptions.
 
-**Related endpoints**
+		---
 
-- `POST /subscriptions` — Create a new subscription
-- `GET /subscriptions/{id}` — Get subscription by ID
-- `PATCH /subscriptions/{id}` — Update subscription details
-- `DELETE /subscriptions/{id}` — Delete subscription
-- `POST /subscriptions/{id}/change-plan` — Change subscription plan
-- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
-- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
+		**Related endpoints**
 
-**Common errors**
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+		- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+		**Common errors**
 
-**Pagination**
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
-Offset-based with `limit` (default 25, max 100) and `offset`. The response `pagination` block includes `total` and `hasMore`. See [the pagination guide](/docs/fundamentals/pagination) for SDK auto-paging helpers.
+		**Pagination**
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSubscriptionsListRequest
+		Offset-based with `limit` (default 25, max 100) and `offset`. The response `pagination` block includes `total` and `hasMore`. See [the pagination guide](/docs/fundamentals/pagination) for SDK auto-paging helpers.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiSubscriptionsListRequest
 	*/
 	SubscriptionsList(ctx context.Context) ApiSubscriptionsListRequest
 
@@ -170,35 +226,183 @@ Offset-based with `limit` (default 25, max 100) and `offset`. The response `pagi
 	SubscriptionsListExecute(r ApiSubscriptionsListRequest) (*SubscriptionListResponse, *http.Response, error)
 
 	/*
-	SubscriptionsUpdate Update subscription details
+			SubscriptionsPause Pause subscription
 
-	Update an existing subscription's properties
+			Pause an `active` or `trialing` subscription, immediately. While it is paused:
+		- The subscription status is `paused` and no renewal invoices are generated or collected.
+		- Nothing already issued is voided, cancelled or recalled. Invoices that are already open stay open.
+		- A Direct Debit subscription also stops collecting: its open invoices are listed in `dd_collection_stopped` and are not collected automatically.
 
----
+		It takes no parameters (send no body, or an empty object). Resume with `POST /v2/subscriptions/{id}/resume`; a pause does not end by itself.
 
-**Related endpoints**
+		A subscription in any other status is refused with `400 invalid_status` and nothing is changed. Emits `subscription.paused`.
 
-- `POST /subscriptions` — Create a new subscription
-- `GET /subscriptions` — List subscriptions
-- `GET /subscriptions/{id}` — Get subscription by ID
-- `DELETE /subscriptions/{id}` — Delete subscription
-- `POST /subscriptions/{id}/change-plan` — Change subscription plan
-- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
-- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
+		Requires the `subscriptions:write` scope and the `subscription:pause` permission. Send an `Idempotency-Key` header to make retries safe.
 
-**Common errors**
+		---
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
-- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		**Related endpoints**
 
-**Idempotency**
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
 
-Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+		**Common errors**
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Subscription UUID
-	@return ApiSubscriptionsUpdateRequest
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+		**Idempotency**
+
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsPauseRequest
+	*/
+	SubscriptionsPause(ctx context.Context, id string) ApiSubscriptionsPauseRequest
+
+	// SubscriptionsPauseExecute executes the request
+	//  @return SubscriptionPauseResponse
+	SubscriptionsPauseExecute(r ApiSubscriptionsPauseRequest) (*SubscriptionPauseResponse, *http.Response, error)
+
+	/*
+			SubscriptionsPreviewChangePlan Preview a plan change
+
+			Show what `POST /v2/subscriptions/{id}/change-plan` would do with the same body: the new renewal amount, this change's proration and what the next renewal invoice would add or credit. **Nothing is changed and nothing is recorded.**
+
+		It uses the same calculation and the same checks as the change, so it is refused for the same reasons (`400`, and `409` for a Direct Debit subscription). The figures are as of the request: a change made later prorates over fewer remaining days.
+
+		Requires the `subscriptions:read` scope and the `subscription:read` permission.
+
+		---
+
+		**Related endpoints**
+
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+		- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
+
+		**Common errors**
+
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+		**Idempotency**
+
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsPreviewChangePlanRequest
+	*/
+	SubscriptionsPreviewChangePlan(ctx context.Context, id string) ApiSubscriptionsPreviewChangePlanRequest
+
+	// SubscriptionsPreviewChangePlanExecute executes the request
+	//  @return SubscriptionChangePlanPreviewResponse
+	SubscriptionsPreviewChangePlanExecute(r ApiSubscriptionsPreviewChangePlanRequest) (*SubscriptionChangePlanPreviewResponse, *http.Response, error)
+
+	/*
+			SubscriptionsResume Resume subscription
+
+			Resume a `paused` subscription. The status returns to `active` and renewals continue.
+
+		**The periods that elapsed while it was paused are not billed.** The subscription keeps its billing day and its next charge is the next billing date after the resume, never one charge per paused period.
+
+		Invoices that were already open when it was paused stay open; resuming does not collect them.
+
+		**Direct Debit.** A Direct Debit subscription resumes only if its mandate can collect now. Otherwise the call is refused with `409 mandate_not_usable` (or `409 direct_debit_not_configured`), the subscription stays paused, and `details.mandate_usability_code` says why. A card subscription has no such check.
+
+		A subscription that is not `paused` is refused with `400 invalid_status`. It takes no body. Emits `subscription.resumed`.
+
+		Requires the `subscriptions:write` scope and the `subscription:resume` permission. Send an `Idempotency-Key` header to make retries safe.
+
+		---
+
+		**Related endpoints**
+
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `PATCH /subscriptions/{id}` — Update subscription details
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+
+		**Common errors**
+
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+		- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+		- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+		**Idempotency**
+
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsResumeRequest
+	*/
+	SubscriptionsResume(ctx context.Context, id string) ApiSubscriptionsResumeRequest
+
+	// SubscriptionsResumeExecute executes the request
+	//  @return SubscriptionResumeResponse
+	SubscriptionsResumeExecute(r ApiSubscriptionsResumeRequest) (*SubscriptionResumeResponse, *http.Response, error)
+
+	/*
+			SubscriptionsUpdate Update subscription details
+
+			Update a subscription's metadata.
+
+		Only `metadata` is accepted; any other field is refused with 400. To cancel a subscription use `POST /subscriptions/{id}/cancel`.
+
+		---
+
+		**Related endpoints**
+
+		- `POST /subscriptions` — Create a new subscription
+		- `GET /subscriptions` — List subscriptions
+		- `GET /subscriptions/{id}` — Get subscription by ID
+		- `DELETE /subscriptions/{id}` — Delete subscription
+		- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+		- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+		- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+		- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
+
+		**Common errors**
+
+		- `400 invalid_request` — malformed payload or failed validation.
+		- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+		- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+
+		**Idempotency**
+
+		Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id Subscription UUID
+			@return ApiSubscriptionsUpdateRequest
 	*/
 	SubscriptionsUpdate(ctx context.Context, id string) ApiSubscriptionsUpdateRequest
 
@@ -211,10 +415,18 @@ Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Key
 type SubscriptionsAPIService service
 
 type ApiSubscriptionsCancelRequest struct {
-	ctx context.Context
-	ApiService SubscriptionsAPI
-	id string
+	ctx                     context.Context
+	ApiService              SubscriptionsAPI
+	id                      string
+	idempotencyKey          *string
 	cancelSubscriptionInput *CancelSubscriptionInput
+	runtimeOptions          []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsCancelRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsCancelRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiSubscriptionsCancelRequest) CancelSubscriptionInput(cancelSubscriptionInput CancelSubscriptionInput) ApiSubscriptionsCancelRequest {
@@ -222,8 +434,21 @@ func (r ApiSubscriptionsCancelRequest) CancelSubscriptionInput(cancelSubscriptio
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsCancelRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsCancelRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiSubscriptionsCancelRequest) Execute() (*SubscriptionCancelSubscriptionResponse, *http.Response, error) {
-	return r.ApiService.SubscriptionsCancelExecute(r)
+	var value *SubscriptionCancelSubscriptionResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsCancelExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
@@ -245,39 +470,40 @@ Cancel a subscription either immediately or at the end of the current billing pe
 - `PATCH /subscriptions/{id}` — Update subscription details
 - `DELETE /subscriptions/{id}` — Delete subscription
 - `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
 - `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
-- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
 
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
 **Idempotency**
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Subscription UUID
- @return ApiSubscriptionsCancelRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsCancelRequest
 */
 func (a *SubscriptionsAPIService) SubscriptionsCancel(ctx context.Context, id string) ApiSubscriptionsCancelRequest {
 	return ApiSubscriptionsCancelRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return SubscriptionCancelSubscriptionResponse
+//
+//	@return SubscriptionCancelSubscriptionResponse
 func (a *SubscriptionsAPIService) SubscriptionsCancelExecute(r ApiSubscriptionsCancelRequest) (*SubscriptionCancelSubscriptionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SubscriptionCancelSubscriptionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionCancelSubscriptionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsCancel")
@@ -308,6 +534,9 @@ func (a *SubscriptionsAPIService) SubscriptionsCancelExecute(r ApiSubscriptionsC
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.cancelSubscriptionInput
@@ -362,10 +591,278 @@ func (a *SubscriptionsAPIService) SubscriptionsCancelExecute(r ApiSubscriptionsC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSubscriptionsChangePlanRequest struct {
+	ctx                            context.Context
+	ApiService                     SubscriptionsAPI
+	id                             string
+	idempotencyKey                 *string
+	subscriptionsChangePlanRequest *SubscriptionsChangePlanRequest
+	runtimeOptions                 []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsChangePlanRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsChangePlanRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+func (r ApiSubscriptionsChangePlanRequest) SubscriptionsChangePlanRequest(subscriptionsChangePlanRequest SubscriptionsChangePlanRequest) ApiSubscriptionsChangePlanRequest {
+	r.subscriptionsChangePlanRequest = &subscriptionsChangePlanRequest
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsChangePlanRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsChangePlanRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
+func (r ApiSubscriptionsChangePlanRequest) Execute() (*SubscriptionChangePlanResponse, *http.Response, error) {
+	var value *SubscriptionChangePlanResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsChangePlanExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
+}
+
+/*
+SubscriptionsChangePlan Change subscription plan
+
+Move an `active`, `trialing` or `past_due` subscription to another recurring price, from now.
+
+**Nothing is charged when the plan changes.** With `prorationBehavior` `next_invoice` (the default, and what `invoice_immediately` means here), the difference for the rest of the current period is added to the next renewal invoice, or credited there for a downgrade. Two changes before a renewal are netted. With `none` the plan changes and no proration is added. The renewal amount becomes the new price times the subscription's quantity.
+
+The new price must bill on the subscription's own interval and in its currency (`interval_mismatch`, `currency_mismatch`), and must have an amount above zero (`price_amount_missing`). See the figures first with `POST /v2/subscriptions/{id}/preview-change-plan`, which uses the same calculation.
+
+**Direct Debit.** A Direct Debit subscription is refused with `409 direct_debit_plan_change_unsupported`: a new amount needs advance notice to the payer, which this operation does not send.
+
+Emits `subscription.plan_changed`. Requires the `subscriptions:write` scope and the `subscription:update` permission. Send an `Idempotency-Key` header to make retries safe.
+
+---
+
+**Related endpoints**
+
+- `POST /subscriptions` — Create a new subscription
+- `GET /subscriptions` — List subscriptions
+- `GET /subscriptions/{id}` — Get subscription by ID
+- `PATCH /subscriptions/{id}` — Update subscription details
+- `DELETE /subscriptions/{id}` — Delete subscription
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
+
+**Common errors**
+
+- `400 invalid_request` — malformed payload or failed validation.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+**Idempotency**
+
+Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsChangePlanRequest
+*/
+func (a *SubscriptionsAPIService) SubscriptionsChangePlan(ctx context.Context, id string) ApiSubscriptionsChangePlanRequest {
+	return ApiSubscriptionsChangePlanRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SubscriptionChangePlanResponse
+func (a *SubscriptionsAPIService) SubscriptionsChangePlanExecute(r ApiSubscriptionsChangePlanRequest) (*SubscriptionChangePlanResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionChangePlanResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsChangePlan")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/subscriptions/{id}/change-plan"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.subscriptionsChangePlanRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v SubscriptionPlanChangeError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v AuthenticationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v MerchantActionForbiddenError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v NotFoundError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v SubscriptionPlanChangeConflictError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v RateLimitError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v AuthorizationAuditUnavailableError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSubscriptionsCreateRequest struct {
-	ctx context.Context
-	ApiService SubscriptionsAPI
+	ctx                        context.Context
+	ApiService                 SubscriptionsAPI
+	idempotencyKey             *string
 	subscriptionsCreateRequest *SubscriptionsCreateRequest
+	runtimeOptions             []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsCreateRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsCreateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiSubscriptionsCreateRequest) SubscriptionsCreateRequest(subscriptionsCreateRequest SubscriptionsCreateRequest) ApiSubscriptionsCreateRequest {
@@ -373,14 +870,31 @@ func (r ApiSubscriptionsCreateRequest) SubscriptionsCreateRequest(subscriptionsC
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsCreateRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsCreateRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiSubscriptionsCreateRequest) Execute() (*SubscriptionCreateResponse, *http.Response, error) {
-	return r.ApiService.SubscriptionsCreateExecute(r)
+	var value *SubscriptionCreateResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsCreateExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
 SubscriptionsCreate Create a new subscription
 
-Create a new subscription for a customer
+Create a new subscription for a customer.
+
+**The first period is billed at creation**, at the price's amount for the quantity. On card the saved `paymentMethodId` is charged straight away (it is required unless the subscription starts in a trial). On Direct Debit the first collection is scheduled with advance notice, typically 5–7 working days after creation. With a trial, nothing is billed until the trial ends.
+
+Set `paymentRail: direct_debit` with an active `mandateId` to create a Direct Debit subscription (GBP only). This needs a signed-in team member or an OAuth app; API keys are refused with 403.
 
 ---
 
@@ -391,37 +905,41 @@ Create a new subscription for a customer
 - `PATCH /subscriptions/{id}` — Update subscription details
 - `DELETE /subscriptions/{id}` — Delete subscription
 - `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
 - `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
 - `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
 
 **Common errors**
 
 - `400 invalid_request` — malformed payload or failed validation.
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+- `422 unprocessable_entity` — business-rule failure (for example, refunding more than the original charge).
 
 **Idempotency**
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionsCreateRequest
 */
 func (a *SubscriptionsAPIService) SubscriptionsCreate(ctx context.Context) ApiSubscriptionsCreateRequest {
 	return ApiSubscriptionsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return SubscriptionCreateResponse
+//
+//	@return SubscriptionCreateResponse
 func (a *SubscriptionsAPIService) SubscriptionsCreateExecute(r ApiSubscriptionsCreateRequest) (*SubscriptionCreateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SubscriptionCreateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsCreate")
@@ -451,6 +969,9 @@ func (a *SubscriptionsAPIService) SubscriptionsCreateExecute(r ApiSubscriptionsC
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.subscriptionsCreateRequest
@@ -506,19 +1027,33 @@ func (a *SubscriptionsAPIService) SubscriptionsCreateExecute(r ApiSubscriptionsC
 }
 
 type ApiSubscriptionsGetRequest struct {
-	ctx context.Context
-	ApiService SubscriptionsAPI
-	id string
+	ctx            context.Context
+	ApiService     SubscriptionsAPI
+	id             string
+	runtimeOptions []RequestOption
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsGetRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsGetRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
 }
 
 func (r ApiSubscriptionsGetRequest) Execute() (*SubscriptionRetrieveResponse, *http.Response, error) {
-	return r.ApiService.SubscriptionsGetExecute(r)
+	var value *SubscriptionRetrieveResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, false)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsGetExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
 SubscriptionsGet Get subscription by ID
 
-Retrieve detailed information about a specific subscription
+# Retrieve detailed information about a specific subscription
 
 ---
 
@@ -529,35 +1064,36 @@ Retrieve detailed information about a specific subscription
 - `PATCH /subscriptions/{id}` — Update subscription details
 - `DELETE /subscriptions/{id}` — Delete subscription
 - `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
 - `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
 - `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
 
 **Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Subscription UUID
- @return ApiSubscriptionsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsGetRequest
 */
 func (a *SubscriptionsAPIService) SubscriptionsGet(ctx context.Context, id string) ApiSubscriptionsGetRequest {
 	return ApiSubscriptionsGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return SubscriptionRetrieveResponse
+//
+//	@return SubscriptionRetrieveResponse
 func (a *SubscriptionsAPIService) SubscriptionsGetExecute(r ApiSubscriptionsGetRequest) (*SubscriptionRetrieveResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SubscriptionRetrieveResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionRetrieveResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsGet")
@@ -641,12 +1177,13 @@ func (a *SubscriptionsAPIService) SubscriptionsGetExecute(r ApiSubscriptionsGetR
 }
 
 type ApiSubscriptionsListRequest struct {
-	ctx context.Context
-	ApiService SubscriptionsAPI
-	page *int32
-	limit *int32
-	status *string
-	customerId *string
+	ctx            context.Context
+	ApiService     SubscriptionsAPI
+	page           *int32
+	limit          *int32
+	status         *string
+	customerId     *string
+	runtimeOptions []RequestOption
 }
 
 // Page number
@@ -673,14 +1210,29 @@ func (r ApiSubscriptionsListRequest) CustomerId(customerId string) ApiSubscripti
 	return r
 }
 
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsListRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsListRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
 func (r ApiSubscriptionsListRequest) Execute() (*SubscriptionListResponse, *http.Response, error) {
-	return r.ApiService.SubscriptionsListExecute(r)
+	var value *SubscriptionListResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, false)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsListExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
 SubscriptionsList List subscriptions
 
-Retrieve a paginated list of subscriptions with optional filters
+Retrieve a paginated list of subscriptions with optional filters.
+
+Every query parameter is optional: a bare call lists the merchant's subscriptions, newest first, with a default page size of 20. `customerId` must name a customer of the authenticated merchant; an unknown id is rejected with 404 `resource_missing` rather than returning an empty list, so a mistyped filter is not mistaken for a customer who has no subscriptions.
 
 ---
 
@@ -691,36 +1243,38 @@ Retrieve a paginated list of subscriptions with optional filters
 - `PATCH /subscriptions/{id}` — Update subscription details
 - `DELETE /subscriptions/{id}` — Delete subscription
 - `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
 - `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
 - `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
 
 **Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
 **Pagination**
 
 Offset-based with `limit` (default 25, max 100) and `offset`. The response `pagination` block includes `total` and `hasMore`. See [the pagination guide](/docs/fundamentals/pagination) for SDK auto-paging helpers.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionsListRequest
 */
 func (a *SubscriptionsAPIService) SubscriptionsList(ctx context.Context) ApiSubscriptionsListRequest {
 	return ApiSubscriptionsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return SubscriptionListResponse
+//
+//	@return SubscriptionListResponse
 func (a *SubscriptionsAPIService) SubscriptionsListExecute(r ApiSubscriptionsListRequest) (*SubscriptionListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SubscriptionListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsList")
@@ -737,16 +1291,16 @@ func (a *SubscriptionsAPIService) SubscriptionsListExecute(r ApiSubscriptionsLis
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int32 = 1
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int32 = 1
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-        var defaultValue int32 = 20
-        parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
-        r.limit = &defaultValue
+		var defaultValue int32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
@@ -807,6 +1361,776 @@ func (a *SubscriptionsAPIService) SubscriptionsListExecute(r ApiSubscriptionsLis
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v SubscriptionCustomerNotFound
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSubscriptionsPauseRequest struct {
+	ctx            context.Context
+	ApiService     SubscriptionsAPI
+	id             string
+	idempotencyKey *string
+	body           *map[string]interface{}
+	runtimeOptions []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsPauseRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsPauseRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+func (r ApiSubscriptionsPauseRequest) Body(body map[string]interface{}) ApiSubscriptionsPauseRequest {
+	r.body = &body
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsPauseRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsPauseRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
+func (r ApiSubscriptionsPauseRequest) Execute() (*SubscriptionPauseResponse, *http.Response, error) {
+	var value *SubscriptionPauseResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsPauseExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
+}
+
+/*
+SubscriptionsPause Pause subscription
+
+Pause an `active` or `trialing` subscription, immediately. While it is paused:
+- The subscription status is `paused` and no renewal invoices are generated or collected.
+- Nothing already issued is voided, cancelled or recalled. Invoices that are already open stay open.
+- A Direct Debit subscription also stops collecting: its open invoices are listed in `dd_collection_stopped` and are not collected automatically.
+
+It takes no parameters (send no body, or an empty object). Resume with `POST /v2/subscriptions/{id}/resume`; a pause does not end by itself.
+
+A subscription in any other status is refused with `400 invalid_status` and nothing is changed. Emits `subscription.paused`.
+
+Requires the `subscriptions:write` scope and the `subscription:pause` permission. Send an `Idempotency-Key` header to make retries safe.
+
+---
+
+**Related endpoints**
+
+- `POST /subscriptions` — Create a new subscription
+- `GET /subscriptions` — List subscriptions
+- `GET /subscriptions/{id}` — Get subscription by ID
+- `PATCH /subscriptions/{id}` — Update subscription details
+- `DELETE /subscriptions/{id}` — Delete subscription
+- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+
+**Common errors**
+
+- `400 invalid_request` — malformed payload or failed validation.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+**Idempotency**
+
+Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsPauseRequest
+*/
+func (a *SubscriptionsAPIService) SubscriptionsPause(ctx context.Context, id string) ApiSubscriptionsPauseRequest {
+	return ApiSubscriptionsPauseRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SubscriptionPauseResponse
+func (a *SubscriptionsAPIService) SubscriptionsPauseExecute(r ApiSubscriptionsPauseRequest) (*SubscriptionPauseResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionPauseResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsPause")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/subscriptions/{id}/pause"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v SubscriptionStateError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v AuthenticationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v MerchantActionForbiddenError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v NotFoundError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v RateLimitError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v AuthorizationAuditUnavailableError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSubscriptionsPreviewChangePlanRequest struct {
+	ctx                                context.Context
+	ApiService                         SubscriptionsAPI
+	id                                 string
+	idempotencyKey                     *string
+	previewSubscriptionPlanChangeInput *PreviewSubscriptionPlanChangeInput
+	runtimeOptions                     []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsPreviewChangePlanRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsPreviewChangePlanRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+func (r ApiSubscriptionsPreviewChangePlanRequest) PreviewSubscriptionPlanChangeInput(previewSubscriptionPlanChangeInput PreviewSubscriptionPlanChangeInput) ApiSubscriptionsPreviewChangePlanRequest {
+	r.previewSubscriptionPlanChangeInput = &previewSubscriptionPlanChangeInput
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsPreviewChangePlanRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsPreviewChangePlanRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
+func (r ApiSubscriptionsPreviewChangePlanRequest) Execute() (*SubscriptionChangePlanPreviewResponse, *http.Response, error) {
+	var value *SubscriptionChangePlanPreviewResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsPreviewChangePlanExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
+}
+
+/*
+SubscriptionsPreviewChangePlan Preview a plan change
+
+Show what `POST /v2/subscriptions/{id}/change-plan` would do with the same body: the new renewal amount, this change's proration and what the next renewal invoice would add or credit. **Nothing is changed and nothing is recorded.**
+
+It uses the same calculation and the same checks as the change, so it is refused for the same reasons (`400`, and `409` for a Direct Debit subscription). The figures are as of the request: a change made later prorates over fewer remaining days.
+
+Requires the `subscriptions:read` scope and the `subscription:read` permission.
+
+---
+
+**Related endpoints**
+
+- `POST /subscriptions` — Create a new subscription
+- `GET /subscriptions` — List subscriptions
+- `GET /subscriptions/{id}` — Get subscription by ID
+- `PATCH /subscriptions/{id}` — Update subscription details
+- `DELETE /subscriptions/{id}` — Delete subscription
+- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+- `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
+
+**Common errors**
+
+- `400 invalid_request` — malformed payload or failed validation.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+**Idempotency**
+
+Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsPreviewChangePlanRequest
+*/
+func (a *SubscriptionsAPIService) SubscriptionsPreviewChangePlan(ctx context.Context, id string) ApiSubscriptionsPreviewChangePlanRequest {
+	return ApiSubscriptionsPreviewChangePlanRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SubscriptionChangePlanPreviewResponse
+func (a *SubscriptionsAPIService) SubscriptionsPreviewChangePlanExecute(r ApiSubscriptionsPreviewChangePlanRequest) (*SubscriptionChangePlanPreviewResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionChangePlanPreviewResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsPreviewChangePlan")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/subscriptions/{id}/preview-change-plan"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.previewSubscriptionPlanChangeInput
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v SubscriptionPlanChangeError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v AuthenticationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v MerchantActionForbiddenError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v NotFoundError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v SubscriptionPlanChangeConflictError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v RateLimitError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v AuthorizationAuditUnavailableError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSubscriptionsResumeRequest struct {
+	ctx            context.Context
+	ApiService     SubscriptionsAPI
+	id             string
+	idempotencyKey *string
+	runtimeOptions []RequestOption
+}
+
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsResumeRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsResumeRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsResumeRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsResumeRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
+	return r
+}
+
+func (r ApiSubscriptionsResumeRequest) Execute() (*SubscriptionResumeResponse, *http.Response, error) {
+	var value *SubscriptionResumeResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsResumeExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
+}
+
+/*
+SubscriptionsResume Resume subscription
+
+Resume a `paused` subscription. The status returns to `active` and renewals continue.
+
+**The periods that elapsed while it was paused are not billed.** The subscription keeps its billing day and its next charge is the next billing date after the resume, never one charge per paused period.
+
+Invoices that were already open when it was paused stay open; resuming does not collect them.
+
+**Direct Debit.** A Direct Debit subscription resumes only if its mandate can collect now. Otherwise the call is refused with `409 mandate_not_usable` (or `409 direct_debit_not_configured`), the subscription stays paused, and `details.mandate_usability_code` says why. A card subscription has no such check.
+
+A subscription that is not `paused` is refused with `400 invalid_status`. It takes no body. Emits `subscription.resumed`.
+
+Requires the `subscriptions:write` scope and the `subscription:resume` permission. Send an `Idempotency-Key` header to make retries safe.
+
+---
+
+**Related endpoints**
+
+- `POST /subscriptions` — Create a new subscription
+- `GET /subscriptions` — List subscriptions
+- `GET /subscriptions/{id}` — Get subscription by ID
+- `PATCH /subscriptions/{id}` — Update subscription details
+- `DELETE /subscriptions/{id}` — Delete subscription
+- `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
+- `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
+
+**Common errors**
+
+- `400 invalid_request` — malformed payload or failed validation.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
+- `403 authorization_error` — the caller is identified but the action is denied. Codes include `insufficient_permissions`, `ip_not_allowed`, `merchant_mismatch`, and `origin_not_allowed`.
+- `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
+- `409 conflict` — Idempotency-Key collision with a different body, or a concurrent state-transition conflict.
+- `429 rate_limit_error` — code `rate_limit_exceeded`. Back off using the `Retry-After` header (whole seconds); `X-RateLimit-Reset` is a UNIX timestamp in seconds.
+
+**Idempotency**
+
+Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsResumeRequest
+*/
+func (a *SubscriptionsAPIService) SubscriptionsResume(ctx context.Context, id string) ApiSubscriptionsResumeRequest {
+	return ApiSubscriptionsResumeRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SubscriptionResumeResponse
+func (a *SubscriptionsAPIService) SubscriptionsResumeExecute(r ApiSubscriptionsResumeRequest) (*SubscriptionResumeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionResumeResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsResume")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/subscriptions/{id}/resume"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v SubscriptionStateError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v AuthenticationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v MerchantActionForbiddenError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v NotFoundError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v SubscriptionResumeConflictError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v RateLimitError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v AuthorizationAuditUnavailableError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -823,25 +2147,48 @@ func (a *SubscriptionsAPIService) SubscriptionsListExecute(r ApiSubscriptionsLis
 }
 
 type ApiSubscriptionsUpdateRequest struct {
-	ctx context.Context
-	ApiService SubscriptionsAPI
-	id string
-	subscriptionsUpdateRequest *SubscriptionsUpdateRequest
+	ctx                     context.Context
+	ApiService              SubscriptionsAPI
+	id                      string
+	idempotencyKey          *string
+	subscriptionUpdateInput *SubscriptionUpdateInput
+	runtimeOptions          []RequestOption
 }
 
-func (r ApiSubscriptionsUpdateRequest) SubscriptionsUpdateRequest(subscriptionsUpdateRequest SubscriptionsUpdateRequest) ApiSubscriptionsUpdateRequest {
-	r.subscriptionsUpdateRequest = &subscriptionsUpdateRequest
+// Stable caller-owned key for this logical mutation. Reuse only with an identical request.
+func (r ApiSubscriptionsUpdateRequest) IdempotencyKey(idempotencyKey string) ApiSubscriptionsUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+func (r ApiSubscriptionsUpdateRequest) SubscriptionUpdateInput(subscriptionUpdateInput SubscriptionUpdateInput) ApiSubscriptionsUpdateRequest {
+	r.subscriptionUpdateInput = &subscriptionUpdateInput
+	return r
+}
+
+// WithRequestOptions applies per-call IDs and timeout overrides to this request.
+func (r ApiSubscriptionsUpdateRequest) WithRequestOptions(opts ...RequestOption) ApiSubscriptionsUpdateRequest {
+	r.runtimeOptions = append(r.runtimeOptions, opts...)
 	return r
 }
 
 func (r ApiSubscriptionsUpdateRequest) Execute() (*SubscriptionUpdateResponse, *http.Response, error) {
-	return r.ApiService.SubscriptionsUpdateExecute(r)
+	var value *SubscriptionUpdateResponse
+	preparedContext, optionErr := prepareRuntimeRequest(r.ctx, r.runtimeOptions, true)
+	r.ctx = preparedContext
+	if optionErr != nil {
+		return value, nil, wrapRequestError(r.ctx, nil, optionErr)
+	}
+	value, response, err := r.ApiService.SubscriptionsUpdateExecute(r)
+	return value, response, wrapRequestError(r.ctx, response, err)
 }
 
 /*
 SubscriptionsUpdate Update subscription details
 
-Update an existing subscription's properties
+Update a subscription's metadata.
+
+Only `metadata` is accepted; any other field is refused with 400. To cancel a subscription use `POST /subscriptions/{id}/cancel`.
 
 ---
 
@@ -852,39 +2199,41 @@ Update an existing subscription's properties
 - `GET /subscriptions/{id}` — Get subscription by ID
 - `DELETE /subscriptions/{id}` — Delete subscription
 - `POST /subscriptions/{id}/change-plan` — Change subscription plan
+- `POST /subscriptions/{id}/preview-change-plan` — Preview a plan change
 - `POST /subscriptions/{id}/change-quantity` — Change subscription quantity
 - `POST /subscriptions/{id}/preview-renewal` — Preview subscription renewal
-- `POST /subscriptions/{id}/pause` — Pause subscription
 
 **Common errors**
 
-- `401 unauthenticated` — missing, malformed, or revoked API key.
+- `400 invalid_request` — malformed payload or failed validation.
+- `401 authentication_error` — missing, invalid, expired, or revoked credential. Codes: `authentication_failed`, `invalid_api_key`, `expired_api_key`, `api_key_revoked`, `session_invalid`, `merchant_required`. Carries a `WWW-Authenticate: Bearer` challenge.
 - `404 resource_missing` — the referenced resource does not exist or is not visible to your key.
 
 **Idempotency**
 
 Pass an `Idempotency-Key` header (UUID v4 recommended) to make retries safe. Keys are valid for 24 hours; see [the idempotency guide](/docs/fundamentals/idempotency).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Subscription UUID
- @return ApiSubscriptionsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Subscription UUID
+	@return ApiSubscriptionsUpdateRequest
 */
 func (a *SubscriptionsAPIService) SubscriptionsUpdate(ctx context.Context, id string) ApiSubscriptionsUpdateRequest {
 	return ApiSubscriptionsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return SubscriptionUpdateResponse
+//
+//	@return SubscriptionUpdateResponse
 func (a *SubscriptionsAPIService) SubscriptionsUpdateExecute(r ApiSubscriptionsUpdateRequest) (*SubscriptionUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SubscriptionUpdateResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SubscriptionUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsUpdate")
@@ -916,8 +2265,11 @@ func (a *SubscriptionsAPIService) SubscriptionsUpdateExecute(r ApiSubscriptionsU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Idempotency-Key", r.idempotencyKey, "simple", "")
+	}
 	// body params
-	localVarPostBody = r.subscriptionsUpdateRequest
+	localVarPostBody = r.subscriptionUpdateInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

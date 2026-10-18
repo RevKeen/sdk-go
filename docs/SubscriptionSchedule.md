@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Public schedule ID (sub_sched_xxx) | 
-**Object** | **string** | Object type | 
-**Status** | **string** | Schedule status. not_started: Scheduled for future. active: Currently executing phases. completed: All phases finished. canceled: Manually canceled. released: Detached from subscription. | 
-**Customer** | **NullableString** | Customer ID | 
-**Subscription** | **NullableString** | Linked subscription ID | 
-**CurrentPhase** | [**SubscriptionScheduleCurrentPhase**](SubscriptionScheduleCurrentPhase.md) |  | 
-**Phases** | [**[]SchedulePhase**](SchedulePhase.md) | All phases in the schedule | 
-**EndBehavior** | **string** | What happens when the schedule completes. cancel: Cancel the subscription. release: Make subscription standalone. | 
-**ReleasedAt** | Pointer to **NullableInt32** | When released (Unix timestamp) | [optional] 
-**ReleasedSubscription** | Pointer to **NullableString** | Subscription ID at release time | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom metadata | [optional] 
-**Created** | **int32** | Unix timestamp of creation | 
-**Livemode** | **bool** | Whether in live mode | 
+**Id** | **string** | Public schedule ID (sub_sched_xxx) |
+**Object** | **string** | Object type |
+**Status** | **string** | Schedule status. not_started: Scheduled for future. active: Currently executing phases. completed: All phases finished. canceled: Manually canceled. released: Detached from subscription. |
+**Customer** | **NullableString** | Customer ID |
+**Subscription** | **NullableString** | Linked subscription ID |
+**CurrentPhase** | [**NullableSubscriptionScheduleCurrentPhase**](SubscriptionScheduleCurrentPhase.md) |  |
+**Phases** | [**[]SchedulePhase**](SchedulePhase.md) | All phases in the schedule |
+**EndBehavior** | **string** | What happens when the schedule completes. cancel: Cancel the subscription. release: Make subscription standalone. |
+**ReleasedAt** | Pointer to **NullableInt32** | When released (Unix timestamp) | [optional]
+**ReleasedSubscription** | Pointer to **NullableString** | Subscription ID at release time | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom metadata | [optional]
+**Created** | **int32** | Unix timestamp of creation |
+**Livemode** | **bool** | Whether in live mode |
 
 ## Methods
 
 ### NewSubscriptionSchedule
 
-`func NewSubscriptionSchedule(id string, object string, status string, customer NullableString, subscription NullableString, currentPhase SubscriptionScheduleCurrentPhase, phases []SchedulePhase, endBehavior string, created int32, livemode bool, ) *SubscriptionSchedule`
+`func NewSubscriptionSchedule(id string, object string, status string, customer NullableString, subscription NullableString, currentPhase NullableSubscriptionScheduleCurrentPhase, phases []SchedulePhase, endBehavior string, created int32, livemode bool, ) *SubscriptionSchedule`
 
 NewSubscriptionSchedule instantiates a new SubscriptionSchedule object
 This constructor will assign default values to properties that have it defined,
@@ -177,6 +177,16 @@ and a boolean to check if the value has been set.
 SetCurrentPhase sets CurrentPhase field to given value.
 
 
+### SetCurrentPhaseNil
+
+`func (o *SubscriptionSchedule) SetCurrentPhaseNil(b bool)`
+
+ SetCurrentPhaseNil sets the value for CurrentPhase to be an explicit nil
+
+### UnsetCurrentPhase
+`func (o *SubscriptionSchedule) UnsetCurrentPhase()`
+
+UnsetCurrentPhase ensures that no value is present for CurrentPhase, not even an explicit nil
 ### GetPhases
 
 `func (o *SubscriptionSchedule) GetPhases() []SchedulePhase`
@@ -354,5 +364,3 @@ SetLivemode sets Livemode field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

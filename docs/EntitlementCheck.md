@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BenefitKey** | **string** |  | 
-**HasAccess** | **bool** |  | 
-**AccessLevel** | **string** |  | 
-**Status** | **NullableString** |  | 
-**Benefit** | [**Benefit**](Benefit.md) |  | 
-**Reason** | **NullableString** |  | 
+**BenefitKey** | **string** |  |
+**HasAccess** | **bool** |  |
+**AccessLevel** | **string** |  |
+**Status** | **NullableString** |  |
+**Benefit** | [**NullableBenefit**](Benefit.md) |  |
+**Reason** | **NullableString** |  |
 
 ## Methods
 
 ### NewEntitlementCheck
 
-`func NewEntitlementCheck(benefitKey string, hasAccess bool, accessLevel string, status NullableString, benefit Benefit, reason NullableString, ) *EntitlementCheck`
+`func NewEntitlementCheck(benefitKey string, hasAccess bool, accessLevel string, status NullableString, benefit NullableBenefit, reason NullableString, ) *EntitlementCheck`
 
 NewEntitlementCheck instantiates a new EntitlementCheck object
 This constructor will assign default values to properties that have it defined,
@@ -140,6 +140,16 @@ and a boolean to check if the value has been set.
 SetBenefit sets Benefit field to given value.
 
 
+### SetBenefitNil
+
+`func (o *EntitlementCheck) SetBenefitNil(b bool)`
+
+ SetBenefitNil sets the value for Benefit to be an explicit nil
+
+### UnsetBenefit
+`func (o *EntitlementCheck) UnsetBenefit()`
+
+UnsetBenefit ensures that no value is present for Benefit, not even an explicit nil
 ### GetReason
 
 `func (o *EntitlementCheck) GetReason() string`
@@ -172,5 +182,3 @@ SetReason sets Reason field to given value.
 UnsetReason ensures that no value is present for Reason, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

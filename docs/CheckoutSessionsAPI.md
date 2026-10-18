@@ -1,6 +1,6 @@
 # \CheckoutSessionsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CheckoutSessionsCreate
 
-> CheckoutSessionCreateResponse CheckoutSessionsCreate(ctx).CreateCheckoutSessionInput(createCheckoutSessionInput).Execute()
+> CheckoutSessionCreateResponse CheckoutSessionsCreate(ctx).IdempotencyKey(idempotencyKey).CreateCheckoutSessionInput(createCheckoutSessionInput).Execute()
 
 Create a checkout session
 
@@ -27,15 +27,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	createCheckoutSessionInput := *openapiclient.NewCreateCheckoutSessionInput() // CreateCheckoutSessionInput |  (optional)
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
+	createCheckoutSessionInput := *openapiclient.NewCreateCheckoutSessionInput("InvoiceId_example") // CreateCheckoutSessionInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CheckoutSessionsAPI.CheckoutSessionsCreate(context.Background()).CreateCheckoutSessionInput(createCheckoutSessionInput).Execute()
+	resp, r, err := apiClient.CheckoutSessionsAPI.CheckoutSessionsCreate(context.Background()).IdempotencyKey(idempotencyKey).CreateCheckoutSessionInput(createCheckoutSessionInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CheckoutSessionsAPI.CheckoutSessionsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +57,8 @@ Other parameters are passed through a pointer to a apiCheckoutSessionsCreateRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCheckoutSessionInput** | [**CreateCheckoutSessionInput**](CreateCheckoutSessionInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **createCheckoutSessionInput** | [**CreateCheckoutSessionInput**](CreateCheckoutSessionInput.md) |  |
 
 ### Return type
 
@@ -78,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## CheckoutSessionsExpire
 
-> CheckoutSessionExpireResponse CheckoutSessionsExpire(ctx, id).Execute()
+> CheckoutSessionExpireResponse CheckoutSessionsExpire(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Expire a checkout session
 
@@ -93,15 +95,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "550e8400-e29b-41d4-a716-446655440000" // string | Checkout session ID to expire.
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CheckoutSessionsAPI.CheckoutSessionsExpire(context.Background(), id).Execute()
+	resp, r, err := apiClient.CheckoutSessionsAPI.CheckoutSessionsExpire(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CheckoutSessionsAPI.CheckoutSessionsExpire``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -117,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Checkout session ID to expire. | 
+**id** | **string** | Checkout session ID to expire. |
 
 ### Other Parameters
 
@@ -127,6 +130,7 @@ Other parameters are passed through a pointer to a apiCheckoutSessionsExpireRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -163,7 +167,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -187,7 +191,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Checkout session ID. | 
+**id** | **string** | Checkout session ID. |
 
 ### Other Parameters
 
@@ -214,4 +218,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

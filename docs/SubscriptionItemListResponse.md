@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**[]SubscriptionItem**](SubscriptionItem.md) |  | 
-**Meta** | [**SubscriptionItemListResponseMeta**](SubscriptionItemListResponseMeta.md) |  | 
+**Data** | [**[]SubscriptionItem**](SubscriptionItem.md) |  |
+**Meta** | [**SubscriptionItemListResponseMeta**](SubscriptionItemListResponseMeta.md) |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetMeta sets Meta field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

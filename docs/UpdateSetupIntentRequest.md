@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | Pointer to **string** | ID of the customer to attach the payment method to | [optional] 
-**PaymentMethodTypes** | Pointer to **[]string** | Allowed payment method types | [optional] 
-**Description** | Pointer to **string** | Merchant description for reference | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom metadata to attach | [optional] 
+**CustomerId** | Pointer to **string** | ID of the customer to attach the payment method to | [optional]
+**PaymentMethodTypes** | Pointer to **[]string** | Allowed payment method types | [optional]
+**Description** | Pointer to **string** | Merchant description for reference | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom metadata to attach | [optional]
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *UpdateSetupIntentRequest) GetMetadata() map[string]interface{}`
+`func (o *UpdateSetupIntentRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *UpdateSetupIntentRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *UpdateSetupIntentRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *UpdateSetupIntentRequest) SetMetadata(v map[string]interface{})`
+`func (o *UpdateSetupIntentRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -130,5 +130,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

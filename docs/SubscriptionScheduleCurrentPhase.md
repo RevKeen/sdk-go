@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartDate** | **int32** | Phase start (Unix timestamp) | 
-**EndDate** | **NullableInt32** | Phase end (Unix timestamp) | 
+**StartDate** | **int32** | Phase start (Unix timestamp) |
+**EndDate** | **NullableInt32** | Phase end (Unix timestamp) |
 
 ## Methods
 
@@ -78,5 +78,3 @@ SetEndDate sets EndDate field to given value.
 UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

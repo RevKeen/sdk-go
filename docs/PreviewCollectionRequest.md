@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedCollectionDate** | Pointer to **string** | Preferred collection date (ISO date). Backend resolves the working-day chain. | [optional] 
-**SubscriptionId** | Pointer to **string** | Subscription the collection is previewed for, if any | [optional] 
+**RequestedCollectionDate** | Pointer to **string** | Preferred collection date (ISO date). Backend resolves the working-day chain. | [optional]
+**SubscriptionId** | Pointer to **string** | Subscription the collection is previewed for, if any | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasSubscriptionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

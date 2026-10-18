@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** |  | [optional] 
-**TotalMinor** | Pointer to **int32** |  | [optional] 
-**DueDate** | Pointer to **string** |  | [optional] 
-**AllowedMethods** | Pointer to **[]string** | Update the invoice&#39;s restricted payment methods. Empty array clears restriction (merchant defaults apply); omit to leave unchanged. | [optional] 
-**SubscriptionTerms** | Pointer to [**InvoicesUpdateRequestSubscriptionTerms**](InvoicesUpdateRequestSubscriptionTerms.md) |  | [optional] 
+**TotalMinor** | Pointer to **int64** | Header total in minor units. Accepted only on a draft invoice with no line items; amount_due_minor follows it. | [optional]
+**DueDate** | Pointer to **string** |  | [optional]
+**AllowedMethods** | Pointer to **[]string** | Update the invoice&#39;s restricted payment methods. Empty array clears restriction (merchant defaults apply); omit to leave unchanged. | [optional]
+**SubscriptionTerms** | Pointer to [**NullableInvoicesUpdateRequestSubscriptionTerms**](InvoicesUpdateRequestSubscriptionTerms.md) |  | [optional]
 
 ## Methods
 
@@ -29,47 +28,22 @@ NewInvoicesUpdateRequestWithDefaults instantiates a new InvoicesUpdateRequest ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStatus
-
-`func (o *InvoicesUpdateRequest) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *InvoicesUpdateRequest) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *InvoicesUpdateRequest) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *InvoicesUpdateRequest) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
 ### GetTotalMinor
 
-`func (o *InvoicesUpdateRequest) GetTotalMinor() int32`
+`func (o *InvoicesUpdateRequest) GetTotalMinor() int64`
 
 GetTotalMinor returns the TotalMinor field if non-nil, zero value otherwise.
 
 ### GetTotalMinorOk
 
-`func (o *InvoicesUpdateRequest) GetTotalMinorOk() (*int32, bool)`
+`func (o *InvoicesUpdateRequest) GetTotalMinorOk() (*int64, bool)`
 
 GetTotalMinorOk returns a tuple with the TotalMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalMinor
 
-`func (o *InvoicesUpdateRequest) SetTotalMinor(v int32)`
+`func (o *InvoicesUpdateRequest) SetTotalMinor(v int64)`
 
 SetTotalMinor sets TotalMinor field to given value.
 
@@ -154,7 +128,15 @@ SetSubscriptionTerms sets SubscriptionTerms field to given value.
 
 HasSubscriptionTerms returns a boolean if a field has been set.
 
+### SetSubscriptionTermsNil
+
+`func (o *InvoicesUpdateRequest) SetSubscriptionTermsNil(b bool)`
+
+ SetSubscriptionTermsNil sets the value for SubscriptionTerms to be an explicit nil
+
+### UnsetSubscriptionTerms
+`func (o *InvoicesUpdateRequest) UnsetSubscriptionTerms()`
+
+UnsetSubscriptionTerms ensures that no value is present for SubscriptionTerms, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

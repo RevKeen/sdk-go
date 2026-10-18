@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoAdvance** | Pointer to **bool** | If true, automatically transitions to &#39;approved&#39; status after finalization. | [optional] 
+**AutoAdvance** | Pointer to **bool** | Accepted for compatibility and has no effect: a finalized invoice can already be sent and paid. | [optional]
 
 ## Methods
 
@@ -52,5 +52,3 @@ HasAutoAdvance returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

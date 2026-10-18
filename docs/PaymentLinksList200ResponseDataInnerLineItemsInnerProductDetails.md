@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**UnitAmount** | **int32** |  | 
-**Currency** | **string** |  | 
-**Recurring** | Pointer to [**PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring**](PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring.md) |  | [optional] 
+**Name** | **string** |  |
+**Description** | Pointer to **NullableString** |  | [optional]
+**UnitAmount** | **int32** |  |
+**Currency** | **string** |  |
+**Recurring** | Pointer to [**NullablePaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring**](PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetailsRecurring.md) |  | [optional]
 
 ## Methods
 
@@ -149,7 +149,15 @@ SetRecurring sets Recurring field to given value.
 
 HasRecurring returns a boolean if a field has been set.
 
+### SetRecurringNil
+
+`func (o *PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetails) SetRecurringNil(b bool)`
+
+ SetRecurringNil sets the value for Recurring to be an explicit nil
+
+### UnsetRecurring
+`func (o *PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetails) UnsetRecurring()`
+
+UnsetRecurring ensures that no value is present for Recurring, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

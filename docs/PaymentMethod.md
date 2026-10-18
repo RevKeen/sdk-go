@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the payment method | 
-**Object** | **string** | Object type, always &#39;payment_method&#39; | 
-**PublicId** | **NullableString** | Public ID visible in API responses (pm_xxx format) | 
-**Type** | **string** | The type of payment method | 
-**Status** | **string** | The status of the payment method | 
-**CustomerId** | **string** | ID of the customer this payment method belongs to | 
-**IsDefault** | **bool** | Whether this is the customer&#39;s default payment method | 
-**Card** | [**CardDetails**](CardDetails.md) |  | 
-**UsBankAccount** | [**BankAccountDetails**](BankAccountDetails.md) |  | 
-**BacsDirectDebit** | [**BacsDirectDebitDetails**](BacsDirectDebitDetails.md) |  | 
-**BillingDetails** | [**BillingDetails**](BillingDetails.md) |  | 
-**Metadata** | **map[string]interface{}** | Custom metadata attached to the payment method | 
-**CreatedAt** | **time.Time** | When the payment method was created | 
-**UpdatedAt** | **time.Time** | When the payment method was last updated | 
+**Id** | **string** | Unique identifier for the payment method |
+**Object** | **string** | Object type, always &#39;payment_method&#39; |
+**PublicId** | **NullableString** | Public ID visible in API responses (pm_xxx format) |
+**Type** | **string** | The type of payment method |
+**Status** | **string** | The status of the payment method |
+**CustomerId** | **string** | ID of the customer this payment method belongs to |
+**IsDefault** | **bool** | Whether this is the customer&#39;s default payment method |
+**Card** | [**NullableCardDetails**](CardDetails.md) |  |
+**UsBankAccount** | [**NullableBankAccountDetails**](BankAccountDetails.md) |  |
+**BacsDirectDebit** | [**NullableBacsDirectDebitDetails**](BacsDirectDebitDetails.md) |  |
+**BillingDetails** | [**NullableBillingDetails**](BillingDetails.md) |  |
+**Metadata** | **map[string]interface{}** | Custom metadata attached to the payment method |
+**CreatedAt** | **time.Time** | When the payment method was created |
+**UpdatedAt** | **time.Time** | When the payment method was last updated |
 
 ## Methods
 
 ### NewPaymentMethod
 
-`func NewPaymentMethod(id string, object string, publicId NullableString, type_ string, status string, customerId string, isDefault bool, card CardDetails, usBankAccount BankAccountDetails, bacsDirectDebit BacsDirectDebitDetails, billingDetails BillingDetails, metadata map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *PaymentMethod`
+`func NewPaymentMethod(id string, object string, publicId NullableString, type_ string, status string, customerId string, isDefault bool, card NullableCardDetails, usBankAccount NullableBankAccountDetails, bacsDirectDebit NullableBacsDirectDebitDetails, billingDetails NullableBillingDetails, metadata map[string]*interface{}, createdAt time.Time, updatedAt time.Time, ) *PaymentMethod`
 
 NewPaymentMethod instantiates a new PaymentMethod object
 This constructor will assign default values to properties that have it defined,
@@ -208,6 +208,16 @@ and a boolean to check if the value has been set.
 SetCard sets Card field to given value.
 
 
+### SetCardNil
+
+`func (o *PaymentMethod) SetCardNil(b bool)`
+
+ SetCardNil sets the value for Card to be an explicit nil
+
+### UnsetCard
+`func (o *PaymentMethod) UnsetCard()`
+
+UnsetCard ensures that no value is present for Card, not even an explicit nil
 ### GetUsBankAccount
 
 `func (o *PaymentMethod) GetUsBankAccount() BankAccountDetails`
@@ -228,6 +238,16 @@ and a boolean to check if the value has been set.
 SetUsBankAccount sets UsBankAccount field to given value.
 
 
+### SetUsBankAccountNil
+
+`func (o *PaymentMethod) SetUsBankAccountNil(b bool)`
+
+ SetUsBankAccountNil sets the value for UsBankAccount to be an explicit nil
+
+### UnsetUsBankAccount
+`func (o *PaymentMethod) UnsetUsBankAccount()`
+
+UnsetUsBankAccount ensures that no value is present for UsBankAccount, not even an explicit nil
 ### GetBacsDirectDebit
 
 `func (o *PaymentMethod) GetBacsDirectDebit() BacsDirectDebitDetails`
@@ -248,6 +268,16 @@ and a boolean to check if the value has been set.
 SetBacsDirectDebit sets BacsDirectDebit field to given value.
 
 
+### SetBacsDirectDebitNil
+
+`func (o *PaymentMethod) SetBacsDirectDebitNil(b bool)`
+
+ SetBacsDirectDebitNil sets the value for BacsDirectDebit to be an explicit nil
+
+### UnsetBacsDirectDebit
+`func (o *PaymentMethod) UnsetBacsDirectDebit()`
+
+UnsetBacsDirectDebit ensures that no value is present for BacsDirectDebit, not even an explicit nil
 ### GetBillingDetails
 
 `func (o *PaymentMethod) GetBillingDetails() BillingDetails`
@@ -268,22 +298,32 @@ and a boolean to check if the value has been set.
 SetBillingDetails sets BillingDetails field to given value.
 
 
+### SetBillingDetailsNil
+
+`func (o *PaymentMethod) SetBillingDetailsNil(b bool)`
+
+ SetBillingDetailsNil sets the value for BillingDetails to be an explicit nil
+
+### UnsetBillingDetails
+`func (o *PaymentMethod) UnsetBillingDetails()`
+
+UnsetBillingDetails ensures that no value is present for BillingDetails, not even an explicit nil
 ### GetMetadata
 
-`func (o *PaymentMethod) GetMetadata() map[string]interface{}`
+`func (o *PaymentMethod) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PaymentMethod) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PaymentMethod) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PaymentMethod) SetMetadata(v map[string]interface{})`
+`func (o *PaymentMethod) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -330,5 +370,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

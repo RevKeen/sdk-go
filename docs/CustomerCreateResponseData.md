@@ -4,24 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique customer identifier | 
-**MerchantId** | **string** | ID of the merchant this customer belongs to | 
-**MerchantRefId** | Pointer to **string** | Merchant-assigned reference ID for external system mapping | [optional] 
-**Email** | **string** | Customer&#39;s email address | 
-**Name** | Pointer to **string** | Customer&#39;s full name | [optional] 
-**Phone** | Pointer to **string** | Customer&#39;s phone number | [optional] 
-**CompanyName** | Pointer to **string** | Customer&#39;s company name | [optional] 
-**AddressLine1** | Pointer to **string** | Billing address line 1 | [optional] 
-**AddressLine2** | Pointer to **string** | Billing address line 2 | [optional] 
-**City** | Pointer to **string** | Billing address city | [optional] 
-**State** | Pointer to **string** | Billing address state or county | [optional] 
-**PostalCode** | Pointer to **string** | Billing address postal code | [optional] 
-**Country** | Pointer to **string** | Billing address country code | [optional] 
-**AuthUserId** | Pointer to **string** | Linked Better Auth user ID for portal access | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata attached to this customer | [optional] 
-**CustomFields** | Pointer to **map[string]interface{}** | Merchant-defined custom fields displayed as columns in the dashboard | [optional] 
-**CreatedAt** | **time.Time** | When the customer was created (ISO 8601) | 
-**UpdatedAt** | **time.Time** | When the customer was last updated (ISO 8601) | 
+**Id** | **string** | Unique customer identifier |
+**MerchantId** | **string** | ID of the merchant this customer belongs to |
+**MerchantRefId** | Pointer to **string** | Merchant-assigned reference ID for external system mapping | [optional]
+**ExternalId** | Pointer to **string** | Your system&#39;s identifier for this customer, set with externalId on create or update. Unique per merchant and source: no two customers whose external id you set through the API can share one, but a customer synced from an integration can carry the same value, and that integration&#39;s identifier is what such a customer shows here. Send it as external_customer_id when ingesting usage events, or look customers up with GET /v2/customers?external_id&#x3D;. | [optional]
+**Email** | **string** | Customer&#39;s email address |
+**Name** | Pointer to **string** | Customer&#39;s full name | [optional]
+**Phone** | Pointer to **string** | Customer&#39;s phone number | [optional]
+**CompanyName** | Pointer to **string** | Customer&#39;s company name | [optional]
+**AddressLine1** | Pointer to **string** | Billing address line 1 | [optional]
+**AddressLine2** | Pointer to **string** | Billing address line 2 | [optional]
+**City** | Pointer to **string** | Billing address city | [optional]
+**State** | Pointer to **string** | Billing address state or county | [optional]
+**PostalCode** | Pointer to **string** | Billing address postal code | [optional]
+**Country** | Pointer to **string** | Billing address country code | [optional]
+**AuthUserId** | Pointer to **string** | Linked Better Auth user ID for portal access | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata attached to this customer | [optional]
+**CustomFields** | Pointer to **map[string]interface{}** | Merchant-defined custom fields displayed as columns in the dashboard | [optional]
+**CreatedAt** | **time.Time** | When the customer was created (ISO 8601) |
+**UpdatedAt** | **time.Time** | When the customer was last updated (ISO 8601) |
 
 ## Methods
 
@@ -106,6 +107,31 @@ SetMerchantRefId sets MerchantRefId field to given value.
 `func (o *CustomerCreateResponseData) HasMerchantRefId() bool`
 
 HasMerchantRefId returns a boolean if a field has been set.
+
+### GetExternalId
+
+`func (o *CustomerCreateResponseData) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *CustomerCreateResponseData) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *CustomerCreateResponseData) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *CustomerCreateResponseData) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
 
 ### GetEmail
 
@@ -469,5 +495,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

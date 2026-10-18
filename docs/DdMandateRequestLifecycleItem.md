@@ -4,31 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**MerchantId** | **string** |  | 
-**CustomerId** | **string** |  | 
-**InvoiceId** | **NullableString** |  | 
-**SubscriptionId** | **NullableString** |  | 
-**MandateId** | **NullableString** |  | 
-**Token** | **string** | Internal raw request token. Do not expose directly to customers. | 
-**SignableUrl** | **string** | Customer-facing tracked URL: pay.revkeen.com/dd_&lt;token&gt; | 
-**CreatedAt** | **NullableString** |  | 
-**ExpiresAt** | **NullableString** |  | 
-**ConsumedAt** | **NullableString** |  | 
-**CancelledAt** | **NullableString** |  | 
-**ExpiredAt** | **NullableString** |  | 
-**Status** | [**DdMandateRequestLifecycleStatus**](DdMandateRequestLifecycleStatus.md) |  | 
-**NotificationDeliveryEventType** | **NullableString** |  | 
-**NotificationDeliveryStatus** | **NullableString** |  | 
-**NotificationDeliveryError** | **NullableString** |  | 
-**NotificationDeliveryUpdatedAt** | **NullableString** |  | 
-**PdfDocuments** | [**[]DdMandatePdfReference**](DdMandatePdfReference.md) |  | 
+**Id** | **string** |  |
+**MerchantId** | **string** |  |
+**CustomerId** | **string** |  |
+**InvoiceId** | **NullableString** |  |
+**SubscriptionId** | **NullableString** |  |
+**MandateId** | **NullableString** |  |
+**Token** | **string** | Internal raw request token. Do not expose directly to customers. |
+**SignableUrl** | **string** | Customer-facing tracked URL: pay.revkeen.com/dd_&lt;token&gt; |
+**CreatedAt** | **NullableTime** |  |
+**ExpiresAt** | **NullableTime** |  |
+**ConsumedAt** | **NullableTime** |  |
+**CancelledAt** | **NullableTime** |  |
+**ExpiredAt** | **NullableTime** |  |
+**Status** | [**DdMandateRequestLifecycleStatus**](DdMandateRequestLifecycleStatus.md) |  |
+**NotificationDeliveryEventType** | **NullableString** |  |
+**NotificationDeliveryStatus** | **NullableString** |  |
+**NotificationDeliveryError** | **NullableString** |  |
+**NotificationDeliveryUpdatedAt** | **NullableTime** |  |
+**PdfDocuments** | [**[]DdMandatePdfReference**](DdMandatePdfReference.md) |  |
 
 ## Methods
 
 ### NewDdMandateRequestLifecycleItem
 
-`func NewDdMandateRequestLifecycleItem(id string, merchantId string, customerId string, invoiceId NullableString, subscriptionId NullableString, mandateId NullableString, token string, signableUrl string, createdAt NullableString, expiresAt NullableString, consumedAt NullableString, cancelledAt NullableString, expiredAt NullableString, status DdMandateRequestLifecycleStatus, notificationDeliveryEventType NullableString, notificationDeliveryStatus NullableString, notificationDeliveryError NullableString, notificationDeliveryUpdatedAt NullableString, pdfDocuments []DdMandatePdfReference, ) *DdMandateRequestLifecycleItem`
+`func NewDdMandateRequestLifecycleItem(id string, merchantId string, customerId string, invoiceId NullableString, subscriptionId NullableString, mandateId NullableString, token string, signableUrl string, createdAt NullableTime, expiresAt NullableTime, consumedAt NullableTime, cancelledAt NullableTime, expiredAt NullableTime, status DdMandateRequestLifecycleStatus, notificationDeliveryEventType NullableString, notificationDeliveryStatus NullableString, notificationDeliveryError NullableString, notificationDeliveryUpdatedAt NullableTime, pdfDocuments []DdMandatePdfReference, ) *DdMandateRequestLifecycleItem`
 
 NewDdMandateRequestLifecycleItem instantiates a new DdMandateRequestLifecycleItem object
 This constructor will assign default values to properties that have it defined,
@@ -235,20 +235,20 @@ SetSignableUrl sets SignableUrl field to given value.
 
 ### GetCreatedAt
 
-`func (o *DdMandateRequestLifecycleItem) GetCreatedAt() string`
+`func (o *DdMandateRequestLifecycleItem) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *DdMandateRequestLifecycleItem) GetCreatedAtOk() (*string, bool)`
+`func (o *DdMandateRequestLifecycleItem) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *DdMandateRequestLifecycleItem) SetCreatedAt(v string)`
+`func (o *DdMandateRequestLifecycleItem) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -265,20 +265,20 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetExpiresAt
 
-`func (o *DdMandateRequestLifecycleItem) GetExpiresAt() string`
+`func (o *DdMandateRequestLifecycleItem) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *DdMandateRequestLifecycleItem) GetExpiresAtOk() (*string, bool)`
+`func (o *DdMandateRequestLifecycleItem) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *DdMandateRequestLifecycleItem) SetExpiresAt(v string)`
+`func (o *DdMandateRequestLifecycleItem) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -295,20 +295,20 @@ SetExpiresAt sets ExpiresAt field to given value.
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetConsumedAt
 
-`func (o *DdMandateRequestLifecycleItem) GetConsumedAt() string`
+`func (o *DdMandateRequestLifecycleItem) GetConsumedAt() time.Time`
 
 GetConsumedAt returns the ConsumedAt field if non-nil, zero value otherwise.
 
 ### GetConsumedAtOk
 
-`func (o *DdMandateRequestLifecycleItem) GetConsumedAtOk() (*string, bool)`
+`func (o *DdMandateRequestLifecycleItem) GetConsumedAtOk() (*time.Time, bool)`
 
 GetConsumedAtOk returns a tuple with the ConsumedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConsumedAt
 
-`func (o *DdMandateRequestLifecycleItem) SetConsumedAt(v string)`
+`func (o *DdMandateRequestLifecycleItem) SetConsumedAt(v time.Time)`
 
 SetConsumedAt sets ConsumedAt field to given value.
 
@@ -325,20 +325,20 @@ SetConsumedAt sets ConsumedAt field to given value.
 UnsetConsumedAt ensures that no value is present for ConsumedAt, not even an explicit nil
 ### GetCancelledAt
 
-`func (o *DdMandateRequestLifecycleItem) GetCancelledAt() string`
+`func (o *DdMandateRequestLifecycleItem) GetCancelledAt() time.Time`
 
 GetCancelledAt returns the CancelledAt field if non-nil, zero value otherwise.
 
 ### GetCancelledAtOk
 
-`func (o *DdMandateRequestLifecycleItem) GetCancelledAtOk() (*string, bool)`
+`func (o *DdMandateRequestLifecycleItem) GetCancelledAtOk() (*time.Time, bool)`
 
 GetCancelledAtOk returns a tuple with the CancelledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCancelledAt
 
-`func (o *DdMandateRequestLifecycleItem) SetCancelledAt(v string)`
+`func (o *DdMandateRequestLifecycleItem) SetCancelledAt(v time.Time)`
 
 SetCancelledAt sets CancelledAt field to given value.
 
@@ -355,20 +355,20 @@ SetCancelledAt sets CancelledAt field to given value.
 UnsetCancelledAt ensures that no value is present for CancelledAt, not even an explicit nil
 ### GetExpiredAt
 
-`func (o *DdMandateRequestLifecycleItem) GetExpiredAt() string`
+`func (o *DdMandateRequestLifecycleItem) GetExpiredAt() time.Time`
 
 GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
 
 ### GetExpiredAtOk
 
-`func (o *DdMandateRequestLifecycleItem) GetExpiredAtOk() (*string, bool)`
+`func (o *DdMandateRequestLifecycleItem) GetExpiredAtOk() (*time.Time, bool)`
 
 GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiredAt
 
-`func (o *DdMandateRequestLifecycleItem) SetExpiredAt(v string)`
+`func (o *DdMandateRequestLifecycleItem) SetExpiredAt(v time.Time)`
 
 SetExpiredAt sets ExpiredAt field to given value.
 
@@ -495,20 +495,20 @@ SetNotificationDeliveryError sets NotificationDeliveryError field to given value
 UnsetNotificationDeliveryError ensures that no value is present for NotificationDeliveryError, not even an explicit nil
 ### GetNotificationDeliveryUpdatedAt
 
-`func (o *DdMandateRequestLifecycleItem) GetNotificationDeliveryUpdatedAt() string`
+`func (o *DdMandateRequestLifecycleItem) GetNotificationDeliveryUpdatedAt() time.Time`
 
 GetNotificationDeliveryUpdatedAt returns the NotificationDeliveryUpdatedAt field if non-nil, zero value otherwise.
 
 ### GetNotificationDeliveryUpdatedAtOk
 
-`func (o *DdMandateRequestLifecycleItem) GetNotificationDeliveryUpdatedAtOk() (*string, bool)`
+`func (o *DdMandateRequestLifecycleItem) GetNotificationDeliveryUpdatedAtOk() (*time.Time, bool)`
 
 GetNotificationDeliveryUpdatedAtOk returns a tuple with the NotificationDeliveryUpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotificationDeliveryUpdatedAt
 
-`func (o *DdMandateRequestLifecycleItem) SetNotificationDeliveryUpdatedAt(v string)`
+`func (o *DdMandateRequestLifecycleItem) SetNotificationDeliveryUpdatedAt(v time.Time)`
 
 SetNotificationDeliveryUpdatedAt sets NotificationDeliveryUpdatedAt field to given value.
 
@@ -545,5 +545,3 @@ SetPdfDocuments sets PdfDocuments field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Interval** | **string** |  | 
-**IntervalCount** | **int32** |  | 
+**Interval** | **string** |  |
+**IntervalCount** | **int32** |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetIntervalCount sets IntervalCount field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

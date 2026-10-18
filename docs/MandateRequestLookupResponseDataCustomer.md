@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **NullableString** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **NullableString** |  | 
-**Phone** | **NullableString** |  | 
+**Id** | **string** |  |
+**Name** | **NullableString** |  |
+**FirstName** | **string** |  |
+**LastName** | **string** |  |
+**Email** | **NullableString** |  |
+**Phone** | **NullableString** |  |
 
 ## Methods
 
@@ -182,5 +182,3 @@ SetPhone sets Phone field to given value.
 UnsetPhone ensures that no value is present for Phone, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

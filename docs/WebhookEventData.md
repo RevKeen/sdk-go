@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to **map[string]interface{}** | The object that triggered the event (e.g., Payment, Invoice, Subscription) | [optional] 
-**PreviousAttributes** | Pointer to **map[string]interface{}** | Previous values of attributes that changed (for update events) | [optional] 
+**Object** | Pointer to **map[string]interface{}** | The object that triggered the event (e.g., Payment, Invoice, Subscription) | [optional]
+**PreviousAttributes** | Pointer to **map[string]interface{}** | Previous values of attributes that changed (for update events) | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasPreviousAttributes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

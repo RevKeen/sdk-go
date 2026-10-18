@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **bool** | Whether the webhook was queued for resending | 
-**WebhookEndpointId** | Pointer to **string** | The webhook endpoint ID the event was sent to | [optional] 
-**Message** | Pointer to **string** | Additional information | [optional] 
+**Success** | **bool** | Whether the webhook was queued for resending |
+**WebhookEndpointId** | Pointer to **string** | The webhook endpoint ID the event was sent to | [optional]
+**Message** | Pointer to **string** | Additional information | [optional]
 
 ## Methods
 
@@ -99,5 +99,3 @@ HasMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

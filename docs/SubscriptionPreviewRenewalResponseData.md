@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SubscriptionId** | **string** |  | 
-**CurrentPeriodEnd** | **time.Time** |  | 
-**UpcomingRenewals** | [**[]SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner**](SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner.md) |  | 
-**NextInvoiceAmountMinor** | **int32** |  | 
-**Currency** | **string** |  | 
+**SubscriptionId** | **string** |  |
+**CurrentPeriodEnd** | **time.Time** |  |
+**UpcomingRenewals** | [**[]SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner**](SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner.md) |  |
+**NextInvoiceAmountMinor** | **int64** |  |
+**Currency** | **string** |  |
 
 ## Methods
 
 ### NewSubscriptionPreviewRenewalResponseData
 
-`func NewSubscriptionPreviewRenewalResponseData(subscriptionId string, currentPeriodEnd time.Time, upcomingRenewals []SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner, nextInvoiceAmountMinor int32, currency string, ) *SubscriptionPreviewRenewalResponseData`
+`func NewSubscriptionPreviewRenewalResponseData(subscriptionId string, currentPeriodEnd time.Time, upcomingRenewals []SubscriptionPreviewRenewalResponseDataUpcomingRenewalsInner, nextInvoiceAmountMinor int64, currency string, ) *SubscriptionPreviewRenewalResponseData`
 
 NewSubscriptionPreviewRenewalResponseData instantiates a new SubscriptionPreviewRenewalResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -91,20 +91,20 @@ SetUpcomingRenewals sets UpcomingRenewals field to given value.
 
 ### GetNextInvoiceAmountMinor
 
-`func (o *SubscriptionPreviewRenewalResponseData) GetNextInvoiceAmountMinor() int32`
+`func (o *SubscriptionPreviewRenewalResponseData) GetNextInvoiceAmountMinor() int64`
 
 GetNextInvoiceAmountMinor returns the NextInvoiceAmountMinor field if non-nil, zero value otherwise.
 
 ### GetNextInvoiceAmountMinorOk
 
-`func (o *SubscriptionPreviewRenewalResponseData) GetNextInvoiceAmountMinorOk() (*int32, bool)`
+`func (o *SubscriptionPreviewRenewalResponseData) GetNextInvoiceAmountMinorOk() (*int64, bool)`
 
 GetNextInvoiceAmountMinorOk returns a tuple with the NextInvoiceAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNextInvoiceAmountMinor
 
-`func (o *SubscriptionPreviewRenewalResponseData) SetNextInvoiceAmountMinor(v int32)`
+`func (o *SubscriptionPreviewRenewalResponseData) SetNextInvoiceAmountMinor(v int64)`
 
 SetNextInvoiceAmountMinor sets NextInvoiceAmountMinor field to given value.
 
@@ -131,5 +131,3 @@ SetCurrency sets Currency field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

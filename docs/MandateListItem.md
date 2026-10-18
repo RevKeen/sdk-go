@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**MandateRef** | **string** |  | 
-**MandateReference** | **NullableString** |  | 
-**CustomerId** | **string** |  | 
-**Status** | **string** |  | 
-**AccountHolderName** | **NullableString** |  | 
-**SortCode** | **string** |  | 
-**AccountNumberLast4** | **NullableString** |  | 
-**BankName** | **NullableString** |  | 
-**NoticeDays** | **NullableInt32** |  | 
-**ActivatedAt** | **NullableString** |  | 
-**CreatedAt** | **NullableString** |  | 
+**Id** | **string** |  |
+**MandateRef** | **string** |  |
+**MandateReference** | **NullableString** |  |
+**CustomerId** | **string** |  |
+**Status** | **string** |  |
+**AccountHolderName** | **NullableString** |  |
+**SortCode** | **string** |  |
+**AccountNumberLast4** | **NullableString** |  |
+**BankName** | **NullableString** |  |
+**NoticeDays** | **NullableInt32** |  |
+**ActivatedAt** | **NullableTime** |  |
+**CreatedAt** | **NullableTime** |  |
 
 ## Methods
 
 ### NewMandateListItem
 
-`func NewMandateListItem(id string, mandateRef string, mandateReference NullableString, customerId string, status string, accountHolderName NullableString, sortCode string, accountNumberLast4 NullableString, bankName NullableString, noticeDays NullableInt32, activatedAt NullableString, createdAt NullableString, ) *MandateListItem`
+`func NewMandateListItem(id string, mandateRef string, mandateReference NullableString, customerId string, status string, accountHolderName NullableString, sortCode string, accountNumberLast4 NullableString, bankName NullableString, noticeDays NullableInt32, activatedAt NullableTime, createdAt NullableTime, ) *MandateListItem`
 
 NewMandateListItem instantiates a new MandateListItem object
 This constructor will assign default values to properties that have it defined,
@@ -288,20 +288,20 @@ SetNoticeDays sets NoticeDays field to given value.
 UnsetNoticeDays ensures that no value is present for NoticeDays, not even an explicit nil
 ### GetActivatedAt
 
-`func (o *MandateListItem) GetActivatedAt() string`
+`func (o *MandateListItem) GetActivatedAt() time.Time`
 
 GetActivatedAt returns the ActivatedAt field if non-nil, zero value otherwise.
 
 ### GetActivatedAtOk
 
-`func (o *MandateListItem) GetActivatedAtOk() (*string, bool)`
+`func (o *MandateListItem) GetActivatedAtOk() (*time.Time, bool)`
 
 GetActivatedAtOk returns a tuple with the ActivatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActivatedAt
 
-`func (o *MandateListItem) SetActivatedAt(v string)`
+`func (o *MandateListItem) SetActivatedAt(v time.Time)`
 
 SetActivatedAt sets ActivatedAt field to given value.
 
@@ -318,20 +318,20 @@ SetActivatedAt sets ActivatedAt field to given value.
 UnsetActivatedAt ensures that no value is present for ActivatedAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *MandateListItem) GetCreatedAt() string`
+`func (o *MandateListItem) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *MandateListItem) GetCreatedAtOk() (*string, bool)`
+`func (o *MandateListItem) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *MandateListItem) SetCreatedAt(v string)`
+`func (o *MandateListItem) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -348,5 +348,3 @@ SetCreatedAt sets CreatedAt field to given value.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

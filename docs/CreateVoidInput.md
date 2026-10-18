@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PaymentId** | **string** | The ID of the payment to void. Must be unsettled. | 
-**Reason** | Pointer to **string** | Reason for the void | [optional] 
-**ReasonCode** | Pointer to **string** | Standardized reason code for the void | [optional] 
+**PaymentId** | **string** | The ID of the payment to void. Must be unsettled. |
+**Reason** | Pointer to **string** | Reason for the void | [optional]
+**ReasonCode** | Pointer to **string** | Standardized reason code for the void | [optional]
 
 ## Methods
 
@@ -99,5 +99,3 @@ HasReasonCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

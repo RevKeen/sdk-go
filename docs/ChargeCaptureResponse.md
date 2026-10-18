@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**ChargeCreateResponseData**](ChargeCreateResponseData.md) |  | 
+**Data** | [**ChargeListResponseDataInner**](ChargeListResponseDataInner.md) |  |
 
 ## Methods
 
 ### NewChargeCaptureResponse
 
-`func NewChargeCaptureResponse(data ChargeCreateResponseData, ) *ChargeCaptureResponse`
+`func NewChargeCaptureResponse(data ChargeListResponseDataInner, ) *ChargeCaptureResponse`
 
 NewChargeCaptureResponse instantiates a new ChargeCaptureResponse object
 This constructor will assign default values to properties that have it defined,
@@ -27,25 +27,23 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ChargeCaptureResponse) GetData() ChargeCreateResponseData`
+`func (o *ChargeCaptureResponse) GetData() ChargeListResponseDataInner`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ChargeCaptureResponse) GetDataOk() (*ChargeCreateResponseData, bool)`
+`func (o *ChargeCaptureResponse) GetDataOk() (*ChargeListResponseDataInner, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ChargeCaptureResponse) SetData(v ChargeCreateResponseData)`
+`func (o *ChargeCaptureResponse) SetData(v ChargeListResponseDataInner)`
 
 SetData sets Data field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

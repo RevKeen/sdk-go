@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | **bool** |  | 
-**Profile** | **string** |  | 
+**Enabled** | **bool** |  |
+**Profile** | **string** |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetProfile sets Profile field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

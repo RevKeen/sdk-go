@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NoticeDate** | **string** | Advance-notice date (YYYY-MM-DD) | 
-**SubmissionDate** | **string** | Bacs submission date (YYYY-MM-DD) | 
-**CollectionDate** | **string** | Collection date (YYYY-MM-DD) | 
-**SettlementDate** | **string** | Settlement date (YYYY-MM-DD) | 
-**Eligible** | **bool** | Whether the requested collection is eligible | 
-**IneligibleReason** | **NullableString** | Reason the collection is ineligible, if applicable | 
-**NoticeDays** | **int32** | Advance-notice days applied | 
+**NoticeDate** | **string** | Advance-notice date (YYYY-MM-DD) |
+**SubmissionDate** | **string** | Bacs submission date (YYYY-MM-DD) |
+**CollectionDate** | **string** | Collection date (YYYY-MM-DD) |
+**SettlementDate** | **string** | Settlement date (YYYY-MM-DD) |
+**Eligible** | **bool** | Whether the requested collection is eligible |
+**IneligibleReason** | **NullableString** | Reason the collection is ineligible, if applicable |
+**NoticeDays** | **int32** | Advance-notice days applied |
 
 ## Methods
 
@@ -183,5 +183,3 @@ SetNoticeDays sets NoticeDays field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

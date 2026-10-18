@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Page** | **float32** | Current page number | 
-**Limit** | **float32** | Maximum results per page | 
-**Total** | **float32** | Total number of results matching the query | 
-**TotalPages** | **float32** | Total number of pages available | 
+**Page** | **float32** | Current page number |
+**Limit** | **float32** | Maximum results per page |
+**Total** | **float32** | Total number of results matching the query |
+**TotalPages** | **float32** | Total number of pages available |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetTotalPages sets TotalPages field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

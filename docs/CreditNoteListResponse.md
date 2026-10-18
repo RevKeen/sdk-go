@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**[]CreditNote**](CreditNote.md) |  | 
-**RequestId** | **string** |  | 
+**Data** | [**[]CreditNote**](CreditNote.md) |  |
+**Meta** | [**DiscountListResponseMeta**](DiscountListResponseMeta.md) |  |
 
 ## Methods
 
 ### NewCreditNoteListResponse
 
-`func NewCreditNoteListResponse(data []CreditNote, requestId string, ) *CreditNoteListResponse`
+`func NewCreditNoteListResponse(data []CreditNote, meta DiscountListResponseMeta, ) *CreditNoteListResponse`
 
 NewCreditNoteListResponse instantiates a new CreditNoteListResponse object
 This constructor will assign default values to properties that have it defined,
@@ -46,27 +46,25 @@ and a boolean to check if the value has been set.
 SetData sets Data field to given value.
 
 
-### GetRequestId
+### GetMeta
 
-`func (o *CreditNoteListResponse) GetRequestId() string`
+`func (o *CreditNoteListResponse) GetMeta() DiscountListResponseMeta`
 
-GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+GetMeta returns the Meta field if non-nil, zero value otherwise.
 
-### GetRequestIdOk
+### GetMetaOk
 
-`func (o *CreditNoteListResponse) GetRequestIdOk() (*string, bool)`
+`func (o *CreditNoteListResponse) GetMetaOk() (*DiscountListResponseMeta, bool)`
 
-GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRequestId
+### SetMeta
 
-`func (o *CreditNoteListResponse) SetRequestId(v string)`
+`func (o *CreditNoteListResponse) SetMeta(v DiscountListResponseMeta)`
 
-SetRequestId sets RequestId field to given value.
+SetMeta sets Meta field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

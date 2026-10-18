@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Status** | **string** |  | 
-**CreatedAt** | **time.Time** |  | 
-**BureauSuspendConfirmed** | Pointer to **NullableBool** |  | [optional] 
+**Id** | **string** |  |
+**Status** | **string** |  |
+**CreatedAt** | **time.Time** |  |
+**BureauSuspendConfirmed** | Pointer to **NullableBool** |  | [optional]
 
 ## Methods
 
@@ -125,5 +125,3 @@ HasBureauSuspendConfirmed returns a boolean if a field has been set.
 UnsetBureauSuspendConfirmed ensures that no value is present for BureauSuspendConfirmed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

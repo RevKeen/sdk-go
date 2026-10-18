@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** |  | 
-**InvoiceId** | **string** |  | 
-**ProposedAmountMinor** | **int32** |  | 
-**ProposedTaxAmountMinor** | **NullableInt32** |  | 
-**Currency** | **string** |  | 
-**Invoice** | [**CreditNotePreviewInvoice**](CreditNotePreviewInvoice.md) |  | 
-**AfterCredit** | [**CreditNotePreviewAfterCredit**](CreditNotePreviewAfterCredit.md) |  | 
-**ExceedsMaxCreditable** | **bool** | True if &#x60;amount_minor&#x60; exceeds the invoice&#39;s remaining creditable amount. A real create call would be rejected. | 
-**CreditMethod** | **string** |  | 
+**Object** | **string** |  |
+**InvoiceId** | **string** |  |
+**ProposedAmountMinor** | **int64** |  |
+**ProposedTaxAmountMinor** | **NullableInt64** |  |
+**Currency** | **string** |  |
+**Invoice** | [**CreditNotePreviewInvoice**](CreditNotePreviewInvoice.md) |  |
+**AfterCredit** | [**CreditNotePreviewAfterCredit**](CreditNotePreviewAfterCredit.md) |  |
+**ExceedsMaxCreditable** | **bool** | True if &#x60;amount_minor&#x60; exceeds the invoice&#39;s remaining creditable amount. A real create call would be rejected. |
+**CreditMethod** | **string** |  |
 
 ## Methods
 
 ### NewCreditNotePreview
 
-`func NewCreditNotePreview(object string, invoiceId string, proposedAmountMinor int32, proposedTaxAmountMinor NullableInt32, currency string, invoice CreditNotePreviewInvoice, afterCredit CreditNotePreviewAfterCredit, exceedsMaxCreditable bool, creditMethod string, ) *CreditNotePreview`
+`func NewCreditNotePreview(object string, invoiceId string, proposedAmountMinor int64, proposedTaxAmountMinor NullableInt64, currency string, invoice CreditNotePreviewInvoice, afterCredit CreditNotePreviewAfterCredit, exceedsMaxCreditable bool, creditMethod string, ) *CreditNotePreview`
 
 NewCreditNotePreview instantiates a new CreditNotePreview object
 This constructor will assign default values to properties that have it defined,
@@ -75,40 +75,40 @@ SetInvoiceId sets InvoiceId field to given value.
 
 ### GetProposedAmountMinor
 
-`func (o *CreditNotePreview) GetProposedAmountMinor() int32`
+`func (o *CreditNotePreview) GetProposedAmountMinor() int64`
 
 GetProposedAmountMinor returns the ProposedAmountMinor field if non-nil, zero value otherwise.
 
 ### GetProposedAmountMinorOk
 
-`func (o *CreditNotePreview) GetProposedAmountMinorOk() (*int32, bool)`
+`func (o *CreditNotePreview) GetProposedAmountMinorOk() (*int64, bool)`
 
 GetProposedAmountMinorOk returns a tuple with the ProposedAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProposedAmountMinor
 
-`func (o *CreditNotePreview) SetProposedAmountMinor(v int32)`
+`func (o *CreditNotePreview) SetProposedAmountMinor(v int64)`
 
 SetProposedAmountMinor sets ProposedAmountMinor field to given value.
 
 
 ### GetProposedTaxAmountMinor
 
-`func (o *CreditNotePreview) GetProposedTaxAmountMinor() int32`
+`func (o *CreditNotePreview) GetProposedTaxAmountMinor() int64`
 
 GetProposedTaxAmountMinor returns the ProposedTaxAmountMinor field if non-nil, zero value otherwise.
 
 ### GetProposedTaxAmountMinorOk
 
-`func (o *CreditNotePreview) GetProposedTaxAmountMinorOk() (*int32, bool)`
+`func (o *CreditNotePreview) GetProposedTaxAmountMinorOk() (*int64, bool)`
 
 GetProposedTaxAmountMinorOk returns a tuple with the ProposedTaxAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProposedTaxAmountMinor
 
-`func (o *CreditNotePreview) SetProposedTaxAmountMinor(v int32)`
+`func (o *CreditNotePreview) SetProposedTaxAmountMinor(v int64)`
 
 SetProposedTaxAmountMinor sets ProposedTaxAmountMinor field to given value.
 
@@ -225,5 +225,3 @@ SetCreditMethod sets CreditMethod field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

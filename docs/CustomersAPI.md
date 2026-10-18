@@ -1,9 +1,10 @@
 # \CustomersAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CustomerStateGet**](CustomersAPI.md#CustomerStateGet) | **Get** /customers/{id}/state | Get customer billing state
 [**CustomersCreate**](CustomersAPI.md#CustomersCreate) | **Post** /customers | Create a new customer
 [**CustomersGet**](CustomersAPI.md#CustomersGet) | **Get** /customers/{id} | Get customer by ID
 [**CustomersList**](CustomersAPI.md#CustomersList) | **Get** /customers | List customers
@@ -14,9 +15,79 @@ Method | HTTP request | Description
 
 
 
+## CustomerStateGet
+
+> CustomerStateGet200Response CustomerStateGet(ctx, id).Execute()
+
+Get customer billing state
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/revkeen/sdk-go"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CustomersAPI.CustomerStateGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomerStateGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CustomerStateGet`: CustomerStateGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomerStateGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Customer UUID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomerStateGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CustomerStateGet200Response**](CustomerStateGet200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CustomersCreate
 
-> CustomerCreateResponse CustomersCreate(ctx).CustomersCreateRequest(customersCreateRequest).Execute()
+> CustomerCreateResponse CustomersCreate(ctx).IdempotencyKey(idempotencyKey).CustomersCreateRequest(customersCreateRequest).Execute()
 
 Create a new customer
 
@@ -31,15 +102,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	customersCreateRequest := *openapiclient.NewCustomersCreateRequest("Email_example") // CustomersCreateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomersAPI.CustomersCreate(context.Background()).CustomersCreateRequest(customersCreateRequest).Execute()
+	resp, r, err := apiClient.CustomersAPI.CustomersCreate(context.Background()).IdempotencyKey(idempotencyKey).CustomersCreateRequest(customersCreateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +132,8 @@ Other parameters are passed through a pointer to a apiCustomersCreateRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customersCreateRequest** | [**CustomersCreateRequest**](CustomersCreateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **customersCreateRequest** | [**CustomersCreateRequest**](CustomersCreateRequest.md) |  |
 
 ### Return type
 
@@ -97,7 +170,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -121,7 +194,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -152,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## CustomersList
 
-> CustomerListResponse CustomersList(ctx).Limit(limit).Offset(offset).Search(search).Execute()
+> CustomerListResponse CustomersList(ctx).Limit(limit).Offset(offset).Search(search).ExternalId(externalId).Execute()
 
 List customers
 
@@ -167,17 +240,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	limit := int32(56) // int32 | Maximum number of results (1-100) (optional) (default to 20)
 	offset := int32(56) // int32 | Number of results to skip (optional) (default to 0)
-	search := "search_example" // string | Search term to filter customers (optional)
+	search := "search_example" // string | Search term to filter customers by name or email. Matched as a literal substring, case-insensitively. (optional)
+	externalId := "externalId_example" // string | Return the customers whose external_id equals this value. Usually that is one customer; it is more than one only when a customer synced from an integration carries the same value. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomersAPI.CustomersList(context.Background()).Limit(limit).Offset(offset).Search(search).Execute()
+	resp, r, err := apiClient.CustomersAPI.CustomersList(context.Background()).Limit(limit).Offset(offset).Search(search).ExternalId(externalId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,7 +274,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Maximum number of results (1-100) | [default to 20]
  **offset** | **int32** | Number of results to skip | [default to 0]
- **search** | **string** | Search term to filter customers | 
+ **search** | **string** | Search term to filter customers by name or email. Matched as a literal substring, case-insensitively. |
+ **externalId** | **string** | Return the customers whose external_id equals this value. Usually that is one customer; it is more than one only when a customer synced from an integration carries the same value. |
 
 ### Return type
 
@@ -237,7 +312,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -261,7 +336,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -307,7 +382,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -332,7 +407,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -342,7 +417,7 @@ Other parameters are passed through a pointer to a apiCustomersPaymentRailsGetRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions. | 
+ **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions. |
 
 ### Return type
 
@@ -379,14 +454,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
 	invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Optional invoice context used to apply invoice-level rail restrictions and amount. (optional)
-	amount := int32(56) // int32 | Optional amount in minor units. Use amount_minor for the explicit alias. (optional)
-	amountMinor := int32(56) // int32 | Optional amount in minor units. Overrides invoice total for margin-aware ranking. (optional)
+	amount := int64(789) // int64 | Optional amount in minor units. Use amount_minor for the explicit alias. (optional)
+	amountMinor := int64(789) // int64 | Optional amount in minor units. Overrides invoice total for margin-aware ranking. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -406,7 +481,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -416,9 +491,9 @@ Other parameters are passed through a pointer to a apiCustomersPreferredRailsGet
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions and amount. | 
- **amount** | **int32** | Optional amount in minor units. Use amount_minor for the explicit alias. | 
- **amountMinor** | **int32** | Optional amount in minor units. Overrides invoice total for margin-aware ranking. | 
+ **invoiceId** | **string** | Optional invoice context used to apply invoice-level rail restrictions and amount. |
+ **amount** | **int64** | Optional amount in minor units. Use amount_minor for the explicit alias. |
+ **amountMinor** | **int64** | Optional amount in minor units. Overrides invoice total for margin-aware ranking. |
 
 ### Return type
 
@@ -440,7 +515,7 @@ Name | Type | Description  | Notes
 
 ## CustomersUpdate
 
-> CustomerUpdateResponse CustomersUpdate(ctx, id).CustomersUpdateRequest(customersUpdateRequest).Execute()
+> CustomerUpdateResponse CustomersUpdate(ctx, id).IdempotencyKey(idempotencyKey).CustomersUpdateRequest(customersUpdateRequest).Execute()
 
 Update customer details
 
@@ -455,16 +530,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Customer UUID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	customersUpdateRequest := *openapiclient.NewCustomersUpdateRequest() // CustomersUpdateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomersAPI.CustomersUpdate(context.Background(), id).CustomersUpdateRequest(customersUpdateRequest).Execute()
+	resp, r, err := apiClient.CustomersAPI.CustomersUpdate(context.Background(), id).IdempotencyKey(idempotencyKey).CustomersUpdateRequest(customersUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -480,7 +556,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer UUID | 
+**id** | **string** | Customer UUID |
 
 ### Other Parameters
 
@@ -490,7 +566,8 @@ Other parameters are passed through a pointer to a apiCustomersUpdateRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customersUpdateRequest** | [**CustomersUpdateRequest**](CustomersUpdateRequest.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **customersUpdateRequest** | [**CustomersUpdateRequest**](CustomersUpdateRequest.md) |  |
 
 ### Return type
 
@@ -508,4 +585,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

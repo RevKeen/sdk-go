@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Valid** | **bool** | Whether the account details passed modulus/sort-code validation | 
-**BankName** | **NullableString** | Resolved bank name, if known | 
-**DdEnabled** | **bool** | Whether the account accepts Direct Debit instructions | 
-**Errors** | Pointer to **[]string** | Validation error messages, if any | [optional] 
+**Valid** | **bool** | Whether the account details passed modulus/sort-code validation |
+**BankName** | **NullableString** | Resolved bank name, if known |
+**DdEnabled** | **bool** | Whether the account accepts Direct Debit instructions |
+**Errors** | Pointer to **[]string** | Validation error messages, if any | [optional]
 
 ## Methods
 
@@ -135,5 +135,3 @@ HasErrors returns a boolean if a field has been set.
 UnsetErrors ensures that no value is present for Errors, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

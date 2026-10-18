@@ -4,32 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the order | 
-**Object** | **string** | Object type | 
-**PublicId** | **string** | Public-facing order ID | 
-**CustomerId** | Pointer to **NullableString** | ID of the customer | [optional] 
-**Status** | **string** | Order status. draft: Being built. pending: Awaiting payment. paid: Fully paid. partially_paid: Partial payment received. refunded: Refunded. canceled: Canceled. fulfilled: Shipped/delivered. | 
-**BillingType** | **string** | Billing type. one_time: Single purchase. recurring: Subscription-based. | 
-**FulfillmentStatus** | Pointer to **NullableString** | Fulfillment status for physical goods. | [optional] 
-**Currency** | **string** | Three-letter ISO currency code | 
-**Subtotal** | **int32** | Subtotal in cents | 
-**Discount** | **int32** | Total discount in cents | 
-**Tax** | **int32** | Total tax in cents | 
-**Total** | **int32** | Total amount in cents | 
-**AmountPaid** | **int32** | Amount paid in cents | 
-**AmountRefunded** | **int32** | Amount refunded in cents | 
-**AmountDue** | **int32** | Amount still due in cents | 
-**LineItems** | Pointer to [**[]OrderLineItem**](OrderLineItem.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**Notes** | Pointer to **NullableString** |  | [optional] 
-**InvoiceId** | Pointer to **NullableString** | ID of the linked invoice (Commercial Truth) | [optional] 
-**SubscriptionId** | Pointer to **NullableString** | ID of the linked subscription (for recurring fulfillment) | [optional] 
-**CreatedAt** | **time.Time** |  | 
-**UpdatedAt** | **time.Time** |  | 
-**PaidAt** | Pointer to **NullableTime** |  | [optional] 
-**CanceledAt** | Pointer to **NullableTime** |  | [optional] 
-**FulfilledAt** | Pointer to **NullableTime** |  | [optional] 
-**ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
+**Id** | **string** | Unique identifier for the order |
+**Object** | **string** | Object type |
+**PublicId** | **string** | Public-facing order ID |
+**CustomerId** | Pointer to **NullableString** | ID of the customer | [optional]
+**Status** | **string** | Order status. draft: Being built. pending: Awaiting payment. paid: Fully paid. partially_paid: Partial payment received. refunded: Refunded. canceled: Canceled. fulfilled: Shipped/delivered. |
+**BillingType** | **string** | Billing type. one_time: Single purchase. recurring: Subscription-based. |
+**FulfillmentStatus** | Pointer to **NullableString** | Fulfillment status for physical goods. | [optional]
+**Currency** | **string** | Three-letter ISO currency code |
+**Subtotal** | **int32** | Subtotal in cents |
+**Discount** | **int32** | Total discount in cents |
+**Tax** | **int32** | Total tax in cents |
+**Total** | **int32** | Total amount in cents |
+**AmountPaid** | **int32** | Amount paid in cents |
+**AmountRefunded** | **int32** | Amount refunded in cents |
+**AmountDue** | **int32** | Amount still due in cents |
+**LineItems** | Pointer to [**[]OrderLineItem**](OrderLineItem.md) |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**Notes** | Pointer to **NullableString** |  | [optional]
+**InvoiceId** | Pointer to **NullableString** | ID of the linked invoice (Commercial Truth) | [optional]
+**SubscriptionId** | Pointer to **NullableString** | ID of the linked subscription (for recurring fulfillment) | [optional]
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
+**PaidAt** | Pointer to **NullableTime** |  | [optional]
+**CanceledAt** | Pointer to **NullableTime** |  | [optional]
+**FulfilledAt** | Pointer to **NullableTime** |  | [optional]
+**ExpiresAt** | Pointer to **NullableTime** |  | [optional]
 
 ## Methods
 
@@ -717,5 +717,3 @@ HasExpiresAt returns a boolean if a field has been set.
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

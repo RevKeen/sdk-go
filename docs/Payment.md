@@ -4,31 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the payment | 
-**Object** | **string** | Object type | 
-**InvoiceId** | Pointer to **NullableString** | Associated invoice ID | [optional] 
-**CustomerId** | Pointer to **NullableString** | Customer ID | [optional] 
-**Status** | **string** | Payment status. pending: Processing. authorized: Funds reserved. captured/succeeded: Funds collected. failed: Payment failed. voided: Canceled before capture. refunded/partially_refunded: Returned to customer. | 
-**Currency** | **string** | Three-letter ISO currency code | 
-**Amount** | **int32** | Payment amount in cents | 
-**AmountCaptured** | Pointer to **NullableInt32** | Amount captured in cents (for auth-capture flow) | [optional] 
+**Id** | **string** | Unique identifier for the payment |
+**Object** | **string** | Object type |
+**InvoiceId** | Pointer to **NullableString** | Associated invoice ID | [optional]
+**CustomerId** | Pointer to **NullableString** | Customer ID | [optional]
+**Status** | **string** | Payment status. pending: Processing. authorized: Funds reserved. captured/succeeded: Funds collected. failed: Payment failed. voided: Canceled before capture. refunded/partially_refunded: Returned to customer. |
+**Currency** | **string** | Three-letter ISO currency code |
+**Amount** | **int32** | Payment amount in cents |
+**AmountCaptured** | Pointer to **NullableInt32** | Amount captured in cents (for auth-capture flow) | [optional]
 **AmountRefunded** | Pointer to **int32** | Amount refunded in cents | [optional] [default to 0]
-**Gateway** | Pointer to **NullableString** | Name of the payment processor that handled this payment | [optional] 
-**GatewayTransactionId** | Pointer to **NullableString** | Processor&#39;s transaction reference | [optional] 
-**GatewayResponseCode** | Pointer to **NullableString** | Normalized response code from the processor | [optional] 
-**GatewayResponseText** | Pointer to **NullableString** | Human-readable response message from the processor | [optional] 
-**PaymentMethodType** | Pointer to **NullableString** | Payment method type (card, ach, wallet) | [optional] 
-**CardBrand** | Pointer to **NullableString** | Card brand (visa, mastercard, etc.) | [optional] 
-**CardLastFour** | Pointer to **NullableString** | Last 4 digits of card | [optional] 
-**PaymentChannel** | Pointer to **NullableString** | Payment channel. card_present: terminal/POS payment. card_not_present: online or recurring payment. bank_transfer: ACH/direct debit. manual: manually recorded. | [optional] 
-**EntryMode** | Pointer to **NullableString** | Card entry mode for card-present (terminal) payments. null for online payments. | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**CreatedAt** | **time.Time** |  | 
-**UpdatedAt** | **time.Time** |  | 
-**AuthorizedAt** | Pointer to **NullableTime** |  | [optional] 
-**CapturedAt** | Pointer to **NullableTime** |  | [optional] 
-**VoidedAt** | Pointer to **NullableTime** |  | [optional] 
-**RefundedAt** | Pointer to **NullableTime** |  | [optional] 
+**Gateway** | Pointer to **NullableString** | Name of the payment processor that handled this payment | [optional]
+**GatewayTransactionId** | Pointer to **NullableString** | Processor&#39;s transaction reference | [optional]
+**GatewayResponseCode** | Pointer to **NullableString** | Normalized response code from the processor | [optional]
+**GatewayResponseText** | Pointer to **NullableString** | Human-readable response message from the processor | [optional]
+**PaymentMethodType** | Pointer to **NullableString** | Payment method type (card, ach, wallet) | [optional]
+**CardBrand** | Pointer to **NullableString** | Card brand (visa, mastercard, etc.) | [optional]
+**CardLastFour** | Pointer to **NullableString** | Last 4 digits of card | [optional]
+**PaymentChannel** | Pointer to **NullableString** | Payment channel. card_present: terminal/POS payment. card_not_present: online or recurring payment. bank_transfer: ACH/direct debit. manual: manually recorded. | [optional]
+**EntryMode** | Pointer to **NullableString** | Card entry mode for card-present (terminal) payments. null for online payments. | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
+**AuthorizedAt** | Pointer to **NullableTime** |  | [optional]
+**CapturedAt** | Pointer to **NullableTime** |  | [optional]
+**VoidedAt** | Pointer to **NullableTime** |  | [optional]
+**RefundedAt** | Pointer to **NullableTime** |  | [optional]
 
 ## Methods
 
@@ -801,5 +801,3 @@ HasRefundedAt returns a boolean if a field has been set.
 UnsetRefundedAt ensures that no value is present for RefundedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

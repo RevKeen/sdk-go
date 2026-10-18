@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **string** | Error code | 
-**Message** | **string** | Human-readable error message | 
-**DeclineCode** | Pointer to **string** | Card decline code if applicable | [optional] 
-**PaymentMethod** | Pointer to [**PaymentIntentLastPaymentErrorPaymentMethod**](PaymentIntentLastPaymentErrorPaymentMethod.md) |  | [optional] 
+**Code** | **string** | Error code |
+**Message** | **string** | Human-readable error message |
+**DeclineCode** | Pointer to **string** | Card decline code if applicable | [optional]
+**PaymentMethod** | Pointer to [**PaymentIntentLastPaymentErrorPaymentMethod**](PaymentIntentLastPaymentErrorPaymentMethod.md) |  | [optional]
 
 ## Methods
 
@@ -120,5 +120,3 @@ HasPaymentMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

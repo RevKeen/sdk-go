@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Email** | **string** |  | 
-**Name** | **NullableString** |  | 
+**Id** | **string** |  |
+**Email** | **string** |  |
+**Name** | **NullableString** |  |
 
 ## Methods
 
@@ -99,5 +99,3 @@ SetName sets Name field to given value.
 UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductIds** | Pointer to **[]string** |  | [optional] 
-**LineItems** | Pointer to [**[]PaymentLinksCreateRequestLineItemsInner**](PaymentLinksCreateRequestLineItemsInner.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Slug** | Pointer to **string** |  | [optional] 
+**ProductIds** | Pointer to **[]string** |  | [optional]
+**LineItems** | Pointer to [**[]PaymentLinksCreateRequestLineItemsInner**](PaymentLinksCreateRequestLineItemsInner.md) |  | [optional]
+**Name** | Pointer to **string** |  | [optional]
+**Slug** | Pointer to **string** |  | [optional]
 **Mode** | Pointer to **string** |  | [optional] [default to "custom"]
-**AmountMinor** | Pointer to **int32** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**InvoiceId** | Pointer to **string** |  | [optional] 
-**SubscriptionId** | Pointer to **string** |  | [optional] 
-**SuccessUrl** | Pointer to **string** | Custom URL to redirect after successful payment. Supports placeholders: {CHECKOUT_ID}, {TRANSACTION_ID}, {PAYMENT_ID}, {CUSTOMER_ID}, {AMOUNT}, {CURRENCY}, {PORTAL_URL}. If not set, redirects to RevKeen&#39;s default success page. | [optional] 
-**CancelUrl** | Pointer to **string** | Custom URL to redirect if customer cancels the checkout. If not set, no cancel redirect is configured. | [optional] 
-**RedirectUrl** | Pointer to **string** |  | [optional] 
-**CollectShipping** | Pointer to **bool** |  | [optional] [default to false]
-**AllowPromotionCodes** | Pointer to **bool** |  | [optional] [default to true]
-**TaxBehavior** | Pointer to **string** |  | [optional] [default to "unspecified"]
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**ExpiresAt** | Pointer to **time.Time** |  | [optional] 
+**AmountMinor** | Pointer to **int64** | Deprecated and ignored. A payment link charges the prices of its products or line_items; an amount sent here is never charged. | [optional]
+**Currency** | Pointer to **string** | Not used: a payment link takes its currency from its products. For an ad-hoc line item, set line_items[].price_data.currency. | [optional]
+**InvoiceId** | Pointer to **string** | Deprecated and ignored. This endpoint does not create a payment link for an invoice. | [optional]
+**SubscriptionId** | Pointer to **string** | Deprecated and ignored. This endpoint does not attach a payment link to an existing subscription. | [optional]
+**SuccessUrl** | Pointer to **string** | Custom URL to redirect after successful payment. Supports placeholders: {CHECKOUT_ID}, {TRANSACTION_ID}, {PAYMENT_ID}, {CUSTOMER_ID}, {AMOUNT}, {CURRENCY}, {PORTAL_URL}, {CHECKOUT_STATUS_TOKEN}. If not set, redirects to RevKeen&#39;s default success page. | [optional]
+**CancelUrl** | Pointer to **string** | Custom URL to redirect if customer cancels the checkout. If not set, no cancel redirect is configured. | [optional]
+**RedirectUrl** | Pointer to **string** | Deprecated and ignored. Use success_url. | [optional]
+**CollectShipping** | Pointer to **bool** | When true, checkout asks the customer for a delivery address before payment. | [optional] [default to false]
+**AllowPromotionCodes** | Pointer to **bool** | Not applied yet: links created through this endpoint do not accept discount codes, whatever this is set to. | [optional] [default to true]
+**TaxBehavior** | Pointer to **string** | Whether the link&#39;s prices include tax. inclusive or exclusive is saved on the link; unspecified keeps the default (exclusive). Tax is only calculated when the link&#39;s tax mode is manual or auto, which this endpoint does not set. | [optional] [default to "unspecified"]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
+**ExpiresAt** | Pointer to **time.Time** |  | [optional]
 **SelectionMode** | Pointer to **string** | Customer-facing checkout shape. bundle&#x3D;all products together (default); single_select&#x3D;radio picker; multi_select&#x3D;cart with quantity per line. Companion FKs (default_product_id, highlighted_product_id) are only valid when selection_mode&#x3D;&#39;single_select&#39;. | [optional] [default to "bundle"]
-**DefaultProductId** | Pointer to **NullableString** | For single_select only — option pre-selected when checkout loads. Must reference a product attached to this payment link. | [optional] 
-**HighlightedProductId** | Pointer to **NullableString** | For single_select only — option shown with a &#39;Popular&#39; badge in the picker. | [optional] 
-**IdempotencyKey** | Pointer to **string** |  | [optional] 
+**DefaultProductId** | Pointer to **NullableString** | For single_select only — option pre-selected when checkout loads. Must reference a product attached to this payment link. | [optional]
+**HighlightedProductId** | Pointer to **NullableString** | For single_select only — option shown with a &#39;Popular&#39; badge in the picker. | [optional]
+**IdempotencyKey** | Pointer to **string** | Deprecated and ignored. Send the Idempotency-Key header: a repeat request with the same header returns the original response. | [optional]
 
 ## Methods
 
@@ -172,20 +172,20 @@ HasMode returns a boolean if a field has been set.
 
 ### GetAmountMinor
 
-`func (o *PaymentLinksCreateRequest) GetAmountMinor() int32`
+`func (o *PaymentLinksCreateRequest) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *PaymentLinksCreateRequest) GetAmountMinorOk() (*int32, bool)`
+`func (o *PaymentLinksCreateRequest) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *PaymentLinksCreateRequest) SetAmountMinor(v int32)`
+`func (o *PaymentLinksCreateRequest) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -422,20 +422,20 @@ HasTaxBehavior returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *PaymentLinksCreateRequest) GetMetadata() map[string]interface{}`
+`func (o *PaymentLinksCreateRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PaymentLinksCreateRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PaymentLinksCreateRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PaymentLinksCreateRequest) SetMetadata(v map[string]interface{})`
+`func (o *PaymentLinksCreateRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -592,5 +592,3 @@ HasIdempotencyKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

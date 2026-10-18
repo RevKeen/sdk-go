@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **bool** | Whether the test event was created | 
-**Event** | Pointer to [**Event**](Event.md) | The created test event | [optional] 
-**Message** | Pointer to **string** | Additional information | [optional] 
+**Success** | **bool** | Whether the test event was created |
+**Event** | Pointer to [**Event**](Event.md) | The created test event | [optional]
+**Message** | Pointer to **string** | Additional information | [optional]
 
 ## Methods
 
@@ -99,5 +99,3 @@ HasMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

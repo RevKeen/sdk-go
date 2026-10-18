@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | **string** | The URL to redirect the customer to | 
-**ReturnUrl** | **string** | The URL to redirect back to after completion | 
+**Url** | **string** | The URL to redirect the customer to |
+**ReturnUrl** | **string** | The URL to redirect back to after completion |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetReturnUrl sets ReturnUrl field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

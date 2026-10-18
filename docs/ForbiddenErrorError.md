@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**Code** | **string** |  | 
-**Message** | **string** |  | 
-**RequestId** | Pointer to **string** |  | [optional] 
+**Type** | **string** |  |
+**Code** | **string** |  |
+**Message** | **string** |  |
+**RequestId** | Pointer to **string** |  | [optional]
+**Details** | Pointer to **map[string]interface{}** | Additional context (e.g. required scopes) | [optional]
 
 ## Methods
 
@@ -113,7 +114,30 @@ SetRequestId sets RequestId field to given value.
 
 HasRequestId returns a boolean if a field has been set.
 
+### GetDetails
+
+`func (o *ForbiddenErrorError) GetDetails() map[string]interface{}`
+
+GetDetails returns the Details field if non-nil, zero value otherwise.
+
+### GetDetailsOk
+
+`func (o *ForbiddenErrorError) GetDetailsOk() (*map[string]interface{}, bool)`
+
+GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetails
+
+`func (o *ForbiddenErrorError) SetDetails(v map[string]interface{})`
+
+SetDetails sets Details field to given value.
+
+### HasDetails
+
+`func (o *ForbiddenErrorError) HasDetails() bool`
+
+HasDetails returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

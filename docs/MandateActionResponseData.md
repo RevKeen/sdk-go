@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Mandate ID | 
-**Status** | **string** | Resulting mandate status | 
-**MandateReference** | Pointer to **NullableString** | Mandate reference (reinstate) | [optional] 
+**Id** | **string** | Mandate ID |
+**Status** | **string** | Resulting mandate status |
+**MandateReference** | Pointer to **NullableString** | Mandate reference (reinstate) | [optional]
 
 ## Methods
 
@@ -104,5 +104,3 @@ HasMandateReference returns a boolean if a field has been set.
 UnsetMandateReference ensures that no value is present for MandateReference, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

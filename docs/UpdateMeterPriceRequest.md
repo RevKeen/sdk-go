@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UnitAmountMinor** | Pointer to **int32** |  | [optional] 
-**UnitAmountDecimal** | Pointer to **string** |  | [optional] 
-**FlatFeeMinor** | Pointer to **int32** |  | [optional] 
-**PackageSize** | Pointer to **int32** |  | [optional] 
-**CostPerUnitMinor** | Pointer to **int32** |  | [optional] 
-**Name** | Pointer to **NullableString** |  | [optional] 
-**Nickname** | Pointer to **NullableString** |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**Tiers** | Pointer to [**[]MeterPriceTierInput**](MeterPriceTierInput.md) |  | [optional] 
-**FilterConditions** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**FilterPriority** | Pointer to **int32** |  | [optional] 
-**PayInAdvance** | Pointer to **bool** |  | [optional] 
-**SpendingMinimumCents** | Pointer to **NullableInt32** |  | [optional] 
-**PercentageRateBps** | Pointer to **int32** | Rate in basis points. 70 &#x3D; 0.7%. Only meaningful when the price&#39;s pricing_model is &#39;percentage&#39;. | [optional] 
+**UnitAmountMinor** | Pointer to **int64** |  | [optional]
+**UnitAmountDecimal** | Pointer to **string** |  | [optional]
+**FlatFeeMinor** | Pointer to **int64** |  | [optional]
+**PackageSize** | Pointer to **int32** |  | [optional]
+**CostPerUnitMinor** | Pointer to **int64** |  | [optional]
+**Name** | Pointer to **NullableString** |  | [optional]
+**Nickname** | Pointer to **NullableString** |  | [optional]
+**Description** | Pointer to **NullableString** |  | [optional]
+**Tiers** | Pointer to [**[]MeterPriceTierInput**](MeterPriceTierInput.md) |  | [optional]
+**FilterConditions** | Pointer to **[]map[string]*interface{}** |  | [optional]
+**FilterPriority** | Pointer to **int32** |  | [optional]
+**PayInAdvance** | Pointer to **bool** |  | [optional]
+**SpendingMinimumCents** | Pointer to **NullableInt32** |  | [optional]
+**PercentageRateBps** | Pointer to **int32** | Rate in basis points. 70 &#x3D; 0.7%. Only meaningful when the price&#39;s pricing_model is &#39;percentage&#39;. | [optional]
 
 ## Methods
 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetUnitAmountMinor
 
-`func (o *UpdateMeterPriceRequest) GetUnitAmountMinor() int32`
+`func (o *UpdateMeterPriceRequest) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *UpdateMeterPriceRequest) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *UpdateMeterPriceRequest) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *UpdateMeterPriceRequest) SetUnitAmountMinor(v int32)`
+`func (o *UpdateMeterPriceRequest) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -90,20 +90,20 @@ HasUnitAmountDecimal returns a boolean if a field has been set.
 
 ### GetFlatFeeMinor
 
-`func (o *UpdateMeterPriceRequest) GetFlatFeeMinor() int32`
+`func (o *UpdateMeterPriceRequest) GetFlatFeeMinor() int64`
 
 GetFlatFeeMinor returns the FlatFeeMinor field if non-nil, zero value otherwise.
 
 ### GetFlatFeeMinorOk
 
-`func (o *UpdateMeterPriceRequest) GetFlatFeeMinorOk() (*int32, bool)`
+`func (o *UpdateMeterPriceRequest) GetFlatFeeMinorOk() (*int64, bool)`
 
 GetFlatFeeMinorOk returns a tuple with the FlatFeeMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlatFeeMinor
 
-`func (o *UpdateMeterPriceRequest) SetFlatFeeMinor(v int32)`
+`func (o *UpdateMeterPriceRequest) SetFlatFeeMinor(v int64)`
 
 SetFlatFeeMinor sets FlatFeeMinor field to given value.
 
@@ -140,20 +140,20 @@ HasPackageSize returns a boolean if a field has been set.
 
 ### GetCostPerUnitMinor
 
-`func (o *UpdateMeterPriceRequest) GetCostPerUnitMinor() int32`
+`func (o *UpdateMeterPriceRequest) GetCostPerUnitMinor() int64`
 
 GetCostPerUnitMinor returns the CostPerUnitMinor field if non-nil, zero value otherwise.
 
 ### GetCostPerUnitMinorOk
 
-`func (o *UpdateMeterPriceRequest) GetCostPerUnitMinorOk() (*int32, bool)`
+`func (o *UpdateMeterPriceRequest) GetCostPerUnitMinorOk() (*int64, bool)`
 
 GetCostPerUnitMinorOk returns a tuple with the CostPerUnitMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCostPerUnitMinor
 
-`func (o *UpdateMeterPriceRequest) SetCostPerUnitMinor(v int32)`
+`func (o *UpdateMeterPriceRequest) SetCostPerUnitMinor(v int64)`
 
 SetCostPerUnitMinor sets CostPerUnitMinor field to given value.
 
@@ -295,20 +295,20 @@ HasTiers returns a boolean if a field has been set.
 
 ### GetFilterConditions
 
-`func (o *UpdateMeterPriceRequest) GetFilterConditions() []map[string]interface{}`
+`func (o *UpdateMeterPriceRequest) GetFilterConditions() []map[string]*interface{}`
 
 GetFilterConditions returns the FilterConditions field if non-nil, zero value otherwise.
 
 ### GetFilterConditionsOk
 
-`func (o *UpdateMeterPriceRequest) GetFilterConditionsOk() (*[]map[string]interface{}, bool)`
+`func (o *UpdateMeterPriceRequest) GetFilterConditionsOk() (*[]map[string]*interface{}, bool)`
 
 GetFilterConditionsOk returns a tuple with the FilterConditions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilterConditions
 
-`func (o *UpdateMeterPriceRequest) SetFilterConditions(v []map[string]interface{})`
+`func (o *UpdateMeterPriceRequest) SetFilterConditions(v []map[string]*interface{})`
 
 SetFilterConditions sets FilterConditions field to given value.
 
@@ -430,5 +430,3 @@ HasPercentageRateBps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

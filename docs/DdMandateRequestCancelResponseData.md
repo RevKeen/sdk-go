@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**CustomerId** | **string** |  | 
-**InvoiceId** | **NullableString** |  | 
-**Status** | **string** |  | 
-**CancelledAt** | Pointer to **NullableString** |  | [optional] 
-**CancelledBy** | Pointer to **NullableString** |  | [optional] 
-**ExpiredAt** | Pointer to **NullableString** |  | [optional] 
-**Reason** | Pointer to **NullableString** |  | [optional] 
-**Idempotent** | Pointer to **bool** |  | [optional] 
+**Id** | **string** |  |
+**CustomerId** | **string** |  |
+**InvoiceId** | **NullableString** |  |
+**Status** | **string** |  |
+**CancelledAt** | Pointer to **NullableTime** |  | [optional]
+**CancelledBy** | Pointer to **NullableString** |  | [optional]
+**ExpiredAt** | Pointer to **NullableTime** |  | [optional]
+**Reason** | Pointer to **NullableString** |  | [optional]
+**Idempotent** | Pointer to **bool** |  | [optional]
 
 ## Methods
 
@@ -125,20 +125,20 @@ SetStatus sets Status field to given value.
 
 ### GetCancelledAt
 
-`func (o *DdMandateRequestCancelResponseData) GetCancelledAt() string`
+`func (o *DdMandateRequestCancelResponseData) GetCancelledAt() time.Time`
 
 GetCancelledAt returns the CancelledAt field if non-nil, zero value otherwise.
 
 ### GetCancelledAtOk
 
-`func (o *DdMandateRequestCancelResponseData) GetCancelledAtOk() (*string, bool)`
+`func (o *DdMandateRequestCancelResponseData) GetCancelledAtOk() (*time.Time, bool)`
 
 GetCancelledAtOk returns a tuple with the CancelledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCancelledAt
 
-`func (o *DdMandateRequestCancelResponseData) SetCancelledAt(v string)`
+`func (o *DdMandateRequestCancelResponseData) SetCancelledAt(v time.Time)`
 
 SetCancelledAt sets CancelledAt field to given value.
 
@@ -195,20 +195,20 @@ HasCancelledBy returns a boolean if a field has been set.
 UnsetCancelledBy ensures that no value is present for CancelledBy, not even an explicit nil
 ### GetExpiredAt
 
-`func (o *DdMandateRequestCancelResponseData) GetExpiredAt() string`
+`func (o *DdMandateRequestCancelResponseData) GetExpiredAt() time.Time`
 
 GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
 
 ### GetExpiredAtOk
 
-`func (o *DdMandateRequestCancelResponseData) GetExpiredAtOk() (*string, bool)`
+`func (o *DdMandateRequestCancelResponseData) GetExpiredAtOk() (*time.Time, bool)`
 
 GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiredAt
 
-`func (o *DdMandateRequestCancelResponseData) SetExpiredAt(v string)`
+`func (o *DdMandateRequestCancelResponseData) SetExpiredAt(v time.Time)`
 
 SetExpiredAt sets ExpiredAt field to given value.
 
@@ -290,5 +290,3 @@ HasIdempotent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

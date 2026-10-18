@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | **string** |  | 
-**PriceId** | Pointer to **NullableString** |  | [optional] 
-**Quantity** | **int32** |  | 
-**MerchantReference** | Pointer to **NullableString** |  | [optional] 
-**IsAdhoc** | **bool** |  | 
-**ProductDetails** | Pointer to [**PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetails**](PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetails.md) |  | [optional] 
+**ProductId** | **string** |  |
+**PriceId** | Pointer to **NullableString** |  | [optional]
+**Quantity** | **int32** |  |
+**MerchantReference** | Pointer to **NullableString** |  | [optional]
+**IsAdhoc** | **bool** |  |
+**ProductDetails** | Pointer to [**PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetails**](PaymentLinksList200ResponseDataInnerLineItemsInnerProductDetails.md) |  | [optional]
 
 ## Methods
 
@@ -187,5 +187,3 @@ HasProductDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

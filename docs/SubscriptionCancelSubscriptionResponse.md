@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**Subscription**](Subscription.md) |  | 
+**Data** | [**Subscription**](Subscription.md) |  |
+**DdCollectionStopped** | Pointer to [**DdCollectionStopped**](DdCollectionStopped.md) |  | [optional]
 
 ## Methods
 
@@ -45,7 +46,30 @@ and a boolean to check if the value has been set.
 SetData sets Data field to given value.
 
 
+### GetDdCollectionStopped
+
+`func (o *SubscriptionCancelSubscriptionResponse) GetDdCollectionStopped() DdCollectionStopped`
+
+GetDdCollectionStopped returns the DdCollectionStopped field if non-nil, zero value otherwise.
+
+### GetDdCollectionStoppedOk
+
+`func (o *SubscriptionCancelSubscriptionResponse) GetDdCollectionStoppedOk() (*DdCollectionStopped, bool)`
+
+GetDdCollectionStoppedOk returns a tuple with the DdCollectionStopped field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDdCollectionStopped
+
+`func (o *SubscriptionCancelSubscriptionResponse) SetDdCollectionStopped(v DdCollectionStopped)`
+
+SetDdCollectionStopped sets DdCollectionStopped field to given value.
+
+### HasDdCollectionStopped
+
+`func (o *SubscriptionCancelSubscriptionResponse) HasDdCollectionStopped() bool`
+
+HasDdCollectionStopped returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

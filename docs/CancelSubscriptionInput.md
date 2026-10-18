@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Mode** | **string** | Cancel mode: \&quot;immediately\&quot; revokes access now, \&quot;period_end\&quot; schedules cancellation at billing period end | 
-**Reason** | Pointer to **string** | Optional reason for cancellation | [optional] 
+**Mode** | **string** | Cancel mode: \&quot;immediately\&quot; revokes access now, \&quot;period_end\&quot; schedules cancellation at billing period end |
+**Reason** | Pointer to **string** | Optional reason for cancellation | [optional]
 
 ## Methods
 
@@ -73,5 +73,3 @@ HasReason returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

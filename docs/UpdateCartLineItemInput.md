@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Quantity** | **int32** |  | 
+**Quantity** | **int32** |  |
 
 ## Methods
 
@@ -47,5 +47,3 @@ SetQuantity sets Quantity field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

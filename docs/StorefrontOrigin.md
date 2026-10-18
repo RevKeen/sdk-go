@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**Origin** | **string** |  | 
-**CreatedAt** | **string** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**Origin** | **string** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewStorefrontOrigin
 
-`func NewStorefrontOrigin(id string, object string, origin string, createdAt string, ) *StorefrontOrigin`
+`func NewStorefrontOrigin(id string, object string, origin string, createdAt time.Time, ) *StorefrontOrigin`
 
 NewStorefrontOrigin instantiates a new StorefrontOrigin object
 This constructor will assign default values to properties that have it defined,
@@ -90,25 +90,23 @@ SetOrigin sets Origin field to given value.
 
 ### GetCreatedAt
 
-`func (o *StorefrontOrigin) GetCreatedAt() string`
+`func (o *StorefrontOrigin) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *StorefrontOrigin) GetCreatedAtOk() (*string, bool)`
+`func (o *StorefrontOrigin) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *StorefrontOrigin) SetCreatedAt(v string)`
+`func (o *StorefrontOrigin) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

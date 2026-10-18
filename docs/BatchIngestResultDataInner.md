@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Index** | **float32** |  | 
-**Status** | **string** |  | 
-**Id** | Pointer to **string** |  | [optional] 
-**Reason** | Pointer to **string** |  | [optional] 
+**Index** | **float32** |  |
+**Status** | **string** |  |
+**Id** | Pointer to **string** |  | [optional]
+**Reason** | Pointer to **string** |  | [optional]
 
 ## Methods
 
@@ -120,5 +120,3 @@ HasReason returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

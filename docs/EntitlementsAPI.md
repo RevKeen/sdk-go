@@ -1,6 +1,6 @@
 # \EntitlementsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -56,8 +56,8 @@ Other parameters are passed through a pointer to a apiEntitlementsCheckRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | **string** | Customer UUID (required) | 
- **benefitKey** | **string** | Benefit key to check | 
+ **customerId** | **string** | Customer UUID (required) |
+ **benefitKey** | **string** | Benefit key to check |
 
 ### Return type
 
@@ -94,7 +94,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -128,10 +128,10 @@ Other parameters are passed through a pointer to a apiEntitlementsListRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | **string** | Customer UUID (required) | 
+ **customerId** | **string** | Customer UUID (required) |
  **includeExpired** | **bool** | Include expired entitlements | [default to false]
- **benefitType** | **string** | Filter by benefit type | 
- **category** | **string** | Filter by category | 
+ **benefitType** | **string** | Filter by benefit type |
+ **category** | **string** | Filter by category |
  **limit** | **int32** | Maximum results (1-100) | [default to 50]
  **offset** | **int32** | Results to skip | [default to 0]
 
@@ -151,4 +151,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

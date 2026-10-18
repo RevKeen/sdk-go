@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **NullableString** | Full name on the payment method | 
-**Email** | **NullableString** | Email address | 
-**Phone** | **NullableString** | Phone number | 
-**Address** | [**BillingDetailsAddress**](BillingDetailsAddress.md) |  | 
+**Name** | **NullableString** | Full name on the payment method |
+**Email** | **NullableString** | Email address |
+**Phone** | **NullableString** | Phone number |
+**Address** | [**NullableBillingDetailsAddress**](BillingDetailsAddress.md) |  |
 
 ## Methods
 
 ### NewBillingDetails
 
-`func NewBillingDetails(name NullableString, email NullableString, phone NullableString, address BillingDetailsAddress, ) *BillingDetails`
+`func NewBillingDetails(name NullableString, email NullableString, phone NullableString, address NullableBillingDetailsAddress, ) *BillingDetails`
 
 NewBillingDetails instantiates a new BillingDetails object
 This constructor will assign default values to properties that have it defined,
@@ -138,7 +138,15 @@ and a boolean to check if the value has been set.
 SetAddress sets Address field to given value.
 
 
+### SetAddressNil
+
+`func (o *BillingDetails) SetAddressNil(b bool)`
+
+ SetAddressNil sets the value for Address to be an explicit nil
+
+### UnsetAddress
+`func (o *BillingDetails) UnsetAddress()`
+
+UnsetAddress ensures that no value is present for Address, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

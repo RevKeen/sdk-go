@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**PublicId** | **string** |  | 
-**Gateway** | **string** | Name of the payment processor that produced this payout batch | 
-**GatewayPayoutId** | **string** |  | 
-**GrossAmountMinor** | **float32** | Gross amount in cents | 
-**FeesAmountMinor** | **float32** | Fees in cents | 
-**NetAmountMinor** | **float32** | Net amount in cents | 
-**Currency** | **string** |  | 
-**ChargesCount** | **NullableFloat32** |  | 
-**RefundsCount** | **NullableFloat32** |  | 
-**ChargebacksCount** | **NullableFloat32** |  | 
-**Status** | **string** |  | 
-**ArrivalDate** | **NullableString** |  | 
-**SettledAt** | **NullableString** |  | 
-**CreatedAt** | **string** |  | 
+**Id** | **string** |  |
+**PublicId** | **string** |  |
+**Gateway** | **string** | Name of the payment processor that produced this payout batch |
+**GatewayPayoutId** | **string** |  |
+**GrossAmountMinor** | **int64** | Gross amount in cents |
+**FeesAmountMinor** | **int64** | Fees in cents |
+**NetAmountMinor** | **int64** | Net amount in cents |
+**Currency** | **string** |  |
+**ChargesCount** | **NullableFloat32** |  |
+**RefundsCount** | **NullableFloat32** |  |
+**ChargebacksCount** | **NullableFloat32** |  |
+**Status** | **string** |  |
+**ArrivalDate** | **NullableString** |  |
+**SettledAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewPayout
 
-`func NewPayout(id string, publicId string, gateway string, gatewayPayoutId string, grossAmountMinor float32, feesAmountMinor float32, netAmountMinor float32, currency string, chargesCount NullableFloat32, refundsCount NullableFloat32, chargebacksCount NullableFloat32, status string, arrivalDate NullableString, settledAt NullableString, createdAt string, ) *Payout`
+`func NewPayout(id string, publicId string, gateway string, gatewayPayoutId string, grossAmountMinor int64, feesAmountMinor int64, netAmountMinor int64, currency string, chargesCount NullableFloat32, refundsCount NullableFloat32, chargebacksCount NullableFloat32, status string, arrivalDate NullableString, settledAt NullableTime, createdAt time.Time, ) *Payout`
 
 NewPayout instantiates a new Payout object
 This constructor will assign default values to properties that have it defined,
@@ -121,60 +121,60 @@ SetGatewayPayoutId sets GatewayPayoutId field to given value.
 
 ### GetGrossAmountMinor
 
-`func (o *Payout) GetGrossAmountMinor() float32`
+`func (o *Payout) GetGrossAmountMinor() int64`
 
 GetGrossAmountMinor returns the GrossAmountMinor field if non-nil, zero value otherwise.
 
 ### GetGrossAmountMinorOk
 
-`func (o *Payout) GetGrossAmountMinorOk() (*float32, bool)`
+`func (o *Payout) GetGrossAmountMinorOk() (*int64, bool)`
 
 GetGrossAmountMinorOk returns a tuple with the GrossAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrossAmountMinor
 
-`func (o *Payout) SetGrossAmountMinor(v float32)`
+`func (o *Payout) SetGrossAmountMinor(v int64)`
 
 SetGrossAmountMinor sets GrossAmountMinor field to given value.
 
 
 ### GetFeesAmountMinor
 
-`func (o *Payout) GetFeesAmountMinor() float32`
+`func (o *Payout) GetFeesAmountMinor() int64`
 
 GetFeesAmountMinor returns the FeesAmountMinor field if non-nil, zero value otherwise.
 
 ### GetFeesAmountMinorOk
 
-`func (o *Payout) GetFeesAmountMinorOk() (*float32, bool)`
+`func (o *Payout) GetFeesAmountMinorOk() (*int64, bool)`
 
 GetFeesAmountMinorOk returns a tuple with the FeesAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeesAmountMinor
 
-`func (o *Payout) SetFeesAmountMinor(v float32)`
+`func (o *Payout) SetFeesAmountMinor(v int64)`
 
 SetFeesAmountMinor sets FeesAmountMinor field to given value.
 
 
 ### GetNetAmountMinor
 
-`func (o *Payout) GetNetAmountMinor() float32`
+`func (o *Payout) GetNetAmountMinor() int64`
 
 GetNetAmountMinor returns the NetAmountMinor field if non-nil, zero value otherwise.
 
 ### GetNetAmountMinorOk
 
-`func (o *Payout) GetNetAmountMinorOk() (*float32, bool)`
+`func (o *Payout) GetNetAmountMinorOk() (*int64, bool)`
 
 GetNetAmountMinorOk returns a tuple with the NetAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetAmountMinor
 
-`func (o *Payout) SetNetAmountMinor(v float32)`
+`func (o *Payout) SetNetAmountMinor(v int64)`
 
 SetNetAmountMinor sets NetAmountMinor field to given value.
 
@@ -341,20 +341,20 @@ SetArrivalDate sets ArrivalDate field to given value.
 UnsetArrivalDate ensures that no value is present for ArrivalDate, not even an explicit nil
 ### GetSettledAt
 
-`func (o *Payout) GetSettledAt() string`
+`func (o *Payout) GetSettledAt() time.Time`
 
 GetSettledAt returns the SettledAt field if non-nil, zero value otherwise.
 
 ### GetSettledAtOk
 
-`func (o *Payout) GetSettledAtOk() (*string, bool)`
+`func (o *Payout) GetSettledAtOk() (*time.Time, bool)`
 
 GetSettledAtOk returns a tuple with the SettledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettledAt
 
-`func (o *Payout) SetSettledAt(v string)`
+`func (o *Payout) SetSettledAt(v time.Time)`
 
 SetSettledAt sets SettledAt field to given value.
 
@@ -371,25 +371,23 @@ SetSettledAt sets SettledAt field to given value.
 UnsetSettledAt ensures that no value is present for SettledAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Payout) GetCreatedAt() string`
+`func (o *Payout) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Payout) GetCreatedAtOk() (*string, bool)`
+`func (o *Payout) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Payout) SetCreatedAt(v string)`
+`func (o *Payout) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PricingModel** | **string** | Pricing model. &#39;percentage&#39; charges a basis-points percentage of the metered amount (REV-3465); other models charge per unit, graduated tiers, volume tiers, or packages. | 
-**Currency** | **string** | ISO 4217 currency code. A usage-based subscription has one currency; metered events attributed to it are assumed to be in this currency and are not FX-converted by RevKeen. | 
-**UnitAmountMinor** | Pointer to **int32** | Price per unit in minor units (for per_unit). For a sub-penny rate use &#x60;unit_amount_decimal&#x60;. | [optional] 
-**UnitAmountDecimal** | Pointer to **string** | Exact per-unit rate in minor units as a decimal string (sub-penny safe, e.g. \&quot;0.02\&quot; &#x3D; 0.02 pence). Takes precedence over &#x60;unit_amount_minor&#x60;. Mirrors Stripe&#39;s &#x60;unit_amount_decimal&#x60;. | [optional] 
-**FlatFeeMinor** | Pointer to **int32** | Base charge per period in minor units | [optional] 
-**PackageSize** | Pointer to **int32** | Units per package (for package model) | [optional] 
-**CostPerUnitMinor** | Pointer to **int32** | Merchant&#39;s cost per unit for margin intelligence | [optional] 
-**Name** | Pointer to **string** | Customer-facing price name | [optional] 
-**Nickname** | Pointer to **string** | Internal price nickname | [optional] 
-**Description** | Pointer to **string** | Description of this price option | [optional] 
-**Tiers** | Pointer to [**[]MeterPriceTierInput**](MeterPriceTierInput.md) | Tier configuration (for graduated and volume) | [optional] 
-**FilterConditions** | Pointer to **[]map[string]interface{}** | Optional event property predicates for dimensional pricing. Empty or omitted &#x3D; base/fallthrough price. | [optional] 
-**FilterPriority** | Pointer to **int32** | Tie-breaker when multiple matching filters have the same specificity. | [optional] 
-**PayInAdvance** | Pointer to **bool** | When true, matching usage events debit the customer&#39;s prepaid wallet at ingest time. | [optional] 
-**SpendingMinimumCents** | Pointer to **int32** | Minimum minor-unit amount applied to each pay-in-advance usage drawdown. | [optional] 
-**PercentageRateBps** | Pointer to **int32** | Rate in basis points. 70 &#x3D; 0.7%. Required when pricing_model&#x3D;&#39;percentage&#39;. Range 0–10000 (0%–100%). | [optional] 
+**PricingModel** | **string** | Pricing model. &#39;percentage&#39; charges a basis-points percentage of the metered amount (REV-3465); other models charge per unit, graduated tiers, volume tiers, or packages. |
+**Currency** | **string** | ISO 4217 currency code. A usage-based subscription has one currency; metered events attributed to it are assumed to be in this currency and are not FX-converted by RevKeen. |
+**UnitAmountMinor** | Pointer to **int64** | Price per unit in minor units (for per_unit). For a sub-penny rate use &#x60;unit_amount_decimal&#x60;. | [optional]
+**UnitAmountDecimal** | Pointer to **string** | Exact per-unit rate in minor units as a decimal string (sub-penny safe, e.g. \&quot;0.02\&quot; &#x3D; 0.02 pence). Takes precedence over &#x60;unit_amount_minor&#x60;. Mirrors Stripe&#39;s &#x60;unit_amount_decimal&#x60;. | [optional]
+**FlatFeeMinor** | Pointer to **int64** | Base charge per period in minor units | [optional]
+**PackageSize** | Pointer to **int32** | Units per package (for package model) | [optional]
+**CostPerUnitMinor** | Pointer to **int64** | Merchant&#39;s cost per unit for margin intelligence | [optional]
+**Name** | Pointer to **string** | Customer-facing price name | [optional]
+**Nickname** | Pointer to **string** | Internal price nickname | [optional]
+**Description** | Pointer to **string** | Description of this price option | [optional]
+**Tiers** | Pointer to [**[]MeterPriceTierInput**](MeterPriceTierInput.md) | Tier configuration (for graduated and volume) | [optional]
+**FilterConditions** | Pointer to **[]map[string]*interface{}** | Optional event property predicates for dimensional pricing. Empty or omitted &#x3D; base/fallthrough price. | [optional]
+**FilterPriority** | Pointer to **int32** | Tie-breaker when multiple matching filters have the same specificity. | [optional]
+**PayInAdvance** | Pointer to **bool** | When true, matching usage events debit the customer&#39;s prepaid wallet at ingest time. | [optional]
+**SpendingMinimumCents** | Pointer to **int32** | Minimum minor-unit amount applied to each pay-in-advance usage drawdown. | [optional]
+**PercentageRateBps** | Pointer to **int32** | Rate in basis points. 70 &#x3D; 0.7%. Required when pricing_model&#x3D;&#39;percentage&#39;. Range 0–10000 (0%–100%). | [optional]
 
 ## Methods
 
@@ -82,20 +82,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetUnitAmountMinor
 
-`func (o *CreateMeterPriceRequest) GetUnitAmountMinor() int32`
+`func (o *CreateMeterPriceRequest) GetUnitAmountMinor() int64`
 
 GetUnitAmountMinor returns the UnitAmountMinor field if non-nil, zero value otherwise.
 
 ### GetUnitAmountMinorOk
 
-`func (o *CreateMeterPriceRequest) GetUnitAmountMinorOk() (*int32, bool)`
+`func (o *CreateMeterPriceRequest) GetUnitAmountMinorOk() (*int64, bool)`
 
 GetUnitAmountMinorOk returns a tuple with the UnitAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitAmountMinor
 
-`func (o *CreateMeterPriceRequest) SetUnitAmountMinor(v int32)`
+`func (o *CreateMeterPriceRequest) SetUnitAmountMinor(v int64)`
 
 SetUnitAmountMinor sets UnitAmountMinor field to given value.
 
@@ -132,20 +132,20 @@ HasUnitAmountDecimal returns a boolean if a field has been set.
 
 ### GetFlatFeeMinor
 
-`func (o *CreateMeterPriceRequest) GetFlatFeeMinor() int32`
+`func (o *CreateMeterPriceRequest) GetFlatFeeMinor() int64`
 
 GetFlatFeeMinor returns the FlatFeeMinor field if non-nil, zero value otherwise.
 
 ### GetFlatFeeMinorOk
 
-`func (o *CreateMeterPriceRequest) GetFlatFeeMinorOk() (*int32, bool)`
+`func (o *CreateMeterPriceRequest) GetFlatFeeMinorOk() (*int64, bool)`
 
 GetFlatFeeMinorOk returns a tuple with the FlatFeeMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlatFeeMinor
 
-`func (o *CreateMeterPriceRequest) SetFlatFeeMinor(v int32)`
+`func (o *CreateMeterPriceRequest) SetFlatFeeMinor(v int64)`
 
 SetFlatFeeMinor sets FlatFeeMinor field to given value.
 
@@ -182,20 +182,20 @@ HasPackageSize returns a boolean if a field has been set.
 
 ### GetCostPerUnitMinor
 
-`func (o *CreateMeterPriceRequest) GetCostPerUnitMinor() int32`
+`func (o *CreateMeterPriceRequest) GetCostPerUnitMinor() int64`
 
 GetCostPerUnitMinor returns the CostPerUnitMinor field if non-nil, zero value otherwise.
 
 ### GetCostPerUnitMinorOk
 
-`func (o *CreateMeterPriceRequest) GetCostPerUnitMinorOk() (*int32, bool)`
+`func (o *CreateMeterPriceRequest) GetCostPerUnitMinorOk() (*int64, bool)`
 
 GetCostPerUnitMinorOk returns a tuple with the CostPerUnitMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCostPerUnitMinor
 
-`func (o *CreateMeterPriceRequest) SetCostPerUnitMinor(v int32)`
+`func (o *CreateMeterPriceRequest) SetCostPerUnitMinor(v int64)`
 
 SetCostPerUnitMinor sets CostPerUnitMinor field to given value.
 
@@ -307,20 +307,20 @@ HasTiers returns a boolean if a field has been set.
 
 ### GetFilterConditions
 
-`func (o *CreateMeterPriceRequest) GetFilterConditions() []map[string]interface{}`
+`func (o *CreateMeterPriceRequest) GetFilterConditions() []map[string]*interface{}`
 
 GetFilterConditions returns the FilterConditions field if non-nil, zero value otherwise.
 
 ### GetFilterConditionsOk
 
-`func (o *CreateMeterPriceRequest) GetFilterConditionsOk() (*[]map[string]interface{}, bool)`
+`func (o *CreateMeterPriceRequest) GetFilterConditionsOk() (*[]map[string]*interface{}, bool)`
 
 GetFilterConditionsOk returns a tuple with the FilterConditions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilterConditions
 
-`func (o *CreateMeterPriceRequest) SetFilterConditions(v []map[string]interface{})`
+`func (o *CreateMeterPriceRequest) SetFilterConditions(v []map[string]*interface{})`
 
 SetFilterConditions sets FilterConditions field to given value.
 
@@ -432,5 +432,3 @@ HasPercentageRateBps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Active** | Pointer to **bool** | Whether the price is active | [optional] 
-**Name** | Pointer to **NullableString** | Customer-facing price name | [optional] 
-**Nickname** | Pointer to **NullableString** | Display name | [optional] 
-**Description** | Pointer to **NullableString** | Description of this price option | [optional] 
-**LookupKey** | Pointer to **NullableString** | Stable key for API lookups | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
+**Active** | Pointer to **bool** | Whether the price is active | [optional]
+**Name** | Pointer to **NullableString** | Customer-facing price name | [optional]
+**Nickname** | Pointer to **NullableString** | Display name | [optional]
+**Description** | Pointer to **NullableString** | Description of this price option | [optional]
+**LookupKey** | Pointer to **NullableString** | Stable key for API lookups | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
 
 ## Methods
 
@@ -222,5 +222,3 @@ HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

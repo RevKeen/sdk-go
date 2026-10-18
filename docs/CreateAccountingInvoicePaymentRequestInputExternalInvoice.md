@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Number** | Pointer to **NullableString** |  | [optional] 
-**Status** | Pointer to **NullableString** |  | [optional] 
-**Url** | Pointer to **NullableString** |  | [optional] 
-**IssuedAt** | Pointer to **NullableTime** |  | [optional] 
-**DueAt** | Pointer to **NullableTime** |  | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** |  | [optional] 
+**Id** | **string** |  |
+**Number** | Pointer to **NullableString** |  | [optional]
+**Status** | Pointer to **NullableString** |  | [optional]
+**Url** | Pointer to **NullableString** |  | [optional]
+**IssuedAt** | Pointer to **NullableTime** |  | [optional]
+**DueAt** | Pointer to **NullableTime** |  | [optional]
+**UpdatedAt** | Pointer to **NullableTime** |  | [optional]
 
 ## Methods
 
@@ -263,5 +263,3 @@ HasUpdatedAt returns a boolean if a field has been set.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

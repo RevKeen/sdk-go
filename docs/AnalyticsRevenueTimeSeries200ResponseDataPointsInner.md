@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Date** | **string** | Bucket date (ISO 8601) | 
-**Revenue** | **float32** | Revenue for the bucket in minor units | 
-**InvoiceCount** | **float32** | Number of invoices in the bucket | 
-**AvgInvoiceValue** | **float32** | Average invoice value in the bucket | 
+**Date** | **string** | Bucket date (ISO 8601) |
+**Revenue** | **int64** | Revenue for the bucket in minor units |
+**InvoiceCount** | **float32** | Number of invoices in the bucket |
+**AvgInvoiceValue** | **float32** | Average invoice value in the bucket |
 
 ## Methods
 
 ### NewAnalyticsRevenueTimeSeries200ResponseDataPointsInner
 
-`func NewAnalyticsRevenueTimeSeries200ResponseDataPointsInner(date string, revenue float32, invoiceCount float32, avgInvoiceValue float32, ) *AnalyticsRevenueTimeSeries200ResponseDataPointsInner`
+`func NewAnalyticsRevenueTimeSeries200ResponseDataPointsInner(date string, revenue int64, invoiceCount float32, avgInvoiceValue float32, ) *AnalyticsRevenueTimeSeries200ResponseDataPointsInner`
 
 NewAnalyticsRevenueTimeSeries200ResponseDataPointsInner instantiates a new AnalyticsRevenueTimeSeries200ResponseDataPointsInner object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetDate sets Date field to given value.
 
 ### GetRevenue
 
-`func (o *AnalyticsRevenueTimeSeries200ResponseDataPointsInner) GetRevenue() float32`
+`func (o *AnalyticsRevenueTimeSeries200ResponseDataPointsInner) GetRevenue() int64`
 
 GetRevenue returns the Revenue field if non-nil, zero value otherwise.
 
 ### GetRevenueOk
 
-`func (o *AnalyticsRevenueTimeSeries200ResponseDataPointsInner) GetRevenueOk() (*float32, bool)`
+`func (o *AnalyticsRevenueTimeSeries200ResponseDataPointsInner) GetRevenueOk() (*int64, bool)`
 
 GetRevenueOk returns a tuple with the Revenue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevenue
 
-`func (o *AnalyticsRevenueTimeSeries200ResponseDataPointsInner) SetRevenue(v float32)`
+`func (o *AnalyticsRevenueTimeSeries200ResponseDataPointsInner) SetRevenue(v int64)`
 
 SetRevenue sets Revenue field to given value.
 
@@ -110,5 +110,3 @@ SetAvgInvoiceValue sets AvgInvoiceValue field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**EndpointId** | **string** |  | 
-**EventId** | **string** | The event this delivery attempted to send. | 
-**EventType** | **NullableString** |  | 
-**Status** | **string** | Delivery state. pending: queued or retrying. succeeded: 2xx response received. failed: last attempt failed, may retry based on attempts/max_attempts. dead_lettered: max attempts exhausted, will not retry automatically. | 
-**Attempts** | **int32** |  | 
-**MaxAttempts** | **int32** |  | 
-**LastStatusCode** | **NullableInt32** | HTTP status code returned on the last attempt. | 
-**LastError** | **NullableString** | Truncated error message from the last failed attempt. | 
-**LastErrorCode** | **NullableString** |  | 
-**LastDurationMs** | **NullableInt32** |  | 
-**LastAttemptAt** | **NullableTime** |  | 
-**NextRetryAt** | **NullableTime** |  | 
-**DeliveredAt** | **NullableTime** |  | 
-**DeadLetteredAt** | **NullableTime** |  | 
-**DeadLetterReason** | **NullableString** |  | 
-**CreatedAt** | **time.Time** |  | 
-**UpdatedAt** | **time.Time** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**EndpointId** | **string** |  |
+**EventId** | **string** | The event this delivery attempted to send. |
+**EventType** | **NullableString** |  |
+**Status** | **string** | Delivery state. pending: queued or retrying. succeeded: 2xx response received. failed: last attempt failed, may retry based on attempts/max_attempts. dead_lettered: max attempts exhausted, will not retry automatically. |
+**Attempts** | **int32** |  |
+**MaxAttempts** | **int32** |  |
+**LastStatusCode** | **NullableInt32** | HTTP status code returned on the last attempt. |
+**LastError** | **NullableString** | Truncated error message from the last failed attempt. |
+**LastErrorCode** | **NullableString** |  |
+**LastDurationMs** | **NullableInt32** |  |
+**LastAttemptAt** | **NullableTime** |  |
+**NextRetryAt** | **NullableTime** |  |
+**DeliveredAt** | **NullableTime** |  |
+**DeadLetteredAt** | **NullableTime** |  |
+**DeadLetterReason** | **NullableString** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
@@ -525,5 +525,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

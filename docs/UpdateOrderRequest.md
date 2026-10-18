@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | Pointer to **NullableString** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional] 
-**Notes** | Pointer to **NullableString** |  | [optional] 
+**CustomerId** | Pointer to **NullableString** |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata | [optional]
+**Notes** | Pointer to **NullableString** |  | [optional]
 
 ## Methods
 
@@ -124,5 +124,3 @@ HasNotes returns a boolean if a field has been set.
 UnsetNotes ensures that no value is present for Notes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | **string** | Pagination type | 
-**Page** | **int32** | Current page number | 
-**Limit** | **int32** | Results per page | 
-**Total** | **int32** | Total matching results | 
-**TotalPages** | **int32** | Total pages available | 
+**Kind** | **string** | Pagination type |
+**Page** | **int32** | Current page number |
+**Limit** | **int32** | Results per page |
+**Total** | **int32** | Total matching results |
+**TotalPages** | **int32** | Total pages available |
 
 ## Methods
 
@@ -131,5 +131,3 @@ SetTotalPages sets TotalPages field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

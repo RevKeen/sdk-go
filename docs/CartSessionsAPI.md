@@ -1,6 +1,6 @@
 # \CartSessionsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CartSessionsAddLineItem
 
-> CartSessionResponse CartSessionsAddLineItem(ctx, id).CartLineItemInput(cartLineItemInput).Execute()
+> CartSessionResponse CartSessionsAddLineItem(ctx, id).IdempotencyKey(idempotencyKey).CartLineItemInput(cartLineItemInput).Execute()
 
 Add a line item to a cart session
 
@@ -33,16 +33,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
-	cartLineItemInput := *openapiclient.NewCartLineItemInput("11111111-1111-1111-1111-111111111111", "Annual plan", int32(1), int32(9900), "GBP") // CartLineItemInput |  (optional)
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
+	cartLineItemInput := *openapiclient.NewCartLineItemInput("11111111-1111-1111-1111-111111111111", "Annual plan", int32(1), int64(9900), "GBP") // CartLineItemInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsAddLineItem(context.Background(), id).CartLineItemInput(cartLineItemInput).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsAddLineItem(context.Background(), id).IdempotencyKey(idempotencyKey).CartLineItemInput(cartLineItemInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsAddLineItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,7 +59,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -68,7 +69,8 @@ Other parameters are passed through a pointer to a apiCartSessionsAddLineItemReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cartLineItemInput** | [**CartLineItemInput**](CartLineItemInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **cartLineItemInput** | [**CartLineItemInput**](CartLineItemInput.md) |  |
 
 ### Return type
 
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsApplyDiscountCode
 
-> CartSessionResponse CartSessionsApplyDiscountCode(ctx, id).ApplyCartDiscountCodeInput(applyCartDiscountCodeInput).Execute()
+> CartSessionResponse CartSessionsApplyDiscountCode(ctx, id).IdempotencyKey(idempotencyKey).ApplyCartDiscountCodeInput(applyCartDiscountCodeInput).Execute()
 
 Set or clear a cart discount code
 
@@ -105,16 +107,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	applyCartDiscountCodeInput := *openapiclient.NewApplyCartDiscountCodeInput("SAVE10") // ApplyCartDiscountCodeInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsApplyDiscountCode(context.Background(), id).ApplyCartDiscountCodeInput(applyCartDiscountCodeInput).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsApplyDiscountCode(context.Background(), id).IdempotencyKey(idempotencyKey).ApplyCartDiscountCodeInput(applyCartDiscountCodeInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsApplyDiscountCode``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +133,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -140,7 +143,8 @@ Other parameters are passed through a pointer to a apiCartSessionsApplyDiscountC
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **applyCartDiscountCodeInput** | [**ApplyCartDiscountCodeInput**](ApplyCartDiscountCodeInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **applyCartDiscountCodeInput** | [**ApplyCartDiscountCodeInput**](ApplyCartDiscountCodeInput.md) |  |
 
 ### Return type
 
@@ -162,7 +166,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsConvert
 
-> CartConversionResponse CartSessionsConvert(ctx, id).Execute()
+> CartConversionResponse CartSessionsConvert(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Convert a cart session into a checkout session
 
@@ -177,15 +181,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsConvert(context.Background(), id).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsConvert(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsConvert``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,7 +206,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -211,6 +216,7 @@ Other parameters are passed through a pointer to a apiCartSessionsConvertRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -232,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsCreate
 
-> CartSessionResponse CartSessionsCreate(ctx).CreateCartSessionInput(createCartSessionInput).Execute()
+> CartSessionResponse CartSessionsCreate(ctx).IdempotencyKey(idempotencyKey).CreateCartSessionInput(createCartSessionInput).Execute()
 
 Create a cart session
 
@@ -247,15 +253,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	createCartSessionInput := *openapiclient.NewCreateCartSessionInput("GBP") // CreateCartSessionInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsCreate(context.Background()).CreateCartSessionInput(createCartSessionInput).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsCreate(context.Background()).IdempotencyKey(idempotencyKey).CreateCartSessionInput(createCartSessionInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +283,8 @@ Other parameters are passed through a pointer to a apiCartSessionsCreateRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCartSessionInput** | [**CreateCartSessionInput**](CreateCartSessionInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **createCartSessionInput** | [**CreateCartSessionInput**](CreateCartSessionInput.md) |  |
 
 ### Return type
 
@@ -313,11 +321,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -337,7 +345,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -368,7 +376,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsRemoveLineItem
 
-> CartSessionResponse CartSessionsRemoveLineItem(ctx, id, lineId).Execute()
+> CartSessionResponse CartSessionsRemoveLineItem(ctx, id, lineId).IdempotencyKey(idempotencyKey).Execute()
 
 Remove a line item from a cart session
 
@@ -383,16 +391,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
 	lineId := "cli_550e8400-e29b-41d4-a716-446655440000" // string | Cart line item id (the `id` field returned on `cart_session.line_items[]`).
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsRemoveLineItem(context.Background(), id, lineId).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsRemoveLineItem(context.Background(), id, lineId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsRemoveLineItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -408,8 +417,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
-**lineId** | **string** | Cart line item id (the &#x60;id&#x60; field returned on &#x60;cart_session.line_items[]&#x60;). | 
+**id** | **string** |  |
+**lineId** | **string** | Cart line item id (the &#x60;id&#x60; field returned on &#x60;cart_session.line_items[]&#x60;). |
 
 ### Other Parameters
 
@@ -420,6 +429,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -441,7 +451,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsSetContact
 
-> CartSessionResponse CartSessionsSetContact(ctx, id).SetCartContactInput(setCartContactInput).Execute()
+> CartSessionResponse CartSessionsSetContact(ctx, id).IdempotencyKey(idempotencyKey).SetCartContactInput(setCartContactInput).Execute()
 
 Capture customer email + consent on a cart
 
@@ -456,16 +466,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	setCartContactInput := *openapiclient.NewSetCartContactInput() // SetCartContactInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsSetContact(context.Background(), id).SetCartContactInput(setCartContactInput).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsSetContact(context.Background(), id).IdempotencyKey(idempotencyKey).SetCartContactInput(setCartContactInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsSetContact``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -481,7 +492,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -491,7 +502,8 @@ Other parameters are passed through a pointer to a apiCartSessionsSetContactRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **setCartContactInput** | [**SetCartContactInput**](SetCartContactInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **setCartContactInput** | [**SetCartContactInput**](SetCartContactInput.md) |  |
 
 ### Return type
 
@@ -513,7 +525,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsToggleAddOn
 
-> CartSessionResponse CartSessionsToggleAddOn(ctx, id).ToggleCartAddOnInput(toggleCartAddOnInput).Execute()
+> CartSessionResponse CartSessionsToggleAddOn(ctx, id).IdempotencyKey(idempotencyKey).ToggleCartAddOnInput(toggleCartAddOnInput).Execute()
 
 Toggle an add-on on a cart session
 
@@ -528,16 +540,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	toggleCartAddOnInput := *openapiclient.NewToggleCartAddOnInput("22222222-2222-2222-2222-222222222222", true) // ToggleCartAddOnInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsToggleAddOn(context.Background(), id).ToggleCartAddOnInput(toggleCartAddOnInput).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsToggleAddOn(context.Background(), id).IdempotencyKey(idempotencyKey).ToggleCartAddOnInput(toggleCartAddOnInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsToggleAddOn``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,7 +566,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+**id** | **string** |  |
 
 ### Other Parameters
 
@@ -563,7 +576,8 @@ Other parameters are passed through a pointer to a apiCartSessionsToggleAddOnReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **toggleCartAddOnInput** | [**ToggleCartAddOnInput**](ToggleCartAddOnInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **toggleCartAddOnInput** | [**ToggleCartAddOnInput**](ToggleCartAddOnInput.md) |  |
 
 ### Return type
 
@@ -585,7 +599,7 @@ Name | Type | Description  | Notes
 
 ## CartSessionsUpdateLineItem
 
-> CartSessionResponse CartSessionsUpdateLineItem(ctx, id, lineId).UpdateCartLineItemInput(updateCartLineItemInput).Execute()
+> CartSessionResponse CartSessionsUpdateLineItem(ctx, id, lineId).IdempotencyKey(idempotencyKey).UpdateCartLineItemInput(updateCartLineItemInput).Execute()
 
 Update a line item's quantity
 
@@ -600,17 +614,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	id := "550e8400-e29b-41d4-a716-446655440000" // string | 
+	id := "550e8400-e29b-41d4-a716-446655440000" // string |
 	lineId := "cli_550e8400-e29b-41d4-a716-446655440000" // string | Cart line item id (the `id` field returned on `cart_session.line_items[]`).
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 	updateCartLineItemInput := *openapiclient.NewUpdateCartLineItemInput(int32(2)) // UpdateCartLineItemInput |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartSessionsAPI.CartSessionsUpdateLineItem(context.Background(), id, lineId).UpdateCartLineItemInput(updateCartLineItemInput).Execute()
+	resp, r, err := apiClient.CartSessionsAPI.CartSessionsUpdateLineItem(context.Background(), id, lineId).IdempotencyKey(idempotencyKey).UpdateCartLineItemInput(updateCartLineItemInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartSessionsAPI.CartSessionsUpdateLineItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -626,8 +641,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
-**lineId** | **string** | Cart line item id (the &#x60;id&#x60; field returned on &#x60;cart_session.line_items[]&#x60;). | 
+**id** | **string** |  |
+**lineId** | **string** | Cart line item id (the &#x60;id&#x60; field returned on &#x60;cart_session.line_items[]&#x60;). |
 
 ### Other Parameters
 
@@ -638,7 +653,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **updateCartLineItemInput** | [**UpdateCartLineItemInput**](UpdateCartLineItemInput.md) |  | 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
+ **updateCartLineItemInput** | [**UpdateCartLineItemInput**](UpdateCartLineItemInput.md) |  |
 
 ### Return type
 
@@ -656,4 +672,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

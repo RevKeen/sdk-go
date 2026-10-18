@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique event identifier | 
-**Type** | **string** | Event type using dot notation (e.g., &#x60;payment.succeeded&#x60;) | 
-**Created** | **int32** | Unix timestamp when the event was created | 
-**Livemode** | Pointer to **bool** | Whether this event occurred in live mode | [optional] 
-**Data** | [**WebhookEventData**](WebhookEventData.md) |  | 
+**Id** | **string** | Unique event identifier |
+**Type** | **string** | Event type using dot notation (e.g., &#x60;payment.succeeded&#x60;) |
+**Created** | **int32** | Unix timestamp when the event was created |
+**Livemode** | Pointer to **bool** | Whether this event occurred in live mode | [optional]
+**Data** | [**WebhookEventData**](WebhookEventData.md) |  |
 
 ## Methods
 
@@ -136,5 +136,3 @@ SetData sets Data field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

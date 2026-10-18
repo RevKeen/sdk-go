@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Publishable** | [**CartApiKeysStatus200ResponseDataPublishable**](CartApiKeysStatus200ResponseDataPublishable.md) |  | 
-**Secret** | [**CartApiKeysStatus200ResponseDataPublishable**](CartApiKeysStatus200ResponseDataPublishable.md) |  | 
-**Ready** | **bool** |  | 
-**Created** | Pointer to **[]string** |  | [optional] 
-**PublishableApiKey** | Pointer to **string** |  | [optional] 
-**SecretApiKey** | Pointer to **string** |  | [optional] 
+**Publishable** | [**CartApiKeysStatus200ResponseDataPublishable**](CartApiKeysStatus200ResponseDataPublishable.md) |  |
+**Secret** | [**CartApiKeysStatus200ResponseDataPublishable**](CartApiKeysStatus200ResponseDataPublishable.md) |  |
+**Ready** | **bool** |  |
+**Created** | Pointer to **[]string** |  | [optional]
+**PublishableApiKey** | Pointer to **string** |  | [optional]
+**SecretApiKey** | Pointer to **string** |  | [optional]
 
 ## Methods
 
@@ -167,5 +167,3 @@ HasSecretApiKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxAmount** | **float32** |  | 
-**PartialSupported** | **bool** |  | 
-**RequiresCardPresent** | **bool** |  | 
-**RequiresTerminalOnline** | **bool** |  | 
-**RequiresCustomerIban** | **bool** |  | 
-**Reason** | **NullableString** |  | 
+**MaxAmount** | **int64** |  |
+**PartialSupported** | **bool** |  |
+**RequiresCardPresent** | **bool** |  |
+**RequiresTerminalOnline** | **bool** |  |
+**RequiresCustomerIban** | **bool** |  |
+**Reason** | **NullableString** |  |
 
 ## Methods
 
 ### NewTransactionReversalEligibilityResponseConstraints
 
-`func NewTransactionReversalEligibilityResponseConstraints(maxAmount float32, partialSupported bool, requiresCardPresent bool, requiresTerminalOnline bool, requiresCustomerIban bool, reason NullableString, ) *TransactionReversalEligibilityResponseConstraints`
+`func NewTransactionReversalEligibilityResponseConstraints(maxAmount int64, partialSupported bool, requiresCardPresent bool, requiresTerminalOnline bool, requiresCustomerIban bool, reason NullableString, ) *TransactionReversalEligibilityResponseConstraints`
 
 NewTransactionReversalEligibilityResponseConstraints instantiates a new TransactionReversalEligibilityResponseConstraints object
 This constructor will assign default values to properties that have it defined,
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMaxAmount
 
-`func (o *TransactionReversalEligibilityResponseConstraints) GetMaxAmount() float32`
+`func (o *TransactionReversalEligibilityResponseConstraints) GetMaxAmount() int64`
 
 GetMaxAmount returns the MaxAmount field if non-nil, zero value otherwise.
 
 ### GetMaxAmountOk
 
-`func (o *TransactionReversalEligibilityResponseConstraints) GetMaxAmountOk() (*float32, bool)`
+`func (o *TransactionReversalEligibilityResponseConstraints) GetMaxAmountOk() (*int64, bool)`
 
 GetMaxAmountOk returns a tuple with the MaxAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxAmount
 
-`func (o *TransactionReversalEligibilityResponseConstraints) SetMaxAmount(v float32)`
+`func (o *TransactionReversalEligibilityResponseConstraints) SetMaxAmount(v int64)`
 
 SetMaxAmount sets MaxAmount field to given value.
 
@@ -162,5 +162,3 @@ SetReason sets Reason field to given value.
 UnsetReason ensures that no value is present for Reason, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

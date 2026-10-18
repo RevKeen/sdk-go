@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CartSession** | [**CartSession**](CartSession.md) |  | 
-**CheckoutSession** | [**CartCheckoutSession**](CartCheckoutSession.md) |  | 
+**CartSession** | [**CartSession**](CartSession.md) |  |
+**CheckoutSession** | [**CartCheckoutSession**](CartCheckoutSession.md) |  |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetCheckoutSession sets CheckoutSession field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

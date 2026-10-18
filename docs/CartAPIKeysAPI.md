@@ -1,6 +1,6 @@
 # \CartAPIKeysAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -88,11 +88,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	kind := "publishable" // string | 
+	kind := "publishable" // string |
 	cartApiKeysRotateRequest := *openapiclient.NewCartApiKeysRotateRequest() // CartApiKeysRotateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -113,7 +113,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kind** | **string** |  | 
+**kind** | **string** |  |
 
 ### Other Parameters
 
@@ -123,7 +123,7 @@ Other parameters are passed through a pointer to a apiCartApiKeysRotateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cartApiKeysRotateRequest** | [**CartApiKeysRotateRequest**](CartApiKeysRotateRequest.md) |  | 
+ **cartApiKeysRotateRequest** | [**CartApiKeysRotateRequest**](CartApiKeysRotateRequest.md) |  |
 
 ### Return type
 
@@ -160,7 +160,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -202,4 +202,3 @@ Other parameters are passed through a pointer to a apiCartApiKeysStatusRequest s
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

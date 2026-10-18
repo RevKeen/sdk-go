@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** | Object type, always &#39;list&#39; | 
-**Data** | [**[]PaymentMethod**](PaymentMethod.md) | Array of payment methods | 
-**HasMore** | **bool** | Whether there are more results available | 
-**Url** | **string** | URL for this list resource | 
+**Object** | **string** | Object type, always &#39;list&#39; |
+**Data** | [**[]PaymentMethod**](PaymentMethod.md) | Array of payment methods |
+**HasMore** | **bool** | Whether there are more results available |
+**Url** | **string** | URL for this list resource |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetUrl sets Url field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

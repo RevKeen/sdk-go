@@ -4,39 +4,39 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier for the payment attempt | 
-**PublicId** | **string** | External reference ID (payatt_xxx format). Used as order_id in gateway requests. | 
-**GatewayOrderId** | **string** | Order ID sent to the processor. Format: payatt_&lt;public_id&gt;. Primary correlation key for webhook mapping. | 
-**GatewayTransactionId** | **string** | Processor-assigned transaction reference. | 
-**PaymentId** | **string** | Logical payment (PaymentIntent) this attempt belongs to | 
-**InvoiceId** | **string** | Associated invoice ID | 
-**SubscriptionId** | **string** | Associated subscription ID | 
-**CheckoutSessionId** | **string** | Associated checkout session ID | 
-**BillingRunId** | **string** | Billing run ID for batch reconciliation | 
-**Gateway** | **string** | Name of the payment processor that handled this attempt | 
-**GatewayCode** | **string** | Processor-returned response code | 
-**GatewayMessage** | **string** | Processor-returned response message | 
-**Category** | **string** | Normalized error category for the payment attempt | 
-**Severity** | **string** | Severity level for logging/monitoring | 
-**Retryability** | **string** | Retry behavior recommendation. retry_now: Safe to retry immediately. retry_later: Retry after delay. do_not_retry: Hard decline, don&#39;t retry. | 
-**CustomerAction** | **string** | Recommended action for the customer | 
-**MerchantAction** | **string** | Recommended action for the merchant | 
-**SubscriptionDirective** | **string** | Directive for subscription handling after decline | 
-**SafeCustomerMessageKey** | **string** | Template key for customer-facing message | 
-**DeclineType** | **NullableString** | Decline classification. soft: May succeed on retry. hard: Will not succeed on retry. | 
-**AttemptStatus** | **string** | Final outcome status of the attempt | 
-**AmountCents** | **int32** | Payment amount in cents | 
-**Currency** | **string** | Three-letter ISO currency code | 
-**PaymentMethodLast4** | **string** | Last 4 digits of card | 
-**PaymentMethodBrand** | **string** | Card brand (visa, mastercard, etc.) | 
-**AttemptNumber** | **int32** | Attempt sequence number (1 &#x3D; first attempt) | 
-**RetryAttemptNumber** | **int32** | Legacy retry attempt number | 
-**MaxRetryAttempts** | **int32** | Maximum retry attempts allowed | 
-**NextRetryAt** | **time.Time** | Next scheduled retry timestamp | 
-**IsScheduledRetry** | **bool** | Whether this was a scheduled retry | 
-**IsManualRetry** | **bool** | Whether this was a manual retry | 
-**CreatedAt** | **time.Time** | When the attempt was created | 
-**UpdatedAt** | **time.Time** | When the attempt was last updated | 
+**Id** | **string** | Unique identifier for the payment attempt |
+**PublicId** | **string** | External reference ID (payatt_xxx format). Used as order_id in gateway requests. |
+**GatewayOrderId** | **string** | Order ID sent to the processor. Format: payatt_&lt;public_id&gt;. Primary correlation key for webhook mapping. |
+**GatewayTransactionId** | **string** | Processor-assigned transaction reference. |
+**PaymentId** | **string** | Logical payment (PaymentIntent) this attempt belongs to |
+**InvoiceId** | **string** | Associated invoice ID |
+**SubscriptionId** | **string** | Associated subscription ID |
+**CheckoutSessionId** | **string** | Associated checkout session ID |
+**BillingRunId** | **string** | Billing run ID for batch reconciliation |
+**Gateway** | **string** | Name of the payment processor that handled this attempt |
+**GatewayCode** | **string** | Processor-returned response code |
+**GatewayMessage** | **string** | Processor-returned response message |
+**Category** | **string** | Normalized error category for the payment attempt |
+**Severity** | **string** | Severity level for logging/monitoring |
+**Retryability** | **string** | Retry behavior recommendation. retry_now: Safe to retry immediately. retry_later: Retry after delay. do_not_retry: Hard decline, don&#39;t retry. |
+**CustomerAction** | **string** | Recommended action for the customer |
+**MerchantAction** | **string** | Recommended action for the merchant |
+**SubscriptionDirective** | **string** | Directive for subscription handling after decline |
+**SafeCustomerMessageKey** | **string** | Template key for customer-facing message |
+**DeclineType** | **NullableString** | Decline classification. soft: May succeed on retry. hard: Will not succeed on retry. |
+**AttemptStatus** | **string** | Final outcome status of the attempt |
+**AmountCents** | **int32** | Payment amount in cents |
+**Currency** | **string** | Three-letter ISO currency code |
+**PaymentMethodLast4** | **string** | Last 4 digits of card |
+**PaymentMethodBrand** | **string** | Card brand (visa, mastercard, etc.) |
+**AttemptNumber** | **int32** | Attempt sequence number (1 &#x3D; first attempt) |
+**RetryAttemptNumber** | **int32** | Legacy retry attempt number |
+**MaxRetryAttempts** | **int32** | Maximum retry attempts allowed |
+**NextRetryAt** | **time.Time** | Next scheduled retry timestamp |
+**IsScheduledRetry** | **bool** | Whether this was a scheduled retry |
+**IsManualRetry** | **bool** | Whether this was a manual retry |
+**CreatedAt** | **time.Time** | When the attempt was created |
+**UpdatedAt** | **time.Time** | When the attempt was last updated |
 
 ## Methods
 
@@ -729,5 +729,3 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

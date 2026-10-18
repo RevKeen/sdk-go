@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rail** | **string** |  | 
-**Available** | **bool** |  | 
-**ReasonIfNot** | **NullableString** |  | 
-**LastUsedAt** | **NullableTime** |  | 
-**MandateId** | Pointer to **string** |  | [optional] 
-**MandateRef** | Pointer to **NullableString** |  | [optional] 
+**Rail** | **string** |  |
+**Available** | **bool** |  |
+**ReasonIfNot** | **NullableString** |  |
+**LastUsedAt** | **NullableTime** |  |
+**MandateId** | Pointer to **string** |  | [optional]
+**MandateRef** | Pointer to **NullableString** |  | [optional]
 
 ## Methods
 
@@ -192,5 +192,3 @@ HasMandateRef returns a boolean if a field has been set.
 UnsetMandateRef ensures that no value is present for MandateRef, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

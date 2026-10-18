@@ -4,29 +4,33 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**ProductId** | **NullableString** |  | 
-**Slug** | **NullableString** |  | 
-**Name** | **string** |  | 
-**Description** | **NullableString** |  | 
-**Kind** | **string** |  | 
-**PricingModel** | **string** |  | 
-**Currency** | **string** |  | 
-**ImageUrl** | **NullableString** |  | 
-**DefaultPriceId** | **NullableString** |  | 
-**Prices** | [**[]StorefrontPrice**](StorefrontPrice.md) |  | 
-**TrialDays** | **int32** |  | 
-**UsageMeterId** | **NullableString** |  | 
-**TaxBehavior** | **NullableString** |  | 
-**TaxCode** | **NullableString** |  | 
-**Availability** | [**StorefrontAvailability**](StorefrontAvailability.md) |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**ProductId** | **NullableString** |  |
+**Slug** | **NullableString** |  |
+**Name** | **string** |  |
+**Description** | **NullableString** |  |
+**Kind** | **string** |  |
+**PricingModel** | **string** |  |
+**Currency** | **string** |  |
+**ImageUrl** | **NullableString** |  |
+**DefaultPriceId** | **NullableString** |  |
+**Prices** | [**[]StorefrontPrice**](StorefrontPrice.md) |  |
+**TrialDays** | **int32** |  |
+**UsageMeterId** | **NullableString** |  |
+**TaxBehavior** | **NullableString** |  |
+**TaxCode** | **NullableString** |  |
+**Availability** | [**StorefrontAvailability**](StorefrontAvailability.md) |  |
+**Tags** | **[]string** | Merchant tags for store filters and search. |
+**Images** | [**[]StorefrontProductImage**](StorefrontProductImage.md) | Extra images in display order. image_url stays the main image. |
+**SeoTitle** | **NullableString** | Page title for search and social. Null means use the name. |
+**SeoDescription** | **NullableString** | Meta description. Null means use the description. |
 
 ## Methods
 
 ### NewStorefrontProduct
 
-`func NewStorefrontProduct(id string, object string, productId NullableString, slug NullableString, name string, description NullableString, kind string, pricingModel string, currency string, imageUrl NullableString, defaultPriceId NullableString, prices []StorefrontPrice, trialDays int32, usageMeterId NullableString, taxBehavior NullableString, taxCode NullableString, availability StorefrontAvailability, ) *StorefrontProduct`
+`func NewStorefrontProduct(id string, object string, productId NullableString, slug NullableString, name string, description NullableString, kind string, pricingModel string, currency string, imageUrl NullableString, defaultPriceId NullableString, prices []StorefrontPrice, trialDays int32, usageMeterId NullableString, taxBehavior NullableString, taxCode NullableString, availability StorefrontAvailability, tags []string, images []StorefrontProductImage, seoTitle NullableString, seoDescription NullableString, ) *StorefrontProduct`
 
 NewStorefrontProduct instantiates a new StorefrontProduct object
 This constructor will assign default values to properties that have it defined,
@@ -461,7 +465,105 @@ and a boolean to check if the value has been set.
 SetAvailability sets Availability field to given value.
 
 
+### GetTags
+
+`func (o *StorefrontProduct) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *StorefrontProduct) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *StorefrontProduct) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+
+### GetImages
+
+`func (o *StorefrontProduct) GetImages() []StorefrontProductImage`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *StorefrontProduct) GetImagesOk() (*[]StorefrontProductImage, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *StorefrontProduct) SetImages(v []StorefrontProductImage)`
+
+SetImages sets Images field to given value.
+
+
+### GetSeoTitle
+
+`func (o *StorefrontProduct) GetSeoTitle() string`
+
+GetSeoTitle returns the SeoTitle field if non-nil, zero value otherwise.
+
+### GetSeoTitleOk
+
+`func (o *StorefrontProduct) GetSeoTitleOk() (*string, bool)`
+
+GetSeoTitleOk returns a tuple with the SeoTitle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoTitle
+
+`func (o *StorefrontProduct) SetSeoTitle(v string)`
+
+SetSeoTitle sets SeoTitle field to given value.
+
+
+### SetSeoTitleNil
+
+`func (o *StorefrontProduct) SetSeoTitleNil(b bool)`
+
+ SetSeoTitleNil sets the value for SeoTitle to be an explicit nil
+
+### UnsetSeoTitle
+`func (o *StorefrontProduct) UnsetSeoTitle()`
+
+UnsetSeoTitle ensures that no value is present for SeoTitle, not even an explicit nil
+### GetSeoDescription
+
+`func (o *StorefrontProduct) GetSeoDescription() string`
+
+GetSeoDescription returns the SeoDescription field if non-nil, zero value otherwise.
+
+### GetSeoDescriptionOk
+
+`func (o *StorefrontProduct) GetSeoDescriptionOk() (*string, bool)`
+
+GetSeoDescriptionOk returns a tuple with the SeoDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoDescription
+
+`func (o *StorefrontProduct) SetSeoDescription(v string)`
+
+SetSeoDescription sets SeoDescription field to given value.
+
+
+### SetSeoDescriptionNil
+
+`func (o *StorefrontProduct) SetSeoDescriptionNil(b bool)`
+
+ SetSeoDescriptionNil sets the value for SeoDescription to be an explicit nil
+
+### UnsetSeoDescription
+`func (o *StorefrontProduct) UnsetSeoDescription()`
+
+UnsetSeoDescription ensures that no value is present for SeoDescription, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

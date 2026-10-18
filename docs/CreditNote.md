@@ -4,27 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique credit note identifier | 
-**CreditNoteNumber** | **NullableString** | Sequential credit note number for accounting reference | 
-**InvoiceId** | **string** | ID of the invoice this credit note applies to | 
-**CustomerId** | **NullableString** | ID of the customer who received the credit | 
-**AmountMinor** | **int32** | Credit amount in minor units (cents) | 
-**TaxAmountMinor** | **NullableInt32** | Tax portion of the credit in minor units | 
-**Currency** | **string** | Three-letter ISO 4217 currency code | 
-**Status** | **string** | Credit note status: draft, issued, or void | 
-**Reason** | **NullableString** | Human-readable reason for the credit | 
-**ReasonCode** | **NullableString** | Machine-readable reason code (e.g., billing_error, customer_request) | 
-**CreditMethod** | **NullableString** | How the credit is applied: refund_to_payment_method, customer_balance, or external | 
-**PdfUrl** | **NullableString** | URL to the credit note PDF document | 
-**IssuedAt** | **NullableString** | When the credit note was issued (ISO 8601) | 
-**CreatedAt** | **string** | When the credit note was created (ISO 8601) | 
-**UpdatedAt** | **string** | When the credit note was last updated (ISO 8601) | 
+**Id** | **string** |  |
+**CreditNoteNumber** | **NullableString** |  |
+**InvoiceId** | **string** | The invoice this credit note is for |
+**CustomerId** | **NullableString** |  |
+**AmountMinor** | **int64** | Credit amount in cents |
+**TaxAmountMinor** | **NullableInt64** | Tax portion of the credit in cents |
+**Currency** | **string** |  |
+**CreditMethod** | **NullableString** |  |
+**Reason** | **NullableString** |  |
+**ReasonCode** | **NullableString** |  |
+**Status** | **string** |  |
+**RefundId** | **NullableString** | Associated refund ID if credit method is refund_to_payment_method |
+**SubscriptionId** | **NullableString** |  |
+**SubscriptionCanceled** | **bool** |  |
+**IsProrated** | **bool** |  |
+**PdfUrl** | **NullableString** |  |
+**IssuedAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
+**UpdatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCreditNote
 
-`func NewCreditNote(id string, creditNoteNumber NullableString, invoiceId string, customerId NullableString, amountMinor int32, taxAmountMinor NullableInt32, currency string, status string, reason NullableString, reasonCode NullableString, creditMethod NullableString, pdfUrl NullableString, issuedAt NullableString, createdAt string, updatedAt string, ) *CreditNote`
+`func NewCreditNote(id string, creditNoteNumber NullableString, invoiceId string, customerId NullableString, amountMinor int64, taxAmountMinor NullableInt64, currency string, creditMethod NullableString, reason NullableString, reasonCode NullableString, status string, refundId NullableString, subscriptionId NullableString, subscriptionCanceled bool, isProrated bool, pdfUrl NullableString, issuedAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *CreditNote`
 
 NewCreditNote instantiates a new CreditNote object
 This constructor will assign default values to properties that have it defined,
@@ -141,40 +145,40 @@ SetCustomerId sets CustomerId field to given value.
 UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *CreditNote) GetAmountMinor() int32`
+`func (o *CreditNote) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *CreditNote) GetAmountMinorOk() (*int32, bool)`
+`func (o *CreditNote) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *CreditNote) SetAmountMinor(v int32)`
+`func (o *CreditNote) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
 
 ### GetTaxAmountMinor
 
-`func (o *CreditNote) GetTaxAmountMinor() int32`
+`func (o *CreditNote) GetTaxAmountMinor() int64`
 
 GetTaxAmountMinor returns the TaxAmountMinor field if non-nil, zero value otherwise.
 
 ### GetTaxAmountMinorOk
 
-`func (o *CreditNote) GetTaxAmountMinorOk() (*int32, bool)`
+`func (o *CreditNote) GetTaxAmountMinorOk() (*int64, bool)`
 
 GetTaxAmountMinorOk returns a tuple with the TaxAmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTaxAmountMinor
 
-`func (o *CreditNote) SetTaxAmountMinor(v int32)`
+`func (o *CreditNote) SetTaxAmountMinor(v int64)`
 
 SetTaxAmountMinor sets TaxAmountMinor field to given value.
 
@@ -209,26 +213,36 @@ and a boolean to check if the value has been set.
 SetCurrency sets Currency field to given value.
 
 
-### GetStatus
+### GetCreditMethod
 
-`func (o *CreditNote) GetStatus() string`
+`func (o *CreditNote) GetCreditMethod() string`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetCreditMethod returns the CreditMethod field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetCreditMethodOk
 
-`func (o *CreditNote) GetStatusOk() (*string, bool)`
+`func (o *CreditNote) GetCreditMethodOk() (*string, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetCreditMethodOk returns a tuple with the CreditMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetCreditMethod
 
-`func (o *CreditNote) SetStatus(v string)`
+`func (o *CreditNote) SetCreditMethod(v string)`
 
-SetStatus sets Status field to given value.
+SetCreditMethod sets CreditMethod field to given value.
 
 
+### SetCreditMethodNil
+
+`func (o *CreditNote) SetCreditMethodNil(b bool)`
+
+ SetCreditMethodNil sets the value for CreditMethod to be an explicit nil
+
+### UnsetCreditMethod
+`func (o *CreditNote) UnsetCreditMethod()`
+
+UnsetCreditMethod ensures that no value is present for CreditMethod, not even an explicit nil
 ### GetReason
 
 `func (o *CreditNote) GetReason() string`
@@ -289,36 +303,126 @@ SetReasonCode sets ReasonCode field to given value.
 `func (o *CreditNote) UnsetReasonCode()`
 
 UnsetReasonCode ensures that no value is present for ReasonCode, not even an explicit nil
-### GetCreditMethod
+### GetStatus
 
-`func (o *CreditNote) GetCreditMethod() string`
+`func (o *CreditNote) GetStatus() string`
 
-GetCreditMethod returns the CreditMethod field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetCreditMethodOk
+### GetStatusOk
 
-`func (o *CreditNote) GetCreditMethodOk() (*string, bool)`
+`func (o *CreditNote) GetStatusOk() (*string, bool)`
 
-GetCreditMethodOk returns a tuple with the CreditMethod field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreditMethod
+### SetStatus
 
-`func (o *CreditNote) SetCreditMethod(v string)`
+`func (o *CreditNote) SetStatus(v string)`
 
-SetCreditMethod sets CreditMethod field to given value.
+SetStatus sets Status field to given value.
 
 
-### SetCreditMethodNil
+### GetRefundId
 
-`func (o *CreditNote) SetCreditMethodNil(b bool)`
+`func (o *CreditNote) GetRefundId() string`
 
- SetCreditMethodNil sets the value for CreditMethod to be an explicit nil
+GetRefundId returns the RefundId field if non-nil, zero value otherwise.
 
-### UnsetCreditMethod
-`func (o *CreditNote) UnsetCreditMethod()`
+### GetRefundIdOk
 
-UnsetCreditMethod ensures that no value is present for CreditMethod, not even an explicit nil
+`func (o *CreditNote) GetRefundIdOk() (*string, bool)`
+
+GetRefundIdOk returns a tuple with the RefundId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefundId
+
+`func (o *CreditNote) SetRefundId(v string)`
+
+SetRefundId sets RefundId field to given value.
+
+
+### SetRefundIdNil
+
+`func (o *CreditNote) SetRefundIdNil(b bool)`
+
+ SetRefundIdNil sets the value for RefundId to be an explicit nil
+
+### UnsetRefundId
+`func (o *CreditNote) UnsetRefundId()`
+
+UnsetRefundId ensures that no value is present for RefundId, not even an explicit nil
+### GetSubscriptionId
+
+`func (o *CreditNote) GetSubscriptionId() string`
+
+GetSubscriptionId returns the SubscriptionId field if non-nil, zero value otherwise.
+
+### GetSubscriptionIdOk
+
+`func (o *CreditNote) GetSubscriptionIdOk() (*string, bool)`
+
+GetSubscriptionIdOk returns a tuple with the SubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubscriptionId
+
+`func (o *CreditNote) SetSubscriptionId(v string)`
+
+SetSubscriptionId sets SubscriptionId field to given value.
+
+
+### SetSubscriptionIdNil
+
+`func (o *CreditNote) SetSubscriptionIdNil(b bool)`
+
+ SetSubscriptionIdNil sets the value for SubscriptionId to be an explicit nil
+
+### UnsetSubscriptionId
+`func (o *CreditNote) UnsetSubscriptionId()`
+
+UnsetSubscriptionId ensures that no value is present for SubscriptionId, not even an explicit nil
+### GetSubscriptionCanceled
+
+`func (o *CreditNote) GetSubscriptionCanceled() bool`
+
+GetSubscriptionCanceled returns the SubscriptionCanceled field if non-nil, zero value otherwise.
+
+### GetSubscriptionCanceledOk
+
+`func (o *CreditNote) GetSubscriptionCanceledOk() (*bool, bool)`
+
+GetSubscriptionCanceledOk returns a tuple with the SubscriptionCanceled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubscriptionCanceled
+
+`func (o *CreditNote) SetSubscriptionCanceled(v bool)`
+
+SetSubscriptionCanceled sets SubscriptionCanceled field to given value.
+
+
+### GetIsProrated
+
+`func (o *CreditNote) GetIsProrated() bool`
+
+GetIsProrated returns the IsProrated field if non-nil, zero value otherwise.
+
+### GetIsProratedOk
+
+`func (o *CreditNote) GetIsProratedOk() (*bool, bool)`
+
+GetIsProratedOk returns a tuple with the IsProrated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsProrated
+
+`func (o *CreditNote) SetIsProrated(v bool)`
+
+SetIsProrated sets IsProrated field to given value.
+
+
 ### GetPdfUrl
 
 `func (o *CreditNote) GetPdfUrl() string`
@@ -351,20 +455,20 @@ SetPdfUrl sets PdfUrl field to given value.
 UnsetPdfUrl ensures that no value is present for PdfUrl, not even an explicit nil
 ### GetIssuedAt
 
-`func (o *CreditNote) GetIssuedAt() string`
+`func (o *CreditNote) GetIssuedAt() time.Time`
 
 GetIssuedAt returns the IssuedAt field if non-nil, zero value otherwise.
 
 ### GetIssuedAtOk
 
-`func (o *CreditNote) GetIssuedAtOk() (*string, bool)`
+`func (o *CreditNote) GetIssuedAtOk() (*time.Time, bool)`
 
 GetIssuedAtOk returns a tuple with the IssuedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssuedAt
 
-`func (o *CreditNote) SetIssuedAt(v string)`
+`func (o *CreditNote) SetIssuedAt(v time.Time)`
 
 SetIssuedAt sets IssuedAt field to given value.
 
@@ -381,45 +485,43 @@ SetIssuedAt sets IssuedAt field to given value.
 UnsetIssuedAt ensures that no value is present for IssuedAt, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *CreditNote) GetCreatedAt() string`
+`func (o *CreditNote) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CreditNote) GetCreatedAtOk() (*string, bool)`
+`func (o *CreditNote) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CreditNote) SetCreatedAt(v string)`
+`func (o *CreditNote) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *CreditNote) GetUpdatedAt() string`
+`func (o *CreditNote) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CreditNote) GetUpdatedAtOk() (*string, bool)`
+`func (o *CreditNote) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CreditNote) SetUpdatedAt(v string)`
+`func (o *CreditNote) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

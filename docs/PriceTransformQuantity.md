@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DivideBy** | **int32** | Package size — quantity is divided by this value before pricing. Must be &gt;&#x3D; 1. Example: &#x60;divide_by: 10&#x60; with &#x60;round: up&#x60; charges per pack of 10. | 
-**Round** | **string** | Rounding mode when quantity is not an exact multiple of &#x60;divide_by&#x60;. | 
+**DivideBy** | **int32** | Package size — quantity is divided by this value before pricing. Must be &gt;&#x3D; 1. Example: &#x60;divide_by: 10&#x60; with &#x60;round: up&#x60; charges per pack of 10. |
+**Round** | **string** | Rounding mode when quantity is not an exact multiple of &#x60;divide_by&#x60;. |
 
 ## Methods
 
@@ -68,5 +68,3 @@ SetRound sets Round field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

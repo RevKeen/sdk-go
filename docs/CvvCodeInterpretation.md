@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **string** | Raw CVV response code from gateway | 
-**MatchType** | **string** | Type of CVV match | 
-**Description** | **string** | Human-readable description of the CVV result | 
-**RiskLevel** | **string** | Risk level based on CVV result. low: match, medium: not processed, high: no match | 
+**Code** | **string** | Raw CVV response code from gateway |
+**MatchType** | **string** | Type of CVV match |
+**Description** | **string** | Human-readable description of the CVV result |
+**RiskLevel** | **string** | Risk level based on CVV result. low: match, medium: not processed, high: no match |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetRiskLevel sets RiskLevel field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

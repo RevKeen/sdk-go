@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Avs** | [**AvsCodeInterpretation**](AvsCodeInterpretation.md) |  | 
-**Cvv** | [**CvvCodeInterpretation**](CvvCodeInterpretation.md) |  | 
-**OverallRiskLevel** | **string** | Combined risk level from AVS + CVV checks | 
-**Recommendation** | **string** | Recommended action based on security checks | 
+**Avs** | [**NullableAvsCodeInterpretation**](AvsCodeInterpretation.md) |  |
+**Cvv** | [**NullableCvvCodeInterpretation**](CvvCodeInterpretation.md) |  |
+**OverallRiskLevel** | **string** | Combined risk level from AVS + CVV checks |
+**Recommendation** | **string** | Recommended action based on security checks |
 
 ## Methods
 
 ### NewPaymentSecurityResult
 
-`func NewPaymentSecurityResult(avs AvsCodeInterpretation, cvv CvvCodeInterpretation, overallRiskLevel string, recommendation string, ) *PaymentSecurityResult`
+`func NewPaymentSecurityResult(avs NullableAvsCodeInterpretation, cvv NullableCvvCodeInterpretation, overallRiskLevel string, recommendation string, ) *PaymentSecurityResult`
 
 NewPaymentSecurityResult instantiates a new PaymentSecurityResult object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,16 @@ and a boolean to check if the value has been set.
 SetAvs sets Avs field to given value.
 
 
+### SetAvsNil
+
+`func (o *PaymentSecurityResult) SetAvsNil(b bool)`
+
+ SetAvsNil sets the value for Avs to be an explicit nil
+
+### UnsetAvs
+`func (o *PaymentSecurityResult) UnsetAvs()`
+
+UnsetAvs ensures that no value is present for Avs, not even an explicit nil
 ### GetCvv
 
 `func (o *PaymentSecurityResult) GetCvv() CvvCodeInterpretation`
@@ -68,6 +78,16 @@ and a boolean to check if the value has been set.
 SetCvv sets Cvv field to given value.
 
 
+### SetCvvNil
+
+`func (o *PaymentSecurityResult) SetCvvNil(b bool)`
+
+ SetCvvNil sets the value for Cvv to be an explicit nil
+
+### UnsetCvv
+`func (o *PaymentSecurityResult) UnsetCvv()`
+
+UnsetCvv ensures that no value is present for Cvv, not even an explicit nil
 ### GetOverallRiskLevel
 
 `func (o *PaymentSecurityResult) GetOverallRiskLevel() string`
@@ -110,5 +130,3 @@ SetRecommendation sets Recommendation field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

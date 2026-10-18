@@ -1,6 +1,6 @@
 # \WebhookDeliveriesAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook delivery ID | 
+**id** | **string** | Webhook delivery ID |
 
 ### Other Parameters
 
@@ -97,7 +97,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -131,12 +131,12 @@ Other parameters are passed through a pointer to a apiWebhookDeliveriesListReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointId** | **string** | Filter by webhook endpoint ID | 
- **eventId** | **string** | Filter by source event ID | 
- **status** | **string** | Filter by delivery status | 
+ **endpointId** | **string** | Filter by webhook endpoint ID |
+ **eventId** | **string** | Filter by source event ID |
+ **status** | **string** | Filter by delivery status |
  **limit** | **int32** | Maximum number of deliveries to return (1-100, default 20). | [default to 20]
- **startingAfter** | **string** | Cursor — return deliveries created before the row with this ID. | 
- **endingBefore** | **string** | Cursor — return deliveries created after the row with this ID. | 
+ **startingAfter** | **string** | Cursor — return deliveries created before the row with this ID. |
+ **endingBefore** | **string** | Cursor — return deliveries created after the row with this ID. |
 
 ### Return type
 
@@ -173,7 +173,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -197,7 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Webhook delivery ID | 
+**id** | **string** | Webhook delivery ID |
 
 ### Other Parameters
 
@@ -224,4 +224,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -4,21 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerUuid** | **string** |  | 
-**InvoiceNumber** | Pointer to **string** |  | [optional] 
-**TotalMinor** | **int32** |  | 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**DueDate** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**CustomFields** | Pointer to **map[string]interface{}** | Key-value pairs for custom fields | [optional] 
-**SubscriptionTerms** | Pointer to [**SubscriptionTerms**](SubscriptionTerms.md) |  | [optional] 
-**AllowedMethods** | Pointer to **[]string** | Restrict checkout payment methods for this invoice. When set, narrows available rails for checkout sessions created against this invoice. Omit to use merchant default. | [optional] 
+**CustomerUuid** | **string** |  |
+**InvoiceNumber** | Pointer to **string** |  | [optional]
+**TotalMinor** | **int64** |  |
+**Currency** | **string** |  |
+**DueDate** | Pointer to **string** |  | [optional]
+**CustomFields** | Pointer to **map[string]interface{}** | Key-value pairs for custom fields | [optional]
+**SubscriptionTerms** | Pointer to [**SubscriptionTerms**](SubscriptionTerms.md) |  | [optional]
+**AllowedMethods** | Pointer to **[]string** | Restrict checkout payment methods for this invoice. When set, narrows available rails for checkout sessions created against this invoice. Omit to use merchant default. | [optional]
 
 ## Methods
 
 ### NewInvoicesCreateRequest
 
-`func NewInvoicesCreateRequest(customerUuid string, totalMinor int32, ) *InvoicesCreateRequest`
+`func NewInvoicesCreateRequest(customerUuid string, totalMinor int64, currency string, ) *InvoicesCreateRequest`
 
 NewInvoicesCreateRequest instantiates a new InvoicesCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -80,20 +79,20 @@ HasInvoiceNumber returns a boolean if a field has been set.
 
 ### GetTotalMinor
 
-`func (o *InvoicesCreateRequest) GetTotalMinor() int32`
+`func (o *InvoicesCreateRequest) GetTotalMinor() int64`
 
 GetTotalMinor returns the TotalMinor field if non-nil, zero value otherwise.
 
 ### GetTotalMinorOk
 
-`func (o *InvoicesCreateRequest) GetTotalMinorOk() (*int32, bool)`
+`func (o *InvoicesCreateRequest) GetTotalMinorOk() (*int64, bool)`
 
 GetTotalMinorOk returns a tuple with the TotalMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalMinor
 
-`func (o *InvoicesCreateRequest) SetTotalMinor(v int32)`
+`func (o *InvoicesCreateRequest) SetTotalMinor(v int64)`
 
 SetTotalMinor sets TotalMinor field to given value.
 
@@ -117,11 +116,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-### HasCurrency
-
-`func (o *InvoicesCreateRequest) HasCurrency() bool`
-
-HasCurrency returns a boolean if a field has been set.
 
 ### GetDueDate
 
@@ -147,31 +141,6 @@ SetDueDate sets DueDate field to given value.
 `func (o *InvoicesCreateRequest) HasDueDate() bool`
 
 HasDueDate returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *InvoicesCreateRequest) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *InvoicesCreateRequest) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *InvoicesCreateRequest) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *InvoicesCreateRequest) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetCustomFields
 
@@ -250,5 +219,3 @@ HasAllowedMethods returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

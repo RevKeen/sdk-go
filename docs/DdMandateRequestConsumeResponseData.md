@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**CustomerId** | **string** |  | 
-**InvoiceId** | **NullableString** |  | 
-**MandateId** | **NullableString** |  | 
-**ConsumedAt** | **NullableString** |  | 
-**Status** | **string** |  | 
-**Idempotent** | Pointer to **bool** |  | [optional] 
-**PdfDocuments** | Pointer to [**[]DdMandatePdfReference**](DdMandatePdfReference.md) |  | [optional] 
+**Id** | **string** |  |
+**CustomerId** | **string** |  |
+**InvoiceId** | **NullableString** |  |
+**MandateId** | **NullableString** |  |
+**ConsumedAt** | **NullableTime** |  |
+**Status** | **string** |  |
+**Idempotent** | Pointer to **bool** |  | [optional]
+**PdfDocuments** | Pointer to [**[]DdMandatePdfReference**](DdMandatePdfReference.md) |  | [optional]
 
 ## Methods
 
 ### NewDdMandateRequestConsumeResponseData
 
-`func NewDdMandateRequestConsumeResponseData(id string, customerId string, invoiceId NullableString, mandateId NullableString, consumedAt NullableString, status string, ) *DdMandateRequestConsumeResponseData`
+`func NewDdMandateRequestConsumeResponseData(id string, customerId string, invoiceId NullableString, mandateId NullableString, consumedAt NullableTime, status string, ) *DdMandateRequestConsumeResponseData`
 
 NewDdMandateRequestConsumeResponseData instantiates a new DdMandateRequestConsumeResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -134,20 +134,20 @@ SetMandateId sets MandateId field to given value.
 UnsetMandateId ensures that no value is present for MandateId, not even an explicit nil
 ### GetConsumedAt
 
-`func (o *DdMandateRequestConsumeResponseData) GetConsumedAt() string`
+`func (o *DdMandateRequestConsumeResponseData) GetConsumedAt() time.Time`
 
 GetConsumedAt returns the ConsumedAt field if non-nil, zero value otherwise.
 
 ### GetConsumedAtOk
 
-`func (o *DdMandateRequestConsumeResponseData) GetConsumedAtOk() (*string, bool)`
+`func (o *DdMandateRequestConsumeResponseData) GetConsumedAtOk() (*time.Time, bool)`
 
 GetConsumedAtOk returns a tuple with the ConsumedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConsumedAt
 
-`func (o *DdMandateRequestConsumeResponseData) SetConsumedAt(v string)`
+`func (o *DdMandateRequestConsumeResponseData) SetConsumedAt(v time.Time)`
 
 SetConsumedAt sets ConsumedAt field to given value.
 
@@ -234,5 +234,3 @@ HasPdfDocuments returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

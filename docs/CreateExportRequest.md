@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ResourceType** | **string** | The type of resource to export. | 
+**ResourceType** | **string** | The type of resource to export. |
 **Format** | Pointer to **string** | Output file format. csv: Comma-separated values. xlsx: Excel workbook. | [optional] [default to "csv"]
-**Filters** | Pointer to **map[string]interface{}** | Filters to apply (e.g., { status: &#39;paid&#39;, created_gte: &#39;2024-01-01&#39; }) | [optional] 
+**Filters** | Pointer to **map[string]interface{}** | Filters to apply (e.g., { status: &#39;paid&#39;, created_gte: &#39;2024-01-01&#39; }) | [optional]
 **ColumnSet** | Pointer to **string** | Column set to include. standard: common fields. full: all fields. minimal: IDs and key fields only. | [optional] [default to "standard"]
 
 ## Methods
@@ -75,20 +75,20 @@ HasFormat returns a boolean if a field has been set.
 
 ### GetFilters
 
-`func (o *CreateExportRequest) GetFilters() map[string]interface{}`
+`func (o *CreateExportRequest) GetFilters() map[string]*interface{}`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *CreateExportRequest) GetFiltersOk() (*map[string]interface{}, bool)`
+`func (o *CreateExportRequest) GetFiltersOk() (*map[string]*interface{}, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *CreateExportRequest) SetFilters(v map[string]interface{})`
+`func (o *CreateExportRequest) SetFilters(v map[string]*interface{})`
 
 SetFilters sets Filters field to given value.
 
@@ -125,5 +125,3 @@ HasColumnSet returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

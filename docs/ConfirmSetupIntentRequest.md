@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PaymentMethodId** | Pointer to **string** | ID of the payment method to confirm with | [optional] 
-**ReturnUrl** | Pointer to **string** | URL to redirect to after 3DS authentication | [optional] 
+**PaymentMethodId** | Pointer to **string** | ID of the payment method to confirm with | [optional]
+**ReturnUrl** | Pointer to **string** | URL to redirect to after 3DS authentication | [optional]
 
 ## Methods
 
@@ -78,5 +78,3 @@ HasReturnUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

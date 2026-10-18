@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **string** |  | 
-**Remaining** | **NullableInt32** |  | 
-**DisplayMode** | **string** |  | 
-**LowStockThreshold** | **NullableInt32** |  | 
+**Status** | **string** |  |
+**Remaining** | **NullableInt32** |  |
+**DisplayMode** | **string** |  |
+**LowStockThreshold** | **NullableInt32** |  |
 
 ## Methods
 
@@ -130,5 +130,3 @@ SetLowStockThreshold sets LowStockThreshold field to given value.
 UnsetLowStockThreshold ensures that no value is present for LowStockThreshold, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

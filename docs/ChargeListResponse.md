@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**[]ChargeCreateResponseData**](ChargeCreateResponseData.md) |  | 
-**Pagination** | [**ChargeListResponsePagination**](ChargeListResponsePagination.md) |  | 
+**Data** | [**[]ChargeListResponseDataInner**](ChargeListResponseDataInner.md) |  |
+**Pagination** | [**ChargeListResponsePagination**](ChargeListResponsePagination.md) |  |
 
 ## Methods
 
 ### NewChargeListResponse
 
-`func NewChargeListResponse(data []ChargeCreateResponseData, pagination ChargeListResponsePagination, ) *ChargeListResponse`
+`func NewChargeListResponse(data []ChargeListResponseDataInner, pagination ChargeListResponsePagination, ) *ChargeListResponse`
 
 NewChargeListResponse instantiates a new ChargeListResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ChargeListResponse) GetData() []ChargeCreateResponseData`
+`func (o *ChargeListResponse) GetData() []ChargeListResponseDataInner`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ChargeListResponse) GetDataOk() (*[]ChargeCreateResponseData, bool)`
+`func (o *ChargeListResponse) GetDataOk() (*[]ChargeListResponseDataInner, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ChargeListResponse) SetData(v []ChargeCreateResponseData)`
+`func (o *ChargeListResponse) SetData(v []ChargeListResponseDataInner)`
 
 SetData sets Data field to given value.
 
@@ -68,5 +68,3 @@ SetPagination sets Pagination field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

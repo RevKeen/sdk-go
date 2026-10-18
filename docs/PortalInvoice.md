@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**InvoiceNumber** | **NullableString** |  | 
-**Status** | **string** |  | 
-**Currency** | **NullableString** |  | 
-**Subtotal** | **NullableInt32** |  | 
-**TaxAmount** | **NullableInt32** |  | 
-**DiscountAmount** | **NullableInt32** |  | 
-**Total** | **int32** |  | 
-**AmountPaid** | **NullableInt32** |  | 
-**AmountDue** | **NullableInt32** |  | 
-**InvoiceDate** | **NullableTime** |  | 
-**DueDate** | **NullableTime** |  | 
-**PaidAt** | **NullableTime** |  | 
-**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**InvoiceNumber** | **NullableString** |  |
+**Status** | **string** |  |
+**Currency** | **NullableString** |  |
+**Subtotal** | **NullableInt32** |  |
+**TaxAmount** | **NullableInt32** |  |
+**DiscountAmount** | **NullableInt32** |  |
+**Total** | **int32** |  |
+**AmountPaid** | **NullableInt32** |  |
+**AmountDue** | **NullableInt32** |  |
+**InvoiceDate** | **NullableTime** |  |
+**DueDate** | **NullableTime** |  |
+**PaidAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
@@ -441,5 +441,3 @@ SetCreatedAt sets CreatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

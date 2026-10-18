@@ -4,30 +4,33 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Subscription UUID | 
-**MerchantId** | **string** | Owning merchant UUID | 
-**CustomerId** | **string** | Customer UUID | 
-**ProductId** | Pointer to **NullableString** | Product UUID | [optional] 
-**PriceId** | Pointer to **NullableString** | Price UUID | [optional] 
-**PlanId** | Pointer to **NullableString** | Plan UUID | [optional] 
-**Status** | **string** | Subscription status | 
-**Quantity** | **int32** | Subscribed quantity | 
-**AmountMinor** | **int32** | Recurring amount in minor units | 
-**Currency** | **string** | Three-letter ISO currency code | 
-**BillingInterval** | **string** | Billing interval (day, week, month, year) | 
-**CurrentPeriodStart** | **time.Time** | Current period start (ISO 8601) | 
-**CurrentPeriodEnd** | **time.Time** | Current period end (ISO 8601) | 
-**TrialEnd** | Pointer to **NullableTime** | Trial end (ISO 8601) | [optional] 
-**CanceledAt** | Pointer to **NullableTime** | Cancellation timestamp (ISO 8601) | [optional] 
-**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) | 
-**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) | 
-**Dunning** | Pointer to [**SubscriptionDunning**](SubscriptionDunning.md) |  | [optional] 
+**Id** | **string** | Subscription UUID |
+**MerchantId** | **string** | Owning merchant UUID |
+**CustomerId** | **string** | Customer UUID |
+**ProductId** | Pointer to **NullableString** | Product UUID | [optional]
+**PriceId** | Pointer to **NullableString** | Price UUID | [optional]
+**PlanId** | Pointer to **NullableString** | Plan UUID | [optional]
+**Status** | **string** | Subscription status |
+**Quantity** | **int32** | Subscribed quantity |
+**AmountMinor** | **int64** | Recurring amount in minor units |
+**Currency** | **string** | Three-letter ISO currency code |
+**BillingInterval** | **string** | Billing interval (day, week, month, year) |
+**CurrentPeriodStart** | **time.Time** | Current period start (ISO 8601) |
+**CurrentPeriodEnd** | **time.Time** | Current period end (ISO 8601) |
+**TrialEnd** | Pointer to **NullableTime** | Trial end (ISO 8601) | [optional]
+**CanceledAt** | Pointer to **NullableTime** | Cancellation timestamp (ISO 8601) | [optional]
+**CreatedAt** | **time.Time** | Creation timestamp (ISO 8601) |
+**UpdatedAt** | **time.Time** | Last update timestamp (ISO 8601) |
+**Dunning** | Pointer to [**NullableSubscriptionDunning**](SubscriptionDunning.md) |  | [optional]
+**PaymentRail** | Pointer to **NullableString** | How the subscription is collected, for example &#x60;card&#x60; or &#x60;direct_debit&#x60;. Null when it follows the payment method. | [optional]
+**MandateId** | Pointer to **NullableString** | The Direct Debit mandate the subscription collects against | [optional]
+**PaymentMethodId** | Pointer to **NullableString** | The saved payment method the subscription charges | [optional]
 
 ## Methods
 
 ### NewSubscription
 
-`func NewSubscription(id string, merchantId string, customerId string, status string, quantity int32, amountMinor int32, currency string, billingInterval string, currentPeriodStart time.Time, currentPeriodEnd time.Time, createdAt time.Time, updatedAt time.Time, ) *Subscription`
+`func NewSubscription(id string, merchantId string, customerId string, status string, quantity int32, amountMinor int64, currency string, billingInterval string, currentPeriodStart time.Time, currentPeriodEnd time.Time, createdAt time.Time, updatedAt time.Time, ) *Subscription`
 
 NewSubscription instantiates a new Subscription object
 This constructor will assign default values to properties that have it defined,
@@ -249,20 +252,20 @@ SetQuantity sets Quantity field to given value.
 
 ### GetAmountMinor
 
-`func (o *Subscription) GetAmountMinor() int32`
+`func (o *Subscription) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *Subscription) GetAmountMinorOk() (*int32, bool)`
+`func (o *Subscription) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *Subscription) SetAmountMinor(v int32)`
+`func (o *Subscription) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -482,7 +485,120 @@ SetDunning sets Dunning field to given value.
 
 HasDunning returns a boolean if a field has been set.
 
+### SetDunningNil
+
+`func (o *Subscription) SetDunningNil(b bool)`
+
+ SetDunningNil sets the value for Dunning to be an explicit nil
+
+### UnsetDunning
+`func (o *Subscription) UnsetDunning()`
+
+UnsetDunning ensures that no value is present for Dunning, not even an explicit nil
+### GetPaymentRail
+
+`func (o *Subscription) GetPaymentRail() string`
+
+GetPaymentRail returns the PaymentRail field if non-nil, zero value otherwise.
+
+### GetPaymentRailOk
+
+`func (o *Subscription) GetPaymentRailOk() (*string, bool)`
+
+GetPaymentRailOk returns a tuple with the PaymentRail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentRail
+
+`func (o *Subscription) SetPaymentRail(v string)`
+
+SetPaymentRail sets PaymentRail field to given value.
+
+### HasPaymentRail
+
+`func (o *Subscription) HasPaymentRail() bool`
+
+HasPaymentRail returns a boolean if a field has been set.
+
+### SetPaymentRailNil
+
+`func (o *Subscription) SetPaymentRailNil(b bool)`
+
+ SetPaymentRailNil sets the value for PaymentRail to be an explicit nil
+
+### UnsetPaymentRail
+`func (o *Subscription) UnsetPaymentRail()`
+
+UnsetPaymentRail ensures that no value is present for PaymentRail, not even an explicit nil
+### GetMandateId
+
+`func (o *Subscription) GetMandateId() string`
+
+GetMandateId returns the MandateId field if non-nil, zero value otherwise.
+
+### GetMandateIdOk
+
+`func (o *Subscription) GetMandateIdOk() (*string, bool)`
+
+GetMandateIdOk returns a tuple with the MandateId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMandateId
+
+`func (o *Subscription) SetMandateId(v string)`
+
+SetMandateId sets MandateId field to given value.
+
+### HasMandateId
+
+`func (o *Subscription) HasMandateId() bool`
+
+HasMandateId returns a boolean if a field has been set.
+
+### SetMandateIdNil
+
+`func (o *Subscription) SetMandateIdNil(b bool)`
+
+ SetMandateIdNil sets the value for MandateId to be an explicit nil
+
+### UnsetMandateId
+`func (o *Subscription) UnsetMandateId()`
+
+UnsetMandateId ensures that no value is present for MandateId, not even an explicit nil
+### GetPaymentMethodId
+
+`func (o *Subscription) GetPaymentMethodId() string`
+
+GetPaymentMethodId returns the PaymentMethodId field if non-nil, zero value otherwise.
+
+### GetPaymentMethodIdOk
+
+`func (o *Subscription) GetPaymentMethodIdOk() (*string, bool)`
+
+GetPaymentMethodIdOk returns a tuple with the PaymentMethodId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentMethodId
+
+`func (o *Subscription) SetPaymentMethodId(v string)`
+
+SetPaymentMethodId sets PaymentMethodId field to given value.
+
+### HasPaymentMethodId
+
+`func (o *Subscription) HasPaymentMethodId() bool`
+
+HasPaymentMethodId returns a boolean if a field has been set.
+
+### SetPaymentMethodIdNil
+
+`func (o *Subscription) SetPaymentMethodIdNil(b bool)`
+
+ SetPaymentMethodIdNil sets the value for PaymentMethodId to be an explicit nil
+
+### UnsetPaymentMethodId
+`func (o *Subscription) UnsetPaymentMethodId()`
+
+UnsetPaymentMethodId ensures that no value is present for PaymentMethodId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

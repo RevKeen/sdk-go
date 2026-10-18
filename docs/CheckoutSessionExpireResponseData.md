@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Status** | **string** |  | 
-**ExpiredAt** | **string** |  | 
+**Id** | **string** |  |
+**Status** | **string** |  |
+**ExpiredAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewCheckoutSessionExpireResponseData
 
-`func NewCheckoutSessionExpireResponseData(id string, status string, expiredAt string, ) *CheckoutSessionExpireResponseData`
+`func NewCheckoutSessionExpireResponseData(id string, status string, expiredAt time.Time, ) *CheckoutSessionExpireResponseData`
 
 NewCheckoutSessionExpireResponseData instantiates a new CheckoutSessionExpireResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -69,25 +69,23 @@ SetStatus sets Status field to given value.
 
 ### GetExpiredAt
 
-`func (o *CheckoutSessionExpireResponseData) GetExpiredAt() string`
+`func (o *CheckoutSessionExpireResponseData) GetExpiredAt() time.Time`
 
 GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
 
 ### GetExpiredAtOk
 
-`func (o *CheckoutSessionExpireResponseData) GetExpiredAtOk() (*string, bool)`
+`func (o *CheckoutSessionExpireResponseData) GetExpiredAtOk() (*time.Time, bool)`
 
 GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiredAt
 
-`func (o *CheckoutSessionExpireResponseData) SetExpiredAt(v string)`
+`func (o *CheckoutSessionExpireResponseData) SetExpiredAt(v time.Time)`
 
 SetExpiredAt sets ExpiredAt field to given value.
 
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

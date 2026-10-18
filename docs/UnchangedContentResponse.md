@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ignored** | **bool** |  | 
-**Reason** | **string** |  | 
-**ContentHash** | **string** |  | 
-**RequestId** | **string** |  | 
+**Ignored** | **bool** |  |
+**Reason** | **string** |  |
+**ContentHash** | **string** |  |
+**RequestId** | **string** |  |
 
 ## Methods
 
@@ -110,5 +110,3 @@ SetRequestId sets RequestId field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

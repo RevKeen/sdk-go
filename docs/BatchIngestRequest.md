@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Events** | [**[]UsageEvent**](UsageEvent.md) | Array of usage events (1–1000) | 
+**Events** | [**[]UsageEvent**](UsageEvent.md) | Array of usage events (1–1000) |
 
 ## Methods
 
@@ -47,5 +47,3 @@ SetEvents sets Events field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

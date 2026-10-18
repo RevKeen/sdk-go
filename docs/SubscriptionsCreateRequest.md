@@ -4,25 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** |  | 
-**BusinessId** | Pointer to **string** |  | [optional] 
-**ProductId** | Pointer to **string** |  | [optional] 
-**PlanId** | Pointer to **string** |  | [optional] 
-**PriceId** | Pointer to **string** |  | [optional] 
-**PaymentMethodId** | Pointer to **string** |  | [optional] 
-**StartDate** | Pointer to **string** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
+**CustomerId** | **string** |  |
+**BusinessId** | Pointer to **string** |  | [optional]
+**ProductId** | Pointer to **string** |  | [optional]
+**PlanId** | Pointer to **string** |  | [optional]
+**PriceId** | Pointer to **string** |  | [optional]
+**PaymentMethodId** | Pointer to **string** |  | [optional]
+**StartDate** | Pointer to **string** |  | [optional]
+**Currency** | Pointer to **string** | Defaults to the price&#39;s currency | [optional]
 **Quantity** | Pointer to **int32** |  | [optional] [default to 1]
-**TrialEnd** | Pointer to **time.Time** |  | [optional] 
-**BillingAnchorDay** | Pointer to **int32** |  | [optional] 
-**PauseAtPeriodEnd** | Pointer to **bool** |  | [optional] 
-**CancelAtPeriodEnd** | Pointer to **bool** |  | [optional] 
-**BillingStartsOn** | Pointer to **time.Time** |  | [optional] 
-**BillingEndStrategy** | Pointer to **string** |  | [optional] 
-**BillingEndsOn** | Pointer to **time.Time** |  | [optional] 
-**BillingMaxCycles** | Pointer to **int32** |  | [optional] 
-**ProrationMode** | Pointer to **string** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**TrialEnd** | Pointer to **time.Time** |  | [optional]
+**BillingAnchorDay** | Pointer to **int32** |  | [optional]
+**PauseAtPeriodEnd** | Pointer to **bool** |  | [optional]
+**CancelAtPeriodEnd** | Pointer to **bool** |  | [optional]
+**BillingStartsOn** | Pointer to **time.Time** |  | [optional]
+**BillingEndStrategy** | Pointer to **string** |  | [optional]
+**BillingEndsOn** | Pointer to **time.Time** |  | [optional]
+**BillingMaxCycles** | Pointer to **int32** |  | [optional]
+**ProrationMode** | Pointer to **string** |  | [optional]
+**Metadata** | Pointer to **map[string]interface{}** |  | [optional]
+**PaymentRail** | Pointer to **string** | How the subscription is collected. &#x60;direct_debit&#x60; needs &#x60;mandateId&#x60; and a GBP price, and cannot be combined with &#x60;paymentMethodId&#x60;. It is available to signed-in team members and OAuth apps; API keys are refused with 403. | [optional]
+**MandateId** | Pointer to **string** | An active Direct Debit mandate belonging to this customer. Only with &#x60;paymentRail: direct_debit&#x60;. | [optional]
 
 ## Methods
 
@@ -490,20 +492,20 @@ HasProrationMode returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *SubscriptionsCreateRequest) GetMetadata() map[string]interface{}`
+`func (o *SubscriptionsCreateRequest) GetMetadata() map[string]*interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *SubscriptionsCreateRequest) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionsCreateRequest) GetMetadataOk() (*map[string]*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *SubscriptionsCreateRequest) SetMetadata(v map[string]interface{})`
+`func (o *SubscriptionsCreateRequest) SetMetadata(v map[string]*interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -513,7 +515,55 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
+### GetPaymentRail
+
+`func (o *SubscriptionsCreateRequest) GetPaymentRail() string`
+
+GetPaymentRail returns the PaymentRail field if non-nil, zero value otherwise.
+
+### GetPaymentRailOk
+
+`func (o *SubscriptionsCreateRequest) GetPaymentRailOk() (*string, bool)`
+
+GetPaymentRailOk returns a tuple with the PaymentRail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentRail
+
+`func (o *SubscriptionsCreateRequest) SetPaymentRail(v string)`
+
+SetPaymentRail sets PaymentRail field to given value.
+
+### HasPaymentRail
+
+`func (o *SubscriptionsCreateRequest) HasPaymentRail() bool`
+
+HasPaymentRail returns a boolean if a field has been set.
+
+### GetMandateId
+
+`func (o *SubscriptionsCreateRequest) GetMandateId() string`
+
+GetMandateId returns the MandateId field if non-nil, zero value otherwise.
+
+### GetMandateIdOk
+
+`func (o *SubscriptionsCreateRequest) GetMandateIdOk() (*string, bool)`
+
+GetMandateIdOk returns a tuple with the MandateId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMandateId
+
+`func (o *SubscriptionsCreateRequest) SetMandateId(v string)`
+
+SetMandateId sets MandateId field to given value.
+
+### HasMandateId
+
+`func (o *SubscriptionsCreateRequest) HasMandateId() bool`
+
+HasMandateId returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

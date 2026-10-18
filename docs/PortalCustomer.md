@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**Email** | **NullableString** |  | 
-**Name** | **NullableString** |  | 
-**Phone** | **NullableString** |  | 
-**CompanyName** | **NullableString** |  | 
-**DefaultCurrency** | **NullableString** |  | 
-**Locale** | **NullableString** |  | 
-**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**Email** | **NullableString** |  |
+**Name** | **NullableString** |  |
+**Phone** | **NullableString** |  |
+**CompanyName** | **NullableString** |  |
+**DefaultCurrency** | **NullableString** |  |
+**Locale** | **NullableString** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
@@ -275,5 +275,3 @@ SetCreatedAt sets CreatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

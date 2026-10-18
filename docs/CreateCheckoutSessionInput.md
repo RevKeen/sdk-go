@@ -4,20 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InvoiceId** | Pointer to **string** |  | [optional] 
-**ProductId** | Pointer to **string** |  | [optional] 
-**AmountMinor** | Pointer to **int32** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] [default to "USD"]
-**SuccessUrl** | Pointer to **string** |  | [optional] 
-**CancelUrl** | Pointer to **string** |  | [optional] 
-**AllowedMethods** | Pointer to **[]string** | Payment methods to offer. Intersected with merchant capabilities. Defaults to merchant config. | [optional] 
-**CompanionDeviceId** | Pointer to **string** | Target a registered companion device. Session is pushed via SSE to the device. | [optional] 
+**InvoiceId** | **string** |  |
+**Currency** | Pointer to **string** | Three-letter ISO currency code. Defaults to the merchant&#39;s default currency. | [optional]
+**SuccessUrl** | Pointer to **string** |  | [optional]
+**CancelUrl** | Pointer to **string** |  | [optional]
+**AllowedMethods** | Pointer to **[]string** | Payment methods to offer. Intersected with merchant capabilities. Defaults to merchant config. | [optional]
+**CompanionDeviceId** | Pointer to **string** | Target a registered companion device. Session is pushed via SSE to the device. | [optional]
 
 ## Methods
 
 ### NewCreateCheckoutSessionInput
 
-`func NewCreateCheckoutSessionInput() *CreateCheckoutSessionInput`
+`func NewCreateCheckoutSessionInput(invoiceId string, ) *CreateCheckoutSessionInput`
 
 NewCreateCheckoutSessionInput instantiates a new CreateCheckoutSessionInput object
 This constructor will assign default values to properties that have it defined,
@@ -51,61 +49,6 @@ and a boolean to check if the value has been set.
 
 SetInvoiceId sets InvoiceId field to given value.
 
-### HasInvoiceId
-
-`func (o *CreateCheckoutSessionInput) HasInvoiceId() bool`
-
-HasInvoiceId returns a boolean if a field has been set.
-
-### GetProductId
-
-`func (o *CreateCheckoutSessionInput) GetProductId() string`
-
-GetProductId returns the ProductId field if non-nil, zero value otherwise.
-
-### GetProductIdOk
-
-`func (o *CreateCheckoutSessionInput) GetProductIdOk() (*string, bool)`
-
-GetProductIdOk returns a tuple with the ProductId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProductId
-
-`func (o *CreateCheckoutSessionInput) SetProductId(v string)`
-
-SetProductId sets ProductId field to given value.
-
-### HasProductId
-
-`func (o *CreateCheckoutSessionInput) HasProductId() bool`
-
-HasProductId returns a boolean if a field has been set.
-
-### GetAmountMinor
-
-`func (o *CreateCheckoutSessionInput) GetAmountMinor() int32`
-
-GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
-
-### GetAmountMinorOk
-
-`func (o *CreateCheckoutSessionInput) GetAmountMinorOk() (*int32, bool)`
-
-GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAmountMinor
-
-`func (o *CreateCheckoutSessionInput) SetAmountMinor(v int32)`
-
-SetAmountMinor sets AmountMinor field to given value.
-
-### HasAmountMinor
-
-`func (o *CreateCheckoutSessionInput) HasAmountMinor() bool`
-
-HasAmountMinor returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -234,5 +177,3 @@ HasCompanionDeviceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

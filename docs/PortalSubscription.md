@@ -4,28 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Object** | **string** |  | 
-**Status** | **string** |  | 
-**Currency** | **NullableString** |  | 
-**AmountMinor** | **NullableInt32** |  | 
-**Interval** | **NullableString** |  | 
-**IntervalCount** | **NullableInt32** |  | 
-**BillingEndStrategy** | **NullableString** |  | 
-**BillingMaxCycles** | **NullableInt32** |  | 
-**CurrentPeriodStart** | **NullableTime** |  | 
-**CurrentPeriodEnd** | **NullableTime** |  | 
-**TrialEnd** | **NullableTime** |  | 
-**CancelAt** | **NullableTime** |  | 
-**CanceledAt** | **NullableTime** |  | 
-**StartedAt** | **NullableTime** |  | 
-**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  |
+**Object** | **string** |  |
+**Status** | **string** |  |
+**Currency** | **NullableString** |  |
+**AmountMinor** | **NullableInt64** |  |
+**Interval** | **NullableString** |  |
+**IntervalCount** | **NullableInt32** |  |
+**BillingEndStrategy** | **NullableString** |  |
+**BillingMaxCycles** | **NullableInt32** |  |
+**CurrentPeriodStart** | **NullableTime** |  |
+**CurrentPeriodEnd** | **NullableTime** |  |
+**TrialEnd** | **NullableTime** |  |
+**CancelAt** | **NullableTime** |  |
+**CanceledAt** | **NullableTime** |  |
+**StartedAt** | **NullableTime** |  |
+**CreatedAt** | **time.Time** |  |
 
 ## Methods
 
 ### NewPortalSubscription
 
-`func NewPortalSubscription(id string, object string, status string, currency NullableString, amountMinor NullableInt32, interval NullableString, intervalCount NullableInt32, billingEndStrategy NullableString, billingMaxCycles NullableInt32, currentPeriodStart NullableTime, currentPeriodEnd NullableTime, trialEnd NullableTime, cancelAt NullableTime, canceledAt NullableTime, startedAt NullableTime, createdAt time.Time, ) *PortalSubscription`
+`func NewPortalSubscription(id string, object string, status string, currency NullableString, amountMinor NullableInt64, interval NullableString, intervalCount NullableInt32, billingEndStrategy NullableString, billingMaxCycles NullableInt32, currentPeriodStart NullableTime, currentPeriodEnd NullableTime, trialEnd NullableTime, cancelAt NullableTime, canceledAt NullableTime, startedAt NullableTime, createdAt time.Time, ) *PortalSubscription`
 
 NewPortalSubscription instantiates a new PortalSubscription object
 This constructor will assign default values to properties that have it defined,
@@ -132,20 +132,20 @@ SetCurrency sets Currency field to given value.
 UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
 ### GetAmountMinor
 
-`func (o *PortalSubscription) GetAmountMinor() int32`
+`func (o *PortalSubscription) GetAmountMinor() int64`
 
 GetAmountMinor returns the AmountMinor field if non-nil, zero value otherwise.
 
 ### GetAmountMinorOk
 
-`func (o *PortalSubscription) GetAmountMinorOk() (*int32, bool)`
+`func (o *PortalSubscription) GetAmountMinorOk() (*int64, bool)`
 
 GetAmountMinorOk returns a tuple with the AmountMinor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountMinor
 
-`func (o *PortalSubscription) SetAmountMinor(v int32)`
+`func (o *PortalSubscription) SetAmountMinor(v int64)`
 
 SetAmountMinor sets AmountMinor field to given value.
 
@@ -482,5 +482,3 @@ SetCreatedAt sets CreatedAt field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

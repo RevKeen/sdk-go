@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **string** | Unique discount code (will be uppercased) | 
-**Name** | **string** | Human-readable name | 
-**Description** | Pointer to **string** | Optional description | [optional] 
-**DiscountType** | **string** | Type of discount | 
-**DiscountValue** | **float32** | Discount value - percentage (1-100) or amount in cents | 
+**Code** | **string** | Unique discount code (will be uppercased) |
+**Name** | **string** | Human-readable name |
+**Description** | Pointer to **string** | Optional description | [optional]
+**DiscountType** | **string** | Type of discount |
+**DiscountValue** | **float32** | Discount value - percentage (1-100) or amount in cents |
 **AppliesTo** | Pointer to **string** | Which products the discount applies to | [optional] [default to "all"]
-**Scope** | Pointer to **string** | Scope of where discount can be applied | [optional] 
-**ProductIds** | Pointer to **[]string** | Product IDs if applies_to is &#39;specific_products&#39; | [optional] 
-**MaxRedemptions** | Pointer to **int32** | Maximum total redemptions allowed | [optional] 
+**Scope** | Pointer to **string** | Scope of where discount can be applied | [optional]
+**ProductIds** | Pointer to **[]string** | Product IDs if applies_to is &#39;specific_products&#39; | [optional]
+**MaxRedemptions** | Pointer to **int32** | Maximum total redemptions allowed | [optional]
 **MaxRedemptionsPerUser** | Pointer to **int32** | Maximum redemptions per customer (0 &#x3D; unlimited) | [optional] [default to 0]
-**ValidFrom** | Pointer to **string** | Start date (ISO 8601) | [optional] 
-**ValidUntil** | Pointer to **string** | End date (ISO 8601) | [optional] 
-**RecurringType** | Pointer to **string** | How the discount applies to recurring payments | [optional] 
-**RecurringCycles** | Pointer to **int32** | Number of billing cycles (only if recurring_type is &#39;repeating&#39;) | [optional] 
+**ValidFrom** | Pointer to **string** | Start date (ISO 8601) | [optional]
+**ValidUntil** | Pointer to **string** | End date (ISO 8601) | [optional]
+**RecurringType** | Pointer to **string** | How the discount applies to recurring payments | [optional]
+**RecurringCycles** | Pointer to **int32** | Number of billing cycles (only if recurring_type is &#39;repeating&#39;) | [optional]
 **FirstTimeCustomer** | Pointer to **bool** | Only available to first-time customers | [optional] [default to false]
 
 ## Methods
@@ -396,5 +396,3 @@ HasFirstTimeCustomer returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**MandateRequestId** | **NullableString** |  | 
-**MandateId** | **string** |  | 
-**CustomerId** | **string** |  | 
-**MerchantId** | **string** |  | 
-**PdfType** | **string** |  | 
-**StorageKey** | **string** |  | 
-**PdfUrl** | **NullableString** |  | 
-**GeneratedAt** | **string** |  | 
-**TemplateVersion** | **string** |  | 
-**ComplianceVersion** | **string** |  | 
+**Id** | **string** |  |
+**MandateRequestId** | **NullableString** |  |
+**MandateId** | **string** |  |
+**CustomerId** | **string** |  |
+**MerchantId** | **string** |  |
+**PdfType** | **string** |  |
+**StorageKey** | **string** |  |
+**PdfUrl** | **NullableString** |  |
+**GeneratedAt** | **time.Time** |  |
+**TemplateVersion** | **string** |  |
+**ComplianceVersion** | **string** |  |
 
 ## Methods
 
 ### NewDdMandatePdfReference
 
-`func NewDdMandatePdfReference(id string, mandateRequestId NullableString, mandateId string, customerId string, merchantId string, pdfType string, storageKey string, pdfUrl NullableString, generatedAt string, templateVersion string, complianceVersion string, ) *DdMandatePdfReference`
+`func NewDdMandatePdfReference(id string, mandateRequestId NullableString, mandateId string, customerId string, merchantId string, pdfType string, storageKey string, pdfUrl NullableString, generatedAt time.Time, templateVersion string, complianceVersion string, ) *DdMandatePdfReference`
 
 NewDdMandatePdfReference instantiates a new DdMandatePdfReference object
 This constructor will assign default values to properties that have it defined,
@@ -217,20 +217,20 @@ SetPdfUrl sets PdfUrl field to given value.
 UnsetPdfUrl ensures that no value is present for PdfUrl, not even an explicit nil
 ### GetGeneratedAt
 
-`func (o *DdMandatePdfReference) GetGeneratedAt() string`
+`func (o *DdMandatePdfReference) GetGeneratedAt() time.Time`
 
 GetGeneratedAt returns the GeneratedAt field if non-nil, zero value otherwise.
 
 ### GetGeneratedAtOk
 
-`func (o *DdMandatePdfReference) GetGeneratedAtOk() (*string, bool)`
+`func (o *DdMandatePdfReference) GetGeneratedAtOk() (*time.Time, bool)`
 
 GetGeneratedAtOk returns a tuple with the GeneratedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGeneratedAt
 
-`func (o *DdMandatePdfReference) SetGeneratedAt(v string)`
+`func (o *DdMandatePdfReference) SetGeneratedAt(v time.Time)`
 
 SetGeneratedAt sets GeneratedAt field to given value.
 
@@ -277,5 +277,3 @@ SetComplianceVersion sets ComplianceVersion field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

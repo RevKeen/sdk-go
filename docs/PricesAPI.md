@@ -1,6 +1,6 @@
 # \PricesAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## PricesArchive
 
-> Price PricesArchive(ctx, id).Execute()
+> Price PricesArchive(ctx, id).IdempotencyKey(idempotencyKey).Execute()
 
 Archive a price
 
@@ -29,15 +29,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Price ID
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PricesAPI.PricesArchive(context.Background(), id).Execute()
+	resp, r, err := apiClient.PricesAPI.PricesArchive(context.Background(), id).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PricesAPI.PricesArchive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +54,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Price ID | 
+**id** | **string** | Price ID |
 
 ### Other Parameters
 
@@ -63,6 +64,7 @@ Other parameters are passed through a pointer to a apiPricesArchiveRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -84,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## PricesCreate
 
-> Price PricesCreate(ctx).CreatePriceRequest(createPriceRequest).Execute()
+> Price PricesCreate(ctx).CreatePriceRequest(createPriceRequest).IdempotencyKey(idempotencyKey).Execute()
 
 Create a price
 
@@ -99,15 +101,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	createPriceRequest := *openapiclient.NewCreatePriceRequest("ProductId_example") // CreatePriceRequest | Price creation details
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PricesAPI.PricesCreate(context.Background()).CreatePriceRequest(createPriceRequest).Execute()
+	resp, r, err := apiClient.PricesAPI.PricesCreate(context.Background()).CreatePriceRequest(createPriceRequest).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PricesAPI.PricesCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,7 +131,8 @@ Other parameters are passed through a pointer to a apiPricesCreateRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createPriceRequest** | [**CreatePriceRequest**](CreatePriceRequest.md) | Price creation details | 
+ **createPriceRequest** | [**CreatePriceRequest**](CreatePriceRequest.md) | Price creation details |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -165,7 +169,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -189,7 +193,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Price ID | 
+**id** | **string** | Price ID |
 
 ### Other Parameters
 
@@ -235,7 +239,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
@@ -246,8 +250,8 @@ func main() {
 	currency := "currency_example" // string | Filter by currency (optional)
 	lookupKey := "lookupKey_example" // string | Filter by lookup key (optional)
 	limit := int32(56) // int32 | Number of results (1-100) (optional) (default to 20)
-	startingAfter := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination (ID to start after) (optional)
-	endingBefore := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination (ID to end before) (optional)
+	startingAfter := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination: return prices after this price ID. Mutually exclusive with `ending_before` — supplying both is rejected with 400 `parameter_invalid`. The ID must name a price of the authenticated merchant, or the request is rejected with 400 `resource_missing`. (optional)
+	endingBefore := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cursor for pagination: return prices before this price ID. Mutually exclusive with `starting_after` — supplying both is rejected with 400 `parameter_invalid`. The ID must name a price of the authenticated merchant, or the request is rejected with 400 `resource_missing`. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -272,15 +276,15 @@ Other parameters are passed through a pointer to a apiPricesListRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productId** | **string** | Filter by product ID | 
- **type_** | **string** | Filter by price type | 
- **pricingModel** | **string** | Filter by pricing model | 
- **active** | **string** | Filter by active status | 
- **currency** | **string** | Filter by currency | 
- **lookupKey** | **string** | Filter by lookup key | 
+ **productId** | **string** | Filter by product ID |
+ **type_** | **string** | Filter by price type |
+ **pricingModel** | **string** | Filter by pricing model |
+ **active** | **string** | Filter by active status |
+ **currency** | **string** | Filter by currency |
+ **lookupKey** | **string** | Filter by lookup key |
  **limit** | **int32** | Number of results (1-100) | [default to 20]
- **startingAfter** | **string** | Cursor for pagination (ID to start after) | 
- **endingBefore** | **string** | Cursor for pagination (ID to end before) | 
+ **startingAfter** | **string** | Cursor for pagination: return prices after this price ID. Mutually exclusive with &#x60;ending_before&#x60; — supplying both is rejected with 400 &#x60;parameter_invalid&#x60;. The ID must name a price of the authenticated merchant, or the request is rejected with 400 &#x60;resource_missing&#x60;. |
+ **endingBefore** | **string** | Cursor for pagination: return prices before this price ID. Mutually exclusive with &#x60;starting_after&#x60; — supplying both is rejected with 400 &#x60;parameter_invalid&#x60;. The ID must name a price of the authenticated merchant, or the request is rejected with 400 &#x60;resource_missing&#x60;. |
 
 ### Return type
 
@@ -302,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## PricesUpdate
 
-> Price PricesUpdate(ctx, id).UpdatePriceRequest(updatePriceRequest).Execute()
+> Price PricesUpdate(ctx, id).UpdatePriceRequest(updatePriceRequest).IdempotencyKey(idempotencyKey).Execute()
 
 Update a price
 
@@ -317,16 +321,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
 	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Price ID
 	updatePriceRequest := *openapiclient.NewUpdatePriceRequest() // UpdatePriceRequest | Price update details
+	idempotencyKey := "idempotencyKey_example" // string | Stable caller-owned key for this logical mutation. Reuse only with an identical request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PricesAPI.PricesUpdate(context.Background(), id).UpdatePriceRequest(updatePriceRequest).Execute()
+	resp, r, err := apiClient.PricesAPI.PricesUpdate(context.Background(), id).UpdatePriceRequest(updatePriceRequest).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PricesAPI.PricesUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,7 +347,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Price ID | 
+**id** | **string** | Price ID |
 
 ### Other Parameters
 
@@ -352,7 +357,8 @@ Other parameters are passed through a pointer to a apiPricesUpdateRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updatePriceRequest** | [**UpdatePriceRequest**](UpdatePriceRequest.md) | Price update details | 
+ **updatePriceRequest** | [**UpdatePriceRequest**](UpdatePriceRequest.md) | Price update details |
+ **idempotencyKey** | **string** | Stable caller-owned key for this logical mutation. Reuse only with an identical request. |
 
 ### Return type
 
@@ -370,4 +376,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

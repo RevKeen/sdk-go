@@ -1,6 +1,6 @@
 # \AnalyticsAPI
 
-All URIs are relative to *https://staging-api.revkeen.com/v2*
+All URIs are relative to *https://api.revkeen.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,11 +27,11 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	asOfDate := time.Now() // time.Time | Calculate MRR as of this date (ISO 8601) (optional)
+	asOfDate := time.Now() // time.Time | Calculate MRR as of this date (RFC 3339 date-time, with `Z` or a UTC offset such as `+01:00`) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiAnalyticsRevenueMrrSummary
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asOfDate** | **time.Time** | Calculate MRR as of this date (ISO 8601) | 
+ **asOfDate** | **time.Time** | Calculate MRR as of this date (RFC 3339 date-time, with &#x60;Z&#x60; or a UTC offset such as &#x60;+01:00&#x60;) |
 
 ### Return type
 
@@ -94,12 +94,12 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/revkeen/revkeen-go"
+	openapiclient "github.com/revkeen/sdk-go"
 )
 
 func main() {
-	startDate := time.Now() // time.Time | Start date (ISO 8601)
-	endDate := time.Now() // time.Time | End date (ISO 8601)
+	startDate := time.Now() // time.Time | Start date (RFC 3339 date-time, with `Z` or a UTC offset such as `+01:00`)
+	endDate := time.Now() // time.Time | End date (RFC 3339 date-time, with `Z` or a UTC offset such as `+01:00`)
 	granularity := "granularity_example" // string | Time granularity for data points (optional) (default to "month")
 
 	configuration := openapiclient.NewConfiguration()
@@ -125,8 +125,8 @@ Other parameters are passed through a pointer to a apiAnalyticsRevenueTimeSeries
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **time.Time** | Start date (ISO 8601) | 
- **endDate** | **time.Time** | End date (ISO 8601) | 
+ **startDate** | **time.Time** | Start date (RFC 3339 date-time, with &#x60;Z&#x60; or a UTC offset such as &#x60;+01:00&#x60;) |
+ **endDate** | **time.Time** | End date (RFC 3339 date-time, with &#x60;Z&#x60; or a UTC offset such as &#x60;+01:00&#x60;) |
  **granularity** | **string** | Time granularity for data points | [default to &quot;month&quot;]
 
 ### Return type
@@ -145,4 +145,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
